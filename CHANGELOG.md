@@ -4,3 +4,5 @@ Infrastructure Planning Docs: Added initial Proxmox, VLAN, and hardware docs.
 
 Security Baselines: Created CIS compliance templates and security policies.
 
+Phase 1 - Infrastructure Planning: Drafted network and compute architecture.
+

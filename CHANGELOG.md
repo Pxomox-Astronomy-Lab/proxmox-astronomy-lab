@@ -6,3 +6,5 @@ Security Baselines: Created CIS compliance templates and security policies.
 
 Phase 1 - Infrastructure Planning: Drafted network and compute architecture.
 
+Phase 1 - Core Infrastructure Setup: Deployed Proxmox nodes and VLANs.
+

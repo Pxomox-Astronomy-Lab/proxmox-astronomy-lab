@@ -10,3 +10,5 @@ Phase 1 - Core Infrastructure Setup: Deployed Proxmox nodes and VLANs.
 
 Identity Management & Entra ID Hybrid Join: Configured AD, SSO, and policies.
 
+Monitoring & Logging Stack: Installed Prometheus, Loki, and Grafana.
+

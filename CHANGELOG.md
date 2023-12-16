@@ -12,3 +12,5 @@ Identity Management & Entra ID Hybrid Join: Configured AD, SSO, and policies.
 
 Monitoring & Logging Stack: Installed Prometheus, Loki, and Grafana.
 
+SDR Hardware Setup & Initial Hydrogen Line Testing: Verified SDR signal capture.
+

@@ -14,3 +14,5 @@ Monitoring & Logging Stack: Installed Prometheus, Loki, and Grafana.
 
 SDR Hardware Setup & Initial Hydrogen Line Testing: Verified SDR signal capture.
 
+Portainer & Docker Deployments: Deployed Portainer and structured containerization.
+

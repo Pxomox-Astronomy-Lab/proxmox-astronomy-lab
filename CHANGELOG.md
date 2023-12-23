@@ -16,3 +16,5 @@ SDR Hardware Setup & Initial Hydrogen Line Testing: Verified SDR signal capture.
 
 Portainer & Docker Deployments: Deployed Portainer and structured containerization.
 
+Phase 2 - Service Documentation: Documented VM assignments and services.
+

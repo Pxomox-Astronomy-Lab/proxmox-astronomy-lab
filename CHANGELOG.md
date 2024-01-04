@@ -20,3 +20,5 @@ Phase 2 - Service Documentation: Documented VM assignments and services.
 
 Storage & Backup Architecture Finalized: Implemented S3/NFS storage and backups.
 
+Kubernetes Cluster (RKE2) Deployment: Installed 3 masters and 5 worker nodes.
+

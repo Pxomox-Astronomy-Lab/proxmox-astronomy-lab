@@ -26,3 +26,5 @@ Phase 2 - Research Validation Docs: Documented SDR signal processing workflows.
 
 PostgreSQL & TimescaleDB Setup: Configured pg01, pgts01, and pggis01 databases.
 
+Entra Private Access & Remote Collaboration: Enabled zero-trust secure access.
+

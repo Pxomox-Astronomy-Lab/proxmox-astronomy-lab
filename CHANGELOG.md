@@ -32,3 +32,5 @@ First Research Pipeline Execution: Processed Hydrogen Line data.
 
 ITIL-Aligned Change Management (GLPI): Implemented structured ITSM workflows.
 
+Expanded Kubernetes Services: Deployed ArgoCD, cert-manager, and Traefik.
+

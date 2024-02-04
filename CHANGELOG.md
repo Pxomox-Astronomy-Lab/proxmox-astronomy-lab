@@ -34,3 +34,5 @@ ITIL-Aligned Change Management (GLPI): Implemented structured ITSM workflows.
 
 Expanded Kubernetes Services: Deployed ArgoCD, cert-manager, and Traefik.
 
+AI/ML Workloads Deployment: Installed Milvus, Ollama, and TensorFlow Serving.
+

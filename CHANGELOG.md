@@ -40,3 +40,5 @@ Phase 3 Documentation - AI Workflows: Wrote AI-enhanced SDR processing docs.
 
 High-Performance Compute Node Configuration: Enabled GPU passthrough.
 
+Structured SDR Data Pipeline: Finalized ingestion → Kafka → PostgreSQL.
+

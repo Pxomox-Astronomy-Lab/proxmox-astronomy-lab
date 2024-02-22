@@ -42,3 +42,5 @@ High-Performance Compute Node Configuration: Enabled GPU passthrough.
 
 Structured SDR Data Pipeline: Finalized ingestion → Kafka → PostgreSQL.
 
+Security Hardening & Compliance Reports: Automated CIS scans and vulnerability tracking.
+

@@ -44,3 +44,5 @@ Structured SDR Data Pipeline: Finalized ingestion → Kafka → PostgreSQL.
 
 Security Hardening & Compliance Reports: Automated CIS scans and vulnerability tracking.
 
+Phase 4 Planning - Live Research Data: Outlined real-time SDR processing plans.
+

@@ -48,3 +48,5 @@ Phase 4 Planning - Live Research Data: Outlined real-time SDR processing plans.
 
 Finalized Lab Infrastructure Docs: Standardized repository structure.
 
+Public Knowledge Base & GitHub Pages: Structured documentation for public release.
+

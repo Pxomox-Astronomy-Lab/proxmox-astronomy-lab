@@ -1,4 +1,4 @@
----
+﻿---
 title: "Lab-Ansible01 Service Documentation"
 description: "Comprehensive ITIL-aligned documentation of Lab-Ansible01, including infrastructure, security policies, and service management details."
 author: "VintageDon"
@@ -46,9 +46,9 @@ This node ensures **consistent system deployments, repeatable configurations, an
 
 | **Metric** | **Target** | **Measurement Method** |
 |------------|----------|------------------------|
-| **Playbook Execution Time** | ≤ 10 minutes | AWX job logs |
+| **Playbook Execution Time** | â‰¤ 10 minutes | AWX job logs |
 | **Uptime** | 99.99% | Prometheus alerts |
-| **Backup Sync Interval** | ≤ 1 day | Proxmox Backup Server logs |
+| **Backup Sync Interval** | â‰¤ 1 day | Proxmox Backup Server logs |
 | **Recovery Time** | RTO: 4 hours | Restore test validation |
 
 ### **2.2 Monitoring and Reporting**  
@@ -126,7 +126,7 @@ Lab-Ansible01 runs **Ansible and AWX on Ubuntu 24.04**, providing **centralized 
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-07 | ⏱ Pending |
+| VintageDon | Lead Engineer | 2025-03-07 | â± Pending |
 
 ---
 
@@ -135,3 +135,4 @@ Lab-Ansible01 runs **Ansible and AWX on Ubuntu 24.04**, providing **centralized 
 | **Version** | **Date** | **Changes** |
 |------------|---------|-------------|
 | 1.0 | 2025-03-07 | Initial version, defines Lab-Ansible01 as the automation & configuration management server |
+

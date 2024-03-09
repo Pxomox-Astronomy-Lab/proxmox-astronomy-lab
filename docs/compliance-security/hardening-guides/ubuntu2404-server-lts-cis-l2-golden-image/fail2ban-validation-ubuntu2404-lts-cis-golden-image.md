@@ -1,4 +1,4 @@
----
+﻿---
 title: "Fail2Ban Verification on Golden Image"
 description: "Verification and validation of Fail2Ban's functionality on the hardened Ubuntu 24.04 golden image."
 author: "VintageDon"
@@ -14,7 +14,7 @@ last_updated: "2025-03-04"
 
 ## **1. Purpose**  
 
-Fail2Ban is an **intrusion prevention system** that monitors authentication logs for **repeated failed login attempts** and **automatically bans offending IPs** to prevent brute-force attacks. This article validates **Fail2Ban’s effectiveness on the Ubuntu 24.04 LTS Golden Image** by confirming:  
+Fail2Ban is an **intrusion prevention system** that monitors authentication logs for **repeated failed login attempts** and **automatically bans offending IPs** to prevent brute-force attacks. This article validates **Fail2Banâ€™s effectiveness on the Ubuntu 24.04 LTS Golden Image** by confirming:  
 
 - The **service is running** and enabled on boot.  
 - It is **monitoring and filtering SSH login attempts**.  
@@ -31,12 +31,12 @@ Fail2Ban is configured **by default** on the golden image and deployed across al
 |--------------------------------|----------------|
 | **Service Status**             | Ensures Fail2Ban is running and enabled on boot. |
 | **Active Jails**               | Confirms SSH login attempts are monitored. |
-| **Brute-Force Attack Simulation** | Tests Fail2Ban’s detection and response to unauthorized logins. |
+| **Brute-Force Attack Simulation** | Tests Fail2Banâ€™s detection and response to unauthorized logins. |
 | **Ban Validation**             | Checks that Fail2Ban correctly blocks attackers. |
 | **Firewall Rules**             | Verifies that IP bans are enforced via `iptables`. |
 | **Logging & Compliance**       | Ensures all actions are logged for audit purposes. |
 
-🚀 **Fail2Ban must remain active across all deployed VMs to maintain SSH intrusion protection.**
+ðŸš€ **Fail2Ban must remain active across all deployed VMs to maintain SSH intrusion protection.**
 
 ---
 
@@ -55,7 +55,7 @@ Fail2Ban contributes to **intrusion detection and account security compliance** 
 | **ISO 27001**  | - A.9.2: User Access Management  |  
 |                | - A.12.4: Logging and Monitoring  |  
 
-✅ **Fail2Ban enforces security best practices by preventing brute-force attacks, monitoring failed authentication attempts, and ensuring access control integrity.**
+âœ… **Fail2Ban enforces security best practices by preventing brute-force attacks, monitoring failed authentication attempts, and ensuring access control integrity.**
 
 ---
 
@@ -70,12 +70,12 @@ systemctl status fail2ban
 ### **Expected Output:**  
 
 ```plaintext
-● fail2ban.service - Fail2Ban Service
+â— fail2ban.service - Fail2Ban Service
      Loaded: loaded (/usr/lib/systemd/system/fail2ban.service; enabled; preset: enabled)
      Active: active (running) since Tue 2025-03-04 02:10:48 EST; 36min ago
 ```
 
-✅ **Fail2Ban is active and starts automatically on boot.**
+âœ… **Fail2Ban is active and starts automatically on boot.**
 
 ---
 
@@ -95,7 +95,7 @@ Status
 `- Jail list:   sshd
 ```
 
-✅ **Fail2Ban is actively monitoring SSH authentication attempts.**
+âœ… **Fail2Ban is actively monitoring SSH authentication attempts.**
 
 ---
 
@@ -115,7 +115,7 @@ After **three failed attempts**, SSH access is **blocked**:
 ssh: connect to host 10.25.10.201 port 22: Connection refused
 ```
 
-✅ **Fail2Ban successfully blocks unauthorized SSH attempts.**
+âœ… **Fail2Ban successfully blocks unauthorized SSH attempts.**
 
 ---
 
@@ -141,7 +141,7 @@ Status for the jail: sshd
    `- Banned IP list:   10.25.10.17
 ```
 
-✅ **Fail2Ban successfully detects and bans the offending IP.**
+âœ… **Fail2Ban successfully detects and bans the offending IP.**
 
 ---
 
@@ -159,7 +159,7 @@ grep "Ban" /var/log/fail2ban.log
 2025-03-04 02:48:52,902 fail2ban.actions        [796]: NOTICE  [sshd] Ban 10.25.10.17
 ```
 
-✅ **Ban actions are logged for audit and compliance tracking.**
+âœ… **Ban actions are logged for audit and compliance tracking.**
 
 ---
 
@@ -178,7 +178,7 @@ iptables -L -n --line-numbers | grep f2b
 Chain f2b-sshd (1 references)
 ```
 
-✅ **Fail2Ban enforces IP bans via firewall rules.**
+âœ… **Fail2Ban enforces IP bans via firewall rules.**
 
 ---
 
@@ -196,7 +196,7 @@ fail2ban-client set sshd unbanip 10.25.10.17
 1
 ```
 
-✅ **Fail2Ban allows manual unbans when required.**
+âœ… **Fail2Ban allows manual unbans when required.**
 
 ---
 
@@ -204,29 +204,30 @@ fail2ban-client set sshd unbanip 10.25.10.17
 
 | **Test**                                      | **Status** |
 |----------------------------------------------|------------|
-| Fail2Ban service is running                  | ✅ Passed |
-| Fail2Ban is monitoring SSH logins            | ✅ Passed |
-| Unauthorized access attempts detected        | ✅ Passed |
-| Offending IPs are banned                     | ✅ Passed |
-| Ban actions are logged in `/var/log/fail2ban.log` | ✅ Passed |
-| Firewall (`iptables`) confirms enforcement   | ✅ Passed |
-| Manual unban functionality verified          | ✅ Passed |
+| Fail2Ban service is running                  | âœ… Passed |
+| Fail2Ban is monitoring SSH logins            | âœ… Passed |
+| Unauthorized access attempts detected        | âœ… Passed |
+| Offending IPs are banned                     | âœ… Passed |
+| Ban actions are logged in `/var/log/fail2ban.log` | âœ… Passed |
+| Firewall (`iptables`) confirms enforcement   | âœ… Passed |
+| Manual unban functionality verified          | âœ… Passed |
 
-🚀 **Fail2Ban is fully operational on the golden image, actively protecting against brute-force SSH attacks.**
+ðŸš€ **Fail2Ban is fully operational on the golden image, actively protecting against brute-force SSH attacks.**
 
 ---
 
-## ✅ **Approval & Review**  
+## âœ… **Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-04 | ✅ DRAFT |
+| VintageDon | Lead Engineer | 2025-03-04 | âœ… DRAFT |
 
 ---
 
-## 📜 **Change Log**  
+## ðŸ“œ **Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-04 | Initial version | VintageDon |
 | 1.1 | 2025-03-04 | Added compliance mappings & structured headings | VintageDon |
+

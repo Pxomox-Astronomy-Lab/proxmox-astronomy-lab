@@ -1,4 +1,4 @@
----
+﻿---
 title: "Golden Image Rootkit Scan Verification - rkhunter"
 description: "Verification of the Proxmox Astronomy Lab's golden image using rkhunter to confirm system integrity and absence of rootkits, malware, and unauthorized modifications."
 author: "VintageDon"
@@ -10,19 +10,19 @@ status: "Final"
 last_updated: "2025-03-04"
 ---
 
-# **🔍 Golden Image Rootkit Scan Verification - rkhunter**
+# **ðŸ” Golden Image Rootkit Scan Verification - rkhunter**
 
 ## **1. Purpose & Scope**  
 
-### **🔹 Purpose**  
+### **ðŸ”¹ Purpose**  
 
 This audit verifies the **integrity and security posture** of the Proxmox Astronomy Lab's **Ubuntu 24.04 LTS golden image** using `rkhunter`. The objective is to **confirm that the golden template used for lab deployments is free of**:  
 
-✅ **Rootkits, malware, and unauthorized modifications**  
-✅ **Backdoors or hidden malicious processes**  
-✅ **Unauthorized SSH access or system vulnerabilities**  
+âœ… **Rootkits, malware, and unauthorized modifications**  
+âœ… **Backdoors or hidden malicious processes**  
+âœ… **Unauthorized SSH access or system vulnerabilities**  
 
-### **🔹 Scope**  
+### **ðŸ”¹ Scope**  
 
 | **Category**             | **Details** |
 |--------------------------|------------|
@@ -52,24 +52,24 @@ This audit aligns with **industry security frameworks** ensuring security compli
 
 The following `rkhunter` scan results confirm that **no rootkits, malware, or unauthorized modifications** were detected on the golden image.
 
-### **🔹 Rootkit Scan Summary**  
+### **ðŸ”¹ Rootkit Scan Summary**  
 
 | **Check Performed**                    | **Status** |
 |-----------------------------------------|------------|
-| **System Command Integrity**           | ✅ Passed |
-| **File Property Checks**               | ✅ Passed |
-| **Kernel Module Validation**           | ✅ Passed |
-| **Hidden Process Detection**           | ✅ No suspicious processes found |
-| **SSH Security Verification**          | ✅ No unauthorized access detected |
-| **Rootkit & Malware Presence**         | ✅ No known rootkits detected |
+| **System Command Integrity**           | âœ… Passed |
+| **File Property Checks**               | âœ… Passed |
+| **Kernel Module Validation**           | âœ… Passed |
+| **Hidden Process Detection**           | âœ… No suspicious processes found |
+| **SSH Security Verification**          | âœ… No unauthorized access detected |
+| **Rootkit & Malware Presence**         | âœ… No known rootkits detected |
 
-✅ **Final Status**: **System is clean** with **no evidence of rootkits, malware, or unauthorized modifications.**
+âœ… **Final Status**: **System is clean** with **no evidence of rootkits, malware, or unauthorized modifications.**
 
 ---
 
 ## **4. rkhunter Scan Execution & Validation**  
 
-### **🔹 Running rkhunter Scan**  
+### **ðŸ”¹ Running rkhunter Scan**  
 
 To manually verify the system, run:
 
@@ -77,7 +77,7 @@ To manually verify the system, run:
 rkhunter --check
 ```
 
-📌 **Sample Expected Output:**
+ðŸ“Œ **Sample Expected Output:**
 
 ```bash
 Checking system commands...
@@ -104,19 +104,19 @@ Checking network ports...
 
 ## **5. Addressed Security Considerations**  
 
-### **🔹 File Integrity & System Binary Validation**  
+### **ðŸ”¹ File Integrity & System Binary Validation**  
 
 | **Check**               | **Status** |  
 |-------------------------|-----------|  
-| System-critical files verified | ✅ Passed |  
-| SSH security review | ✅ No unauthorized modifications found |  
-| Firewall configuration review | ✅ No open unauthorized ports |
+| System-critical files verified | âœ… Passed |  
+| SSH security review | âœ… No unauthorized modifications found |  
+| Firewall configuration review | âœ… No open unauthorized ports |
 
-### **🔹 Warnings & False Positives**  
+### **ðŸ”¹ Warnings & False Positives**  
 
 | **Finding**            | **Action Taken** |  
 |------------------------|-----------------|  
-| SSH Protocol Warning   | **False positive**—Only SSH v2 is allowed per `sshd_config` |  
+| SSH Protocol Warning   | **False positive**â€”Only SSH v2 is allowed per `sshd_config` |  
 | Hidden Files Warning   | `.gitignore`, `.htaccess` flagged as **expected system files**, no security risk |
 
 ---
@@ -129,20 +129,21 @@ To maintain **ongoing security compliance**, the golden image undergoes **schedu
 - **Automated file integrity monitoring** (`AIDE`)  
 - **Daily log audits & anomaly detection** (`Wazuh SIEM`)  
 
-✅ **The system remains in compliance with security best practices and CISv8 benchmarks.**  
+âœ… **The system remains in compliance with security best practices and CISv8 benchmarks.**  
 
 ---
 
-## **✅ Approval & Review**  
+## **âœ… Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-04 | ✅ Approved |
+| VintageDon | Lead Engineer | 2025-03-04 | âœ… Approved |
 
 ---
 
-## **📜 Change Log**  
+## **ðŸ“œ Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-04 | Initial version | VintageDon |
+

@@ -1,4 +1,4 @@
----
+﻿---
 title: "CISv8-11 Data Recovery Policy"
 description: "Defines the data recovery policy for the Proxmox Astronomy Lab, ensuring that critical enterprise data is securely backed up, retained, and recoverable in case of an incident."
 author: "VintageDon"
@@ -10,7 +10,7 @@ status: "Draft"
 last_updated: "2025-03-03"
 ---
 
-# **📜 CISv8-11 Data Recovery Policy**
+# **ðŸ“œ CISv8-11 Data Recovery Policy**
 
 ## **1. Overview**
 
@@ -40,9 +40,9 @@ This policy aligns with **industry security frameworks** to maintain best practi
 
 | **Framework** | **Control Mapping** |
 |--------------|------------------|
-| **CISv8** | CIS Control 11 – Data Recovery |
-| **NIST 800-53** | CP-9 – Information System Backup |
-| **ISO 27001** | A.12.3 – Backup & Recovery Management |
+| **CISv8** | CIS Control 11 â€“ Data Recovery |
+| **NIST 800-53** | CP-9 â€“ Information System Backup |
+| **ISO 27001** | A.12.3 â€“ Backup & Recovery Management |
 
 ---
 
@@ -123,18 +123,19 @@ In the event of an incident, **data must be restored in a structured, prioritize
 
 ---
 
-## **✅ Approval & Review**  
+## **âœ… Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-03 | ✅ DRAFT |  
+| VintageDon | Lead Engineer | 2025-03-03 | âœ… DRAFT |  
 
 ---
 
-## **📜 Change Log**  
+## **ðŸ“œ Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
 
-🚀 **This policy ensures that data recovery remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+ðŸš€ **This policy ensures that data recovery remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+

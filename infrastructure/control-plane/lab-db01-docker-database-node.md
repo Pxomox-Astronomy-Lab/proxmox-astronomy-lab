@@ -1,4 +1,4 @@
----
+﻿---
 title: "Lab-DB01 Service Documentation"
 description: "Comprehensive ITIL-aligned documentation of Lab-DB01, including infrastructure, security policies, and service management details."
 author: "VintageDon"
@@ -47,8 +47,8 @@ This node is part of the **Portainer-managed cluster**, ensuring **consistent de
 | **Metric** | **Target** | **Measurement Method** |
 |------------|----------|------------------------|
 | **Database Uptime** | 99.99% | Prometheus monitoring |
-| **Query Response Time** | ≤ 50ms | Grafana query analysis |
-| **Backup Sync Interval** | ≤ 1 day | Proxmox Backup Server logs |
+| **Query Response Time** | â‰¤ 50ms | Grafana query analysis |
+| **Backup Sync Interval** | â‰¤ 1 day | Proxmox Backup Server logs |
 | **Recovery Time** | RTO: 4 hours | Restore test validation |
 
 ### **2.2 Monitoring and Reporting**  
@@ -127,7 +127,7 @@ Lab-DB01 is a **Portainer worker node** controlled by **Lab-Port01**, running **
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-07 | ⏱ Pending |
+| VintageDon | Lead Engineer | 2025-03-07 | â± Pending |
 
 ---
 
@@ -136,3 +136,4 @@ Lab-DB01 is a **Portainer worker node** controlled by **Lab-Port01**, running **
 | **Version** | **Date** | **Changes** |
 |------------|---------|-------------|
 | 1.0 | 2025-03-07 | Initial version, defines Lab-DB01 as a Portainer worker node controlled by Lab-Port01 |
+

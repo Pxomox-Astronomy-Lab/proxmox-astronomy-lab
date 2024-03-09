@@ -1,4 +1,4 @@
----
+﻿---
 title: "CISv8-12 Network Infrastructure Management Policy"
 description: "Defines the network infrastructure management policy for the Proxmox Astronomy Lab, ensuring secure deployment, monitoring, and maintenance of network assets and traffic controls."
 author: "VintageDon"
@@ -10,7 +10,7 @@ status: "Draft"
 last_updated: "2025-03-03"
 ---
 
-# **📜 CISv8-12 Network Infrastructure Management Policy**
+# **ðŸ“œ CISv8-12 Network Infrastructure Management Policy**
 
 ## **1. Overview**
 
@@ -42,9 +42,9 @@ This policy aligns with **industry security frameworks** to maintain best practi
 
 | **Framework** | **Control Mapping** |
 |--------------|------------------|
-| **CISv8** | CIS Control 12 – Network Infrastructure Management |
-| **NIST 800-53** | SC-7 – Boundary Protection |
-| **ISO 27001** | A.13.1 – Network Security Controls |
+| **CISv8** | CIS Control 12 â€“ Network Infrastructure Management |
+| **NIST 800-53** | SC-7 â€“ Boundary Protection |
+| **ISO 27001** | A.13.1 â€“ Network Security Controls |
 
 ---
 
@@ -134,18 +134,19 @@ Strict access controls limit network exposure and **enforce least privilege**:
 
 ---
 
-## **✅ Approval & Review**  
+## **âœ… Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-03 | ✅ DRAFT |  
+| VintageDon | Lead Engineer | 2025-03-03 | âœ… DRAFT |  
 
 ---
 
-## **📜 Change Log**  
+## **ðŸ“œ Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
 
-🚀 **This policy ensures that network security remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+ðŸš€ **This policy ensures that network security remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+

@@ -1,4 +1,4 @@
----
+﻿---
 title: "CIS Enterprise Asset Management Policy"
 description: "Outlines the lifecycle management of enterprise-owned IT assets, including acquisition, usage, tracking, and disposal."
 author: "VintageDon"
@@ -10,19 +10,19 @@ status: "Approved"
 last_updated: "2025-03-03"
 ---
 
-# **Enterprise Asset Management Policy – Proxmox Astronomy Lab**  
+# **Enterprise Asset Management Policy â€“ Proxmox Astronomy Lab**  
 
 # **1. Overview**  
 
 Effective asset management ensures that all IT and operational resources within the **Proxmox Astronomy Lab** are **properly inventoried, maintained, tracked, and disposed of securely**. **CIS Control 1 (Enterprise Asset Management)** provides guidelines for identifying, governing, and monitoring enterprise assets to **mitigate security risks, prevent unauthorized access, and optimize resource utilization**.  
 
-This document **incorporates the CIS-provided Enterprise Asset Management Policy template** with additional **context and compliance mapping** relevant to the **lab’s infrastructure**.  
+This document **incorporates the CIS-provided Enterprise Asset Management Policy template** with additional **context and compliance mapping** relevant to the **labâ€™s infrastructure**.  
 
 ## **2. Compliance Mapping**  
 
 | **Framework**      | **Control Mapping** |
 |--------------------|--------------------|
-| **CIS Controls**   | CIS Control 1 – Enterprise Asset Management |
+| **CIS Controls**   | CIS Control 1 â€“ Enterprise Asset Management |
 | **NIST 800-53**    | CM-8 (System Component Inventory), CM-3 (Configuration Change Control) |
 | **ISO 27001**      | A.8 (Asset Management), A.12 (Operations Security) |
 
@@ -47,7 +47,7 @@ This policy ensures **full asset lifecycle tracking**, from **acquisition to dis
 # Enterprise Asset Management Policy Template
 
 ## **Purpose**  
-Enterprise asset management is the process of procuring, identifying, tracking, maintaining, and disposing of an asset owned by an enterprise. The Enterprise Asset Management Policy provides the processes and procedures for governing the enterprise asset lifecycle while an enterprise is using an asset. An inventory must be created and maintained to support the enterprise’s mission. This inventory must be current and reflect the current assets owned and operated by the enterprise.  
+Enterprise asset management is the process of procuring, identifying, tracking, maintaining, and disposing of an asset owned by an enterprise. The Enterprise Asset Management Policy provides the processes and procedures for governing the enterprise asset lifecycle while an enterprise is using an asset. An inventory must be created and maintained to support the enterpriseâ€™s mission. This inventory must be current and reflect the current assets owned and operated by the enterprise.  
 
 ## **Responsibility**  
 The IT business unit is responsible for all enterprise asset management functions. This information is relayed to other business units within the enterprise such as finance, accounting, and cybersecurity as required or needed. IT is responsible for informing all users of their responsibilities in the use of any enterprise assets assigned to them.  
@@ -106,7 +106,7 @@ This section aligns with the **Acceptable Use Policy** but includes additional a
 2. IT will:  
    - Make **backups of user data, if necessary**.  
    - Securely erase all primary storage devices on the asset before disposal.  
-   - Update the **enterprise asset inventory** to reflect the asset’s retirement.  
+   - Update the **enterprise asset inventory** to reflect the assetâ€™s retirement.  
    - Ensure records are retained according to the **Record Retention Policy**.  
 
 ---
@@ -130,39 +130,40 @@ This section aligns with the **Acceptable Use Policy** but includes additional a
 
 ### **5.2 Enhancements Beyond CIS Baselines**
 
-🔹 **Extended Asset Tracking** – Includes **SDRs, IoT devices, and scientific instrumentation**.  
-🔹 **Cloud Integration** – **Azure Arc tracks cloud-based assets alongside on-prem infrastructure**.  
-🔹 **Compliance and Auditing** – **Automated inventory checks trigger alerts for missing assets**.  
+ðŸ”¹ **Extended Asset Tracking** â€“ Includes **SDRs, IoT devices, and scientific instrumentation**.  
+ðŸ”¹ **Cloud Integration** â€“ **Azure Arc tracks cloud-based assets alongside on-prem infrastructure**.  
+ðŸ”¹ **Compliance and Auditing** â€“ **Automated inventory checks trigger alerts for missing assets**.  
 
 ---
 
 ## **6. Summary and Next Steps**  
 
-✅ **CIS Control 1 is fully implemented in the Proxmox Astronomy Lab**.  
-✅ **All IT and scientific assets are tagged, tracked, and reviewed regularly**.  
-✅ **Unauthorized assets are identified and removed from the network**.  
-✅ **Lifecycle management ensures secure asset disposal and data protection**.  
+âœ… **CIS Control 1 is fully implemented in the Proxmox Astronomy Lab**.  
+âœ… **All IT and scientific assets are tagged, tracked, and reviewed regularly**.  
+âœ… **Unauthorized assets are identified and removed from the network**.  
+âœ… **Lifecycle management ensures secure asset disposal and data protection**.  
 
-📌 **Actionable Next Steps:**  
+ðŸ“Œ **Actionable Next Steps:**  
 
 - **Verify all assets are properly documented in Snipe-IT.**  
 - **Ensure air-gapped systems have formal approval and tracking.**  
 - **Integrate automated compliance checks via Ansible and OSQuery.**  
 
-🚀 **With these measures, the Proxmox Astronomy Lab maintains a robust, secure, and auditable asset management process.**
+ðŸš€ **With these measures, the Proxmox Astronomy Lab maintains a robust, secure, and auditable asset management process.**
 
 ---
 
-## **✅ Approval & Review**  
+## **âœ… Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-03 | ✅ Approved |
+| VintageDon | Lead Engineer | 2025-03-03 | âœ… Approved |
 
 ---
 
-## **📜 Change Log**  
+## **ðŸ“œ Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
+

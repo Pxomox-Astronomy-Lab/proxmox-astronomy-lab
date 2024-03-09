@@ -1,4 +1,4 @@
----
+﻿---
 title: "Hydrogen Line Feed Chain - Proxmox Astronomy Lab"
 description: "Detailed documentation of the Hydrogen Line feed chain components, configurations, and signal path optimizations for 1420 MHz radio astronomy observations."
 author: "VintageDon"
@@ -22,13 +22,13 @@ A properly designed feed chain is essential for achieving the sensitivity requir
 
 The feed chain follows a standard radio astronomy front-end design with specific optimizations for Hydrogen Line observations:
 
-1. **Antenna** → Captures RF signals at 1420 MHz
-2. **Coaxial Cable (Pre-LNA)** → Transfers signals to filtering stage
-3. **Band-Pass Filter** → Rejects out-of-band interference
-4. **Low Noise Amplifier (LNA)** → Amplifies weak signals while adding minimal noise
-5. **Coaxial Cable (Post-LNA)** → Transfers amplified signals to receiver
-6. **Software-Defined Radio (SDR)** → Digitizes RF signals
-7. **Edge Computing Node** → Processes digitized signals
+1. **Antenna** â†’ Captures RF signals at 1420 MHz
+2. **Coaxial Cable (Pre-LNA)** â†’ Transfers signals to filtering stage
+3. **Band-Pass Filter** â†’ Rejects out-of-band interference
+4. **Low Noise Amplifier (LNA)** â†’ Amplifies weak signals while adding minimal noise
+5. **Coaxial Cable (Post-LNA)** â†’ Transfers amplified signals to receiver
+6. **Software-Defined Radio (SDR)** â†’ Digitizes RF signals
+7. **Edge Computing Node** â†’ Processes digitized signals
 
 This architecture optimizes sensitivity by placing filtering and low-noise amplification as close to the antenna as practical, minimizing signal loss before amplification.
 
@@ -57,7 +57,7 @@ The antenna is the first element in the signal chain, converting electromagnetic
 | **Make/Model** | Nooelec Hydrogen Line Parabolic | Commercially available, modified for optimum performance |
 | **Diameter** | ~60 cm | Compromise between gain and beamwidth |
 | **Gain** | 20 dBi | At 1420 MHz |
-| **Beamwidth** | ~10° | Allows observation of extended structures |
+| **Beamwidth** | ~10Â° | Allows observation of extended structures |
 | **Feed Type** | Dipole with reflector | Positioned at focal point |
 | **Polarization** | Linear | Horizontal orientation |
 | **Mounting** | Fixed (Phase 1) | Positioned for NW sky coverage |
@@ -87,8 +87,8 @@ Radio frequency filtering is essential, especially in urban environments with si
 | **Filter Type** | BP-2 Band-Pass | AGO (Amateur Galileo Observatory) |
 | **Center Frequency** | 1420 MHz | Hydrogen Line frequency |
 | **Insertion Loss** | 0.7 dB | In passband |
-| **3 dB Bandwidth** | ±30 MHz | 60 MHz total bandwidth |
-| **Attenuation** | -13 dB | At ±100 MHz from center |
+| **3 dB Bandwidth** | Â±30 MHz | 60 MHz total bandwidth |
+| **Attenuation** | -13 dB | At Â±100 MHz from center |
 | **Connectors** | SMA Female | Input and output |
 | **Construction** | Aluminum housing | Shielded against external RF |
 
@@ -107,7 +107,7 @@ The LNA is perhaps the most critical component in the feed chain, as its noise f
 | **1dB Compression Point** | >10 dBm | Good dynamic range |
 | **Power Supply** | 12V DC | Via bias-tee or direct |
 | **Current Draw** | ~150 mA | Low power consumption |
-| **Operating Temp** | -30°C to +60°C | Wide environmental range |
+| **Operating Temp** | -30Â°C to +60Â°C | Wide environmental range |
 | **Connectors** | SMA Female | Input and output |
 
 This AGO Cavity LNA represents research-grade performance, with a noise figure comparable to much more expensive commercial units. The integrated cavity design provides additional filtering, further rejecting out-of-band signals.
@@ -165,7 +165,7 @@ A calibration source is included to enable absolute measurements of antenna temp
 | **Type** | ERB Noise Source | AGO (Amateur Galileo Observatory) |
 | **Frequency Range** | 1400-1440 MHz | Covers Hydrogen Line |
 | **Output Power** | 10 dB ENR | Excess Noise Ratio |
-| **Flatness** | ±1.0 dB | Across frequency range |
+| **Flatness** | Â±1.0 dB | Across frequency range |
 | **Connection** | Switched into signal path | Via SMA connector |
 | **Power** | 12V DC | Via separate supply |
 
@@ -232,9 +232,9 @@ The system temperature is calculated from the noise contributions of each compon
 |--------------|----------------------------|------------------------|
 | **Sky Noise (Urban)** | 50-80 K | Typical urban sky temperature at 1420 MHz |
 | **Antenna Efficiency Loss** | ~20 K | Based on 0.7 efficiency |
-| **Pre-LNA Cable** | ~90 K | T = (1.5 dB loss factor - 1) × 290 K |
-| **Filter Loss** | ~48 K | T = (0.7 dB loss factor - 1) × 290 K |
-| **LNA Noise** | ~19.5 K | T = (0.28 dB NF factor - 1) × 290 K |
+| **Pre-LNA Cable** | ~90 K | T = (1.5 dB loss factor - 1) Ã— 290 K |
+| **Filter Loss** | ~48 K | T = (0.7 dB loss factor - 1) Ã— 290 K |
+| **LNA Noise** | ~19.5 K | T = (0.28 dB NF factor - 1) Ã— 290 K |
 | **Post-LNA Chain** | ~1 K | Minimal contribution due to LNA gain |
 | **Total System (Urban)** | ~230-260 K | Sum of contributions |
 | **Total System (Dark Sky)** | ~160-190 K | With reduced sky noise |
@@ -251,8 +251,8 @@ The system's sensitivity depends on system temperature, integration time, and ba
 | **System Temperature (Dark Sky)** | ~160-190 K | From component analysis |
 | **Integration Time** | 4-6 hours | Typical observation session |
 | **Bandwidth** | 10 kHz | Typical for spectral line work |
-| **Calculated Sensitivity (Urban)** | ~0.35-0.4 mK | ΔT = Tsys/√(t×B) |
-| **Calculated Sensitivity (Dark Sky)** | ~0.24-0.28 mK | ΔT = Tsys/√(t×B) |
+| **Calculated Sensitivity (Urban)** | ~0.35-0.4 mK | Î”T = Tsys/âˆš(tÃ—B) |
+| **Calculated Sensitivity (Dark Sky)** | ~0.24-0.28 mK | Î”T = Tsys/âˆš(tÃ—B) |
 
 These sensitivity levels enable detection of faint hydrogen line structures, including high-velocity clouds and extended low surface brightness features.
 
@@ -397,16 +397,17 @@ These experimental configurations will be tested in phases to evaluate their pra
 
 ---
 
-## **✅ Approval & Review**  
+## **âœ… Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-08 | ✅ Approved |  
+| VintageDon | Lead Engineer | 2025-03-08 | âœ… Approved |  
 
 ---
 
-## **📜 Change Log**  
+## **ðŸ“œ Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-08 | Initial version | VintageDon |
+

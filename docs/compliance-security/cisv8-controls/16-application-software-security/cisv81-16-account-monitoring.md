@@ -1,4 +1,4 @@
----
+﻿---
 title: "CISv8-16 Application Security & Software Integrity Policy Template"
 description: "Defines the application security and software integrity policy template for the Proxmox Astronomy Lab, ensuring secure software development, integrity verification, and compliance with best practices."
 author: "VintageDon"
@@ -10,7 +10,7 @@ status: "Draft"
 last_updated: "2025-03-03"
 ---
 
-# **📜 CISv8-16 Application Security & Software Integrity Policy**
+# **ðŸ“œ CISv8-16 Application Security & Software Integrity Policy**
 
 ## **1. Purpose**
 
@@ -150,18 +150,19 @@ Exceptions to this policy must be **requested in writing** and include:
 
 ---
 
-## **✅ Approval & Review**  
+## **âœ… Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-03 | ✅ DRAFT |  
+| VintageDon | Lead Engineer | 2025-03-03 | âœ… DRAFT |  
 
 ---
 
-## **📜 Change Log**  
+## **ðŸ“œ Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
 
-🚀 **This policy ensures that application security and software integrity remain a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+ðŸš€ **This policy ensures that application security and software integrity remain a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+

@@ -1,4 +1,4 @@
----
+﻿---
 title: "CIS Control 2: Inventory and Control of Software Assets in the Proxmox Astronomy Lab"
 description: "Overview of CIS Control 2, which focuses on maintaining an inventory of software assets, ensuring only authorized and supported software is used, and mitigating security risks associated with unauthorized applications."
 author: "VintageDon"
@@ -10,7 +10,7 @@ status: "Draft"
 last_updated: "2025-03-04"
 ---
 
-# **📦 CIS Control 2: Inventory and Control of Software Assets in the Proxmox Astronomy Lab**
+# **ðŸ“¦ CIS Control 2: Inventory and Control of Software Assets in the Proxmox Astronomy Lab**
 
 ## **1. Introduction**
 
@@ -27,7 +27,7 @@ The **Proxmox Astronomy Lab** enforces this control through automated inventory 
 | **AppArmor (Linux)** | Limits execution of unauthorized applications and access to system resources. |
 | **Zammad (Ticketing System)** | Automates software review and compliance tracking. |
 
-📌 **See also:**
+ðŸ“Œ **See also:**
 
 - [Software Asset Management Policy](../cisv81-controls/cisv81-02-software-asset-management-policy.md)
 - [Software Asset Management Policy Template](../cisv81-policy-templates/cisv81-02-inventory-and-control-of-software-assets-template.md)
@@ -93,16 +93,17 @@ To verify compliance, refer to the **implementation KB**:
 
 ---
 
-## **✅ Approval & Review**
+## **âœ… Approval & Review**
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-04 | ✅ DRAFT |
+| VintageDon | Lead Engineer | 2025-03-04 | âœ… DRAFT |
 
 ---
 
-## **📝 Change Log**
+## **ðŸ“ Change Log**
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.1 | 2025-03-04 | Standardized KBFormatv1 applied. Article interlinking. | VintageDon |
+

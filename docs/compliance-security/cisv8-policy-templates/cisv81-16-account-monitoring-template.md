@@ -1,4 +1,4 @@
----
+﻿---
 title: "CISv8-16 Application Security & Software Integrity Policy Template"
 description: "Defines the application security and software integrity policy template, ensuring secure development, deployment, and integrity verification practices."
 author: "VintageDon"
@@ -10,7 +10,7 @@ status: "Draft"
 last_updated: "2025-03-03"
 ---
 
-# **📜 CISv8-16 Application Security & Software Integrity Policy Template**
+# **ðŸ“œ CISv8-16 Application Security & Software Integrity Policy Template**
 
 ## **1. Purpose**  
 
@@ -51,9 +51,9 @@ This policy aligns with **industry security frameworks** to maintain best practi
 
 | **Framework** | **Control Mapping** |
 |--------------|------------------|
-| **CISv8** | CIS Control 16 – Application Security & Software Integrity |
-| **NIST 800-53** | SA-11 – Developer Security Testing & Evaluation |
-| **ISO 27001** | A.14 – Secure Development Lifecycle |
+| **CISv8** | CIS Control 16 â€“ Application Security & Software Integrity |
+| **NIST 800-53** | SA-11 â€“ Developer Security Testing & Evaluation |
+| **ISO 27001** | A.14 â€“ Secure Development Lifecycle |
 
 ---
 
@@ -167,7 +167,7 @@ Failure to comply with this policy may result in:
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-03 | ✅ DRAFT |  
+| VintageDon | Lead Engineer | 2025-03-03 | âœ… DRAFT |  
 
 ---
 
@@ -177,4 +177,5 @@ Failure to comply with this policy may result in:
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
 
-🚀 **This policy ensures that application security and software integrity remain a structured, actively enforced, and auditable process.**
+ðŸš€ **This policy ensures that application security and software integrity remain a structured, actively enforced, and auditable process.**
+

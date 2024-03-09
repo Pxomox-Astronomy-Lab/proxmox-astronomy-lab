@@ -1,4 +1,4 @@
----
+﻿---
 title: "CISv8-14 Security Awareness Training Policy Template"
 description: "Defines the security awareness training policy template for the Proxmox Astronomy Lab, ensuring all users receive structured, ongoing cybersecurity training to prevent security incidents and improve security culture."
 author: "VintageDon"
@@ -10,7 +10,7 @@ status: "Draft"
 last_updated: "2025-03-03"
 ---
 
-# **📜 CISv8-14 Security Awareness Training Policy Template**
+# **ðŸ“œ CISv8-14 Security Awareness Training Policy Template**
 
 ## **1. Purpose**  
 
@@ -42,9 +42,9 @@ This policy enforces **security awareness training** through:
 
 | **Framework** | **Control Mapping** |
 |--------------|------------------|
-| **CISv8** | CIS Control 14 – Security Awareness Training |
-| **NIST 800-53** | AT-2 – Security Awareness Training |
-| **ISO 27001** | A.7.2 – Information Security Awareness, Education, and Training |
+| **CISv8** | CIS Control 14 â€“ Security Awareness Training |
+| **NIST 800-53** | AT-2 â€“ Security Awareness Training |
+| **ISO 27001** | A.7.2 â€“ Information Security Awareness, Education, and Training |
 
 ---
 
@@ -147,18 +147,19 @@ Failure to comply with this policy may result in:
 
 ---
 
-## **✅ Approval & Review**  
+## **âœ… Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-03 | ✅ DRAFT |  
+| VintageDon | Lead Engineer | 2025-03-03 | âœ… DRAFT |  
 
 ---
 
-## **📜 Change Log**  
+## **ðŸ“œ Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
 
-🚀 **This policy ensures that security awareness training remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+ðŸš€ **This policy ensures that security awareness training remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+

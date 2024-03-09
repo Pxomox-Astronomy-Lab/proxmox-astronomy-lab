@@ -1,4 +1,4 @@
----
+﻿---
 title: "FortiGate 40F Firewall Service Documentation"
 description: "Comprehensive ITIL-aligned documentation of the FortiGate 40F firewall, including network segmentation, security policies, and service management details."
 author: "VintageDon"
@@ -119,7 +119,7 @@ This firewall enforces **strict inter-VLAN policies, limiting cross-VLAN traffic
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-08 | ⏱ Pending |
+| VintageDon | Lead Engineer | 2025-03-08 | â± Pending |
 
 ---
 
@@ -128,3 +128,4 @@ This firewall enforces **strict inter-VLAN policies, limiting cross-VLAN traffic
 | **Version** | **Date** | **Changes** |
 |------------|---------|-------------|
 | 1.0 | 2025-03-08 | Initial version, defines FortiGate 40F firewall configuration and security policies |
+

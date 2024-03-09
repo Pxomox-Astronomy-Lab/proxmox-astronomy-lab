@@ -1,4 +1,4 @@
----
+﻿---
 title: "CISv8 Data Protection Policy Template"
 description: "Presents the official CISv8 Data Protection Policy Template, with additional information on possible solutions and an example of its application in the Proxmox Astronomy Lab."
 author: "VintageDon"
@@ -10,7 +10,7 @@ status: "Approved"
 last_updated: "2025-03-03"
 ---
 
-# **📜 CISv8 Data Protection Policy Template**
+# **ðŸ“œ CISv8 Data Protection Policy Template**
 
 ## **1. Overview**  
 
@@ -20,10 +20,10 @@ The **Data Protection Policy** ensures that **sensitive, confidential, and missi
 
 Key aspects of this policy include:  
 
-✅ **Defining data classification and retention policies**.  
-✅ **Implementing access controls, encryption, and monitoring**.  
-✅ **Preventing unauthorized access, modification, or loss of sensitive data**.  
-✅ **Ensuring compliance with industry security frameworks**.  
+âœ… **Defining data classification and retention policies**.  
+âœ… **Implementing access controls, encryption, and monitoring**.  
+âœ… **Preventing unauthorized access, modification, or loss of sensitive data**.  
+âœ… **Ensuring compliance with industry security frameworks**.  
 
 This document **presents the CISv8 Data Protection Policy Template** and includes **additional information on how organizations may implement it**, along with a **generalized example of its application in the Proxmox Astronomy Lab**.
 
@@ -33,7 +33,7 @@ This document **presents the CISv8 Data Protection Policy Template** and include
 
 | **Framework**      | **Control Mapping** |
 |--------------------|--------------------|
-| **CIS Controls**   | CIS Control 3 – Data Protection |
+| **CIS Controls**   | CIS Control 3 â€“ Data Protection |
 | **NIST 800-53**    | SC-12 (Cryptographic Key Establishment), MP-6 (Media Sanitization) |
 | **ISO 27001**      | A.8.2 (Information Classification), A.10.1 (Cryptographic Controls) |
 
@@ -65,10 +65,10 @@ Managing data within an enterprise includes **data classification, inventory, ha
 ### **4.1 Data Classification & Inventory Management**  
 1. **IT must conduct an annual data inventory** to track data storage locations, classification, and ownership.  
 2. **Data must be classified into categories**:  
-   - **Public** – No risk if disclosed.  
-   - **Internal** – Limited risk (system logs, general research datasets).  
-   - **Confidential** – Higher risk (API keys, credentials, telemetry).  
-   - **Restricted** – Critical risk (password vaults, sensitive scientific data).  
+   - **Public** â€“ No risk if disclosed.  
+   - **Internal** â€“ Limited risk (system logs, general research datasets).  
+   - **Confidential** â€“ Higher risk (API keys, credentials, telemetry).  
+   - **Restricted** â€“ Critical risk (password vaults, sensitive scientific data).  
 3. **All newly created or obtained sensitive data must be tracked**.  
 
 ---
@@ -137,15 +137,15 @@ Managing data within an enterprise includes **data classification, inventory, ha
 
 ## **4. Best Practices for Implementing This Policy**  
 
-Organizations implementing **CIS Control 3 – Data Protection** should consider:  
+Organizations implementing **CIS Control 3 â€“ Data Protection** should consider:  
 
-- **Automating data classification** – Using **DLP (Data Loss Prevention) tools** or built-in cloud services to **automatically classify and label sensitive data**.  
-- **Enforcing access controls with MFA** – Ensuring **restricted data access is protected via RBAC and multi-factor authentication**.  
-- **Implementing encryption by default** – **Encrypting all sensitive data at rest and in transit** using **AES-256 and TLS 1.3**.  
-- **Auditing access to sensitive data** – **Maintaining logs of all access events for compliance and security monitoring**.  
-- **Regularly reviewing and updating retention policies** – Ensuring **data is not retained longer than necessary** for compliance.  
+- **Automating data classification** â€“ Using **DLP (Data Loss Prevention) tools** or built-in cloud services to **automatically classify and label sensitive data**.  
+- **Enforcing access controls with MFA** â€“ Ensuring **restricted data access is protected via RBAC and multi-factor authentication**.  
+- **Implementing encryption by default** â€“ **Encrypting all sensitive data at rest and in transit** using **AES-256 and TLS 1.3**.  
+- **Auditing access to sensitive data** â€“ **Maintaining logs of all access events for compliance and security monitoring**.  
+- **Regularly reviewing and updating retention policies** â€“ Ensuring **data is not retained longer than necessary** for compliance.  
 
-These best practices help **align an organization’s data protection strategy with CIS recommendations** while **mitigating security risks associated with data exposure**.
+These best practices help **align an organizationâ€™s data protection strategy with CIS recommendations** while **mitigating security risks associated with data exposure**.
 
 ---
 
@@ -155,49 +155,49 @@ In the **Proxmox Astronomy Lab**, **CIS Control 3** is implemented through the f
 
 ### **5.1 Data Classification & Access Control**  
 
-✅ **All sensitive research data is tagged using metadata classification**.  
-✅ **Access to critical data is restricted via RBAC and enforced through Active Directory groups**.  
-✅ **Multi-factor authentication (MFA) is required for all privileged data access**.  
+âœ… **All sensitive research data is tagged using metadata classification**.  
+âœ… **Access to critical data is restricted via RBAC and enforced through Active Directory groups**.  
+âœ… **Multi-factor authentication (MFA) is required for all privileged data access**.  
 
 ### **5.2 Encryption & Secure Storage**  
 
-✅ **BitLocker and LUKS are used to encrypt stored data**.  
-✅ **Database records containing sensitive information are encrypted using AES-256**.  
-✅ **TLS 1.3 is enforced for all network traffic involving sensitive data**.  
+âœ… **BitLocker and LUKS are used to encrypt stored data**.  
+âœ… **Database records containing sensitive information are encrypted using AES-256**.  
+âœ… **TLS 1.3 is enforced for all network traffic involving sensitive data**.  
 
 ### **5.3 Automated Retention & Disposal**  
 
-✅ **Data retention policies are enforced via automated lifecycle rules**.  
-✅ **Expired research data is securely deleted**.  
-✅ **Audit logs are stored securely and reviewed for compliance tracking**.  
+âœ… **Data retention policies are enforced via automated lifecycle rules**.  
+âœ… **Expired research data is securely deleted**.  
+âœ… **Audit logs are stored securely and reviewed for compliance tracking**.  
 
 ---
 
 ## **6. Summary and Next Steps**  
 
-✅ **This document presents the official CISv8 Data Protection Policy Template.**  
-✅ **It includes additional information on possible implementation strategies.**  
-✅ **A high-level example from the Proxmox Astronomy Lab is provided for reference.**  
+âœ… **This document presents the official CISv8 Data Protection Policy Template.**  
+âœ… **It includes additional information on possible implementation strategies.**  
+âœ… **A high-level example from the Proxmox Astronomy Lab is provided for reference.**  
 
-📌 **Actionable Next Steps:**  
+ðŸ“Œ **Actionable Next Steps:**  
 
 - **Ensure data classification and access control policies align with compliance standards**.  
 - **Implement automation for data encryption, retention, and deletion**.  
 - **Regularly review data security practices and audit access logs for anomalies**.  
 
-🚀 **By following this framework, organizations can enhance their data security and ensure compliance with industry best practices.**  
+ðŸš€ **By following this framework, organizations can enhance their data security and ensure compliance with industry best practices.**  
 
 ---
 
-## **✅ Approval & Review**  
+## **âœ… Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-03 | ✅ Approved |
+| VintageDon | Lead Engineer | 2025-03-03 | âœ… Approved |
 
 ---
 
-## **📜 Change Log**  
+## **ðŸ“œ Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|

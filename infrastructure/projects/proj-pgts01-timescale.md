@@ -1,4 +1,4 @@
----
+﻿---
 title: "Proj-PGTS01 Service Documentation"
 description: "Comprehensive ITIL-aligned documentation of Proj-PGTS01, including infrastructure, security policies, and service management details."
 author: "VintageDon"
@@ -47,8 +47,8 @@ The server is optimized for **handling large-scale time-series data**, utilizing
 | **Metric** | **Target** | **Measurement Method** |
 |------------|----------|------------------------|
 | **Database Uptime** | 99.99% | Prometheus monitoring |
-| **Query Response Time** | ≤ 100ms | Grafana query analysis |
-| **Backup Sync Interval** | ≤ 1 day | Proxmox Backup Server logs |
+| **Query Response Time** | â‰¤ 100ms | Grafana query analysis |
+| **Backup Sync Interval** | â‰¤ 1 day | Proxmox Backup Server logs |
 | **Recovery Time** | RTO: 4 hours | Restore test validation |
 
 ### **2.2 Monitoring and Reporting**  
@@ -176,8 +176,9 @@ Proj-PGTS01 is a **PostgreSQL 16-based database server with TimescaleDB 2.11**, 
 
 ---
 
-## **✅ Approval & Review**  
+## **âœ… Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-07 | ⏱ Pending |
+| VintageDon | Lead Engineer | 2025-03-07 | â± Pending |
+

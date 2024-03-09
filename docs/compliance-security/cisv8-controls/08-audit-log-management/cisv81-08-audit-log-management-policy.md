@@ -1,4 +1,4 @@
----
+﻿---
 title: "CISv8-08 Audit Log Management Policy"
 description: "Defines the audit log management policy for the Proxmox Astronomy Lab, ensuring logs are generated, stored, transmitted, and analyzed for security monitoring and compliance."
 author: "VintageDon"
@@ -10,7 +10,7 @@ status: "Draft"
 last_updated: "2025-03-03"
 ---
 
-# **📜 CISv8-08 Audit Log Management Policy**
+# **ðŸ“œ CISv8-08 Audit Log Management Policy**
 
 ## **1. Overview**
 
@@ -41,9 +41,9 @@ This policy aligns with **industry security frameworks** to maintain best practi
 
 | **Framework** | **Control Mapping** |
 |--------------|------------------|
-| **CISv8** | CIS Control 8 – Audit Log Management |
-| **NIST 800-53** | AU-2 – Event Logging |
-| **ISO 27001** | A.12.4 – Logging & Monitoring |
+| **CISv8** | CIS Control 8 â€“ Audit Log Management |
+| **NIST 800-53** | AU-2 â€“ Event Logging |
+| **ISO 27001** | A.12.4 â€“ Logging & Monitoring |
 
 ---
 
@@ -123,18 +123,19 @@ Logs must be retained **for security investigations and compliance requirements*
 
 ---
 
-## **✅ Approval & Review**  
+## **âœ… Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-03 | ✅ DRAFT |  
+| VintageDon | Lead Engineer | 2025-03-03 | âœ… DRAFT |  
 
 ---
 
-## **📜 Change Log**  
+## **ðŸ“œ Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
 
-🚀 **This policy ensures that audit log management remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+ðŸš€ **This policy ensures that audit log management remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+

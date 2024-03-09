@@ -1,4 +1,4 @@
----
+﻿---
 title: "Proj-FS01 Service Documentation"
 description: "Comprehensive ITIL-aligned documentation of Proj-FS01, including infrastructure, security policies, and service management details."
 author: "VintageDon"
@@ -47,9 +47,9 @@ It is configured with **NTFS permissions, Access-Based Enumeration (ABE), and st
 | **Metric** | **Target** | **Measurement Method** |
 |------------|----------|------------------------|
 | **File Share Availability** | 99.99% uptime | Prometheus monitoring |
-| **Read/Write Latency** | ≤ 5ms | Grafana network monitoring |
+| **Read/Write Latency** | â‰¤ 5ms | Grafana network monitoring |
 | **Data Recovery Time** | RTO: 4 hours | Restore test validation |
-| **Backup Sync Interval** | ≤ 1 day | Proxmox Backup Server logs |
+| **Backup Sync Interval** | â‰¤ 1 day | Proxmox Backup Server logs |
 
 ### **2.2 Monitoring and Reporting**  
 
@@ -161,8 +161,9 @@ Proj-FS01 is a **Windows Server 2025-based file server**, providing **centralize
 
 ---
 
-## **✅ Approval & Review**  
+## **âœ… Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-07 | ⏱ Pending |
+| VintageDon | Lead Engineer | 2025-03-07 | â± Pending |
+

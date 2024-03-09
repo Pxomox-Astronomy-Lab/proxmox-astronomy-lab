@@ -1,4 +1,4 @@
----
+﻿---
 title: "Node01 Service Documentation"
 description: "Comprehensive ITIL-aligned documentation of Node01, including infrastructure, security, compliance, and service management details."
 author: "VintageDon"
@@ -153,16 +153,17 @@ Node01 runs on **Proxmox VE**, ensuring **high availability and resilience** wit
 
 ---
 
-## **✅ Approval & Review**  
+## **âœ… Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-07 | ⏱ Pending |
+| VintageDon | Lead Engineer | 2025-03-07 | â± Pending |
 
 ---
 
-## **📜 Change Log**  
+## **ðŸ“œ Change Log**  
 
 | **Version** | **Date** | **Changes** |
 |------------|---------|-------------|
 | 1.3 | 2025-03-07 | Finalized Node01 core documentation with updated naming convention, access roles, and compliance details |
+

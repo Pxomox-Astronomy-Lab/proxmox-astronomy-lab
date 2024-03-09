@@ -1,4 +1,4 @@
----
+﻿---
 title: "LabSwitch02 Service Documentation"
 description: "Comprehensive ITIL-aligned documentation of LabSwitch02, including infrastructure, security, compliance, and service management details."
 author: "VintageDon"
@@ -16,7 +16,7 @@ last_updated: "2025-03-07"
 
 ### **1.1 Service Description**  
 
-LabSwitch02 is the **secondary network switch** for the Proxmox Astronomy Lab, responsible for **10Gbps interconnects, aggregation of high-speed traffic, and storage network segmentation**. It provides **L3 routing, link aggregation (LAG), jumbo frame support, and security enforcement** to optimize **data transfer rates between compute nodes, storage appliances, and key infrastructure services**【83:0†proxmox-astronomy-lab-hardware-overview.md】.
+LabSwitch02 is the **secondary network switch** for the Proxmox Astronomy Lab, responsible for **10Gbps interconnects, aggregation of high-speed traffic, and storage network segmentation**. It provides **L3 routing, link aggregation (LAG), jumbo frame support, and security enforcement** to optimize **data transfer rates between compute nodes, storage appliances, and key infrastructure services**ã€83:0â€ proxmox-astronomy-lab-hardware-overview.mdã€‘.
 
 ### **1.2 Service Classification**  
 
@@ -45,7 +45,7 @@ LabSwitch02 is the **secondary network switch** for the Proxmox Astronomy Lab, r
 | **Metric** | **Target** | **Measurement Method** |
 |------------|----------|------------------------|
 | **Network Availability** | 99.99% uptime | Prometheus alerts |
-| **Latency** | ≤ 2ms internal, ≤ 5ms external | Grafana network monitoring |
+| **Latency** | â‰¤ 2ms internal, â‰¤ 5ms external | Grafana network monitoring |
 | **Throughput** | 10Gbps for compute/storage traffic | Interface statistics |
 | **Recovery Time** | RTO: 2 hours | Configuration restore test |
 
@@ -64,7 +64,7 @@ LabSwitch02 is the **secondary network switch** for the Proxmox Astronomy Lab, r
 
 ### **3.1 Architecture Overview**  
 
-LabSwitch02 is a **Sodola SL-SWTG3C12F** managed switch with **12 × 10G SFP+ ports**【83:0†proxmox-astronomy-lab-hardware-overview.md】. It functions as the **primary high-speed aggregation switch**, ensuring **efficient communication between storage, compute, and research workloads**.
+LabSwitch02 is a **Sodola SL-SWTG3C12F** managed switch with **12 Ã— 10G SFP+ ports**ã€83:0â€ proxmox-astronomy-lab-hardware-overview.mdã€‘. It functions as the **primary high-speed aggregation switch**, ensuring **efficient communication between storage, compute, and research workloads**.
 
 ### **3.2 Infrastructure Components**  
 
@@ -73,7 +73,7 @@ LabSwitch02 is a **Sodola SL-SWTG3C12F** managed switch with **12 × 10G SFP+ po
 | **Device Name** | LabSwitch02 |
 | **Model** | Sodola SL-SWTG3C12F |
 | **Firmware** | Latest Stable Release |
-| **Ports** | 12 × 10G SFP+ |
+| **Ports** | 12 Ã— 10G SFP+ |
 | **Networking** | High-speed data transfer and network backbone aggregation |
 | **Management** | Web UI, CLI, API access |
 
@@ -138,3 +138,4 @@ LabSwitch02 is a **Sodola SL-SWTG3C12F** managed switch with **12 × 10G SFP+ po
 | **Security Policy** | CISv8 Compliance Framework |
 
 ---
+

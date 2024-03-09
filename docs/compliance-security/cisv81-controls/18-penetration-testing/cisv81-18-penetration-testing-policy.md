@@ -1,4 +1,4 @@
----
+﻿---
 title: "CISv8-18 Penetration Testing & Red Team Exercises Policy"
 description: "Defines the penetration testing and security assessment policy for the Proxmox Astronomy Lab, ensuring proactive security validation and risk mitigation."
 author: "VintageDon"
@@ -10,7 +10,7 @@ status: "Draft"
 last_updated: "2025-03-03"
 ---
 
-# **📜 CISv8-18 Penetration Testing & Red Team Exercises Policy**
+# **ðŸ“œ CISv8-18 Penetration Testing & Red Team Exercises Policy**
 
 ## **1. Purpose**
 
@@ -41,9 +41,9 @@ This policy aligns with **industry security frameworks** to maintain best practi
 
 | **Framework** | **Control Mapping** |
 |--------------|------------------|
-| **CISv8** | CIS Control 18 – Penetration Testing & Red Team Exercises |
-| **NIST 800-53** | CA-8 – Penetration Testing |
-| **ISO 27001** | A.12.6 – Technical Vulnerability Management |
+| **CISv8** | CIS Control 18 â€“ Penetration Testing & Red Team Exercises |
+| **NIST 800-53** | CA-8 â€“ Penetration Testing |
+| **ISO 27001** | A.12.6 â€“ Technical Vulnerability Management |
 
 ---
 
@@ -65,7 +65,7 @@ Due to the **lack of externally exposed services**, penetration testing will **f
 
 | **Testing Type** | **Implementation** |
 |--------------|------------------|
-| **External Network Testing** | Limited scope—no public-facing services to assess. |
+| **External Network Testing** | Limited scopeâ€”no public-facing services to assess. |
 | **Internal Security Reviews** | Conducted by **Infrastructure Engineers** for misconfigurations. |
 | **Firewall & Network Policy Review** | Monthly review of **FortiGate firewall and VLAN segmentation policies**. |
 | **Endpoint Security Validation** | Regular **Wazuh scans** for anomalies and vulnerabilities. |
@@ -74,7 +74,7 @@ Due to the **lack of externally exposed services**, penetration testing will **f
 
 ### **5.2 Fortified Security Architecture**
 
-The lab’s **security architecture inherently limits the need for extensive external testing**:
+The labâ€™s **security architecture inherently limits the need for extensive external testing**:
 
 | **Security Feature** | **Implementation** |
 |--------------|------------------|
@@ -139,18 +139,19 @@ Failure to comply with this policy may result in:
 
 ---
 
-## **✅ Approval & Review**  
+## **âœ… Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-03 | ✅ DRAFT |  
+| VintageDon | Lead Engineer | 2025-03-03 | âœ… DRAFT |  
 
 ---
 
-## **📜 Change Log**  
+## **ðŸ“œ Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
 
-🚀 **This policy ensures that penetration testing and security assessments remain a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+ðŸš€ **This policy ensures that penetration testing and security assessments remain a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+

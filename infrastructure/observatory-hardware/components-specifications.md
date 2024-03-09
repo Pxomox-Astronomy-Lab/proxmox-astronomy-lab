@@ -1,4 +1,4 @@
----
+﻿---
 title: "Component Specifications - Hydrogen Line Observatory"
 description: "Detailed technical specifications for all hardware components in the Proxmox Astronomy Lab's Hydrogen Line observation system."
 author: "VintageDon"
@@ -45,15 +45,15 @@ The primary signal collection device is a parabolic antenna optimized for the Hy
 | **Type** | Offset parabolic reflector | Reduces ground noise |
 | **Diameter** | ~60 cm | Effective aperture |
 | **Focal Length** | 27.5 cm | F/D ratio of 0.458 |
-| **Surface Accuracy** | <λ/20 at 1420 MHz | Ensures efficiency at target frequency |
+| **Surface Accuracy** | <Î»/20 at 1420 MHz | Ensures efficiency at target frequency |
 | **Gain** | 20 dBi | At 1420 MHz |
-| **Beamwidth (3dB)** | ~10° | Suitable for extended source observations |
+| **Beamwidth (3dB)** | ~10Â° | Suitable for extended source observations |
 | **Front-to-Back Ratio** | >20 dB | Reduces ground noise |
 | **Feed Support** | Tripod | Minimizes aperture blockage |
 | **Material** | Aluminum | Weather resistant |
 | **Weight** | 2.8 kg | Without mounting hardware |
 | **Wind Rating** | Up to 60 mph | Without additional support |
-| **Temperature Range** | -30°C to +70°C | Operating range |
+| **Temperature Range** | -30Â°C to +70Â°C | Operating range |
 
 ### **2.2 Feed Element**
 
@@ -77,7 +77,7 @@ The mounting system holds the antenna in position for observations.
 |--------------|-------------------|-----------|
 | **Type** | Fixed mount (Phase 1) | Will be upgraded to motorized in Phase 4 |
 | **Azimuth Range** | Fixed NW direction | Optimized for target field |
-| **Elevation Range** | Fixed at ~45° | Balance of sky coverage and gain |
+| **Elevation Range** | Fixed at ~45Â° | Balance of sky coverage and gain |
 | **Material** | Galvanized steel | Weather resistant |
 | **Load Capacity** | 15 kg | Sufficient for current antenna |
 
@@ -94,14 +94,14 @@ The band-pass filter provides the first stage of frequency selection, attenuatin
 | **Make/Model** | AGO BP-2 | Specifically for Hydrogen Line |
 | **Center Frequency** | 1420 MHz | Hydrogen Line frequency |
 | **Passband Loss** | 0.7 dB | Exceptionally low loss |
-| **3 dB Bandwidth** | ±30 MHz | 60 MHz total bandwidth |
-| **30 dB Bandwidth** | ±100 MHz | Good out-of-band rejection |
+| **3 dB Bandwidth** | Â±30 MHz | 60 MHz total bandwidth |
+| **30 dB Bandwidth** | Â±100 MHz | Good out-of-band rejection |
 | **Maximum Input Power** | +15 dBm | Well above expected signal levels |
 | **VSWR** | <1.3:1 in passband | Good impedance match |
 | **Connectors** | SMA female | Input and output |
-| **Dimensions** | 5.5 × 3.2 × 1.5 cm | Compact form factor |
+| **Dimensions** | 5.5 Ã— 3.2 Ã— 1.5 cm | Compact form factor |
 | **Housing** | Machined aluminum | RF shielding and durability |
-| **Temperature Range** | -40°C to +85°C | Wide operating range |
+| **Temperature Range** | -40Â°C to +85Â°C | Wide operating range |
 
 ### **3.2 Low Noise Amplifier (LNA)**
 
@@ -119,9 +119,9 @@ The LNA is the most critical component for system sensitivity, providing high ga
 | **VSWR Output** | <1.5:1 | Good impedance match |
 | **DC Power** | 12V @ 150mA | Via bias tee or direct connection |
 | **Connectors** | SMA female | Input and output |
-| **Dimensions** | 7.6 × 3.8 × 2.2 cm | Compact form factor |
+| **Dimensions** | 7.6 Ã— 3.8 Ã— 2.2 cm | Compact form factor |
 | **Housing** | Machined aluminum | RF shielding and durability |
-| **Temperature Range** | -30°C to +60°C | Wide operating range |
+| **Temperature Range** | -30Â°C to +60Â°C | Wide operating range |
 | **Stability** | Unconditionally stable | No oscillation risk |
 
 ### **3.3 Coaxial Cables**
@@ -141,7 +141,7 @@ High-quality coaxial cables connect the various RF components with minimal signa
 | **Outer Conductor** | Aluminum tape + braid | Double shielding |
 | **Jacket** | UV-resistant polyethylene | Weather resistant |
 | **Bend Radius (min)** | 2.5 cm | Maintains performance when bent |
-| **Temperature Range** | -40°C to +85°C | Wide operating range |
+| **Temperature Range** | -40Â°C to +85Â°C | Wide operating range |
 
 ### **3.4 Calibration Noise Source**
 
@@ -152,15 +152,15 @@ The calibration noise source provides a reference signal for absolute temperatur
 | **Make/Model** | AGO ERB Noise Source | Designed for radio astronomy |
 | **Frequency Range** | 1400-1440 MHz | Covers Hydrogen Line |
 | **Excess Noise Ratio (ENR)** | 10 dB | Calibrated output level |
-| **Output Flatness** | ±1.0 dB | Across frequency range |
+| **Output Flatness** | Â±1.0 dB | Across frequency range |
 | **Impedance** | 50 ohms | Standard impedance |
 | **VSWR** | <1.5:1 | Good impedance match |
 | **Connector** | SMA female | Standard interface |
 | **Power Requirement** | 12V DC @ 200mA | External supply |
-| **Temperature Stability** | <0.01 dB/°C | Good calibration stability |
-| **Dimensions** | 5.1 × 3.8 × 2.0 cm | Compact form factor |
+| **Temperature Stability** | <0.01 dB/Â°C | Good calibration stability |
+| **Dimensions** | 5.1 Ã— 3.8 Ã— 2.0 cm | Compact form factor |
 | **Housing** | Aluminum | RF shielding |
-| **Temperature Range** | -10°C to +50°C | Operating range |
+| **Temperature Range** | -10Â°C to +50Â°C | Operating range |
 
 ### **3.5 RF Accessories**
 
@@ -196,9 +196,9 @@ The SDR converts analog RF signals to digital data for computer processing.
 | **External Reference** | 10 MHz input | For precise frequency stability |
 | **Interface** | USB 2.0 | High-speed data transfer |
 | **Power Consumption** | 2.5W | USB powered |
-| **Dimensions** | 8.0 × 6.0 × 1.5 cm | Compact form factor |
+| **Dimensions** | 8.0 Ã— 6.0 Ã— 1.5 cm | Compact form factor |
 | **Operating System Support** | Windows, Linux, macOS | Cross-platform compatibility |
-| **Temperature Range** | 0°C to +55°C | Indoor operating range |
+| **Temperature Range** | 0Â°C to +55Â°C | Indoor operating range |
 
 ### **4.2 Frequency Reference**
 
@@ -217,8 +217,8 @@ A precision frequency reference ensures accurate and stable frequency measuremen
 | **Lock Indicator** | LED + status output | Visual and electronic status |
 | **Power Requirement** | 5V DC @ 350mA | Low power consumption |
 | **Connectors** | SMA (RF), USB (power/status) | Standard interfaces |
-| **Dimensions** | 7.5 × 5.0 × 2.5 cm | Compact form factor |
-| **Temperature Range** | -10°C to +50°C | Indoor operating range |
+| **Dimensions** | 7.5 Ã— 5.0 Ã— 2.5 cm | Compact form factor |
+| **Temperature Range** | -10Â°C to +50Â°C | Indoor operating range |
 
 ### **4.3 Edge Computing Node**
 
@@ -233,12 +233,12 @@ The edge computing node performs initial signal processing and data handling at 
 | **Storage** | 1 TB NVMe SSD | Fast local storage |
 | **Operating System** | Ubuntu 24.04 LTS | CIS Level 2 hardened |
 | **Network** | 2.5 Gigabit Ethernet | Fast data transfer to main infrastructure |
-| **USB Ports** | 4× USB 3.2 | For SDR and peripherals |
+| **USB Ports** | 4Ã— USB 3.2 | For SDR and peripherals |
 | **Power Consumption** | 15W typical | Energy efficient |
-| **Dimensions** | 12.5 × 11.5 × 4.0 cm | Compact form factor |
+| **Dimensions** | 12.5 Ã— 11.5 Ã— 4.0 cm | Compact form factor |
 | **Cooling** | Passive + small fan | Quiet operation |
 | **Mounting** | VESA compatible | Flexible installation options |
-| **Operating Temperature** | 0°C to +40°C | Indoor environment |
+| **Operating Temperature** | 0Â°C to +40Â°C | Indoor environment |
 
 ---
 
@@ -264,8 +264,8 @@ Environmental conditions affect system performance and reliability.
 
 | **Parameter** | **Specification** | **Notes** |
 |--------------|-------------------|-----------|
-| **Temperature Range (Indoor)** | 18-25°C | Controlled environment for electronics |
-| **Temperature Range (Outdoor)** | -20°C to +40°C | Design operating range |
+| **Temperature Range (Indoor)** | 18-25Â°C | Controlled environment for electronics |
+| **Temperature Range (Outdoor)** | -20Â°C to +40Â°C | Design operating range |
 | **Humidity Control (Indoor)** | <70% RH | Prevents condensation issues |
 | **Weather Protection** | IP65 rated enclosures | For outdoor components |
 | **Lightning Protection** | Multi-stage | Primary arrestor + secondary protection |
@@ -289,8 +289,8 @@ These integrated system specifications represent the expected performance of the
 | **Frequency Stability** | <0.05 ppm | With GPSDO reference |
 | **Dynamic Range** | >70 dB | End-to-end system |
 | **Maximum Doppler Resolution** | ~0.2 km/s | Velocity resolution capability |
-| **Pointing Accuracy** | ~1° | Fixed mounting precision |
-| **Field of View** | ~10° | FWHM beamwidth |
+| **Pointing Accuracy** | ~1Â° | Fixed mounting precision |
+| **Field of View** | ~10Â° | FWHM beamwidth |
 | **RFI Rejection** | >40 dB | For out-of-band signals |
 | **Calibration Accuracy** | <5% | Absolute temperature scale |
 | **Long-term Stability** | <3% variance | Over 30-day period |
@@ -371,16 +371,17 @@ Component configurations are managed through standardized methods.
 
 ---
 
-## **✅ Approval & Review**  
+## **âœ… Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-08 | ✅ Approved |  
+| VintageDon | Lead Engineer | 2025-03-08 | âœ… Approved |  
 
 ---
 
-## **📜 Change Log**  
+## **ðŸ“œ Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-08 | Initial version | VintageDon |
+

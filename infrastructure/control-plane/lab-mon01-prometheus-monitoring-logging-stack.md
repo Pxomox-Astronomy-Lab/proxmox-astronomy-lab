@@ -1,4 +1,4 @@
----
+﻿---
 title: "Lab-Mon01 Service Documentation"
 description: "Comprehensive ITIL-aligned documentation of Lab-Mon01, including infrastructure, security policies, and service management details."
 author: "VintageDon"
@@ -18,7 +18,7 @@ last_updated: "2025-03-07"
 
 Lab-Mon01 is the **primary monitoring and logging server** within the Proxmox Astronomy Lab, responsible for **system observability, performance monitoring, and security logging**. It runs **Prometheus, Grafana, Loki, and Wazuh as native services** on **Ubuntu 24.04**, with **InfluxDB running as a Docker container for Kubernetes cluster metrics**.
 
-This node ensures **real-time analytics, historical performance tracking, and security event correlation** across the lab’s infrastructure.
+This node ensures **real-time analytics, historical performance tracking, and security event correlation** across the labâ€™s infrastructure.
 
 ### **1.2 Service Classification**  
 
@@ -47,8 +47,8 @@ This node ensures **real-time analytics, historical performance tracking, and se
 | **Metric** | **Target** | **Measurement Method** |
 |------------|----------|------------------------|
 | **Monitoring Uptime** | 99.99% | Prometheus alerts |
-| **Log Ingestion Latency** | ≤ 5s | Loki metrics |
-| **Backup Sync Interval** | ≤ 1 day | Proxmox Backup Server logs |
+| **Log Ingestion Latency** | â‰¤ 5s | Loki metrics |
+| **Backup Sync Interval** | â‰¤ 1 day | Proxmox Backup Server logs |
 | **Recovery Time** | RTO: 4 hours | Restore test validation |
 
 ### **2.2 Monitoring and Reporting**  
@@ -128,7 +128,7 @@ Lab-Mon01 runs **all monitoring services natively on Ubuntu 24.04**, with **Infl
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-07 | ⏱ Pending |
+| VintageDon | Lead Engineer | 2025-03-07 | â± Pending |
 
 ---
 
@@ -137,3 +137,4 @@ Lab-Mon01 runs **all monitoring services natively on Ubuntu 24.04**, with **Infl
 | **Version** | **Date** | **Changes** |
 |------------|---------|-------------|
 | 1.1 | 2025-03-07 | Fully corrected Lab-Mon01; removed Portainer reference, clarified native service execution |
+

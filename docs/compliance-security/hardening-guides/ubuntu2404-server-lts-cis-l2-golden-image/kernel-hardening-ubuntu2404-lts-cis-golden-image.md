@@ -1,4 +1,4 @@
----
+﻿---
 title: "Kernel Hardening & SSH Security - Ubuntu 24.04 LTS Golden Image"  
 description: "Verification and validation of kernel security hardening and SSH access restrictions on the Ubuntu 24.04 CIS L2 Golden Image."  
 author: "VintageDon"  
@@ -10,7 +10,7 @@ status: "Draft"
 last_updated: "2025-03-04"  
 ---
 
-# **🔒 Kernel Hardening & SSH Security - Ubuntu 24.04 LTS Golden Image**  
+# **ðŸ”’ Kernel Hardening & SSH Security - Ubuntu 24.04 LTS Golden Image**  
 
 ## **1. Purpose**  
 
@@ -22,7 +22,7 @@ Kernel security settings and SSH access restrictions are vital for protecting sy
 | **SSH Access Control**    | Enforcement of SSH security settings, including root access restrictions and key-based authentication. |  
 | **Logging & Compliance**  | Security-related events are logged and monitored for anomalies. |  
 
-✅ **Ensuring the Ubuntu 24.04 LTS CIS Level 2 Golden Image is hardened and meets security compliance standards.**  
+âœ… **Ensuring the Ubuntu 24.04 LTS CIS Level 2 Golden Image is hardened and meets security compliance standards.**  
 
 ---
 
@@ -37,7 +37,7 @@ This validation applies to all **Ubuntu 24.04 LTS CIS Level 2 Golden Image** dep
 | **Verification Focus** | Kernel hardening parameters, SSH security enforcement, and logging settings. |  
 | **Security Baseline** | Configured according to **CISv8 Level 2** recommendations. |  
 
-✅ **Ensuring all lab systems inherit hardened configurations from the golden image.**  
+âœ… **Ensuring all lab systems inherit hardened configurations from the golden image.**  
 
 ---
 
@@ -85,7 +85,7 @@ net.ipv4.conf.all.log_martians = 1
 | `net.ipv4.conf.all.accept_redirects = 0` | Prevents rogue **ICMP redirects**, mitigating **MITM** attack risks. |  
 | `net.ipv4.conf.all.log_martians = 1`     | Logs invalid packets, **detecting spoofing and network anomalies**. |  
 
-✅ **Verification Passed: Kernel security settings are properly configured.**  
+âœ… **Verification Passed: Kernel security settings are properly configured.**  
 
 ---
 
@@ -107,7 +107,7 @@ net.ipv4.conf.all.log_martians = 1
 " >> /etc/sysctl.conf && sysctl -p
 ```  
 
-✅ **Verification Passed: Kernel security settings persist across reboots.**  
+âœ… **Verification Passed: Kernel security settings persist across reboots.**  
 
 ---
 
@@ -138,7 +138,7 @@ PermitRootLogin no
 | `PermitRootLogin no`            | **Prevents root login**, requiring non-root user authentication. |  
 | `PasswordAuthentication no`      | **Disables password authentication**, enforcing key-based authentication. |  
 
-✅ **Verification Passed: SSH authentication settings restrict unauthorized access.**  
+âœ… **Verification Passed: SSH authentication settings restrict unauthorized access.**  
 
 ---
 
@@ -162,7 +162,7 @@ cat /etc/issue.net
 ***************************************************************************
 ```  
 
-✅ **Verification Passed: SSH warning banner is displayed before login attempts.**  
+âœ… **Verification Passed: SSH warning banner is displayed before login attempts.**  
 
 ---
 
@@ -182,7 +182,7 @@ echo "TMOUT=600" >> /etc/profile
 
 This **logs out inactive SSH sessions after 10 minutes** for compliance.  
 
-✅ **Verification Passed: SSH session timeout is enforced.**  
+âœ… **Verification Passed: SSH session timeout is enforced.**  
 
 ---
 
@@ -190,25 +190,26 @@ This **logs out inactive SSH sessions after 10 minutes** for compliance.
 
 | **Test**                                         | **Status** |  
 |-------------------------------------------------|------------|  
-| Kernel hardening settings are correctly applied | ✅ Passed |  
-| SSH security settings prevent unauthorized access | ✅ Passed |  
-| SSH legal notice banner is enabled | ✅ Passed |  
-| SSH session timeout is enforced | ✅ Passed |  
+| Kernel hardening settings are correctly applied | âœ… Passed |  
+| SSH security settings prevent unauthorized access | âœ… Passed |  
+| SSH legal notice banner is enabled | âœ… Passed |  
+| SSH session timeout is enforced | âœ… Passed |  
 
-🚀 **Kernel and SSH security measures are properly enforced on the Ubuntu 24.04 LTS CIS L2 Golden Image.**  
+ðŸš€ **Kernel and SSH security measures are properly enforced on the Ubuntu 24.04 LTS CIS L2 Golden Image.**  
 
 ---
 
-## ✅ Approval & Review  
+## âœ… Approval & Review  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |  
 |-------------|---------|------------------|------------|  
-| VintageDon | Lead Engineer | 2025-03-04 | ✅ DRAFT |  
+| VintageDon | Lead Engineer | 2025-03-04 | âœ… DRAFT |  
 
 ---
 
-## 📜 Change Log  
+## ðŸ“œ Change Log  
 
 | **Version** | **Date** | **Changes** | **Author** |  
 |------------|---------|-------------|------------|  
 | 1.0 | 2025-03-04 | Initial version | VintageDon |
+

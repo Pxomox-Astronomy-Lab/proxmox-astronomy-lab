@@ -1,4 +1,4 @@
----
+﻿---
 title: "CISv8 Account and Credential Management Policy Template"
 description: "Presents the official CISv8 Account and Credential Management Policy Template, with additional information on possible solutions and an example of its application in the Proxmox Astronomy Lab."
 author: "VintageDon"
@@ -10,7 +10,7 @@ status: "Approved"
 last_updated: "2025-03-03"
 ---
 
-# **🔐 CISv8 Account and Credential Management Policy Template**
+# **ðŸ” CISv8 Account and Credential Management Policy Template**
 
 ## **1. Overview**  
 
@@ -20,10 +20,10 @@ The **Account and Credential Management Policy** ensures that **user, system, an
 
 Key aspects of this policy include:  
 
-✅ **Enforcing strong authentication mechanisms, including MFA**.  
-✅ **Defining a secure process for account creation, modification, and termination**.  
-✅ **Implementing least privilege and Role-Based Access Control (RBAC)**.  
-✅ **Monitoring and logging access events for compliance and auditing**.  
+âœ… **Enforcing strong authentication mechanisms, including MFA**.  
+âœ… **Defining a secure process for account creation, modification, and termination**.  
+âœ… **Implementing least privilege and Role-Based Access Control (RBAC)**.  
+âœ… **Monitoring and logging access events for compliance and auditing**.  
 
 This document **presents the CISv8 Account and Credential Management Policy Template** and includes **additional information on how organizations may implement it**, along with a **generalized example of its application in the Proxmox Astronomy Lab**.
 
@@ -33,7 +33,7 @@ This document **presents the CISv8 Account and Credential Management Policy Temp
 
 | **Framework**      | **Control Mapping** |
 |--------------------|--------------------|
-| **CIS Controls**   | CIS Control 5 – Account and Credential Management |
+| **CIS Controls**   | CIS Control 5 â€“ Account and Credential Management |
 | **NIST 800-53**    | AC-2 (Account Management), IA-4 (Identifier Management), IA-5 (Authenticator Management) |
 | **ISO 27001**      | A.9.2 (User Access Management), A.9.4 (System and Application Access Control) |
 
@@ -72,7 +72,7 @@ Account and credential management is the process of **creating, provisioning, us
 2. **Administrative privileges must only be provided to administrative accounts**.  
 3. **It is the responsibility of IT to maintain an inventory of all accounts**.  
 4. **At a minimum, the inventory must contain**:  
-   - **User’s full name**  
+   - **Userâ€™s full name**  
    - **Account name**  
    - **Employment start and stop dates**  
    - **Business unit**  
@@ -119,13 +119,13 @@ Account and credential management is the process of **creating, provisioning, us
 
 ## **4. Best Practices for Implementing This Policy**  
 
-Organizations implementing **CIS Control 5 – Account and Credential Management** should consider:  
+Organizations implementing **CIS Control 5 â€“ Account and Credential Management** should consider:  
 
-- **Centralizing identity management using an Identity & Access Management (IAM) solution** – This ensures **consistent enforcement of access policies across the enterprise**.  
+- **Centralizing identity management using an Identity & Access Management (IAM) solution** â€“ This ensures **consistent enforcement of access policies across the enterprise**.  
 - **Enforcing password policies via Active Directory Group Policy (GPO) or cloud IAM platforms**.  
-- **Using automated tools to detect and disable inactive accounts** – Regular account audits prevent unauthorized access.  
-- **Applying Just-In-Time (JIT) access controls for privileged accounts** – Reduces the attack surface by granting **temporary elevation** instead of permanent administrative access.  
-- **Logging and monitoring account-related events** – SIEM solutions can **detect anomalies in login patterns and privilege escalation attempts**.  
+- **Using automated tools to detect and disable inactive accounts** â€“ Regular account audits prevent unauthorized access.  
+- **Applying Just-In-Time (JIT) access controls for privileged accounts** â€“ Reduces the attack surface by granting **temporary elevation** instead of permanent administrative access.  
+- **Logging and monitoring account-related events** â€“ SIEM solutions can **detect anomalies in login patterns and privilege escalation attempts**.  
 
 These best practices **help organizations align with industry standards and maintain a secure authentication environment**.
 
@@ -137,50 +137,51 @@ In the **Proxmox Astronomy Lab**, **CIS Control 5** is implemented through the f
 
 ### **5.1 Identity & Access Management (IAM)**  
 
-✅ **User accounts are managed using Entra ID and Active Directory**.  
-✅ **All privileged accounts require MFA using FIDO2 security keys**.  
-✅ **Role-Based Access Control (RBAC) is enforced across systems**.  
+âœ… **User accounts are managed using Entra ID and Active Directory**.  
+âœ… **All privileged accounts require MFA using FIDO2 security keys**.  
+âœ… **Role-Based Access Control (RBAC) is enforced across systems**.  
 
 ### **5.2 Privileged Account Security**  
 
-✅ **Just-In-Time (JIT) privileged access is enforced for administrator accounts**.  
-✅ **Privileged Identity Management (PIM) is used to grant temporary access**.  
-✅ **High-risk sign-ins are automatically blocked via conditional access policies**.  
+âœ… **Just-In-Time (JIT) privileged access is enforced for administrator accounts**.  
+âœ… **Privileged Identity Management (PIM) is used to grant temporary access**.  
+âœ… **High-risk sign-ins are automatically blocked via conditional access policies**.  
 
 ### **5.3 Logging & Compliance Monitoring**  
 
-✅ **Loki monitors account activity and detects anomalies in the central logs**.  
-✅ **Failed login attempts, account lockouts, and privilege escalations generate security alerts**.  
-✅ **Quarterly access reviews ensure users retain only the necessary permissions**.  
+âœ… **Loki monitors account activity and detects anomalies in the central logs**.  
+âœ… **Failed login attempts, account lockouts, and privilege escalations generate security alerts**.  
+âœ… **Quarterly access reviews ensure users retain only the necessary permissions**.  
 
 ---
 
 ## **6. Summary and Next Steps**  
 
-✅ **This document presents the official CISv8 Account and Credential Management Policy Template.**  
-✅ **It includes additional information on possible implementation strategies.**  
-✅ **A high-level example from the Proxmox Astronomy Lab is provided for reference.**  
+âœ… **This document presents the official CISv8 Account and Credential Management Policy Template.**  
+âœ… **It includes additional information on possible implementation strategies.**  
+âœ… **A high-level example from the Proxmox Astronomy Lab is provided for reference.**  
 
-📌 **Actionable Next Steps:**  
+ðŸ“Œ **Actionable Next Steps:**  
 
 - **Ensure all privileged accounts are secured with MFA and Just-In-Time elevation**.  
 - **Conduct regular account audits to detect stale or unauthorized accounts**.  
 - **Use identity analytics tools to detect anomalies in account activity**.  
 
-🚀 **By following this framework, organizations can significantly reduce credential-based security risks and improve overall identity governance.**  
+ðŸš€ **By following this framework, organizations can significantly reduce credential-based security risks and improve overall identity governance.**  
 
 ---
 
-## **✅ Approval & Review**  
+## **âœ… Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-03 | ✅ Approved |
+| VintageDon | Lead Engineer | 2025-03-03 | âœ… Approved |
 
 ---
 
-## **📜 Change Log**  
+## **ðŸ“œ Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
+

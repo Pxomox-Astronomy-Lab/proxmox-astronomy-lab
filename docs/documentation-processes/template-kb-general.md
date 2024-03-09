@@ -1,4 +1,4 @@
----
+﻿---
 title: "[Article Title]"
 description: "[Brief description of the article's content and purpose]"
 author: "[Author Name]"
@@ -96,7 +96,7 @@ Which ITIL processes this knowledge relates to (if applicable):
 
 ---
 
-## **✅ Approval & Review**
+## **âœ… Approval & Review**
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
@@ -104,8 +104,9 @@ Which ITIL processes this knowledge relates to (if applicable):
 
 ---
 
-## **📜 Change Log**
+## **ðŸ“œ Change Log**
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | YYYY-MM-DD | Initial version | [Author] |
+

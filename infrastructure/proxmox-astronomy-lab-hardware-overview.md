@@ -1,4 +1,4 @@
----
+﻿---
 title: "Proxmox Astronomy Lab Infrastructure Overview"
 description: "A detailed overview of the Proxmox Astronomy Lab's network, compute, and storage architecture, ensuring clarity, scalability, and reliability."
 author: "VintageDon"
@@ -10,7 +10,7 @@ status: "Published"
 last_updated: "2025-03-02"
 ---
 
-# **🚀 Proxmox Astronomy Lab Infrastructure Overview**
+# **ðŸš€ Proxmox Astronomy Lab Infrastructure Overview**
 
 ## **1. Introduction**
 
@@ -38,18 +38,18 @@ A **high-performance, segmented network** ensures **fast, scalable connectivity*
 
 | Switch Name     | Model                   | Ports |
 |----------------|------------------------|----------------------|
-| **labswitch01** | Mokerlink 2G16210GSM   | 16 × 2.5G RJ45, 2 × 10G SFP |
-| **labswitch02** | Sodola SL-SWTG3C12F    | 12 × 10G SFP + 1 × RJ45 Console |
+| **labswitch01** | Mokerlink 2G16210GSM   | 16 Ã— 2.5G RJ45, 2 Ã— 10G SFP |
+| **labswitch02** | Sodola SL-SWTG3C12F    | 12 Ã— 10G SFP + 1 Ã— RJ45 Console |
 
-✅ **Interconnect:** **labswitch01 and labswitch02** are linked via **2 × 10G SFP** patch cables in a **LAG group**.  
-✅ **10G links** handle **shared storage, VM migration, and failover cluster traffic**.
+âœ… **Interconnect:** **labswitch01 and labswitch02** are linked via **2 Ã— 10G SFP** patch cables in a **LAG group**.  
+âœ… **10G links** handle **shared storage, VM migration, and failover cluster traffic**.
 
 ---
 
 ### **3.2 Fortigate Firewall & Network Segmentation**
 
 - **Fortigate 40F** acts as the **primary firewall**.
-- **Labswitch01 is connected to the Fortigate** for **SNAT outbound access only** (e.g., updates) – **no external DNAT**.
+- **Labswitch01 is connected to the Fortigate** for **SNAT outbound access only** (e.g., updates) â€“ **no external DNAT**.
 - **External access is strictly limited** to **Entra Private Access** (zero open ports).
 - **Outbound traffic is filtered** using **Technitium DNS blocklists**.
 - **All cluster, storage, and VM traffic** remains **on switch**, ensuring full **segmentation and security**.
@@ -67,7 +67,7 @@ A **high-performance, segmented network** ensures **fast, scalable connectivity*
 | **50**  | 10.25.50.0/24 | Migration Traffic |
 | **60**  | 10.25.60.0/24 | Backup Traffic |
 
-✅ **Each VLAN is isolated to prevent bottlenecks and ensure workload segmentation.**
+âœ… **Each VLAN is isolated to prevent bottlenecks and ensure workload segmentation.**
 
 ---
 
@@ -75,12 +75,12 @@ A **high-performance, segmented network** ensures **fast, scalable connectivity*
 
 | Node      | Connection Type    | Purpose |
 |-----------|------------------|---------|
-| **Nodes 1-3** | **1 × 1Gbps** | Management, Cluster Traffic |
-| **Nodes 1-3** | **1 × 2.5Gbps** | Shared Storage, VM Migration, Failover |
-| **Node04** | **1 × 1Gbps** | Management, Cluster Traffic |
-| **Node04** | **2 × 10G SFP (LACP)** | High-Speed Workloads |
-| **Node05** | **1 × 1Gbps** | Management, Cluster Traffic |
-| **Node05** | **2 × 10G SFP (LACP)** | High-Speed Storage Access |
+| **Nodes 1-3** | **1 Ã— 1Gbps** | Management, Cluster Traffic |
+| **Nodes 1-3** | **1 Ã— 2.5Gbps** | Shared Storage, VM Migration, Failover |
+| **Node04** | **1 Ã— 1Gbps** | Management, Cluster Traffic |
+| **Node04** | **2 Ã— 10G SFP (LACP)** | High-Speed Workloads |
+| **Node05** | **1 Ã— 1Gbps** | Management, Cluster Traffic |
+| **Node05** | **2 Ã— 10G SFP (LACP)** | High-Speed Storage Access |
 
 ---
 
@@ -90,7 +90,7 @@ The **compute nodes** are optimized for **AI/ML, storage, and general compute wo
 
 ### **4.1 Mini PC Nodes (Nodes 1-3)**
 
-💡 **General Compute – Handles day-to-day workloads.**
+ðŸ’¡ **General Compute â€“ Handles day-to-day workloads.**
 
 | Component | Specification |
 |-----------|--------------|
@@ -104,7 +104,7 @@ The **compute nodes** are optimized for **AI/ML, storage, and general compute wo
 
 ### **4.2 High-Performance Compute Node (Node04)**
 
-💡 **AI/ML Workloads & High-Performance Services – Runs PostgreSQL, RDS, and intensive compute workloads.**
+ðŸ’¡ **AI/ML Workloads & High-Performance Services â€“ Runs PostgreSQL, RDS, and intensive compute workloads.**
 
 | Component | Specification |
 |-----------|--------------|
@@ -113,37 +113,37 @@ The **compute nodes** are optimized for **AI/ML, storage, and general compute wo
 | **Boot Drive** | 256GB SATA SSD (Crucial MX500) |
 | **VM Storage** | 4TB NVMe (Samsung PM893 Enterprise) |
 | **GPU** | NVIDIA RTX A4000 (16GB VRAM) |
-| **Networking** | 1Gbps (Management) + 2 × 10G SFP (LACP) |
+| **Networking** | 1Gbps (Management) + 2 Ã— 10G SFP (LACP) |
 
 ---
 
 ### **4.3 Storage & Backup Node (Node05)**
 
-💡 **Storage & Backup – Primarily serves storage (fs01, fs02, backup server).**
+ðŸ’¡ **Storage & Backup â€“ Primarily serves storage (fs01, fs02, backup server).**
 
 | Component | Specification |
 |-----------|--------------|
 | **CPU** | AMD Ryzen 3700X |
 | **RAM** | 128GB DDR4 |
 | **Boot Drive** | 256GB SATA SSD (Crucial MX500) |
-| **Cache Drives** | 2 × 4TB NVMe (Samsung PM893 Enterprise) |
-| **Main Storage** | 8 × 8TB HDDs in ZFS mirrored vdev setup |
+| **Cache Drives** | 2 Ã— 4TB NVMe (Samsung PM893 Enterprise) |
+| **Main Storage** | 8 Ã— 8TB HDDs in ZFS mirrored vdev setup |
 | **SLOG** | Enterprise NVMe for ZFS write cache |
-| **Networking** | 1Gbps (Management) + 2 × 10G SFP (LACP) |
+| **Networking** | 1Gbps (Management) + 2 Ã— 10G SFP (LACP) |
 
 ---
 
 ## **5. Summary**
 
-✅ **Nodes 1-3** handle standard workloads with **efficient local NVMe storage**.  
-✅ **Node04** is optimized for **AI/ML and high-performance tasks**, with **dual 10G connectivity**.  
-✅ **Node05** acts as **the storage backbone**, ensuring **fast storage-to-cluster access**.  
-✅ **Backup01 (Proxmox Backup Server VM)** handles **snapshot retention and disaster recovery**.  
-✅ **Golden Template VMs** (9000 series) exist on **Node05**, with plans for **NFS-based deployment**.  
-✅ **All network traffic is segmented** to prevent bottlenecks and enhance security.  
-✅ **Scalability is built-in**, with support for **additional high-speed networking and future expansions**.
+âœ… **Nodes 1-3** handle standard workloads with **efficient local NVMe storage**.  
+âœ… **Node04** is optimized for **AI/ML and high-performance tasks**, with **dual 10G connectivity**.  
+âœ… **Node05** acts as **the storage backbone**, ensuring **fast storage-to-cluster access**.  
+âœ… **Backup01 (Proxmox Backup Server VM)** handles **snapshot retention and disaster recovery**.  
+âœ… **Golden Template VMs** (9000 series) exist on **Node05**, with plans for **NFS-based deployment**.  
+âœ… **All network traffic is segmented** to prevent bottlenecks and enhance security.  
+âœ… **Scalability is built-in**, with support for **additional high-speed networking and future expansions**.
 
-This infrastructure ensures **full clarity on the Proxmox Astronomy Lab Infrastructure**, providing a **secure, high-performance research environment** for **scientific computing and AI-powered radio astronomy**. 🚀
+This infrastructure ensures **full clarity on the Proxmox Astronomy Lab Infrastructure**, providing a **secure, high-performance research environment** for **scientific computing and AI-powered radio astronomy**. ðŸš€
 
 ---
 
@@ -152,4 +152,5 @@ This infrastructure ensures **full clarity on the Proxmox Astronomy Lab Infrastr
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-02 | Initial KB version | VintageDon |
+
 

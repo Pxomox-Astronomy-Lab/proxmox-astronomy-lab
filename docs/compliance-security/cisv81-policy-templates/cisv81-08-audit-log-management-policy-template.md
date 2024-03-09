@@ -1,4 +1,4 @@
----
+﻿---
 title: "CISv8-08 Audit Log Management Policy Template"
 description: "Presents the official CISv8 Audit Log Management Policy Template, with additional information on possible solutions and an example of its application in the Proxmox Astronomy Lab."
 author: "VintageDon"
@@ -10,7 +10,7 @@ status: "Draft"
 last_updated: "2025-03-03"
 ---
 
-# **📜 CISv8-08 Audit Log Management Policy Template**
+# **ðŸ“œ CISv8-08 Audit Log Management Policy Template**
 
 ## **1. Overview**  
 
@@ -20,10 +20,10 @@ Audit log management ensures **visibility into security-relevant events**, enabl
 
 ### **Key Aspects of This Policy:**  
 
-✅ **Ensures comprehensive log collection across critical enterprise assets.**  
-✅ **Defines retention, transmission, and analysis requirements for security logs.**  
-✅ **Supports forensic investigations and compliance monitoring.**  
-✅ **Improves detection and response to security anomalies.**  
+âœ… **Ensures comprehensive log collection across critical enterprise assets.**  
+âœ… **Defines retention, transmission, and analysis requirements for security logs.**  
+âœ… **Supports forensic investigations and compliance monitoring.**  
+âœ… **Improves detection and response to security anomalies.**  
 
 This document **presents the CISv8 Audit Log Management Policy Template** and includes **additional information on how organizations may implement it**, along with a **generalized example of its application in the Proxmox Astronomy Lab**.
 
@@ -33,7 +33,7 @@ This document **presents the CISv8 Audit Log Management Policy Template** and in
 
 | **Framework**      | **Control Mapping** |
 |--------------------|--------------------|
-| **CIS Controls**   | CIS Control 8 – Audit Log Management |
+| **CIS Controls**   | CIS Control 8 â€“ Audit Log Management |
 | **NIST 800-53**    | AU-2 (Event Logging), AU-6 (Audit Review, Analysis, and Reporting) |
 | **ISO 27001**      | A.12.4 (Logging and Monitoring) |
 
@@ -107,15 +107,15 @@ Exceptions to this policy may be requested in writing and must include:
 
 ## **4. Best Practices for Implementing This Policy**  
 
-Organizations implementing **CIS Control 8 – Audit Log Management** may consider the following best practices:  
+Organizations implementing **CIS Control 8 â€“ Audit Log Management** may consider the following best practices:  
 
-- **Centralized Log Collection** – Use **SIEM (Security Information and Event Management) solutions** to collect, store, and analyze logs.  
-- **Time Synchronization** – Ensure **all systems use synchronized time sources (e.g., NTP servers)** to maintain consistency across logs.  
-- **Access Control & Integrity Protection** – Logs must be **protected from tampering and unauthorized access** using **role-based permissions** and encryption.  
-- **Log Retention & Archiving** – Retain logs **for at least 90 days** for active analysis and **archive for up to one year** for forensic investigations.  
-- **Automated Anomaly Detection** – Use **machine learning-driven SIEM or anomaly detection tools** to flag suspicious log entries.  
+- **Centralized Log Collection** â€“ Use **SIEM (Security Information and Event Management) solutions** to collect, store, and analyze logs.  
+- **Time Synchronization** â€“ Ensure **all systems use synchronized time sources (e.g., NTP servers)** to maintain consistency across logs.  
+- **Access Control & Integrity Protection** â€“ Logs must be **protected from tampering and unauthorized access** using **role-based permissions** and encryption.  
+- **Log Retention & Archiving** â€“ Retain logs **for at least 90 days** for active analysis and **archive for up to one year** for forensic investigations.  
+- **Automated Anomaly Detection** â€“ Use **machine learning-driven SIEM or anomaly detection tools** to flag suspicious log entries.  
 
-These strategies help **align an organization’s security program with CIS recommendations** while **enhancing resilience against evolving threats**.
+These strategies help **align an organizationâ€™s security program with CIS recommendations** while **enhancing resilience against evolving threats**.
 
 ---
 
@@ -125,35 +125,36 @@ In the **Proxmox Astronomy Lab**, CIS Control 8 is implemented with the followin
 
 ## **5.1 Audit Log Collection & Retention**  
 
-✅ **Prometheus, Loki, Alert Manager, and Grafana stack used for centralized logging.**  
-✅ **90-day retention period for all logs, with forensic archives stored securely.**  
-✅ **Windows DCs and Technitium DNS servers send logs to a central logging system.**  
+âœ… **Prometheus, Loki, Alert Manager, and Grafana stack used for centralized logging.**  
+âœ… **90-day retention period for all logs, with forensic archives stored securely.**  
+âœ… **Windows DCs and Technitium DNS servers send logs to a central logging system.**  
 
 ## **5.2 Secure Log Storage & Access Control**  
 
-✅ **Logs stored on separate partitions to prevent corruption from system failures.**  
-✅ **Strict ACLs ensure only security administrators can access log files.**  
-✅ **All logs are signed and hashed to prevent tampering.**  
+âœ… **Logs stored on separate partitions to prevent corruption from system failures.**  
+âœ… **Strict ACLs ensure only security administrators can access log files.**  
+âœ… **All logs are signed and hashed to prevent tampering.**  
 
 ## **5.3 Automated Monitoring & Alerting**  
 
-✅ **Wazuh SIEM and Prometheus Alert Manager actively monitor logs for anomalies.**  
-✅ **Security teams receive alerts for high-severity log events.**  
-✅ **Daily log analysis reports generated to review authentication failures, unauthorized access attempts, and system errors.**  
+âœ… **Wazuh SIEM and Prometheus Alert Manager actively monitor logs for anomalies.**  
+âœ… **Security teams receive alerts for high-severity log events.**  
+âœ… **Daily log analysis reports generated to review authentication failures, unauthorized access attempts, and system errors.**  
 
 ---
 
 ## **6. Summary and Next Steps**  
 
-✅ **This document presents the official CISv8 Audit Log Management Policy Template.**  
-✅ **It includes additional information on possible solutions for implementation.**  
-✅ **A high-level example from the Proxmox Astronomy Lab is provided for reference.**  
+âœ… **This document presents the official CISv8 Audit Log Management Policy Template.**  
+âœ… **It includes additional information on possible solutions for implementation.**  
+âœ… **A high-level example from the Proxmox Astronomy Lab is provided for reference.**  
 
-📌 **Actionable Next Steps:**  
+ðŸ“Œ **Actionable Next Steps:**  
 
 - **Review existing log management strategies and align them with CISv8 recommendations.**  
 - **Implement centralized logging with access controls and anomaly detection.**  
 - **Define clear log retention policies to balance compliance and storage costs.**  
 - **Continuously monitor log integrity and adjust policies as threats evolve.**  
 
-🚀 **By following this framework, organizations can ensure structured, secure, and effective audit log management.**
+ðŸš€ **By following this framework, organizations can ensure structured, secure, and effective audit log management.**
+

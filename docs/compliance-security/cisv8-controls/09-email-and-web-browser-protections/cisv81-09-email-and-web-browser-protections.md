@@ -1,4 +1,4 @@
----
+﻿---
 title: "CISv8-09 Secure Configuration Management Policy"
 description: "Defines the secure configuration management policy for the Proxmox Astronomy Lab, ensuring all assets, systems, and services are properly configured, monitored, and maintained to minimize security risks."
 author: "VintageDon"
@@ -10,7 +10,7 @@ status: "Draft"
 last_updated: "2025-03-03"
 ---
 
-# **📜 CISv8-09 Secure Configuration Management Policy**
+# **ðŸ“œ CISv8-09 Secure Configuration Management Policy**
 
 ## **1. Overview**
 
@@ -40,9 +40,9 @@ This policy aligns with **industry security frameworks** to maintain best practi
 
 | **Framework** | **Control Mapping** |
 |--------------|------------------|
-| **CISv8** | CIS Control 9 – Secure Configuration Management |
-| **NIST 800-53** | CM-6 – Configuration Management |
-| **ISO 27001** | A.14.2 – Security in Development & Maintenance |
+| **CISv8** | CIS Control 9 â€“ Secure Configuration Management |
+| **NIST 800-53** | CM-6 â€“ Configuration Management |
+| **ISO 27001** | A.14.2 â€“ Security in Development & Maintenance |
 
 ---
 
@@ -120,18 +120,19 @@ All secure configurations must be **continuously monitored**:
 
 ---
 
-## **✅ Approval & Review**  
+## **âœ… Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-03 | ✅ DRAFT |  
+| VintageDon | Lead Engineer | 2025-03-03 | âœ… DRAFT |  
 
 ---
 
-## **📜 Change Log**  
+## **ðŸ“œ Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
 
-🚀 **This policy ensures that secure configuration management remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+ðŸš€ **This policy ensures that secure configuration management remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+

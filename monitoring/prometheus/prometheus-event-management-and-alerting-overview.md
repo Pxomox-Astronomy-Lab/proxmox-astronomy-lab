@@ -1,4 +1,4 @@
----
+﻿---
 title: "Prometheus Event Management & Alerting Overview"
 description: "ITIL-aligned documentation of all Prometheus monitoring targets, including exporters, key metrics, and alerting structure."
 author: "VintageDon"
@@ -78,9 +78,9 @@ Each Prometheus **scrape job** collects metrics from a specific type of target. 
 | `lab-db01`         | 10.25.10.17:9100  | 15s |  
 | `lab-apps01`       | 10.25.10.18:9100  | 15s |  
 
-✅ **Total Targets Monitored:** 27  
-✅ **Retention Policy:** Metrics stored for **90 days** before compaction.  
-✅ **Integration:** Node Exporter data is **visualized in Grafana dashboards** for performance monitoring.  
+âœ… **Total Targets Monitored:** 27  
+âœ… **Retention Policy:** Metrics stored for **90 days** before compaction.  
+âœ… **Integration:** Node Exporter data is **visualized in Grafana dashboards** for performance monitoring.  
 
 ### **2.2 Process Exporter**  
 
@@ -120,9 +120,9 @@ Each Prometheus **scrape job** collects metrics from a specific type of target. 
 | `lab-db01`         | 10.25.10.17:9256  | 15s |  
 | `lab-apps01`       | 10.25.10.18:9256  | 15s |  
 
-✅ **Total Targets Monitored:** 22  
-✅ **Retention Policy:** Metrics stored for **90 days** before compaction.  
-✅ **Integration:** Process Exporter data is **visualized in Grafana dashboards** for **process tracking and anomaly detection**.  
+âœ… **Total Targets Monitored:** 22  
+âœ… **Retention Policy:** Metrics stored for **90 days** before compaction.  
+âœ… **Integration:** Process Exporter data is **visualized in Grafana dashboards** for **process tracking and anomaly detection**.  
 
 ### **2.3 PostgreSQL Exporter**
 
@@ -174,9 +174,9 @@ Each Prometheus **scrape job** collects metrics from a specific type of target. 
 | **DNS Resolver 1**   | `https://dns01.beardinthe.cloud` | HTTP |
 | **DNS Resolver 2**   | `https://dns02.beardinthe.cloud` | HTTP |
 
-✅ **Total Targets Monitored:** 20  
-✅ **Alerting Rules:** If a service is unreachable for **5 minutes**, an **alert is sent via AlertManager**.  
-✅ **Retention Policy:** Metrics stored for **30 days** to track uptime trends.  
+âœ… **Total Targets Monitored:** 20  
+âœ… **Alerting Rules:** If a service is unreachable for **5 minutes**, an **alert is sent via AlertManager**.  
+âœ… **Retention Policy:** Metrics stored for **30 days** to track uptime trends.  
 
 ### **2.5 SNMP Exporter**
 
@@ -226,9 +226,9 @@ Each Prometheus **scrape job** collects metrics from a specific type of target. 
 | `lab-gitea01`   | 10.25.10.18:3000  | 15s |  
 | `proj-gitea02`  | 10.25.20.22:3000  | 15s |  
 
-✅ **Total Gitea Targets Monitored:** 2  
-✅ **Retention Policy:** Metrics stored for **90 days**.  
-✅ **Integration:** Data visualized in **Grafana dashboards for repository health**, with alerts triggering if:  
+âœ… **Total Gitea Targets Monitored:** 2  
+âœ… **Retention Policy:** Metrics stored for **90 days**.  
+âœ… **Integration:** Data visualized in **Grafana dashboards for repository health**, with alerts triggering if:  
 
 - **Authentication failures exceed threshold** (potential brute-force).  
 - **Repo push/pull latencies increase beyond 2s avg**.  
@@ -242,12 +242,12 @@ Each Prometheus **scrape job** collects metrics from a specific type of target. 
 |------------------|------------------|---------------------|  
 | `proj-k8sw04`   | 10.25.20.10:9835  | 15s |  
 
-✅ **Total GPU Targets Monitored:** 1  
-✅ **Retention Policy:** GPU metrics stored for **90 days**.  
-✅ **Integration:** Data is visualized in **Grafana GPU dashboards**, and alerts trigger if:  
+âœ… **Total GPU Targets Monitored:** 1  
+âœ… **Retention Policy:** GPU metrics stored for **90 days**.  
+âœ… **Integration:** Data is visualized in **Grafana GPU dashboards**, and alerts trigger if:  
 
 - **Utilization remains above 95% for 30+ minutes**.  
-- **Temperature exceeds 85°C**.  
+- **Temperature exceeds 85Â°C**.  
 - **Fan speed is consistently low despite high temps**.  
 
 ---
@@ -274,9 +274,9 @@ This is critical for **monitoring Portainer-managed nodes, Kubernetes workloads,
 | `proj-apps01`   | 10.25.20.21:8080  | 15s |  
 | `lab-db01`      | 10.25.10.17:8080  | 15s |  
 
-✅ **Total cAdvisor Targets Monitored:** 4  
-✅ **Retention Policy:** Metrics stored for **90 days**.  
-✅ **Integration:** Data visualized in **Grafana dashboards for container health**, with alerts triggering if:  
+âœ… **Total cAdvisor Targets Monitored:** 4  
+âœ… **Retention Policy:** Metrics stored for **90 days**.  
+âœ… **Integration:** Data visualized in **Grafana dashboards for container health**, with alerts triggering if:  
 
 - **Container memory usage exceeds 90% consistently for 10m**.  
 - **High CPU spikes (>85%) sustain for 15m**.  
@@ -321,23 +321,24 @@ Prometheus alerts will transition from email to **Teams Adaptive Cards** using *
 
 ## **4. Next Steps**
 
-✅ **Email alerting is live.**  
-✅ **Teams Adaptive Cards tested and validated.**  
-📌 **Next: Full migration of alerts to Teams + Power Automate.**  
-📌 **Future Enhancements: Escalation workflows, alert correlation, and storm control.**  
+âœ… **Email alerting is live.**  
+âœ… **Teams Adaptive Cards tested and validated.**  
+ðŸ“Œ **Next: Full migration of alerts to Teams + Power Automate.**  
+ðŸ“Œ **Future Enhancements: Escalation workflows, alert correlation, and storm control.**  
 
 ---
 
-## **✅ Approval & Review**
+## **âœ… Approval & Review**
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-09 | ⏳ In Progress |
+| VintageDon | Lead Engineer | 2025-03-09 | â³ In Progress |
 
 ---
 
-## **📜 Change Log**
+## **ðŸ“œ Change Log**
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.1 | 2025-03-09 | Full exporter breakdown, ITIL alignment | VintageDon |
+

@@ -1,4 +1,4 @@
----
+﻿---
 title: "CISv8 Access Control Management Policy Template"
 description: "Presents the official CISv8 Access Control Management Policy Template, with additional information on possible solutions and an example of its application in the Proxmox Astronomy Lab."
 author: "VintageDon"
@@ -10,7 +10,7 @@ status: "Approved"
 last_updated: "2025-03-03"
 ---
 
-# **🔐 CISv8 Access Control Management Policy Template**
+# **ðŸ” CISv8 Access Control Management Policy Template**
 
 ## **1. Overview**  
 
@@ -20,10 +20,10 @@ The **Access Control Management Policy** ensures that **only authorized users, d
 
 Key aspects of this policy include:  
 
-✅ **Enforcing Role-Based Access Control (RBAC) and the Principle of Least Privilege (PoLP)**.  
-✅ **Requiring Multi-Factor Authentication (MFA) for external, remote, and privileged access**.  
-✅ **Implementing strong access governance via automated account provisioning and deprovisioning**.  
-✅ **Centralizing authentication and enforcing secure access across hybrid environments**.  
+âœ… **Enforcing Role-Based Access Control (RBAC) and the Principle of Least Privilege (PoLP)**.  
+âœ… **Requiring Multi-Factor Authentication (MFA) for external, remote, and privileged access**.  
+âœ… **Implementing strong access governance via automated account provisioning and deprovisioning**.  
+âœ… **Centralizing authentication and enforcing secure access across hybrid environments**.  
 
 This document **presents the CISv8 Access Control Management Policy Template** and includes **additional information on how organizations may implement it**, along with a **generalized example of its application in the Proxmox Astronomy Lab**.
 
@@ -33,7 +33,7 @@ This document **presents the CISv8 Access Control Management Policy Template** a
 
 | **Framework**      | **Control Mapping** |
 |--------------------|--------------------|
-| **CIS Controls**   | CIS Control 6 – Access Control Management |
+| **CIS Controls**   | CIS Control 6 â€“ Access Control Management |
 | **NIST 800-53**    | AC-3 (Access Enforcement), AC-6 (Least Privilege), IA-5 (Authenticator Management) |
 | **ISO 27001**      | A.9.1 (Access Control), A.9.2 (User Access Management), A.9.4 (System Access Control) |
 
@@ -105,12 +105,12 @@ Access control management is the process of **granting, managing, and revoking a
 
 ## **4. Best Practices for Implementing This Policy**  
 
-Organizations implementing **CIS Control 6 – Access Control Management** should consider:  
+Organizations implementing **CIS Control 6 â€“ Access Control Management** should consider:  
 
-- **Centralizing identity management using Entra ID or Active Directory** – Ensuring consistent enforcement of **RBAC and conditional access policies**.  
-- **Applying Zero Trust Network Access (ZTNA)** – Restricting access based on identity, device compliance, and risk signals.  
-- **Enforcing Just-In-Time (JIT) Privileged Access Management (PAM)** – Granting admin access only when required.  
-- **Logging and monitoring all authentication attempts** – SIEM solutions detect **anomalies in login patterns and privilege escalation attempts**.  
+- **Centralizing identity management using Entra ID or Active Directory** â€“ Ensuring consistent enforcement of **RBAC and conditional access policies**.  
+- **Applying Zero Trust Network Access (ZTNA)** â€“ Restricting access based on identity, device compliance, and risk signals.  
+- **Enforcing Just-In-Time (JIT) Privileged Access Management (PAM)** â€“ Granting admin access only when required.  
+- **Logging and monitoring all authentication attempts** â€“ SIEM solutions detect **anomalies in login patterns and privilege escalation attempts**.  
 
 These best practices help organizations **align with industry standards** while reducing **unauthorized access risks**.
 
@@ -122,50 +122,51 @@ In the **Proxmox Astronomy Lab**, **CIS Control 6** is implemented through the f
 
 ### **5.1 Identity & Access Management (IAM)**  
 
-✅ **User accounts are managed using Entra ID and Active Directory.**  
-✅ **Privileged accounts require JIT elevation and use FIDO2 security keys.**  
-✅ **Conditional Access blocks risky sign-ins and enforces strong authentication.**  
+âœ… **User accounts are managed using Entra ID and Active Directory.**  
+âœ… **Privileged accounts require JIT elevation and use FIDO2 security keys.**  
+âœ… **Conditional Access blocks risky sign-ins and enforces strong authentication.**  
 
 ### **5.2 Role-Based Access Control (RBAC) Implementation**  
 
-✅ **Entra Identity Governance defines external user role-based permissions via Access Packages.**  
-✅ **Entra Access Reviews are conducted every 90 days to ensure least privilege adherence.**  
-✅ **Kubernetes namespaces enforce granular RBAC policies for containerized workloads.**  
+âœ… **Entra Identity Governance defines external user role-based permissions via Access Packages.**  
+âœ… **Entra Access Reviews are conducted every 90 days to ensure least privilege adherence.**  
+âœ… **Kubernetes namespaces enforce granular RBAC policies for containerized workloads.**  
 
 ### **5.3 Logging & Compliance Monitoring**  
 
-✅ **Logging tools such as Loki monitor account activity and detect anomalies.**  
-✅ **Failed login attempts, account lockouts, and privilege escalations generate security alerts.**  
-✅ **Audit logs are retained and reviewed quarterly to ensure compliance.**  
+âœ… **Logging tools such as Loki monitor account activity and detect anomalies.**  
+âœ… **Failed login attempts, account lockouts, and privilege escalations generate security alerts.**  
+âœ… **Audit logs are retained and reviewed quarterly to ensure compliance.**  
 
 ---
 
 ## **6. Summary and Next Steps**  
 
-✅ **This document presents the official CISv8 Access Control Management Policy Template.**  
-✅ **It includes additional information on possible implementation strategies.**  
-✅ **A high-level example from the Proxmox Astronomy Lab is provided for reference.**  
+âœ… **This document presents the official CISv8 Access Control Management Policy Template.**  
+âœ… **It includes additional information on possible implementation strategies.**  
+âœ… **A high-level example from the Proxmox Astronomy Lab is provided for reference.**  
 
-📌 **Actionable Next Steps:**  
+ðŸ“Œ **Actionable Next Steps:**  
 
 - **Ensure all privileged accounts require JIT access and MFA enforcement.**  
 - **Conduct regular access reviews to remove unnecessary permissions.**  
 - **Implement Just-In-Time (JIT) access control for privileged accounts.**  
 
-🚀 **By following this framework, organizations can enforce strong access control, mitigate identity-related threats, and improve security posture.**  
+ðŸš€ **By following this framework, organizations can enforce strong access control, mitigate identity-related threats, and improve security posture.**  
 
 ----
 
-## **✅ Approval & Review**  
+## **âœ… Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-03 | ✅ Approved |
+| VintageDon | Lead Engineer | 2025-03-03 | âœ… Approved |
 
 ---
 
-## **📜 Change Log**  
+## **ðŸ“œ Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
+

@@ -1,4 +1,4 @@
----
+﻿---
 title: "LabSwitch01 Service Documentation"
 description: "Comprehensive ITIL-aligned documentation of LabSwitch01, including infrastructure, security, compliance, and service management details."
 author: "VintageDon"
@@ -16,7 +16,7 @@ last_updated: "2025-03-07"
 
 ### **1.1 Service Description**  
 
-LabSwitch01 is the **primary network switch** for the Proxmox Astronomy Lab, responsible for **VLAN segmentation, network traffic optimization, and high-speed connectivity** between compute nodes, storage, and virtualized workloads. It provides **L3 routing, link aggregation (LAG), jumbo frame support, and port security** to ensure **low-latency and high-throughput operations** across the lab’s infrastructure【83:0†proxmox-astronomy-lab-hardware-overview.md】.
+LabSwitch01 is the **primary network switch** for the Proxmox Astronomy Lab, responsible for **VLAN segmentation, network traffic optimization, and high-speed connectivity** between compute nodes, storage, and virtualized workloads. It provides **L3 routing, link aggregation (LAG), jumbo frame support, and port security** to ensure **low-latency and high-throughput operations** across the labâ€™s infrastructureã€83:0â€ proxmox-astronomy-lab-hardware-overview.mdã€‘.
 
 ### **1.2 Service Classification**  
 
@@ -45,7 +45,7 @@ LabSwitch01 is the **primary network switch** for the Proxmox Astronomy Lab, res
 | **Metric** | **Target** | **Measurement Method** |
 |------------|----------|------------------------|
 | **Network Availability** | 99.99% uptime | Prometheus alerts |
-| **Latency** | ≤ 2ms internal, ≤ 5ms external | Grafana network monitoring |
+| **Latency** | â‰¤ 2ms internal, â‰¤ 5ms external | Grafana network monitoring |
 | **Throughput** | 10Gbps for storage, 2.5Gbps for compute | Interface statistics |
 | **Recovery Time** | RTO: 2 hours | Configuration restore test |
 
@@ -64,7 +64,7 @@ LabSwitch01 is the **primary network switch** for the Proxmox Astronomy Lab, res
 
 ### **3.1 Architecture Overview**  
 
-LabSwitch01 is a **Mokerlink 2G16210GSM** managed switch with **16 × 2.5G RJ45 ports and 2 × 10G SFP uplinks**【83:0†proxmox-astronomy-lab-hardware-overview.md】. It provides **VLAN-based segmentation, inter-VLAN routing, and network redundancy** across all infrastructure components.
+LabSwitch01 is a **Mokerlink 2G16210GSM** managed switch with **16 Ã— 2.5G RJ45 ports and 2 Ã— 10G SFP uplinks**ã€83:0â€ proxmox-astronomy-lab-hardware-overview.mdã€‘. It provides **VLAN-based segmentation, inter-VLAN routing, and network redundancy** across all infrastructure components.
 
 ### **3.2 Infrastructure Components**  
 
@@ -73,7 +73,7 @@ LabSwitch01 is a **Mokerlink 2G16210GSM** managed switch with **16 × 2.5G RJ45 
 | **Device Name** | LabSwitch01 |
 | **Model** | Mokerlink 2G16210GSM |
 | **Firmware** | Latest Stable Release |
-| **Ports** | 16 × 2.5G RJ45, 2 × 10G SFP |
+| **Ports** | 16 Ã— 2.5G RJ45, 2 Ã— 10G SFP |
 | **Networking** | VLAN segmentation for compute, storage, and control plane traffic |
 | **Management** | Web UI, CLI, API access |
 
@@ -140,3 +140,4 @@ LabSwitch01 is a **Mokerlink 2G16210GSM** managed switch with **16 × 2.5G RJ45 
 | **Security Policy** | CISv8 Compliance Framework |
 
 ---
+

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Golden Image Rootkit Scan Verification - chkrootkit"
 description: "Verification of the Proxmox Astronomy Lab's golden image using chkrootkit to confirm system integrity and absence of rootkits."
 author: "VintageDon"
@@ -9,7 +9,7 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-04"
 ---
-# **🔍 Golden Image Rootkit Scan Verification - chkrootkit**
+# **ðŸ” Golden Image Rootkit Scan Verification - chkrootkit**
 
 ## **1. Purpose**
 
@@ -26,7 +26,7 @@ This section defines the **scope of the Chkrootkit validation**, detailing the s
 | **Verification Focus** | - Detection of **rootkits, backdoors, and malware**.<br> - Identification of **hidden processes or kernel modules**.<br> - Integrity check of **critical system binaries**.<br> - Validation of **network-based backdoors**. |
 | **Security Baseline** | The system is configured per **CISv8 L2 hardening standards**, and all instances of this image **inherit these configurations**. |
 
-This ensures that **every Linux VM in the lab infrastructure remains protected against stealthy malware and unauthorized modifications.** 🚀
+This ensures that **every Linux VM in the lab infrastructure remains protected against stealthy malware and unauthorized modifications.** ðŸš€
 
 ---
 
@@ -41,7 +41,7 @@ The **Chkrootkit validation** ensures the system is scanned for known rootkits, 
 | **ISO 27001**                  | *A.12.6.1 - Management of technical vulnerabilities*          | Regular scans ensure the system is free of rootkits and backdoors. |
 | **MITRE ATT&CK**               | *T1014 - Rootkit*                                             | Identifies persistence techniques used by attackers to evade detection. |
 
-📌 **Scan Output (Paste Results Below):**
+ðŸ“Œ **Scan Output (Paste Results Below):**
 
 ```
 root@tmp-ubuntu24-server-cis-0225:~# chkrootkit
@@ -235,17 +235,17 @@ Checking `OSX_RSPLUG'...                                    not tested
 
 ## **4. Addressed Security Considerations**
 
-### **🔹 Suspicious File & Directory Review**
+### **ðŸ”¹ Suspicious File & Directory Review**
 
 - The scan identified **several benign .gitignore files and fail2ban test files** under `/usr/lib/python3/dist-packages/`.
 - **These are expected files** from system packages and **do not indicate an infection**.
 
-### **🔹 Linux BPFDoor Warning**
+### **ðŸ”¹ Linux BPFDoor Warning**
 
 - The scan flagged a **possible BPFDoor backdoor** due to `/proc/920/stack:[<0>] unix_seqpacket_recvmsg+0x43/0x70`.
 - **This is a false positive** caused by legitimate system processes, and a manual check confirmed no actual BPFDoor activity.
 
-### **🔹 Network & Packet Sniffer Warning**
+### **ðŸ”¹ Network & Packet Sniffer Warning**
 
 - `chkrootkit` detected **PACKET SNIFFER(/usr/lib/systemd/systemd-networkd[653])`**.
 - This is **normal behavior** for **systemd-networkd** in modern Linux distributions and **does not indicate a compromise**.
@@ -256,13 +256,13 @@ Checking `OSX_RSPLUG'...                                    not tested
 
 The following **security mechanisms** were validated:
 
-✅ **Kernel Hardening** – No unauthorized kernel modules detected  
-✅ **No Unauthorized Network Services** – No rogue services or unexpected listeners found  
-✅ **No Suspicious System Binaries** – System binaries remain **unaltered and verified**  
-✅ **File System Integrity** – No unexpected modifications detected  
-✅ **No Hidden Processes** – Scan confirms all running processes are accounted for  
+âœ… **Kernel Hardening** â€“ No unauthorized kernel modules detected  
+âœ… **No Unauthorized Network Services** â€“ No rogue services or unexpected listeners found  
+âœ… **No Suspicious System Binaries** â€“ System binaries remain **unaltered and verified**  
+âœ… **File System Integrity** â€“ No unexpected modifications detected  
+âœ… **No Hidden Processes** â€“ Scan confirms all running processes are accounted for  
 
-📌 **Final Status**: **System is clean** with **no evidence of rootkits, malware, or unauthorized modifications.** 🚀
+ðŸ“Œ **Final Status**: **System is clean** with **no evidence of rootkits, malware, or unauthorized modifications.** ðŸš€
 
 ---
 
@@ -276,16 +276,17 @@ To maintain **ongoing security compliance**, the golden image undergoes **schedu
 
 ---
 
-## **✅ Approval & Review**  
+## **âœ… Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-04 | ✅ DRAFT |  
+| VintageDon | Lead Engineer | 2025-03-04 | âœ… DRAFT |  
 
 ---
 
-## **📜 Change Log**  
+## **ðŸ“œ Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-04 | Initial version | VintageDon |
+

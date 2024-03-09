@@ -1,4 +1,4 @@
----
+﻿---
 title: "CISv8-05 Account and Credential Management Policy"
 description: "Defines the account and credential management policy for the Proxmox Astronomy Lab, ensuring secure identity governance, access control, and credential lifecycle management in compliance with CISv8, NIST 800-53, and ISO 27001."
 author: "VintageDon"
@@ -10,7 +10,7 @@ status: "Draft"
 last_updated: "2025-03-03"
 ---
 
-# **📜 CISv8-05 Account and Credential Management Policy**
+# **ðŸ“œ CISv8-05 Account and Credential Management Policy**
 
 ## **1. Overview**
 
@@ -40,9 +40,9 @@ This policy aligns with **industry standards** for identity and credential secur
 
 | **Framework** | **Control Mapping** |
 |--------------|------------------|
-| **CISv8** | CIS Control 5 – Account & Credential Management |
-| **NIST 800-53** | AC-2 – Account Management |
-| **ISO 27001** | A.9.2 – User Access Management |
+| **CISv8** | CIS Control 5 â€“ Account & Credential Management |
+| **NIST 800-53** | AC-2 â€“ Account Management |
+| **ISO 27001** | A.9.2 â€“ User Access Management |
 
 ---
 
@@ -168,18 +168,19 @@ All authentication events are **logged and reviewed**:
 
 ---
 
-## **✅ Approval & Review**  
+## **âœ… Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-03 | ✅ DRAFT |  
+| VintageDon | Lead Engineer | 2025-03-03 | âœ… DRAFT |  
 
 ---
 
-## **📜 Change Log**  
+## **ðŸ“œ Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
 
-🚀 **This policy ensures that account and credential security remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+ðŸš€ **This policy ensures that account and credential security remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+

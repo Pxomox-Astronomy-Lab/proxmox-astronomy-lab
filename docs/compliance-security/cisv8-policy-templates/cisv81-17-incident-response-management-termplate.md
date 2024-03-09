@@ -1,4 +1,4 @@
----
+﻿---
 title: "CISv8-17 Incident Response Policy Template"
 description: "Defines the incident response policy template, ensuring structured identification, reporting, containment, and resolution of security incidents."
 author: "VintageDon"
@@ -10,7 +10,7 @@ status: "Draft"
 last_updated: "2025-03-03"
 ---
 
-# **📜 CISv8-17 Incident Response Policy Template**
+# **ðŸ“œ CISv8-17 Incident Response Policy Template**
 
 ## **1. Purpose**  
 
@@ -50,9 +50,9 @@ This policy aligns with **industry security frameworks** to maintain best practi
 
 | **Framework** | **Control Mapping** |
 |--------------|------------------|
-| **CISv8** | CIS Control 17 – Incident Response |
-| **NIST 800-53** | IR-4 – Incident Handling |
-| **ISO 27001** | A.16 – Information Security Incident Management |
+| **CISv8** | CIS Control 17 â€“ Incident Response |
+| **NIST 800-53** | IR-4 â€“ Incident Handling |
+| **ISO 27001** | A.16 â€“ Information Security Incident Management |
 
 ---
 
@@ -154,7 +154,7 @@ Failure to comply with this policy may result in:
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-03 | ✅ DRAFT |  
+| VintageDon | Lead Engineer | 2025-03-03 | âœ… DRAFT |  
 
 ---
 
@@ -164,4 +164,5 @@ Failure to comply with this policy may result in:
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
 
-🚀 **This policy ensures that incident response remains a structured, actively enforced, and auditable process.**
+ðŸš€ **This policy ensures that incident response remains a structured, actively enforced, and auditable process.**
+

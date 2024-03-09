@@ -1,4 +1,4 @@
----
+﻿---
 title: "CIS Control 4: Secure Configuration Management in the Proxmox Astronomy Lab"
 description: "Overview of CIS Control 4, ensuring all systems in the lab follow secure configuration practices through golden templates, automation, and continuous monitoring."
 author: "VintageDon"
@@ -10,7 +10,7 @@ status: "Draft"
 last_updated: "2025-03-04"
 ---
 
-# **🛠 CIS Control 4: Secure Configuration Management in the Proxmox Astronomy Lab**
+# **ðŸ›  CIS Control 4: Secure Configuration Management in the Proxmox Astronomy Lab**
 
 ## **1. Introduction**
 
@@ -26,7 +26,7 @@ The **Proxmox Astronomy Lab** enforces secure configurations through structured 
 | **Network Security** | Policy-based firewall controls and VLAN segmentation. |
 | **Execution Control** | Restrict unauthorized applications via GPO & AppArmor. |
 
-📌 **See also:**
+ðŸ“Œ **See also:**
 
 - [Secure Configuration Management Policy](../cisv81-controls/cisv81-04-secure-configuration-management-policy.md)
 - [Secure Configuration Management Policy Template](../cisv81-policy-templates/cisv81-04-secure-configuration-of-enterprise-assets-and-software-template.md)
@@ -89,28 +89,29 @@ Ensuring only secure configurations and authorized software operate in the envir
 | **4.6** | Secure network protocols and encryption. | [CISv8 4.6 Implementation](./4.6.md) |
 | **4.9** | DNS security policies and monitoring. | [CISv8 4.9 Compliance](./4.9.md) |
 
-📌 **Each sub-control has a dedicated document outlining its enforcement and validation.**
+ðŸ“Œ **Each sub-control has a dedicated document outlining its enforcement and validation.**
 
 ---
 
 ## **5. Summary**
 
-✅ **CIS Control 4 ensures hardened configurations across all assets in the Proxmox Astronomy Lab.**  
-✅ **Golden templates, automation, and monitoring tools maintain a secure baseline.**  
-✅ **Firewall, DNS, and system security policies provide structured enforcement.**  
+âœ… **CIS Control 4 ensures hardened configurations across all assets in the Proxmox Astronomy Lab.**  
+âœ… **Golden templates, automation, and monitoring tools maintain a secure baseline.**  
+âœ… **Firewall, DNS, and system security policies provide structured enforcement.**  
 
 ---
 
-## ✅ Approval & Review
+## âœ… Approval & Review
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-04 | ✅ DRAFT |
+| VintageDon | Lead Engineer | 2025-03-04 | âœ… DRAFT |
 
 ---
 
-## 📜 Change Log
+## ðŸ“œ Change Log
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.1 | 2025-03-04 | Standardized KBFormatv1 applied. Article interlinking. | VintageDon |
+

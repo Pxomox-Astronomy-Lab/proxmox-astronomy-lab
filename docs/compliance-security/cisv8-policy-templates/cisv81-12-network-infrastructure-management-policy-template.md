@@ -1,4 +1,4 @@
----
+﻿---
 title: "CISv8-12 Network Infrastructure Management Policy Template"
 description: "Presents the official CISv8 Network Infrastructure Management Policy Template, with additional information on possible solutions and an example of its application in the Proxmox Astronomy Lab."
 author: "VintageDon"
@@ -10,7 +10,7 @@ status: "Draft"
 last_updated: "2025-03-03"
 ---
 
-# **📜 CISv8-12 Network Infrastructure Management Policy Template**
+# **ðŸ“œ CISv8-12 Network Infrastructure Management Policy Template**
 
 ## **1. Overview**  
 
@@ -20,10 +20,10 @@ A **secure and well-managed network infrastructure** is essential for protecting
 
 ### **Key Aspects of This Policy:**  
 
-✅ **Ensures all network devices are securely configured and maintained.**  
-✅ **Defines strict firewall rules, segmentation policies, and access controls.**  
-✅ **Enforces centralized logging and monitoring of network activity.**  
-✅ **Supports compliance with industry security standards and best practices.**  
+âœ… **Ensures all network devices are securely configured and maintained.**  
+âœ… **Defines strict firewall rules, segmentation policies, and access controls.**  
+âœ… **Enforces centralized logging and monitoring of network activity.**  
+âœ… **Supports compliance with industry security standards and best practices.**  
 
 This document **presents the CISv8 Network Infrastructure Management Policy Template** and includes **additional information on how organizations may implement it**, along with a **generalized example of its application in the Proxmox Astronomy Lab**.
 
@@ -33,9 +33,9 @@ This document **presents the CISv8 Network Infrastructure Management Policy Temp
 
 | **Framework**      | **Control Mapping** |
 |--------------------|--------------------|
-| **CIS Controls**   | CIS Control 12 – Network Infrastructure Management |
-| **NIST 800-53**    | SC-7 – Boundary Protection |
-| **ISO 27001**      | A.13.1 – Network Security Controls |
+| **CIS Controls**   | CIS Control 12 â€“ Network Infrastructure Management |
+| **NIST 800-53**    | SC-7 â€“ Boundary Protection |
+| **ISO 27001**      | A.13.1 â€“ Network Security Controls |
 
 ---
 
@@ -100,13 +100,13 @@ The **Network Infrastructure Management Policy** ensures that all enterprise net
 
 ## **4. Best Practices for Implementing This Policy**  
 
-Organizations implementing **CIS Control 12 – Network Infrastructure Management** should consider the following best practices:  
+Organizations implementing **CIS Control 12 â€“ Network Infrastructure Management** should consider the following best practices:  
 
-- **Use a Defense-in-Depth Approach** – Secure the network with **multiple layers of security controls**, including **firewalls, intrusion prevention, and endpoint protection**.  
-- **Regularly Update Network Firmware** – **Monthly firmware updates reduce vulnerabilities** and **patch security flaws**.  
-- **Implement Network Access Control (NAC)** – **Prevent unauthorized devices from connecting to the network**.  
-- **Restrict Open Ports & Services** – **All unnecessary ports must be disabled to reduce the attack surface**.  
-- **Centralize Logging & Alerting** – **Monitor all network traffic for anomalies** using **a SIEM solution**.  
+- **Use a Defense-in-Depth Approach** â€“ Secure the network with **multiple layers of security controls**, including **firewalls, intrusion prevention, and endpoint protection**.  
+- **Regularly Update Network Firmware** â€“ **Monthly firmware updates reduce vulnerabilities** and **patch security flaws**.  
+- **Implement Network Access Control (NAC)** â€“ **Prevent unauthorized devices from connecting to the network**.  
+- **Restrict Open Ports & Services** â€“ **All unnecessary ports must be disabled to reduce the attack surface**.  
+- **Centralize Logging & Alerting** â€“ **Monitor all network traffic for anomalies** using **a SIEM solution**.  
 
 These strategies **enhance network security, enforce least privilege access, and improve incident detection and response**.
 
@@ -118,40 +118,41 @@ In the **Proxmox Astronomy Lab**, CIS Control 12 is implemented with the followi
 
 ### **5.1 Network Security & Access Controls**  
 
-✅ **FortiGate firewall enforces least privilege inbound/outbound rules.**  
-✅ **Network traffic is encrypted using TLS 1.3 and VPN tunnels.**  
-✅ **MFA is required for all remote access via Entra Private Access.**  
+âœ… **FortiGate firewall enforces least privilege inbound/outbound rules.**  
+âœ… **Network traffic is encrypted using TLS 1.3 and VPN tunnels.**  
+âœ… **MFA is required for all remote access via Entra Private Access.**  
 
 ### **5.2 Firewall & Traffic Security**  
 
-✅ **Default-deny inbound policy prevents unauthorized access attempts.**  
-✅ **Traffic filtering blocks known malicious domains and C2 servers.**  
-✅ **Intrusion prevention (IPS) inspects and blocks attack attempts.**  
+âœ… **Default-deny inbound policy prevents unauthorized access attempts.**  
+âœ… **Traffic filtering blocks known malicious domains and C2 servers.**  
+âœ… **Intrusion prevention (IPS) inspects and blocks attack attempts.**  
 
 ### **5.3 Network Segmentation & Access Restrictions**  
 
-✅ **Critical research systems are isolated from general access networks.**  
-✅ **Administrative systems require Just-In-Time (JIT) access approval.**  
-✅ **Guest access is restricted to an isolated VLAN with minimal privileges.**  
+âœ… **Critical research systems are isolated from general access networks.**  
+âœ… **Administrative systems require Just-In-Time (JIT) access approval.**  
+âœ… **Guest access is restricted to an isolated VLAN with minimal privileges.**  
 
 ### **5.4 Configuration Management & Logging**  
 
-✅ **All firewall configurations are stored in Git for version control.**  
-✅ **Network logs are aggregated in Loki and monitored via Prometheus.**  
-✅ **All network changes require a documented change request process.**  
+âœ… **All firewall configurations are stored in Git for version control.**  
+âœ… **Network logs are aggregated in Loki and monitored via Prometheus.**  
+âœ… **All network changes require a documented change request process.**  
 
 ---
 
 ## **6. Summary and Next Steps**  
 
-✅ **This document presents the official CISv8 Network Infrastructure Management Policy Template.**  
-✅ **It includes additional information on possible solutions for implementation.**  
-✅ **A high-level example from the Proxmox Astronomy Lab is provided for reference.**  
+âœ… **This document presents the official CISv8 Network Infrastructure Management Policy Template.**  
+âœ… **It includes additional information on possible solutions for implementation.**  
+âœ… **A high-level example from the Proxmox Astronomy Lab is provided for reference.**  
 
-📌 **Actionable Next Steps:**  
+ðŸ“Œ **Actionable Next Steps:**  
 
 - **Ensure network segmentation enforces least privilege access.**  
 - **Regularly update firmware and apply security patches to network devices.**  
 - **Centralize logging and use SIEM for real-time network monitoring.**  
 
-🚀 **By following this framework, organizations can ensure structured, secure, and auditable network infrastructure management.**
+ðŸš€ **By following this framework, organizations can ensure structured, secure, and auditable network infrastructure management.**
+

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Prometheus Target Configuration & Event Management"
 description: "ITIL-aligned documentation of all Prometheus monitoring targets, including exporters, key metrics, and alerting structure."
 author: "VintageDon"
@@ -105,10 +105,10 @@ This document serves as an **ITIL-aligned Service Configuration Document (SACM)*
 
 ### **3.2 Incident Response Workflow**
 
-1. **Alert Triggered** → AlertManager routes to **Teams & Email**.
-2. **Incident Logged** → GLPI ticket auto-created for P1 & P2 alerts.
-3. **Triage & Diagnosis** → Engineer assesses issue severity.
-4. **Resolution & Verification** → Service restored, postmortem documented.
+1. **Alert Triggered** â†’ AlertManager routes to **Teams & Email**.
+2. **Incident Logged** â†’ GLPI ticket auto-created for P1 & P2 alerts.
+3. **Triage & Diagnosis** â†’ Engineer assesses issue severity.
+4. **Resolution & Verification** â†’ Service restored, postmortem documented.
 
 ### **3.3 Teams Adaptive Cards Integration (Planned)**
 
@@ -133,23 +133,24 @@ This document serves as an **ITIL-aligned Service Configuration Document (SACM)*
 
 ## **4. Summary & Next Steps**
 
-✅ **Prometheus target configuration is fully documented.**  
-✅ **Alerting pipeline structured with ITIL-aligned event management.**  
-📌 **Next: Implement Teams Adaptive Cards integration.**  
-📌 **Future Enhancements: Escalation workflows, AI-driven alert correlation.**  
+âœ… **Prometheus target configuration is fully documented.**  
+âœ… **Alerting pipeline structured with ITIL-aligned event management.**  
+ðŸ“Œ **Next: Implement Teams Adaptive Cards integration.**  
+ðŸ“Œ **Future Enhancements: Escalation workflows, AI-driven alert correlation.**  
 
 ---
 
-## **✅ Approval & Review**
+## **âœ… Approval & Review**
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-09 | ⏳ In Progress |
+| VintageDon | Lead Engineer | 2025-03-09 | â³ In Progress |
 
 ---
 
-## **📜 Change Log**
+## **ðŸ“œ Change Log**
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-09 | Initial document, full target & event management breakdown | VintageDon |
+

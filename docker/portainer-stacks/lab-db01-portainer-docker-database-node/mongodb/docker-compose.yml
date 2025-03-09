@@ -1,0 +1,26 @@
+# -----------------------------------------------------------------------------
+# MongoDB Docker Compose Stack
+# Maintained by: Don (GitHub: https://github.com/vintagedon)
+# Repository: https://gitea.beardinthe.cloud/Portainer_Stacks/mongodb-stack
+# Purpose: Stores unstructured and semi-structured data for lab applications
+# Version: MongoDB 6.0
+# Notes: Uses external stack.env file for configurations
+# -----------------------------------------------------------------------------
+
+services:
+  mongodb:
+    container_name: ${CONTAINER_NAME}
+    image: mongo:${MONGODB_VERSION}
+    restart: unless-stopped
+    env_file:
+      - stack.env
+    ports:
+      - "${MONGODB_PORT}:27017"
+    volumes:
+      - ${VOLUME_DATA}:/data/db
+    networks:
+      - mongodb_network
+
+networks:
+  mongodb_network:
+    driver: bridge

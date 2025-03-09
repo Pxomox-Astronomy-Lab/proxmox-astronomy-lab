@@ -1,0 +1,37 @@
+# -----------------------------------------------------------------------------
+# HashiCorp Vault - Secrets Management Stack
+# Maintained by: Don (GitHub: https://github.com/vintagedon)
+# Repository: https://gitea.beardinthe.cloud/Portainer_Stacks/vault-stack
+# Purpose: Secure secrets management with auto-unlock using Azure Key Vault
+# Version: Vault 1.14.0
+# Notes: Uses external stack.env file for configurations
+# -----------------------------------------------------------------------------
+
+services:
+  vault:
+    container_name: ${CONTAINER_NAME}
+    image: hashicorp/vault:${VAULT_VERSION}
+    restart: unless-stopped
+    cap_add:
+      - IPC_LOCK
+    env_file:
+      - stack.env
+    environment:
+      VAULT_ADDR: http://127.0.0.1:8200
+      VAULT_API_ADDR: http://127.0.0.1:8200
+      VAULT_CLUSTER_ADDR: http://127.0.0.1:8201
+      VAULT_STORAGE_BACKEND: "raft"
+      VAULT_AZURE_KEYVAULT: ${VAULT_AZURE_KEYVAULT}
+      VAULT_AZURE_STORAGE: ${VAULT_AZURE_STORAGE}
+      VAULT_RAFT_NODE_ID: "vault-node-1"
+    ports:
+      - "${VAULT_HTTP_PORT}:8200"
+    volumes:
+      - ${VOLUME_DATA}:/vault/data
+      - ${VOLUME_CONFIG}:/vault/config
+    networks:
+      - vault_network
+
+networks:
+  vault_network:
+    driver: bridge

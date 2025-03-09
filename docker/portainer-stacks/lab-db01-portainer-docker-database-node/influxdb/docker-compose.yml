@@ -1,0 +1,26 @@
+# -----------------------------------------------------------------------------
+# InfluxDB Docker Compose Stack
+# Maintained by: Don (GitHub: https://github.com/vintagedon)
+# Repository: https://gitea.beardinthe.cloud/Portainer_Stacks/influxdb-stack
+# Purpose: Lightweight metrics ingestion service for Proxmox cluster metrics
+# Version: InfluxDB 2.7.11
+# Notes: Uses external .env file for configurations
+# -----------------------------------------------------------------------------
+
+services:
+  influxdb:
+    container_name: ${CONTAINER_NAME}
+    image: influxdb:${INFLUXDB_VERSION}
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "${INFLUXDB_PORT}:8086"
+    volumes:
+      - ${VOLUME_DATA}:/var/lib/influxdb2
+    networks:
+      - influxdb_network
+
+networks:
+  influxdb_network:
+    driver: bridge

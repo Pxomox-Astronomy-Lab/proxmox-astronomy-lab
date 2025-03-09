@@ -1,0 +1,37 @@
+# -----------------------------------------------------------------------------
+# Wiki.js - Internal Knowledge Base Stack
+# Maintained by: Don (GitHub: https://github.com/vintagedon)
+# Repository: https://gitea.beardinthe.cloud/Portainer_Stacks/wikijs-stack
+# Purpose: Self-hosted knowledge base with Git and PostgreSQL integration
+# Version: Wiki.js 2.5.300
+# Notes: Uses external stack.env file for configurations
+# -----------------------------------------------------------------------------
+
+services:
+  wikijs:
+    container_name: ${CONTAINER_NAME}
+    image: requarks/wiki:${WIKIJS_VERSION}
+    restart: unless-stopped
+    env_file:
+      - stack.env
+    environment:
+      DB_TYPE: postgres
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_NAME: ${DB_NAME}
+      GIT_REPO_URL: ${GIT_REPO_URL}
+      GIT_BRANCH: ${GIT_BRANCH}
+      GIT_USERNAME: ${GIT_USERNAME}
+      GIT_PASSWORD: ${GIT_PASSWORD}
+    ports:
+      - "${WIKI_HTTP_PORT}:3000"
+    volumes:
+      - ${VOLUME_DATA}:/var/wiki/data
+    networks:
+      - wikijs_network
+
+networks:
+  wikijs_network:
+    driver: bridge

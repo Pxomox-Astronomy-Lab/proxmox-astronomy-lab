@@ -1,0 +1,29 @@
+# -----------------------------------------------------------------------------
+# Nginx Proxy Manager Docker Compose Stack
+# Maintained by: Don (GitHub: https://github.com/vintagedon)
+# Repository: https://gitea.beardinthe.cloud/Portainer_Stacks/nginx-proxy-manager-stack
+# Purpose: Reverse proxy and SSL management for lab-level static services
+# Version: Nginx Proxy Manager 2.9.18
+# Notes: Uses external stack.env file for configurations
+# -----------------------------------------------------------------------------
+
+services:
+  app:
+    container_name: ${CONTAINER_NAME}
+    image: jc21/nginx-proxy-manager:${NPM_VERSION}
+    restart: unless-stopped
+    env_file:
+      - stack.env
+    ports:
+      - "${HTTP_PORT}:80"
+      - "${HTTPS_PORT}:443"
+      - "${ADMIN_PORT}:81"
+    volumes:
+      - ${DATA_VOLUME}:/data
+      - ${LETSENCRYPT_VOLUME}:/etc/letsencrypt
+    networks:
+      - npm_network
+
+networks:
+  npm_network:
+    driver: bridge

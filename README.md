@@ -20,7 +20,7 @@ At its core, the lab is **a fusion of IT engineering and citizen science**—des
 
 ## **🚀 Hydrogen Line Radio Astronomy – AI-Powered SDR Research**  
 
-Radio astronomy has traditionally required **large, expensive facilities**—but modern **Software-Defined Radio (SDR) technology, AI, and advanced computing** are changing that. This lab is designed to **push the limits of what’s possible in a home-based, research-grade Hydrogen Line observation setup**.
+Radio astronomy has traditionally required **large, expensive facilities**—but modern **Software-Defined Radio (SDR) technology, AI, and advanced computing** are changing that. This lab is designed to **push the limits of what's possible in a home-based, research-grade Hydrogen Line observation setup**.
 
 The primary scientific focus is on **three key research areas**:  
 
@@ -49,19 +49,7 @@ A major challenge in **amateur radio astronomy** is **weak signals buried in noi
 
 - SDR captures **real-time 1420 MHz Hydrogen Line data**  
 - Data is processed using **AI noise filtering and spectral enhancement**  
-- Results are stored in **PostgreSQL & TimescaleDB** for time-series tracking
-
-🤖 AI Ethics & Responsible Research
-The Proxmox Astronomy Lab integrates AI/ML-enhanced signal processing, automation, and research workflows, but with a strong commitment to ethical AI practices. AI is a tool to enhance scientific discovery, not to replace rigorous analysis or responsible decision-making.
-
-🔹 Key Ethical Principles
-
-1. Transparency - AI/ML models used for SDR processing, RAG knowledge retrieval, and automation are documented, explainable, and auditable.
-2. Data Integrity – Hydrogen Line radio astronomy data is processed with AI for enhancement, not manipulation. Scientific accuracy remains paramount.
-3. Privacy & Security – No user data, queries, or access logs are shared or monetized. All AI processing is local, not cloud-based.
-4. Open Science & Reproducibility – AI-powered signal enrichment and automation pipelines are open-source, so others can verify and improve them.
-
-🛰️ Why It Matters: AI in scientific computing should be aiding research, not obscuring truth. The Proxmox Astronomy Lab adheres to ethical AI guidelines that prioritize transparency, accuracy, and reproducibility over automation for automation’s sake.
+- Results are stored in **PostgreSQL & TimescaleDB** for time-series tracking  
 
 🚀 **Future Plans**:  
 
@@ -73,7 +61,7 @@ The Proxmox Astronomy Lab integrates AI/ML-enhanced signal processing, automatio
 
 ## **🔐 Secure Research Lab – Remote Access for External Collaboration**  
 
-One of the **unique aspects** of this lab is that it’s not just for personal research—it also functions as a **secure research platform** that allows external users to **collaborate, test, and run workloads remotely**.
+One of the **unique aspects** of this lab is that it's not just for personal research—it also functions as a **secure research platform** that allows external users to **collaborate, test, and run workloads remotely**.
 
 🔹 **External users** can:  
 
@@ -88,8 +76,8 @@ One of the **unique aspects** of this lab is that it’s not just for personal r
 | **Entra Private Access** | Secure, policy-driven remote access. |
 | **Role-Based Access Control (RBAC)** | Limits access to different lab functions. |
 | **Virtualized Research Workspaces** | Kasm Workspaces for browser-based, secure research. |
-| **CISv8 Compliance | Ubuntu Server 2404 LTS @ CISv8 L2, Windows Server 2025 Standard @ CISv9 L1 compliance |
-| **Wazuh SEIM/XDR | Daily CIS scans vis CIS-CAT Lite w/controls mapped to NIST/ISO27001 |
+| **CISv8 Compliance** | Ubuntu Server 24.04 LTS @ CISv8 L2, Windows Server 2025 Standard @ CISv9 L1 compliance |
+| **Wazuh SEIM/XDR** | Daily CIS scans via CIS-CAT Lite w/controls mapped to NIST/ISO27001 |
 
 ---
 
@@ -100,7 +88,6 @@ The **Proxmox Astronomy Lab** is not just about research—it's about **document
 ### **📚 Structured Documentation & Public Knowledge Base**
 
 - **GitHub Repository**: All **infrastructure, scripts, and workflows** are public.  
-- **radioastronomy.io**: Public-facing **GitHub Pages & Wiki.js documentation**.  
 - **Step-by-step guides**: From **infrastructure deployment to SDR processing**.  
 
 ### **🧠 AI-Powered Documentation Search (RAG + Milvus + OpenWebUI)**
@@ -111,7 +98,7 @@ One of the biggest challenges in complex projects is **finding relevant document
 - **Infrastructure configurations & compliance policies**  
 - **Custom workflows for AI-powered SDR processing**  
 
-🚀 **The result?** A **context-aware, AI-enhanced research assistant** that helps users navigate and understand the lab’s resources **efficiently**.
+🚀 **The result?** A **context-aware, AI-enhanced research assistant** that helps users navigate and understand the lab's resources **efficiently**.
 
 ---
 
@@ -130,6 +117,34 @@ One of the biggest challenges in complex projects is **finding relevant document
 ✅ **All AI/ML & K8s workloads run on local NVMe storage** for maximum performance.  
 ✅ **Network storage (NFS & S3) provides fast, scalable research data access**.  
 
+### **🔹 Implementation Status**  
+
+The lab is being implemented in structured phases, with clear milestones and documentation for each:
+
+| **Phase** | **Focus** | **Status** |
+|-----------|----------|--------------|
+| **Phase 1** | Core Infrastructure Foundation | ✅ Complete |
+| **Phase 2** | Structured Services & Research Validation | ✅ Complete |
+| **Phase 3** | Application Deployment & Research Infrastructure | 🚧 In Progress |
+| **Phase 4** | Research Workflows & Public Data Integration | ⏳ Upcoming |
+
+📌 See the [ROADMAP.md](ROADMAP.md) for detailed information on each phase.
+
+---
+
+## **🤖 AI Ethics & Responsible Research**
+
+The Proxmox Astronomy Lab integrates AI/ML-enhanced signal processing, automation, and research workflows, but with a strong commitment to ethical AI practices. AI is a tool to enhance scientific discovery, not to replace rigorous analysis or responsible decision-making.
+
+### **🔹 Key Ethical Principles**
+
+1. **Transparency** - AI/ML models used for SDR processing, RAG knowledge retrieval, and automation are documented, explainable, and auditable.
+2. **Data Integrity** – Hydrogen Line radio astronomy data is processed with AI for enhancement, not manipulation. Scientific accuracy remains paramount.
+3. **Privacy & Security** – No user data, queries, or access logs are shared or monetized. All AI processing is local, not cloud-based.
+4. **Open Science & Reproducibility** – AI-powered signal enrichment and automation pipelines are open-source, so others can verify and improve them.
+
+🛰️ **Why It Matters**: AI in scientific computing should be aiding research, not obscuring truth. The Proxmox Astronomy Lab adheres to ethical AI guidelines that prioritize transparency, accuracy, and reproducibility over automation for automation's sake.
+
 ---
 
 ## **🚀 Getting Started**
@@ -137,7 +152,7 @@ One of the biggest challenges in complex projects is **finding relevant document
 To clone and explore the lab's documentation and infrastructure:
 
 ```bash
-git clone https://github.com/vintagedon/proxmox-astronomy-lab.git
+git clone https://github.com/yourusername/proxmox-astronomy-lab.git
 cd proxmox-astronomy-lab
 ```
 
@@ -147,10 +162,23 @@ cd proxmox-astronomy-lab
 
 ## **📡 Join the Community & Contribute**
 
-This is an **open-source research project**. If you’re interested in **AI-powered radio astronomy, high-performance research infrastructure, or IT automation**, feel free to **contribute, test, or collaborate**.
+This is an **open-source research project**. If you're interested in **AI-powered radio astronomy, high-performance research infrastructure, or IT automation**, feel free to **contribute, test, or collaborate**.
 
-🛰 **Follow the project at [radioastronomy.io](https://radioastronomy.io)**  
+🛰 **Follow the project on GitHub**  
 📖 **Read the full documentation in the `/docs` folder**  
+
+## **🤝 Acknowledgments**
+
+This lab builds on the work of many open-source projects and communities, particularly those in radio astronomy, SDR processing, and scientific computing. Special thanks to:
+
+- The **GNU Radio** community
+- **RTL-SDR** and **Airspy** developers
+- **Proxmox** and **Kubernetes** communities
+- **Wazuh**, **Prometheus**, and **Grafana** projects
+
+## **📄 License**
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ## 🤖 AI Transparency and Ethical Use  
 
@@ -159,7 +187,7 @@ We track **which AI models contributed**, how they were used, and ensure all con
 | **Step** | **AI Model(s) Used** | **Purpose** | **Human Reviewer** | **Final Approval** |
 |----------|----------------------|-------------|--------------------|----------------|
 | Initial Draft | ChatGPT-4 (Pro) | Structured KB generation, metadata tagging | VintageDon | ✅ Approved |
-| Model Crosscheck | Claude 3 Sonnet 3.7 API | Refinements, clarity, formatting | VintageDon | ✅ Approved |
+| Model Crosscheck | Claude 3.7 Sonnet | Refinements, clarity, formatting | VintageDon | ✅ Approved |
 | Compliance Cross-Check | None | Manual review | VintageDon | ✅ Approved |
 
-🔹 **AI is a tool, not an autonomous author.** Every article undergoes **strict human review and fact-checking** before publishing.  
+🔹 **AI is a tool, not an autonomous author.** Every article undergoes **strict human review and fact-checking** before publishing.

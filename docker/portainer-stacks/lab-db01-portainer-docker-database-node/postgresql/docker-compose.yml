@@ -1,0 +1,26 @@
+# -----------------------------------------------------------------------------
+# PostgreSQL Docker Compose Stack
+# Maintained by: Don (GitHub: https://github.com/vintagedon)
+# Repository: https://gitea.beardinthe.cloud/Portainer_Stacks/postgresql-stack
+# Purpose: General-purpose SQL database for lab applications and microservices
+# Version: PostgreSQL 15
+# Notes: Uses external stack.env file for configurations
+# -----------------------------------------------------------------------------
+
+services:
+  postgresql:
+    container_name: ${CONTAINER_NAME}
+    image: postgres:${POSTGRES_VERSION}
+    restart: unless-stopped
+    env_file:
+      - stack.env
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - ${VOLUME_DATA}:/var/lib/postgresql/data
+    networks:
+      - postgresql_network
+
+networks:
+  postgresql_network:
+    driver: bridge

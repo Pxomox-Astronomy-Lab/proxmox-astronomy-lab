@@ -1,0 +1,555 @@
+Folder PATH listing
+Volume serial number is 543E-741D
+C:\USERS\CRAINBRAMP\ONEDRIVE - BEARDINTHE.CLOUD\DOCUMENTS\REPOSITORIES\PROXMOX-ASTRONOMY-LAB
+¦   .gitignore
+¦   CONTRIBUTING.md
+¦   create-repo.ps1
+¦   LICENSE
+¦   phase-1.md
+¦   phase-2.md
+¦   phase-3.md
+¦   phase-4.md
+¦   README.md
+¦   ROADMAP.md
+¦   tree.txt
+¦   
++---assets
+¦   ¦   README.md
+¦   ¦   
+¦   +---diagrams
+¦   ¦       README.md
+¦   ¦       
+¦   +---images
+¦       ¦   ago-ns2-noise-source.jpg
+¦       ¦   h1-bandpass-filter.jpg
+¦       ¦   h1-lna.jpg
+¦       ¦   milvus-attu-data-explorer.png
+¦       ¦   nooelec-h1-parabolic-dish-antenna.jpg
+¦       ¦   proxmox-astronomy-lab-cluster-summary-2025-03.png
+¦       ¦   proxmox-metrics-server-settings.png
+¦       ¦   README.md
+¦       ¦   teams-monitoring-screenshot.png
+¦       ¦   
+¦       +---dashboards
+¦               cadvisor-compute-resources-dashboard-screenshot.png
+¦               cadvisor-docker-insights-dashboard-screenshot.png
+¦               cadvisor-performance-dashboard-screenshot.png
+¦               dns-filtering-dashboard-screenshot.png
+¦               gitea-repository-dashboard-screenshot.png
+¦               network-snmp-device-smmary-dashboard-screenshot.png
+¦               network-snmp-exporter-dashboard-screenshot.png
+¦               network-snmp-exporter-interface-detail-dashboard-screenshot.png
+¦               node-exporter-full-dashboard-screenshot.png
+¦               nvdia-gpu-dashboard-screenshot.png
+¦               postgresql-dashboard-screenshot.png
+¦               promox-cluster-flux-graphical-dashboard-screenshot.png
+¦               promox-cluster-flux-numerical-dashboard-screenshot.png
+¦               teams-monitoring-screenshot.png
+¦               
++---docker
+¦   ¦   README.md
+¦   ¦   
+¦   +---portainer
+¦   ¦   ¦   README.md
+¦   ¦   ¦   
+¦   ¦   +---lab-apps01-portainer-docker-application-node
+¦   ¦   ¦       README.md
+¦   ¦   ¦       
+¦   ¦   +---lab-db01-portainer-docker-database-node
+¦   ¦   ¦       README.md
+¦   ¦   ¦       
+¦   ¦   +---lab-port01-portainer-master-control-node
+¦   ¦   ¦       README.md
+¦   ¦   ¦       
+¦   ¦   +---proj-apps01-portainer-docker-application-node
+¦   ¦           README.md
+¦   ¦           
+¦   +---portainer-stacks
+¦       ¦   portainer-stacks-lab-documentation-and-style-guide.md
+¦       ¦   README.md
+¦       ¦   
+¦       +---lab-apps01-portainer-docker-application-node
+¦       ¦   ¦   README.md
+¦       ¦   ¦   
+¦       ¦   +---gitea
+¦       ¦   ¦       docker-compose.yml
+¦       ¦   ¦       README.md
+¦       ¦   ¦       stack.env
+¦       ¦   ¦       stack.env.example
+¦       ¦   ¦       
+¦       ¦   +---glpi
+¦       ¦   ¦       docker-compose.yml
+¦       ¦   ¦       README.md
+¦       ¦   ¦       stack.env
+¦       ¦   ¦       stack.env.example
+¦       ¦   ¦       
+¦       ¦   +---nginx-proxy-manager
+¦       ¦   ¦       docker-compose.yml
+¦       ¦   ¦       README.md
+¦       ¦   ¦       stack.env
+¦       ¦   ¦       stack.env.example
+¦       ¦   ¦       
+¦       ¦   +---vault
+¦       ¦   ¦       docker-compose.yml
+¦       ¦   ¦       README.md
+¦       ¦   ¦       stack.env
+¦       ¦   ¦       stack.env.example
+¦       ¦   ¦       
+¦       ¦   +---wikijs
+¦       ¦   ¦       docker-compose.yml
+¦       ¦   ¦       README.md
+¦       ¦   ¦       stack.env
+¦       ¦   ¦       stack.env.example
+¦       ¦   ¦       
+¦       ¦   +---zitadel
+¦       ¦           docker-compose.yml
+¦       ¦           README.md
+¦       ¦           stack.env
+¦       ¦           stack.env.example
+¦       ¦           
+¦       +---lab-db01-portainer-docker-database-node
+¦       ¦   ¦   README.md
+¦       ¦   ¦   
+¦       ¦   +---influxdb
+¦       ¦   ¦       .env.example
+¦       ¦   ¦       docker-compose.yml
+¦       ¦   ¦       README.md
+¦       ¦   ¦       stack.env
+¦       ¦   ¦       
+¦       ¦   +---mariadb
+¦       ¦   ¦       .env..example
+¦       ¦   ¦       docker-compose.yml
+¦       ¦   ¦       README.md
+¦       ¦   ¦       stack.env
+¦       ¦   ¦       
+¦       ¦   +---mongodb
+¦       ¦   ¦       docker-compose.yml
+¦       ¦   ¦       README.md
+¦       ¦   ¦       stack.env
+¦       ¦   ¦       stack.env.example
+¦       ¦   ¦       
+¦       ¦   +---postgresql
+¦       ¦   ¦       docker-compose.yml
+¦       ¦   ¦       README.md
+¦       ¦   ¦       stack.env
+¦       ¦   ¦       stack.env.example
+¦       ¦   ¦       
+¦       ¦   +---rabbitmq
+¦       ¦   ¦       docker-compose.yml
+¦       ¦   ¦       README.md
+¦       ¦   ¦       stack.env
+¦       ¦   ¦       stack.env.example
+¦       ¦   ¦       
+¦       ¦   +---redis
+¦       ¦           docker-compose.yml
+¦       ¦           README.md
+¦       ¦           stack.env
+¦       ¦           stack.env.example
+¦       ¦           
+¦       +---proj-apps01-portainer-docker-application-node
+¦           ¦   README.md
+¦           ¦   
+¦           +---gitea
+¦           ¦       docker-compose.yml
+¦           ¦       README.md
+¦           ¦       stack.env
+¦           ¦       stack.env.example
+¦           ¦       
+¦           +---grafana
+¦           ¦       docker-compose.yml
+¦           ¦       README.md
+¦           ¦       stack.env
+¦           ¦       stack.env.example
+¦           ¦       
+¦           +---nextcloud
+¦                   docker-compose.yml
+¦                   README.md
+¦                   stack.env
+¦                   stack.env.example
+¦                   
++---docs
+¦   ¦   README.md
+¦   ¦   virtual-machine-infrastructure-list.md
+¦   ¦   
+¦   +---applications-services
+¦   ¦   ¦   README.md
+¦   ¦   ¦   
+¦   ¦   +---automation
+¦   ¦   ¦   +---ansible
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---glpi
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---terraform
+¦   ¦   ¦           README.md
+¦   ¦   ¦           
+¦   ¦   +---core
+¦   ¦   ¦   +---authentication
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---infrastructure
+¦   ¦   ¦   ¦   +---proxmox-nodes
+¦   ¦   ¦   +---networking
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---security
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---storage
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---virtualization
+¦   ¦   ¦           README.md
+¦   ¦   ¦           
+¦   ¦   +---databases
+¦   ¦   ¦   +---mariadb
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---postgresql
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---redis
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---timescaledb
+¦   ¦   ¦           README.md
+¦   ¦   ¦           
+¦   ¦   +---monitoring
+¦   ¦       +---grafana
+¦   ¦       ¦       README.md
+¦   ¦       ¦       
+¦   ¦       +---loki
+¦   ¦       ¦       README.md
+¦   ¦       ¦       
+¦   ¦       +---prometheus
+¦   ¦       ¦       README.md
+¦   ¦       ¦       
+¦   ¦       +---wazuh
+¦   ¦               README.md
+¦   ¦               
+¦   +---compliance-security
+¦   ¦   ¦   README.md
+¦   ¦   ¦   
+¦   ¦   +---cisv8-controls
+¦   ¦   ¦   ¦   README.md
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---01-inventory-and-control-of-enterprise-assets.md
+¦   ¦   ¦   ¦       cisv81-01-enterprise-asset-management-policy.md
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---02-inventory-and-control-of-software-assets
+¦   ¦   ¦   ¦       cisv81-02-software-asset-management-policy.md
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---03-data-protection
+¦   ¦   ¦   ¦   ¦   cisv81-03-data-protection-policy.md
+¦   ¦   ¦   ¦   ¦   README.md
+¦   ¦   ¦   ¦   ¦   
+¦   ¦   ¦   ¦   +---03-14-log-sensitive-data-access
+¦   ¦   ¦   ¦           03-14-log-sensitive-data-access.md
+¦   ¦   ¦   ¦           README.md
+¦   ¦   ¦   ¦           
+¦   ¦   ¦   +---04-secure-configuration-of-enterprise-assets-and-software
+¦   ¦   ¦   ¦       cisv81-04-secure-configuration-management-policy.md
+¦   ¦   ¦   ¦       READNE.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---05-account-management
+¦   ¦   ¦   ¦       cisv81-05-account-and-credential-management-policy.md
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---06-access-control-management
+¦   ¦   ¦   ¦       cisv81-06-access-control-management-policy.md
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---07-continuous-vulnerability-management
+¦   ¦   ¦   ¦       cisv81-07-vulnerability-management-policy.md
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---08-audit-log-management
+¦   ¦   ¦   ¦       cisv81-08-audit-log-management-policy.md
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---09-email-and-web-browser-protections
+¦   ¦   ¦   ¦       cisv81-09-email-and-web-browser-protections.md
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---10-malware-defenses
+¦   ¦   ¦   ¦       cisv81-10-malware-defenses-policy.md
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---11-data-recovery
+¦   ¦   ¦   ¦       cisv81-11-data-reovery-policy.md
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---12-network-infrastructure-management
+¦   ¦   ¦   ¦       cisv81-12-network-infrastructure-management-policy.md
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---13-network-monitoring-and-defense
+¦   ¦   ¦   ¦       cisv81-13-network-monitoring-and-defense-policy.md
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---14-security-awareness-and-skill-training
+¦   ¦   ¦   ¦       cisv81-14-security-awareness-and-skill-training-policy.md
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---15-service-provider-management
+¦   ¦   ¦   ¦       cisv81-15-service-provider-security.md
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---16-application-software-security
+¦   ¦   ¦   ¦       cisv81-16-account-monitoring.md
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---17-incident-response-management
+¦   ¦   ¦   ¦       cisv81-17-security-management.md
+¦   ¦   ¦   ¦       README.md
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---18-penetration-testing
+¦   ¦   ¦           cisv81-18-penetration-testing-policy.md
+¦   ¦   ¦           README.md
+¦   ¦   ¦           
+¦   ¦   +---cisv8-policy-templates
+¦   ¦   ¦       cisv81-01-inventory-and-control-of-enterprise-assets-template.md
+¦   ¦   ¦       cisv81-02-inventory-and-control-of-software-assets.md
+¦   ¦   ¦       cisv81-03-data-protection-template.md
+¦   ¦   ¦       cisv81-04-secure-configuration-of-enterprise-assets-and-software-template.md
+¦   ¦   ¦       cisv81-05-account-and-credential-management-policy-template.md
+¦   ¦   ¦       cisv81-06-access-control-management-policy-template.md
+¦   ¦   ¦       cisv81-07-vulnerability-management-policy-template.md
+¦   ¦   ¦       cisv81-08-audit-log-management-policy-template.md
+¦   ¦   ¦       cisv81-09-email-and-web-browser-protections-template.md
+¦   ¦   ¦       cisv81-09-email-and-web-browser-protections-trmplate.md
+¦   ¦   ¦       cisv81-10-malware-defenses-policy-template.md
+¦   ¦   ¦       cisv81-11-data-reovery-policy-template.md
+¦   ¦   ¦       cisv81-12-network-infrastructure-management-policy-template.md
+¦   ¦   ¦       cisv81-13-network-monitoring-and-defense-policy-template.md
+¦   ¦   ¦       cisv81-14-security-awareness-and-skill-training-policy-template.md
+¦   ¦   ¦       cisv81-15-service-provider-security-template.md
+¦   ¦   ¦       cisv81-16-account-monitoring-template.md
+¦   ¦   ¦       cisv81-17-incident-response-management-termplate.md
+¦   ¦   ¦       cisv81-18-penetration-testing-policy-template.md
+¦   ¦   ¦       README.md
+¦   ¦   ¦       
+¦   ¦   +---hardening-guides
+¦   ¦   ¦   ¦   README.md
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---ubuntu2404-server-lts-cis-l2-golden-image
+¦   ¦   ¦           aide-validation-ubuntu2404-lts-cis-golden-image.md
+¦   ¦   ¦           apparmor-overview-ubuntu2404-lts-cis-golden-image.md
+¦   ¦   ¦           chkrootkit-validation-ubuntu2404-lts-cis-golden-image.md
+¦   ¦   ¦           fail2ban-validation-ubuntu2404-lts-cis-golden-image.md
+¦   ¦   ¦           file-integrity-validation-ubuntu2404-lts-cis-golden-image.md
+¦   ¦   ¦           kernel-hardening-ubuntu2404-lts-cis-golden-image.md
+¦   ¦   ¦           lynis-validation-ubuntu2404-lts-cis-golden-image.md
+¦   ¦   ¦           README.md
+¦   ¦   ¦           rkhunter-validation-ubuntu2404-lts-cis-golden-image.md
+¦   ¦   ¦           unattended-upgrades-ubuntu2404-lts-cis-golden-image.md
+¦   ¦   ¦           
+¦   ¦   +---incident-response
+¦   ¦   ¦       README.md
+¦   ¦   ¦       
+¦   ¦   +---lab-security-policies
+¦   ¦   ¦       README.md
+¦   ¦   ¦       
+¦   ¦   +---security-monitoring
+¦   ¦           README.md
+¦   ¦           
+¦   +---documentation-processes
+¦   ¦       architecting-a-secure-lab.md
+¦   ¦       README.md
+¦   ¦       template-kb-general.md
+¦   ¦       template-kb-service.md
+¦   ¦       
+¦   +---entra-hybrid-cloud
+¦   ¦   ¦   README.md
+¦   ¦   ¦   
+¦   ¦   +---access-control
+¦   ¦   +---control-plane
+¦   ¦   +---identity-management
+¦   ¦           README.md
+¦   ¦           
+¦   +---itil-processes
+¦   ¦   ¦   README.md
+¦   ¦   ¦   
+¦   ¦   +---change-management
+¦   ¦   ¦       README.md
+¦   ¦   ¦       
+¦   ¦   +---incident-management
+¦   ¦   ¦       README.md
+¦   ¦   ¦       
+¦   ¦   +---problem-management
+¦   ¦   ¦       README.md
+¦   ¦   ¦       
+¦   ¦   +---service-catalog
+¦   ¦           README.md
+¦   ¦           
+¦   +---observatory-projects
+¦   ¦   ¦   README.md
+¦   ¦   ¦   
+¦   ¦   +---datasets
+¦   ¦   ¦       README.md
+¦   ¦   ¦       
+¦   ¦   +---hydrogen-line
+¦   ¦   ¦       README.md
+¦   ¦   ¦       
+¦   ¦   +---sdr-processing
+¦   ¦           README.md
+¦   ¦           
+¦   +---simulation-approach
+¦   ¦       README.md
+¦   ¦       
+¦   +---troubleshooting-procedures
+¦       ¦   README.md
+¦       ¦   
+¦       +---common-issues
+¦               README.md
+¦               
++---entra-hybrid-cloud
+¦   ¦   README.md
+¦   ¦   
+¦   +---azure-arc
+¦   +---conditional-access-policies
+¦   +---key-vaults
+¦   ¦       azure-key-vault-keyvault01.md
+¦   ¦       README.md
+¦   ¦       
+¦   +---private
+¦   ¦       baseline-access-geofencing-private.md
+¦   ¦       baseline-block-legacy-auth.md
+¦   ¦       baseline-mfa-intune-device-enrollment.md
+¦   ¦       baseline-mfa-join-register-devices.md
+¦   ¦       baseline-mfa-register-security-info.md
+¦   ¦       baseline-mfa-require-globally.md
+¦   ¦       baseline-mfa-risky-signins.md
+¦   ¦       
+¦   +---storage-services
+¦           azure-blob-keyvault01-backups.md
+¦           README.md
+¦           
++---infrastructure
+¦   ¦   proxmox-astronomy-lab-hardware-overview.md
+¦   ¦   README.md
+¦   ¦   
+¦   +---control-plane
+¦   ¦       lab-ansible01-automation-master.md
+¦   ¦       lab-apps01-docker-application-node.md
+¦   ¦       lab-db01-docker-database-node.md
+¦   ¦       lab-dc01-primary-domain-controller.md
+¦   ¦       lab-dc02-ro-domain-controller.md
+¦   ¦       lab-dns01-dns-filtering.md
+¦   ¦       lab-dns02-dns-filtering.md
+¦   ¦       lab-fs01-active-directory-file-shares.md
+¦   ¦       lab-mon01-prometheus-monitoring-logging-stack.md
+¦   ¦       lab-port01-portainer-control-node.md
+¦   ¦       lab-soc01-wazuh-seim-xdr.md
+¦   ¦       README.md
+¦   ¦       
+¦   +---kubernetes
+¦   ¦       proj-k8sm01-rancher-rke2-master-node-01.md
+¦   ¦       proj-k8sm02-rancher-rke2-master-node-02.md
+¦   ¦       proj-k8sm03-rancher-rke2-master-node-03.md
+¦   ¦       proj-k8sw01-rancher-rke2-worker-node-01.md
+¦   ¦       proj-k8sw02-rancher-rke2-worker-node-02.md
+¦   ¦       proj-k8sw03-rancher-rke2-worker-node-03.md
+¦   ¦       proj-k8sw04-rancher-rke2-worker-node-04.md
+¦   ¦       proj-k8sw05-rancher-rke2-worker-node-05.md
+¦   ¦       README.md
+¦   ¦       
+¦   +---networking
+¦   ¦       fw1-fortigate40f-edge-firewall.md
+¦   ¦       labswitch01-mokerlink-2g16210gsm.md
+¦   ¦       labswitch02-sodola-SL-swtg3c12f.md
+¦   ¦       README.md
+¦   ¦       
+¦   +---observatory-hardware
+¦   ¦       components-specifications.md
+¦   ¦       hydrogen-line-feed-chain.md
+¦   ¦       README.md
+¦   ¦       
+¦   +---projects
+¦   ¦       proj-apps01-docker-application-node.md
+¦   ¦       proj-fs01-active-directory-file-shares.md
+¦   ¦       proj-kasm01-kasm-workspaces-vdi-server.md
+¦   ¦       proj-pg01-postgresql.md
+¦   ¦       proj-pggis01-prostresql-with-gis.md
+¦   ¦       proj-pgts01-timescale.md
+¦   ¦       proj-rds01-staff-vdi.md
+¦   ¦       README.md
+¦   ¦       
+¦   +---proxmox
+¦   ¦       node01-proxmox-compute.md
+¦   ¦       node02-proxmox-compute.md
+¦   ¦       node03-proxmox-compute-md
+¦   ¦       node04-proxmox-gpu-hpc.md
+¦   ¦       node05-proxmox-zfs-storage.md
+¦   ¦       README.md
+¦   ¦       
+¦   +---storage
+¦           README.md
+¦           
++---itil
+¦       README.md
+¦       
++---k8s-rancher-rke2
++---lab-services
+¦   ¦   README.md
+¦   ¦   
+¦   +---database-guis
+¦       ¦   README.md
+¦       ¦   
+¦       +---milvus-attu
+¦       ¦       README.md
+¦       ¦       
+¦       +---pgadmin
+¦       ¦       README.md
+¦       ¦       
+¦       +---phpmyadmin
+¦       ¦       README.md
+¦       ¦       
+¦       +---redis-commander
+¦               README.md
+¦               
++---monitoring
+¦   ¦   README.md
+¦   ¦   
+¦   +---alertmanager
+¦   ¦       README.md
+¦   ¦       
+¦   +---grafana
+¦   ¦   ¦   README.md
+¦   ¦   ¦   
+¦   ¦   +---dashboards
+¦   ¦           README.md
+¦   ¦           
+¦   +---loki
+¦   ¦   ¦   README.md
+¦   ¦   ¦   
+¦   ¦   +---config-files
+¦   ¦           config.yml
+¦   ¦           
+¦   +---prometheus
+¦   ¦   ¦   prometheus-event-management-and-alerting-overview.md
+¦   ¦   ¦   prometheus-itil-sacm.md
+¦   ¦   ¦   README.md
+¦   ¦   ¦   
+¦   ¦   +---config-files
+¦   ¦           prometheus.yml
+¦   ¦           
+¦   +---proxmox-cluster-monitoring
+¦           README.md
+¦           
++---observatory-and-projects
+    ¦   README.md
+    ¦   
+    +---hydrogen-line-hvc
+    ¦   +---scripts
+    ¦           README.md
+    ¦           
+    +---low-surface-brightness-galaxies
+    ¦       README.md
+    ¦       
+    +---snr-discovery-mapping
+            README.md
+            

@@ -1,8 +1,20 @@
+---
+title: "Proxmox Astronomy Lab"
+description: "A scalable, AI-enhanced research infrastructure for radio astronomy and scientific computing, combining Proxmox, Kubernetes, AI/ML, and modern IT automation."
+author: "VintageDon"
+tags: ["proxmox", "radio-astronomy", "hydrogen-line", "kubernetes", "infrastructure", "documentation", "ai-ml", "sdr"]
+category: "Project Overview"
+kb_type: "Reference"
+version: "1.0"
+status: "Published"
+last_updated: "2025-03-09"
+---
+
 # **Proxmox Astronomy Lab**  
 
 ## A Scalable, AI-Enhanced Research Infrastructure for Radio Astronomy and Scientific Computing
 
-The **Proxmox Astronomy Lab** is a **high-performance research environment** designed for **Hydrogen Line Radio Astronomy, AI-driven SDR signal processing, and secure, remote collaboration**. The lab combines **Proxmox, Kubernetes, AI/ML, and modern IT automation** to create a **reproducible, scalable** research platform.
+The **Proxmox Astronomy Lab** is a **high-performance research environment** designed for **Hydrogen Line Radio Astronomy, AI-driven SDR signal processing, and secure, remote collaboration**. The lab combines **Proxmox, Kubernetes, AI/ML, and modern IT automation** to create a **reproducible, scalable** research platform built on enterprise-grade practices and open-source technologies.
 
 At its core, the lab is **a fusion of IT engineering and citizen science**—designed not just for **scientific discovery**, but also as a **structured and documented template** for others to replicate. Everything here is designed with **reproducibility, automation, and high-performance computing** in mind.
 
@@ -15,6 +27,18 @@ At its core, the lab is **a fusion of IT engineering and citizen science**—des
 | **📡 Hydrogen Line Radio Astronomy** | AI-enhanced SDR processing for HVCs, LSBJs, and SNR discovery. A research-grade **SDR observation station** built for **precision Doppler shift analysis** and **long-term hydrogen line tracking**. |
 | **🔐 Secure Remote Research & IT Lab** | External researchers & IT professionals can securely access the lab for **radio astronomy data analysis, AI workloads, and IT infrastructure testing**, with **policy-driven access controls**. |
 | **📖 Reproducible Documentation & AI Integration** | **Comprehensive GitHub-based documentation** and **public-facing research notes** to help others replicate a high-performance, AI-driven research environment. AI-powered **Retrieval-Augmented Generation (RAG)** allows for **contextual querying** of documentation, policies, and workflows. |
+
+---
+
+## **🧭 Quick Navigation**
+
+| **Area** | **What You'll Find** |
+|----------|---------------------|
+| [**📡 Research Focus**](#-hydrogen-line-radio-astronomy--ai-powered-sdr-research) | Scientific objectives, hardware setup, and research methodology |
+| [**🔐 Lab Infrastructure**](#-lab-infrastructure--proxmox-kubernetes-and-high-performance-storage) | Compute, storage, and network architecture details |
+| [**🛡️ Security Framework**](#-secure-research-lab--remote-access-for-external-collaboration) | Access controls, compliance, and collaboration mechanisms |
+| [**📚 Documentation**](#-reproducible-documentation--ai-powered-knowledge-base) | Knowledge base structure and AI-enhanced documentation |
+| [**🗺️ Project Roadmap**](ROADMAP.md) | Implementation phases and current status |
 
 ---
 
@@ -83,12 +107,15 @@ One of the **unique aspects** of this lab is that it's not just for personal res
 
 ## **📖 Reproducible Documentation & AI-Powered Knowledge Base**  
 
-The **Proxmox Astronomy Lab** is not just about research—it's about **documenting everything in a way that others can follow and replicate**.  
+The **Proxmox Astronomy Lab** is not just about research—it's about **documenting everything in a way that others can follow and replicate**. Our documentation covers everything from infrastructure and security to research methodologies and data processing workflows.
 
 ### **📚 Structured Documentation & Public Knowledge Base**
 
-- **GitHub Repository**: All **infrastructure, scripts, and workflows** are public.  
-- **Step-by-step guides**: From **infrastructure deployment to SDR processing**.  
+- **GitHub Repository**: All **infrastructure, scripts, and workflows** are public and version-controlled.
+- **Step-by-step guides**: From **infrastructure deployment to SDR processing**.
+- **Security & Compliance**: Complete **CISv8 implementation** with mappings to **NIST and ISO 27001**.
+- **ITIL Processes**: Structured **change management, incident response, and service catalogs**.
+- **Research Methodologies**: Detailed procedures for **Hydrogen Line observation and analysis**.
 
 ### **🧠 AI-Powered Documentation Search (RAG + Milvus + OpenWebUI)**
 
@@ -121,14 +148,14 @@ One of the biggest challenges in complex projects is **finding relevant document
 
 The lab is being implemented in structured phases, with clear milestones and documentation for each:
 
-| **Phase** | **Focus** | **Status** |
-|-----------|----------|--------------|
-| **Phase 1** | Core Infrastructure Foundation | ✅ Complete |
-| **Phase 2** | Structured Services & Research Validation | ✅ Complete |
-| **Phase 3** | Application Deployment & Research Infrastructure | 🚧 In Progress |
-| **Phase 4** | Research Workflows & Public Data Integration | ⏳ Upcoming |
+| **Phase** | **Focus** | **Status** | **Key Deliverables** |
+|-----------|----------|--------------|---------------------|
+| [**Phase 1**](phase-1.md) | Core Infrastructure Foundation | ✅ Complete | Proxmox cluster, network segmentation, security baseline |
+| [**Phase 2**](phase-2.md) | Structured Services & Research Validation | ✅ Complete | ITSM framework, monitoring stack, initial SDR validation |
+| [**Phase 3**](phase-3.md) | Application Deployment & Research Infrastructure | 🚧 In Progress | Kubernetes workloads, AI pipelines, SDR data flow |
+| [**Phase 4**](phase-4.md) | Research Workflows & Public Data Integration | ⏳ Upcoming | Real-time processing, public datasets, research dashboards |
 
-📌 See the [ROADMAP.md](ROADMAP.md) for detailed information on each phase.
+📌 See the [ROADMAP.md](ROADMAP.md) for detailed information on each phase and implementation timeline.
 
 ---
 
@@ -156,7 +183,14 @@ git clone https://github.com/yourusername/proxmox-astronomy-lab.git
 cd proxmox-astronomy-lab
 ```
 
-💡 **Check out** `docs/` for **setup guides, SDR processing workflows, and infrastructure details**.
+📚 **Key Starting Points:**
+
+- [**Infrastructure Overview**](docs/infrastructure/README.md) - Lab hardware and architecture
+- [**ITIL Simulation Approach**](docs/simulation-approach/README.md) - How enterprise IT practices are implemented
+- [**Observatory Projects**](docs/observatory-projects/README.md) - Scientific research focus areas
+- [**CISv8 Compliance Framework**](docs/compliance-security/cisv8-controls/README.md) - Security implementation
+
+💡 Check out the complete [**Documentation Structure**](docs/README.md) for a comprehensive guide to all resources.
 
 ---
 

@@ -1,3 +1,4 @@
+<!--
 ---
 title: "Proxmox Astronomy Lab"
 description: "A scalable, AI-enhanced research infrastructure for radio astronomy and scientific computing, combining Proxmox, Kubernetes, AI/ML, and modern IT automation."
@@ -9,6 +10,7 @@ version: "1.0"
 status: "Published"
 last_updated: "2025-03-09"
 ---
+-->
 
 # **Proxmox Astronomy Lab**  
 

@@ -226,14 +226,3 @@ This lab builds on the work of many open-source projects and communities, partic
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
-## 🤖 AI Transparency and Ethical Use  
-
-We track **which AI models contributed**, how they were used, and ensure all content undergoes **final human verification** before publication.  
-
-| **Step** | **AI Model(s) Used** | **Purpose** | **Human Reviewer** | **Final Approval** |
-|----------|----------------------|-------------|--------------------|----------------|
-| Initial Draft | ChatGPT-4 (Pro) | Structured KB generation, metadata tagging | VintageDon | ✅ Approved |
-| Model Crosscheck | Claude 3.7 Sonnet | Refinements, clarity, formatting | VintageDon | ✅ Approved |
-| Compliance Cross-Check | None | Manual review | VintageDon | ✅ Approved |
-
-🔹 **AI is a tool, not an autonomous author.** Every article undergoes **strict human review and fact-checking** before publishing.

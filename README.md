@@ -12,9 +12,9 @@ last_updated: "2025-03-09"
 ---
 -->
 
-# **Proxmox Astronomy Lab**  
+ ![proxmox-astronomy-lab-logo](/assets/images/proxmox-astronomy-lab-logo.jpg)
 
-## A Scalable, AI-Enhanced Research Infrastructure for Radio Astronomy and Scientific Computing
+# A Scalable, AI-Enhanced Research Infrastructure for Radio Astronomy and Scientific Computing
 
 The **Proxmox Astronomy Lab** is a **high-performance research environment** designed for **Hydrogen Line Radio Astronomy, AI-driven SDR signal processing, and secure, remote collaboration**. The lab combines **Proxmox, Kubernetes, AI/ML, and modern IT automation** to create a **reproducible, scalable** research platform built on enterprise-grade practices and open-source technologies.
 
@@ -29,6 +29,8 @@ At its core, the lab is **a fusion of IT engineering and citizen science**—des
 | **📡 Hydrogen Line Radio Astronomy** | AI-enhanced SDR processing for HVCs, LSBJs, and SNR discovery. A research-grade **SDR observation station** built for **precision Doppler shift analysis** and **long-term hydrogen line tracking**. |
 | **🔐 Secure Remote Research & IT Lab** | External researchers & IT professionals can securely access the lab for **radio astronomy data analysis, AI workloads, and IT infrastructure testing**, with **policy-driven access controls**. |
 | **📖 Reproducible Documentation & AI Integration** | **Comprehensive GitHub-based documentation** and **public-facing research notes** to help others replicate a high-performance, AI-driven research environment. AI-powered **Retrieval-Augmented Generation (RAG)** allows for **contextual querying** of documentation, policies, and workflows. |
+
+ ![proxmox-astronomy-lab-sff-hardware](/assets/images/lab-hardware/proxmox-astronomy-lab-sff-hardware.jpg)
 
 ---
 
@@ -47,6 +49,8 @@ At its core, the lab is **a fusion of IT engineering and citizen science**—des
 ## **🚀 Hydrogen Line Radio Astronomy – AI-Powered SDR Research**  
 
 Radio astronomy has traditionally required **large, expensive facilities**—but modern **Software-Defined Radio (SDR) technology, AI, and advanced computing** are changing that. This lab is designed to **push the limits of what's possible in a home-based, research-grade Hydrogen Line observation setup**.
+
+ ![nooelec-h1-parabolic-dish-antenna](/assets/images/nooelec-h1-parabolic-dish-antenna.jpg)
 
 The primary scientific focus is on **three key research areas**:  
 
@@ -70,6 +74,8 @@ A major challenge in **amateur radio astronomy** is **weak signals buried in noi
 | **📡 SDR (Receiver)** | Airspy R2 | High dynamic range SDR for precise Hydrogen Line analysis. |
 | **📡 Clock Source** | GPS-Disciplined Oscillator (GPSDO) | Provides precise timing for Doppler shift calculations. |
 | **📡 Edge Processing** | N100 Mini PC | First-stage SDR signal processing before lab transfer. |
+
+ ![hydrogen-line-graph-gnu-radio](/assets/images/hydrogen-line-graph-gnu-radio.jpg)
 
 🛰 **Data Processing**:  
 
@@ -126,6 +132,10 @@ One of the biggest challenges in complex projects is **finding relevant document
 - **Research papers & Hydrogen Line methodology**  
 - **Infrastructure configurations & compliance policies**  
 - **Custom workflows for AI-powered SDR processing**  
+
+### HPC Proxmox GPU Node w/RTXA4000 GPU, 5950X and 128GB of RAM
+
+ ![proxmox-astronomy-lab-node04](/assets/images/lab-hardware/proxmox-astronomy-lab-node04.jpg)
 
 🚀 **The result?** A **context-aware, AI-enhanced research assistant** that helps users navigate and understand the lab's resources **efficiently**.
 

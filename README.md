@@ -165,7 +165,7 @@ One of the biggest challenges in complex projects is **finding relevant document
 |--------------|-------------------|
 | **Compute Nodes** | 3 × Ryzen 5700U (64GB RAM, 2TB NVMe) |
 | **High-Performance Node** | Ryzen 5950X (128GB RAM, 4TB NVMe, RTX A4000) |
-| **Storage** | UnRAID NAS (8×8TB HDD RAID6 + NVMe Cache) |
+| **Storage** | Proxmox Node05, ZFS 8×8TB HDD RAID10 + NVMe partition as a SLOG |
 | **Network** | Dual 10G SFP for high-speed data transfer |
 
 💾 **Storage Architecture**:  

@@ -14,6 +14,22 @@ last_updated: "2025-03-09"
 
  ![proxmox-astronomy-lab-logo](/assets/images/proxmox-astronomy-lab-logo.jpg)
 
+<p align="center">
+  <h1 align="center">Proxmox Astronomy Lab</h1>
+  <p align="center">
+    A structured research environment for radio astronomy, AI-driven signal processing, and advanced IT automation.
+  </p>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/github/stars/VintageDon/proxmox-astronomy-lab?style=social" alt="Stars">
+  <img src="https://img.shields.io/github/forks/VintageDon/proxmox-astronomy-lab?style=social" alt="Forks">
+  <img src="https://img.shields.io/github/issues/VintageDon/proxmox-astronomy-lab" alt="Issues">
+  <img src="https://img.shields.io/github/issues-pr/VintageDon/proxmox-astronomy-lab" alt="Pull Requests">
+  <img src="https://img.shields.io/github/contributors/VintageDon/proxmox-astronomy-lab" alt="Contributors">
+  <img src="https://img.shields.io/badge/license-MIT-green" alt="License">
+</p>
+
 # A Scalable, AI-Enhanced Research Infrastructure for Radio Astronomy and Scientific Computing
 
 The **Proxmox Astronomy Lab** is a **high-performance research environment** designed for **Hydrogen Line Radio Astronomy, AI-driven SDR signal processing, and secure, remote collaboration**. The lab combines **Proxmox, Kubernetes, AI/ML, and modern IT automation** to create a **reproducible, scalable** research platform built on enterprise-grade practices and open-source technologies.

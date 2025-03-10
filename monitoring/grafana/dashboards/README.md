@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Grafana Dashboards - Proxmox Astronomy Lab"
 description: "Documentation for Grafana dashboards, including their purpose, sources, and associated screenshots."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-09"
 ---
+ -->
 
 # **Grafana Dashboards**
 
@@ -193,3 +194,4 @@ Example: `gitea-repository-screenshot.png`
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-09 | Initial documentation | VintageDon |
+

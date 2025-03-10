@@ -1,4 +1,4 @@
-﻿---
+<!-- ---
 title: "[Service Name]"
 description: "Service documentation for [Service Name] in the Proxmox Astronomy Lab"
 author: "[Author Name]"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "[Draft/Published/Under Review]"
 last_updated: "YYYY-MM-DD"
 ---
+ -->
 
 # **[Service Name] Service**
 
@@ -165,7 +166,7 @@ Brief description of any planned improvements or changes to the service.
 
 ---
 
-## **âœ… Approval & Review**
+## **✅ Approval & Review**
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
@@ -173,9 +174,10 @@ Brief description of any planned improvements or changes to the service.
 
 ---
 
-## **ðŸ“œ Change Log**
+## **📜 Change Log**
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | YYYY-MM-DD | Initial version | [Author] |
+
 

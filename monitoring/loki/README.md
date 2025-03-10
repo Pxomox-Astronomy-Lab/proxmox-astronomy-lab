@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Loki Logging System - Proxmox Astronomy Lab"
 description: "Documentation for Loki, including configuration and logging structure."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-09"
 ---
+ -->
 
 # **Loki Logging System**
 
@@ -204,3 +205,4 @@ Loki logs are **visualized in Grafana**, allowing for **real-time querying** usi
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-09 | Initial documentation | VintageDon |
+

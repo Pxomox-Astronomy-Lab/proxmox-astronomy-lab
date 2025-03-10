@@ -1,4 +1,4 @@
-﻿---
+<!-- ---
 title: "Proj-KASM01 Service Documentation"
 description: "Comprehensive ITIL-aligned documentation of Proj-KASM01, including infrastructure, security policies, and service management details."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-07"
 ---
+ -->
 
 # **Proj-KASM01 Service**  
 
@@ -46,9 +47,9 @@ This node ensures **segmented and controlled access to virtualized environments*
 
 | **Metric** | **Target** | **Measurement Method** |
 |------------|----------|------------------------|
-| **Session Startup Time** | â‰¤ 10s | Kasm logs |
+| **Session Startup Time** | ≤ 10s | Kasm logs |
 | **Uptime** | 99.99% | Prometheus alerts |
-| **Backup Sync Interval** | â‰¤ 1 day | Proxmox Backup Server logs |
+| **Backup Sync Interval** | ≤ 1 day | Proxmox Backup Server logs |
 | **Recovery Time** | RTO: 4 hours | Restore test validation |
 
 ### **2.2 Monitoring and Reporting**  
@@ -126,7 +127,7 @@ Proj-KASM01 runs **Kasm Workspaces on Ubuntu 24.04**, providing **containerized,
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-07 | â± Pending |
+| VintageDon | Lead Engineer | 2025-03-07 | ⏱ Pending |
 
 ---
 
@@ -135,4 +136,5 @@ Proj-KASM01 runs **Kasm Workspaces on Ubuntu 24.04**, providing **containerized,
 | **Version** | **Date** | **Changes** |
 |------------|---------|-------------|
 | 1.0 | 2025-03-07 | Initial version, defines Proj-KASM01 as the Kasm Workspaces virtual desktop infrastructure server |
+
 

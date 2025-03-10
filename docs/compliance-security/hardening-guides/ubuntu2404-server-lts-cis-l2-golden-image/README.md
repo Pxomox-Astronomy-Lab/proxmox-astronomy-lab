@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Ubuntu 24.04 LTS CIS Level 2 Golden Image Validation"
 category: "Compliance & Security Hardening"
 version: "1.0"
@@ -11,6 +11,7 @@ compliance_mappings:
   - "ISO 27001: A.12.6.1, A.14.2.2"
 tags: ["golden image", "CIS benchmark", "Linux hardening", "security validation", "compliance"]
 ---
+ -->
 
 ## **1. Purpose**  
 
@@ -251,3 +252,4 @@ By following this validation process, we ensure that the **golden image is conti
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
+

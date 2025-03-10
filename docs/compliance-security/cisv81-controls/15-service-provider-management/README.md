@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "README - CIS Control 15: Service Provider Management"
 description: "An overview of CIS Control 15 and its implementation within the Proxmox Astronomy Lab, ensuring structured vendor management and compliance."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-04"
 ---
+ -->
 
 # **📜 README - CIS Control 15: Service Provider Management**
 
@@ -121,3 +122,4 @@ Only **approved vendors** may be used for enterprise services.
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-04 | Initial version | VintageDon |
+

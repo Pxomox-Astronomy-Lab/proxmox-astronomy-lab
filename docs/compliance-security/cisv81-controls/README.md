@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "CISv8.1 Controls – Proxmox Astronomy Lab Compliance Framework"
 description: "This document provides an overview of the CIS Critical Security Controls (v8.1) as implemented in the Proxmox Astronomy Lab. It links to all relevant policy documents and templates."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-03"
 ---
+ -->
 
 # **📜 CISv8.1 Controls – Proxmox Astronomy Lab Compliance Framework**
 
@@ -94,3 +95,4 @@ The **Proxmox Astronomy Lab** follows CISv8.1 standards with **customized securi
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
+

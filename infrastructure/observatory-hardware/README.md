@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Observatory Hardware - Proxmox Astronomy Lab"
 description: "Documentation of radio astronomy hardware, feed chain components, and signal processing equipment used in the Proxmox Astronomy Lab for Hydrogen Line observations."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Published"
 last_updated: "2025-03-08"
 ---
+ -->
 
 # **Observatory Hardware - Proxmox Astronomy Lab**
 
@@ -284,3 +285,4 @@ This infrastructure establishes a foundation for meaningful contributions to hyd
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-08 | Initial version | VintageDon |
+

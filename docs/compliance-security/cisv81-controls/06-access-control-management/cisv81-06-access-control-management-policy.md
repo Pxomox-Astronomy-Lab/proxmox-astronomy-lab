@@ -1,4 +1,4 @@
-﻿---
+<!-- ---
 title: "CISv8-06 Access Control Management Policy"
 description: "Defines the access control management policy for the Proxmox Astronomy Lab, enforcing role-based access control (RBAC), multi-factor authentication (MFA), conditional access, and continuous monitoring to prevent unauthorized access."
 author: "VintageDon"
@@ -9,8 +9,9 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-03"
 ---
+ -->
 
-# **ðŸ“œ CISv8-06 Access Control Management Policy**
+# **📜 CISv8-06 Access Control Management Policy**
 
 ## **1. Overview**
 
@@ -40,9 +41,9 @@ This policy aligns with **industry security frameworks** to maintain best practi
 
 | **Framework** | **Control Mapping** |
 |--------------|------------------|
-| **CISv8** | CIS Control 6 â€“ Access Control Management |
-| **NIST 800-53** | AC-6 â€“ Least Privilege Enforcement |
-| **ISO 27001** | A.9.1 â€“ Access Control Policies |
+| **CISv8** | CIS Control 6 – Access Control Management |
+| **NIST 800-53** | AC-6 – Least Privilege Enforcement |
+| **ISO 27001** | A.9.1 – Access Control Policies |
 
 ---
 
@@ -160,19 +161,20 @@ Access revocation occurs **immediately upon termination**:
 
 ---
 
-## **âœ… Approval & Review**  
+## **✅ Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-03 | âœ… DRAFT |  
+| VintageDon | Lead Engineer | 2025-03-03 | ✅ DRAFT |  
 
 ---
 
-## **ðŸ“œ Change Log**  
+## **📜 Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
 
-ðŸš€ **This policy ensures that access control security remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+🚀 **This policy ensures that access control security remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+
 

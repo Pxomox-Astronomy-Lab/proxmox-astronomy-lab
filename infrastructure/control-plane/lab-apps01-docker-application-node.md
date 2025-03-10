@@ -1,4 +1,4 @@
-﻿---
+<!-- ---
 title: "Lab-Apps01 Service Documentation"
 description: "Comprehensive ITIL-aligned documentation of Lab-Apps01, including infrastructure, security policies, and service management details."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-07"
 ---
+ -->
 
 # **Lab-Apps01 Service**  
 
@@ -47,8 +48,8 @@ This node is part of the **Portainer-managed cluster**, ensuring **standardized 
 | **Metric** | **Target** | **Measurement Method** |
 |------------|----------|------------------------|
 | **Application Uptime** | 99.99% | Prometheus monitoring |
-| **Container Start Time** | â‰¤ 5s | Docker stats |
-| **Backup Sync Interval** | â‰¤ 1 day | Proxmox Backup Server logs |
+| **Container Start Time** | ≤ 5s | Docker stats |
+| **Backup Sync Interval** | ≤ 1 day | Proxmox Backup Server logs |
 | **Recovery Time** | RTO: 4 hours | Restore test validation |
 
 ### **2.2 Monitoring and Reporting**  
@@ -128,7 +129,7 @@ Lab-Apps01 is a **Portainer worker node** controlled by **Lab-Port01**, running 
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-07 | â± Pending |
+| VintageDon | Lead Engineer | 2025-03-07 | ⏱ Pending |
 
 ---
 
@@ -137,4 +138,5 @@ Lab-Apps01 is a **Portainer worker node** controlled by **Lab-Port01**, running 
 | **Version** | **Date** | **Changes** |
 |------------|---------|-------------|
 | 1.0 | 2025-03-07 | Initial version, defines Lab-Apps01 as a Portainer worker node controlled by Lab-Port01 |
+
 

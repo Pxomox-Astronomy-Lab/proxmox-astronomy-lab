@@ -1,4 +1,4 @@
-﻿---
+<!-- ---
 title: "CISv8-01 Enterprise Asset Management Policy"
 description: "Defines the asset management policy for the Proxmox Astronomy Lab, ensuring accurate tracking, monitoring, and security of all IT assets in compliance with CISv8, NIST 800-53, and ISO 27001."
 author: "VintageDon"
@@ -9,8 +9,9 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-03"
 ---
+ -->
 
-# **ðŸ“œ CISv8-01 Enterprise Asset Management Policy**
+# **📜 CISv8-01 Enterprise Asset Management Policy**
 
 ## **1. Overview**
 
@@ -46,9 +47,9 @@ This policy aligns with industry compliance frameworks to ensure best practices 
 
 | **Framework** | **Control Mapping** |
 |--------------|------------------|
-| **CISv8** | CIS Control 1 â€“ Inventory & Control of Enterprise Assets |
-| **NIST 800-53** | CM-8, CM-9 â€“ Asset Management & Monitoring |
-| **ISO 27001** | A.8.1 â€“ Asset Inventory & Classification |
+| **CISv8** | CIS Control 1 – Inventory & Control of Enterprise Assets |
+| **NIST 800-53** | CM-8, CM-9 – Asset Management & Monitoring |
+| **ISO 27001** | A.8.1 – Asset Inventory & Classification |
 
 ---
 
@@ -162,19 +163,20 @@ Proper decommissioning ensures that **assets are securely retired** without secu
 
 ---
 
-## **âœ… Approval & Review**  
+## **✅ Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-03 | âœ… Approved |  
+| VintageDon | Lead Engineer | 2025-03-03 | ✅ Approved |  
 
 ---
 
-## **ðŸ“œ Change Log**  
+## **📜 Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
 
-ðŸš€ **This policy ensures that enterprise asset management remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+🚀 **This policy ensures that enterprise asset management remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+
 

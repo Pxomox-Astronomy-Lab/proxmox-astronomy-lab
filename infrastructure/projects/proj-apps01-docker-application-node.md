@@ -1,4 +1,4 @@
-﻿---
+<!-- ---
 title: "Proj-Apps01 Service Documentation"
 description: "Comprehensive ITIL-aligned documentation of Proj-Apps01, including infrastructure, security policies, and service management details."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.3"
 status: "Draft"
 last_updated: "2025-03-07"
 ---
+ -->
 
 # **Proj-Apps01 Service**  
 
@@ -47,8 +48,8 @@ This server is optimized for **microservices, visualization dashboards, API mana
 | **Metric** | **Target** | **Measurement Method** |
 |------------|----------|------------------------|
 | **Application Uptime** | 99.99% | Prometheus monitoring |
-| **Container Start Time** | â‰¤ 5s | Docker stats |
-| **Backup Sync Interval** | â‰¤ 1 day | Proxmox Backup Server logs |
+| **Container Start Time** | ≤ 5s | Docker stats |
+| **Backup Sync Interval** | ≤ 1 day | Proxmox Backup Server logs |
 | **Recovery Time** | RTO: 4 hours | Restore test validation |
 
 ### **2.2 Monitoring and Reporting**  
@@ -129,7 +130,7 @@ Proj-Apps01 is a **Docker-based application server** running **Portainer** for *
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-07 | â± Pending |
+| VintageDon | Lead Engineer | 2025-03-07 | ⏱ Pending |
 
 ---
 
@@ -138,4 +139,5 @@ Proj-Apps01 is a **Docker-based application server** running **Portainer** for *
 | **Version** | **Date** | **Changes** |
 |------------|---------|-------------|
 | 1.3 | 2025-03-07 | Fully aligned with service documentation template, restored missing sections |
+
 

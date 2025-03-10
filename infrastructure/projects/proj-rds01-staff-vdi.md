@@ -1,4 +1,4 @@
-﻿---
+<!-- ---
 title: "RDS01 Service Documentation"
 description: "Comprehensive ITIL-aligned documentation of RDS01, including infrastructure, security policies, and service management details."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-07"
 ---
+ -->
 
 # **RDS01 Service**  
 
@@ -47,7 +48,7 @@ All access to RDS01 is **strictly controlled via Entra Private Access**, ensurin
 | **Metric** | **Target** | **Measurement Method** |
 |------------|----------|------------------------|
 | **RDS Availability** | 99.9% uptime | Prometheus monitoring |
-| **Session Latency** | â‰¤ 100ms | Grafana network monitoring |
+| **Session Latency** | ≤ 100ms | Grafana network monitoring |
 | **MFA Compliance** | 100% | Entra ID logs |
 | **Recovery Time** | RTO: 4 hours | VM restore test |
 
@@ -160,9 +161,10 @@ RDS01 is a **Windows Server 2025-based Remote Desktop Services (RDS) host**, pro
 
 ---
 
-## **âœ… Approval & Review**  
+## **✅ Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-07 | â± Pending |
+| VintageDon | Lead Engineer | 2025-03-07 | ⏱ Pending |
+
 

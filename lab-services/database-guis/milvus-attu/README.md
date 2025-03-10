@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Attu - Milvus Vector Database Management GUI"
 description: "Documentation for Attu, the graphical user interface for managing Milvus vector database instances."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-09"
 ---
+ -->
 
 # **Attu - Milvus Vector Database Management GUI**
 
@@ -73,3 +74,4 @@ Attu is a **web-based management tool** for **Milvus vector databases**, providi
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-09 | Initial documentation, renamed to Attu | VintageDon |
+

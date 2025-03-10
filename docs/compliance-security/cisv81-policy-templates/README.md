@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "CISv8.1 Policy Templates – Proxmox Astronomy Lab Compliance Framework"
 description: "This document provides an overview of the CIS Critical Security Controls (v8.1) policy templates, designed for customization and implementation in compliance-driven environments, including the Proxmox Astronomy Lab."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-03"
 ---
+ -->
 
 # **📜 CISv8.1 Policy Templates – Proxmox Astronomy Lab Compliance Framework**
 
@@ -102,3 +103,4 @@ The following table lists all available **CISv8.1 security policy templates**, l
 ---
 
 This **README** serves as the **entry point for policy customization** in the **CISv8.1 compliance framework** within the **Proxmox Astronomy Lab**. Let me know if you need modifications! 🚀
+

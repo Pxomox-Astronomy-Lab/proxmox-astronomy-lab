@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Proxmox Nodes - Proxmox Astronomy Lab"
 description: "Comprehensive overview of the Proxmox nodes that form the foundation of the Proxmox Astronomy Lab, including compute specifications, networking, virtualization, and performance characteristics."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Published"
 last_updated: "2025-03-08"
 ---
+ -->
 
 # **Proxmox Nodes - Proxmox Astronomy Lab**
 
@@ -272,3 +273,4 @@ The Proxmox cluster is designed for **scalable expansion**:
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-08 | Initial documentation | VintageDon |
+

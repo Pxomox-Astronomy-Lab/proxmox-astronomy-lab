@@ -1,4 +1,4 @@
-﻿---
+<!-- ---
 title: "Node03 Service Documentation"
 description: "Comprehensive ITIL-aligned documentation of Node03, including infrastructure, security, compliance, and service management details."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-07"
 ---
+ -->
 
 # **Node03 Service**  
 
@@ -153,17 +154,18 @@ Node03 runs on **Proxmox VE**, providing **database, DNS, and compute resources*
 
 ---
 
-## **âœ… Approval & Review**  
+## **✅ Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-07 | â± Pending |
+| VintageDon | Lead Engineer | 2025-03-07 | ⏱ Pending |
 
 ---
 
-## **ðŸ“œ Change Log**  
+## **📜 Change Log**  
 
 | **Version** | **Date** | **Changes** |
 |------------|---------|-------------|
 | 1.0 | 2025-03-07 | Initial documentation for Node03 with service classification, dependencies, access management, and compliance details |
+
 

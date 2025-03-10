@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Lab-DB01 Portainer Docker Database Node"
 description: "Documentation for the Lab-DB01 Portainer worker node, detailing its role in hosting containerized database services for the control plane."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Published"
 last_updated: "2025-03-09"
 ---
+ -->
 
 # **Lab-DB01 Portainer Docker Database Node**
 
@@ -263,3 +264,4 @@ Additional resources provide detailed information on database-specific configura
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-09 | Initial documentation | VintageDon |
+

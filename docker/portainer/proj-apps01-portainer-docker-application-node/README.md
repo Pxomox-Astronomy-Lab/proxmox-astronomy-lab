@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Proj-Apps01 Portainer Docker Application Node"
 description: "Documentation for the Proj-Apps01 Portainer worker node, detailing its role in hosting project-specific applications and services."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Published"
 last_updated: "2025-03-09"
 ---
+ -->
 
 # **Proj-Apps01 Portainer Docker Application Node**
 

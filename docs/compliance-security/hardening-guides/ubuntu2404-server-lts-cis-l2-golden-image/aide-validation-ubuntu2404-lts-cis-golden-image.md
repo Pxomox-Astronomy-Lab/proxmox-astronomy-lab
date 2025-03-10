@@ -1,4 +1,4 @@
-﻿---
+<!-- ---
 title: "Golden Image Integrity Verification - AIDE"
 description: "Verification of the Proxmox Astronomy Lab's golden image using AIDE to confirm system integrity, detect unauthorized modifications, and ensure compliance with CISv8 standards."
 author: "VintageDon"
@@ -9,8 +9,9 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-04"
 ---
+ -->
 
-# **ðŸ” Golden Image Integrity Verification - AIDE**
+# **🔍 Golden Image Integrity Verification - AIDE**
 
 ## **1. Purpose**
 
@@ -56,11 +57,11 @@ f+++++++++++++++++: /usr/src/linux-headers-6.8.0-54-generic/include/config/PCI_X
 f+++++++++++++++++: /usr/src/linux-headers-6.8.0-54-generic/include/config/PCMCIA
 ```
 
-**ðŸ”¹ Explanation**:
+**🔹 Explanation**:
 
 - `f+++++++++++++++++` indicates **newly added files**.
 - These files belong to **kernel header updates**, which occur when **new modules or hardware support are introduced**.
-- **No action required**â€”this is an expected change.
+- **No action required**—this is an expected change.
 
 ---
 
@@ -75,16 +76,16 @@ Socket: /var/spool/postfix/public/qmgr
  Inode     : 135368                           | 131164
 ```
 
-**ðŸ”¹ Explanation**:
+**🔹 Explanation**:
 
 - These sockets change **dynamically** when the mail system processes messages.
-- **Expected behavior**â€”AIDE detects changes in system-generated files, but these do not indicate a security issue.
+- **Expected behavior**—AIDE detects changes in system-generated files, but these do not indicate a security issue.
 
 ---
 
 ### **4.3 System Time Zone Link Update**
 
-AIDE detected a **change in the symbolic link** for the systemâ€™s local time configuration.
+AIDE detected a **change in the symbolic link** for the system’s local time configuration.
 
 ```plaintext
 Link: /var/spool/postfix/usr/lib/zoneinfo/localtime
@@ -93,10 +94,10 @@ Link: /var/spool/postfix/usr/lib/zoneinfo/localtime
  Inode     : 135314                           | 131441
 ```
 
-**ðŸ”¹ Explanation**:
+**🔹 Explanation**:
 
 - This is an **expected update** related to time zone synchronization.
-- **No security risk**â€”the system **correctly applied time zone data updates**.
+- **No security risk**—the system **correctly applied time zone data updates**.
 
 ---
 
@@ -111,9 +112,9 @@ AIDE verifies its own database integrity using cryptographic hashes.
              fVPVHvNCx9lCtqsD4EiMRg==
 ```
 
-**ðŸ”¹ Explanation**:
+**🔹 Explanation**:
 
-- The database hash remains **consistent**, confirming **no tampering** with AIDEâ€™s stored baseline.
+- The database hash remains **consistent**, confirming **no tampering** with AIDE’s stored baseline.
 - This ensures that **AIDE reports are reliable** and have not been altered.
 
 ---
@@ -126,10 +127,10 @@ Certain kernel module files had **attribute changes**.
 Entry /usr/src/linux-headers-6.8.0-53-generic/tools/bpf/resolve_btfids/libbpf/staticobjs/.netlink.o.d in databases has different attributes: -md5-sha1-rmd160-tiger-crc32-haval-gost-crc32b-sha256-whirlpool
 ```
 
-**ðŸ”¹ Explanation**:
+**🔹 Explanation**:
 
 - These differences are expected **after a kernel update**.
-- **No integrity concerns**â€”these files are part of the **BPF subsystem** used for **performance tracing and security monitoring**.
+- **No integrity concerns**—these files are part of the **BPF subsystem** used for **performance tracing and security monitoring**.
 
 ---
 
@@ -141,10 +142,10 @@ AIDE detected **changes in AppArmor security policies**.
 Entry /etc/apparmor.d/abstractions/fonts in databases has different attributes: -md5-sha1-rmd160-tiger-crc32-haval-gost-crc32b-sha256-whirlpool
 ```
 
-**ðŸ”¹ Explanation**:
+**🔹 Explanation**:
 
 - These updates **reflect legitimate security policy enhancements**.
-- **No security risks**â€”the system has correctly **updated mandatory access control (MAC) rules**.
+- **No security risks**—the system has correctly **updated mandatory access control (MAC) rules**.
 
 ---
 
@@ -152,13 +153,13 @@ Entry /etc/apparmor.d/abstractions/fonts in databases has different attributes: 
 
 The **AIDE scan** confirms that **all modifications** were **expected system updates**, with **no unauthorized changes detected**.
 
-âœ… **Kernel headers updated**â€”No security concerns  
-âœ… **Postfix mail queue changes expected**â€”No action required  
-âœ… **Time zone sync updates expected**â€”No integrity issues  
-âœ… **AIDE database remains intact**â€”Integrity confirmed  
-âœ… **AppArmor security policies updated**â€”Enhances security  
+✅ **Kernel headers updated**—No security concerns  
+✅ **Postfix mail queue changes expected**—No action required  
+✅ **Time zone sync updates expected**—No integrity issues  
+✅ **AIDE database remains intact**—Integrity confirmed  
+✅ **AppArmor security policies updated**—Enhances security  
 
-ðŸ“Œ **Final Status**: **System is secure** with **no unauthorized modifications or integrity violations.** ðŸš€
+📌 **Final Status**: **System is secure** with **no unauthorized modifications or integrity violations.** 🚀
 
 ---
 
@@ -172,17 +173,18 @@ To maintain **ongoing security compliance**, the golden image undergoes **schedu
 
 ---
 
-## **âœ… Approval & Review**  
+## **✅ Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-04 | âœ… DRAFT |  
+| VintageDon | Lead Engineer | 2025-03-04 | ✅ DRAFT |  
 
 ---
 
-## **ðŸ“œ Change Log**  
+## **📜 Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-04 | Initial version | VintageDon |
+
 

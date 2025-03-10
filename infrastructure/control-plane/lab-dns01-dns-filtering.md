@@ -1,4 +1,4 @@
-﻿---
+<!-- ---
 title: "Lab-DNS01 Service Documentation"
 description: "Comprehensive ITIL-aligned documentation of Lab-DNS01, including infrastructure, security policies, and service management details."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.1"
 status: "Draft"
 last_updated: "2025-03-07"
 ---
+ -->
 
 # **Lab-DNS01 Service**  
 
@@ -46,9 +47,9 @@ This node ensures **secure, fast, and resilient DNS resolution**, supporting **i
 
 | **Metric** | **Target** | **Measurement Method** |
 |------------|----------|------------------------|
-| **DNS Query Resolution Time** | â‰¤ 10ms | Grafana DNS metrics |
+| **DNS Query Resolution Time** | ≤ 10ms | Grafana DNS metrics |
 | **Uptime** | 99.99% | Prometheus alerts |
-| **Backup Sync Interval** | â‰¤ 1 day | Proxmox Backup Server logs |
+| **Backup Sync Interval** | ≤ 1 day | Proxmox Backup Server logs |
 | **Recovery Time** | RTO: 4 hours | Restore test validation |
 
 ### **2.2 Monitoring and Reporting**  
@@ -126,7 +127,7 @@ Lab-DNS01 runs **Technitium DNS Server on Ubuntu 24.04**, providing **internal D
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-07 | â± Pending |
+| VintageDon | Lead Engineer | 2025-03-07 | ⏱ Pending |
 
 ---
 
@@ -135,4 +136,5 @@ Lab-DNS01 runs **Technitium DNS Server on Ubuntu 24.04**, providing **internal D
 | **Version** | **Date** | **Changes** |
 |------------|---------|-------------|
 | 1.1 | 2025-03-07 | Updated Lab-DNS01 to use Technitium instead of BIND, added filtering and AD integration details |
+
 

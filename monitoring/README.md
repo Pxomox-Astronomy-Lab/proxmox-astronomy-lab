@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Monitoring Architecture - Proxmox Astronomy Lab"
 description: "Comprehensive overview of the monitoring and observability stack in the Proxmox Astronomy Lab, including Prometheus, Grafana, Loki, and Wazuh SIEM."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Published"
 last_updated: "2025-03-08"
 ---
+ -->
 
 # **Monitoring Architecture - Proxmox Astronomy Lab**
 
@@ -339,3 +340,4 @@ Planned improvements to the monitoring infrastructure:
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-08 | Initial documentation | VintageDon |
+

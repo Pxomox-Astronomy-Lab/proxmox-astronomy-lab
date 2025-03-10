@@ -1,4 +1,4 @@
-﻿---
+<!-- ---
 title: "AppArmor & Mandatory Access Controls - Ubuntu 24.04 LTS Golden Image"
 description: "Validation of AppArmor, Auditd, and automatic security updates on the CIS L2 Ubuntu 24.04 LTS golden image."
 category: "Security & Compliance"
@@ -12,6 +12,7 @@ compliance_mappings:
   - "ISO 27001: A.14.2.5, A.13.1.1"
   - "MITRE ATT&CK: T1055.012, T1203"
 ---
+ -->
 # **AppArmor & Mandatory Access Controls - Ubuntu 24.04 LTS Golden Image**  
 
 ## **1. Purpose**  
@@ -77,9 +78,9 @@ apparmor module is loaded.
 
 #### **Key Validations:**  
 
-- **âœ… AppArmor is enabled** (`apparmor module is loaded`).  
-- **âœ… Critical applications have security profiles (`enforce mode`).**  
-- **âš ï¸ Unconfined applications** may require additional policy enforcement.  
+- **✅ AppArmor is enabled** (`apparmor module is loaded`).  
+- **✅ Critical applications have security profiles (`enforce mode`).**  
+- **⚠️ Unconfined applications** may require additional policy enforcement.  
 
 ---
 
@@ -98,12 +99,12 @@ systemctl status auditd
 #### **Expected Output**  
 
 ```bash
-â— auditd.service - Security Auditing Service
+● auditd.service - Security Auditing Service
      Loaded: loaded (/usr/lib/systemd/system/auditd.service; enabled; preset: enabled)
      Active: active (running) since Tue 2025-03-04 02:10:47 EST; 47min ago
 ```
 
-- **âœ… Auditd is running and enabled on boot (`Active: active (running)`).**  
+- **✅ Auditd is running and enabled on boot (`Active: active (running)`).**  
 
 ### **5.2. Validate Audit Rules**  
 
@@ -121,7 +122,7 @@ echo "-w /var/log/auth.log -p wa -k auth_logs" >> /etc/audit/rules.d/audit.rules
 augenrules --load
 ```
 
-âœ… **Auditd is logging security-related system activity.**  
+✅ **Auditd is logging security-related system activity.**  
 
 ---
 
@@ -144,8 +145,8 @@ APT::Periodic::Update-Package-Lists "1";
 APT::Periodic::Unattended-Upgrade "1";
 ```
 
-âœ… **Automatic security updates are enabled.**  
-âš ï¸ **If missing, enable with:**  
+✅ **Automatic security updates are enabled.**  
+⚠️ **If missing, enable with:**  
 
 ```bash
 echo 'APT::Periodic::Update-Package-Lists "1";' | tee /etc/apt/apt.conf.d/20auto-upgrades
@@ -156,11 +157,11 @@ echo 'APT::Periodic::Unattended-Upgrade "1";' | tee -a /etc/apt/apt.conf.d/20aut
 
 ## **7. Conclusion**  
 
-- âœ… **AppArmor is enforcing security policies.**  
-- âœ… **Auditd is active and logging security events.**  
-- âœ… **Unattended security updates are enabled.**  
+- ✅ **AppArmor is enforcing security policies.**  
+- ✅ **Auditd is active and logging security events.**  
+- ✅ **Unattended security updates are enabled.**  
 
-âš ï¸ **Action Required**: Review unconfined applications and define additional AppArmor profiles as necessary.
+⚠️ **Action Required**: Review unconfined applications and define additional AppArmor profiles as necessary.
 
 ---
 
@@ -168,7 +169,7 @@ echo 'APT::Periodic::Unattended-Upgrade "1";' | tee -a /etc/apt/apt.conf.d/20aut
 
 | **Reviewer** | **Role**          | **Approval Date** | **Status** |
 |-------------|-----------------|------------------|------------|
-| VintageDon  | Lead Engineer    | 2025-03-04       | âœ… DRAFT |
+| VintageDon  | Lead Engineer    | 2025-03-04       | ✅ DRAFT |
 
 ---
 
@@ -177,4 +178,5 @@ echo 'APT::Periodic::Unattended-Upgrade "1";' | tee -a /etc/apt/apt.conf.d/20aut
 | **Version** | **Date**       | **Changes**          | **Author**     |
 |------------|--------------|----------------------|---------------|
 | 1.0        | 2025-03-04   | Initial version     | VintageDon   |
+
 

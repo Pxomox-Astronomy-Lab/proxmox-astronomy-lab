@@ -1,4 +1,4 @@
-﻿---
+<!-- ---
 title: "CISv8-13 Network Monitoring and Defense Policy Template"
 description: "Defines the network monitoring and defense policy template for the Proxmox Astronomy Lab, ensuring continuous traffic analysis, segmentation enforcement, and security event response."
 author: "VintageDon"
@@ -9,8 +9,9 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-03"
 ---
+ -->
 
-# **ðŸ“œ CISv8-13 Network Monitoring and Defense Policy Template**
+# **📜 CISv8-13 Network Monitoring and Defense Policy Template**
 
 ## **1. Purpose**  
 
@@ -42,9 +43,9 @@ This policy enforces **network monitoring and defense** through:
 
 | **Framework** | **Control Mapping** |
 |--------------|------------------|
-| **CISv8** | CIS Control 13 â€“ Network Monitoring and Defense |
-| **NIST 800-53** | SC-5 â€“ Denial-of-Service Protection, SC-7 â€“ Boundary Protection |
-| **ISO 27001** | A.13.1 â€“ Network Security Controls |
+| **CISv8** | CIS Control 13 – Network Monitoring and Defense |
+| **NIST 800-53** | SC-5 – Denial-of-Service Protection, SC-7 – Boundary Protection |
+| **ISO 27001** | A.13.1 – Network Security Controls |
 
 ---
 
@@ -140,19 +141,20 @@ Failure to comply with this policy may result in:
 
 ---
 
-## **âœ… Approval & Review**  
+## **✅ Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-03 | âœ… DRAFT |  
+| VintageDon | Lead Engineer | 2025-03-03 | ✅ DRAFT |  
 
 ---
 
-## **ðŸ“œ Change Log**  
+## **📜 Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
 
-ðŸš€ **This policy ensures that network monitoring and defense remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+🚀 **This policy ensures that network monitoring and defense remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+
 

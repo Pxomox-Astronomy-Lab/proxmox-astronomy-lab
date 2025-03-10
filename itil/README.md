@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "ITIL Processes - Proxmox Astronomy Lab"
 description: "Implementation of ITIL-aligned service management processes in the Proxmox Astronomy Lab through a structured role-based simulation approach."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Published"
 last_updated: "2025-03-08"
 ---
+ -->
 
 # **ITIL Processes - Proxmox Astronomy Lab**
 
@@ -384,3 +385,4 @@ Standardized templates for common ITIL processes:
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-08 | Initial documentation | VintageDon |
+

@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Portainer Implementation - Proxmox Astronomy Lab"
 description: "Detailed documentation of the Portainer Business Edition implementation in the Proxmox Astronomy Lab, including architecture, node configuration, and operational aspects."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Published"
 last_updated: "2025-03-08"
 ---
+ -->
 
 # **Portainer Implementation - Proxmox Astronomy Lab**
 
@@ -314,3 +315,4 @@ Detailed documentation is available for each Portainer node:
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-08 | Initial documentation | VintageDon |
+

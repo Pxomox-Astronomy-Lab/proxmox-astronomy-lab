@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "README - CIS Control 8: Audit Log Management"
 description: "An overview of CIS Control 8 and its implementation within the Proxmox Astronomy Lab, ensuring comprehensive audit log management."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-04"
 ---
+ -->
 
 # **📜 README - CIS Control 8: Audit Log Management**
 
@@ -123,3 +124,4 @@ Regular log analysis is conducted to detect security anomalies and threats.
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-04 | Initial version | VintageDon |
+

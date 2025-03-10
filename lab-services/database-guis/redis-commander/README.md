@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Redis Commander - Redis Management GUI"
 description: "Documentation for Redis Commander, the graphical user interface for managing Redis databases."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-09"
 ---
+ -->
 
 # **Redis Commander - Redis Management GUI**
 
@@ -65,3 +66,4 @@ Redis Commander is a **web-based graphical interface** for **managing Redis inst
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-09 | Initial documentation | VintageDon |
+

@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "ITIL-Aligned Simulation Approach in the Proxmox Astronomy Lab"
 description: "Documentation of the role-based simulation methodology using ITIL principles and GLPI within the Proxmox Astronomy Lab."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "2.0"
 status: "Draft"
 last_updated: "2025-03-06"
 ---
+ -->
 
 # **ITIL-Aligned Simulation Approach in the Proxmox Astronomy Lab**
 
@@ -338,3 +339,4 @@ This simulation approach provides several key educational benefits:
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-06 | Initial simulation approach documentation | VintageDon |
 | 2.0 | 2025-03-06 | Revised to align with ITIL framework and GLPI implementation | VintageDon |
+

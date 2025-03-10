@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Assets Directory Overview"
 description: "Overview of the assets directory, which stores images, diagrams, and supporting files for documentation and compliance reporting."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Published"
 last_updated: "2025-03-03"
 ---
+ -->
 
 # **📂 Assets Directory Overview**  
 
@@ -68,3 +69,4 @@ This folder ensures **all visual and reference materials are centralized** and e
 ---
 
 🚀 **This directory ensures all assets are properly organized, versioned, and used effectively across lab documentation.**
+

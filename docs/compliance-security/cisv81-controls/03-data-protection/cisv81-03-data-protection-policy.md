@@ -1,4 +1,4 @@
-﻿---
+<!-- ---
 title: "CISv8-03 Data Protection Policy"
 description: "Defines the data protection policy for the Proxmox Astronomy Lab, ensuring confidentiality, integrity, and availability through classification, encryption, retention, and access controls in compliance with CISv8, NIST 800-53, and ISO 27001."
 author: "VintageDon"
@@ -9,8 +9,9 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-03"
 ---
+ -->
 
-# **ðŸ“œ CISv8-03 Data Protection Policy**
+# **📜 CISv8-03 Data Protection Policy**
 
 ## **1. Overview**
 
@@ -40,9 +41,9 @@ This policy aligns with industry security frameworks to ensure compliance:
 
 | **Framework** | **Control Mapping** |
 |--------------|------------------|
-| **CISv8** | CIS Control 3 â€“ Data Protection |
-| **NIST 800-53** | SC-12 â€“ Cryptographic Protection |
-| **ISO 27001** | A.8.2 â€“ Information Classification |
+| **CISv8** | CIS Control 3 – Data Protection |
+| **NIST 800-53** | SC-12 – Cryptographic Protection |
+| **ISO 27001** | A.8.2 – Information Classification |
 
 ---
 
@@ -141,19 +142,20 @@ Unauthorized access attempts trigger **immediate security alerts**.
 
 ---
 
-## **âœ… Approval & Review**  
+## **✅ Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-03 | âœ… DRAFT |  
+| VintageDon | Lead Engineer | 2025-03-03 | ✅ DRAFT |  
 
 ---
 
-## **ðŸ“œ Change Log**  
+## **📜 Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
 
-ðŸš€ **This policy ensures that data protection remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+🚀 **This policy ensures that data protection remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+
 

@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Project Infrastructure - Proxmox Astronomy Lab"
 description: "Documentation of project-specific virtual machines, services, and workloads supporting the research and application infrastructure of the Proxmox Astronomy Lab."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Published"
 last_updated: "2025-03-08"
 ---
+ -->
 
 # **Project Infrastructure - Proxmox Astronomy Lab**
 
@@ -380,3 +381,4 @@ Each project VM has detailed documentation covering its specific configuration, 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-08 | Initial version | VintageDon |
+

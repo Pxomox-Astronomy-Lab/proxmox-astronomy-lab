@@ -1,4 +1,4 @@
-﻿---
+<!-- ---
 title: "CISv8-17 Incident Response Policy"
 description: "Defines the incident response policy for the Proxmox Astronomy Lab, ensuring that security incidents are effectively identified, reported, and mitigated with minimal disruption to operations."
 author: "VintageDon"
@@ -9,8 +9,9 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-03"
 ---
+ -->
 
-# **ðŸ“œ CISv8-17 Incident Response Policy**
+# **📜 CISv8-17 Incident Response Policy**
 
 ## **1. Purpose**
 
@@ -138,19 +139,20 @@ Failure to comply with this policy may result in:
 
 ---
 
-## **âœ… Approval & Review**  
+## **✅ Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-03 | âœ… DRAFT |  
+| VintageDon | Lead Engineer | 2025-03-03 | ✅ DRAFT |  
 
 ---
 
-## **ðŸ“œ Change Log**  
+## **📜 Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
 
-ðŸš€ **This policy ensures that incident response remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+🚀 **This policy ensures that incident response remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+
 

@@ -1,4 +1,4 @@
-﻿---
+<!-- ---
 title: "CISv8-11 Data Recovery Policy Template"
 description: "Presents the official CISv8 Data Recovery Policy Template, with additional information on possible solutions and an example of its application in the Proxmox Astronomy Lab."
 author: "VintageDon"
@@ -9,8 +9,9 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-03"
 ---
+ -->
 
-# **ðŸ“œ CISv8-11 Data Recovery Policy Template**
+# **📜 CISv8-11 Data Recovery Policy Template**
 
 ## **1. Overview**  
 
@@ -20,10 +21,10 @@ A structured **data recovery policy** is essential to ensure that **critical dat
 
 ### **Key Aspects of This Policy:**  
 
-âœ… **Defines structured data backup and recovery processes.**  
-âœ… **Ensures that backups are securely stored and protected from tampering.**  
-âœ… **Requires periodic data recovery testing to validate readiness.**  
-âœ… **Supports compliance with industry regulations and best practices.**  
+✅ **Defines structured data backup and recovery processes.**  
+✅ **Ensures that backups are securely stored and protected from tampering.**  
+✅ **Requires periodic data recovery testing to validate readiness.**  
+✅ **Supports compliance with industry regulations and best practices.**  
 
 This document **presents the CISv8 Data Recovery Policy Template** and includes **additional information on how organizations may implement it**, along with a **generalized example of its application in the Proxmox Astronomy Lab**.
 
@@ -33,9 +34,9 @@ This document **presents the CISv8 Data Recovery Policy Template** and includes 
 
 | **Framework**      | **Control Mapping** |
 |--------------------|--------------------|
-| **CIS Controls**   | CIS Control 11 â€“ Data Recovery |
-| **NIST 800-53**    | CP-9 â€“ Information System Backup |
-| **ISO 27001**      | A.12.3 â€“ Backup & Recovery Management |
+| **CIS Controls**   | CIS Control 11 – Data Recovery |
+| **NIST 800-53**    | CP-9 – Information System Backup |
+| **ISO 27001**      | A.12.3 – Backup & Recovery Management |
 
 ---
 
@@ -102,13 +103,13 @@ Proper planning helps an enterprise recover from cybersecurity incidents or disa
 
 ## **4. Best Practices for Implementing This Policy**  
 
-Organizations implementing **CIS Control 11 â€“ Data Recovery** should consider the following best practices:  
+Organizations implementing **CIS Control 11 – Data Recovery** should consider the following best practices:  
 
-- **Follow the 3-2-1 Backup Rule** â€“ Keep **3 copies of data**, stored on **2 different media**, with **1 copy offsite**.  
-- **Ensure Immutable Backups** â€“ Prevent **ransomware from encrypting or modifying backups** by using **immutable storage**.  
-- **Automate Backup Monitoring** â€“ Ensure **alerts are triggered for failed backup jobs**.  
-- **Test Recoverability Regularly** â€“ **Quarterly restore tests ensure backups are valid and accessible**.  
-- **Use Role-Based Access Controls (RBAC)** â€“ Restrict access to backup systems to **authorized personnel only**.  
+- **Follow the 3-2-1 Backup Rule** – Keep **3 copies of data**, stored on **2 different media**, with **1 copy offsite**.  
+- **Ensure Immutable Backups** – Prevent **ransomware from encrypting or modifying backups** by using **immutable storage**.  
+- **Automate Backup Monitoring** – Ensure **alerts are triggered for failed backup jobs**.  
+- **Test Recoverability Regularly** – **Quarterly restore tests ensure backups are valid and accessible**.  
+- **Use Role-Based Access Controls (RBAC)** – Restrict access to backup systems to **authorized personnel only**.  
 
 These strategies ensure **a structured, automated, and resilient data recovery process**.
 
@@ -120,35 +121,36 @@ In the **Proxmox Astronomy Lab**, CIS Control 11 is implemented with the followi
 
 ### **5.1 Backup Strategy & Retention**  
 
-âœ… **Daily backups with a 14-day retention period for active data.**  
-âœ… **Weekly full backups and a monthly archive stored offsite in Wasabi Cloud.**  
-âœ… **AES-256 encryption applied to all backup data.**  
+✅ **Daily backups with a 14-day retention period for active data.**  
+✅ **Weekly full backups and a monthly archive stored offsite in Wasabi Cloud.**  
+✅ **AES-256 encryption applied to all backup data.**  
 
 ### **5.2 Recovery Testing & Incident Response**  
 
-âœ… **Quarterly restore tests validate Windows and Linux VM backups.**  
-âœ… **Annual disaster recovery simulations ensure critical system availability.**  
-âœ… **Backup logs are monitored to detect failures or anomalies.**  
+✅ **Quarterly restore tests validate Windows and Linux VM backups.**  
+✅ **Annual disaster recovery simulations ensure critical system availability.**  
+✅ **Backup logs are monitored to detect failures or anomalies.**  
 
 ### **5.3 Secure Backup Storage & Access Controls**  
 
-âœ… **Backups stored in a separate, access-controlled partition.**  
-âœ… **Offsite backups are kept in an air-gapped storage environment.**  
-âœ… **Access to backup data is restricted using enterprise key management policies.**  
+✅ **Backups stored in a separate, access-controlled partition.**  
+✅ **Offsite backups are kept in an air-gapped storage environment.**  
+✅ **Access to backup data is restricted using enterprise key management policies.**  
 
 ---
 
 ## **6. Summary and Next Steps**  
 
-âœ… **This document presents the official CISv8 Data Recovery Policy Template.**  
-âœ… **It includes additional information on possible solutions for implementation.**  
-âœ… **A high-level example from the Proxmox Astronomy Lab is provided for reference.**  
+✅ **This document presents the official CISv8 Data Recovery Policy Template.**  
+✅ **It includes additional information on possible solutions for implementation.**  
+✅ **A high-level example from the Proxmox Astronomy Lab is provided for reference.**  
 
-ðŸ“Œ **Actionable Next Steps:**  
+📌 **Actionable Next Steps:**  
 
 - **Ensure automated backups are configured and actively monitored.**  
 - **Implement encryption and access controls to protect backup data.**  
 - **Perform quarterly recovery tests to validate data integrity.**  
 
-ðŸš€ **By following this framework, organizations can ensure structured, secure, and auditable data recovery processes.**
+🚀 **By following this framework, organizations can ensure structured, secure, and auditable data recovery processes.**
+
 

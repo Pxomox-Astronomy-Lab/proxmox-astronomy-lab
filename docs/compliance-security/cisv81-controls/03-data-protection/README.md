@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "CIS Control 3: Data Protection in the Proxmox Astronomy Lab"
 description: "Overview of CIS Control 3 and its application within the Proxmox Astronomy Lab environment, detailing data protection strategies and implementations."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.1"
 status: "Draft"
 last_updated: "2025-03-04"
 ---
+ -->
 
 # **🔒 CIS Control 3: Data Protection in the Proxmox Astronomy Lab**
 
@@ -111,3 +112,4 @@ Continuous logging and monitoring provide visibility into data access and potent
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.1 | 2025-03-04 | Standardized KBFormatv1 applied. Article interlinking. | VintageDon |
+

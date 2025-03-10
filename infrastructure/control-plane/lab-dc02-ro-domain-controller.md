@@ -1,4 +1,4 @@
-﻿---
+<!-- ---
 title: "DC02 Service Documentation"
 description: "Comprehensive ITIL-aligned documentation of DC02, including infrastructure, security policies, and service management details."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-07"
 ---
+ -->
 
 # **DC02 Service**  
 
@@ -45,7 +46,7 @@ DC02 is the **Read-Only Domain Controller (RODC)** for the **beardinthe.cloud** 
 | **Metric** | **Target** | **Measurement Method** |
 |------------|----------|------------------------|
 | **Authentication Availability** | 99.99% uptime | AD health checks |
-| **Directory Replication Delay** | â‰¤ 15 minutes | AD Replication Monitor |
+| **Directory Replication Delay** | ≤ 15 minutes | AD Replication Monitor |
 | **Read-Only Integrity** | 100% | AD DS Policy Enforcement |
 | **Recovery Time** | RTO: 4 hours | VM restore & AD database recovery test |
 
@@ -152,9 +153,10 @@ DC02 is a **Windows Server 2025-based Read-Only Domain Controller (RODC)**, desi
 
 ---
 
-## **âœ… Approval & Review**  
+## **✅ Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-07 | â± Pending |
+| VintageDon | Lead Engineer | 2025-03-07 | ⏱ Pending |
+
 

@@ -1,4 +1,4 @@
-﻿---
+<!-- ---
 title: "Lynis Security Audit - Ubuntu 24.04 Server LTS L2 Golden Image"
 description: "Documents the security hardening applied to the Ubuntu 24.04 LTS Golden Image, validated by a Lynis scan score of 87."
 author: "VintageDon"
@@ -9,19 +9,20 @@ version: "1.0"
 status: "Final"
 last_updated: "2025-03-04"
 ---
+ -->
 
-# **ðŸ“œ Lynis Security Audit - Ubuntu 24.04 Server LTS L2 Golden Image**
+# **📜 Lynis Security Audit - Ubuntu 24.04 Server LTS L2 Golden Image**
 
 ## **1. Purpose & Scope**  
 
-### **ðŸ”¹ Purpose**  
+### **🔹 Purpose**  
 
 The purpose of this validation is to:  
-âœ… **Verify** that the Ubuntu 24.04 LTS golden image meets **CISv8 Level 2 benchmarks**.  
-âœ… **Demonstrate** the system's **security hardening without impacting functionality**.  
-âœ… **Ensure consistency** across all **Linux-based virtual machines (VMs)** deployed in the lab.  
+✅ **Verify** that the Ubuntu 24.04 LTS golden image meets **CISv8 Level 2 benchmarks**.  
+✅ **Demonstrate** the system's **security hardening without impacting functionality**.  
+✅ **Ensure consistency** across all **Linux-based virtual machines (VMs)** deployed in the lab.  
 
-### **ðŸ”¹ Scope**  
+### **🔹 Scope**  
 
 This validation applies to:  
 
@@ -71,44 +72,44 @@ These settings **minimize attack surfaces** while keeping the OS fully operation
 
 The **Lynis security audit** was conducted using **Lynis 3.0.9** on the hardened Ubuntu 24.04 golden image.
 
-### **ðŸ”¹ Scan Summary**  
+### **🔹 Scan Summary**  
 
 | **Category**                | **Status** |
 |-----------------------------|------------|
-| **System Hardening**         | âœ… Secure (No major issues) |
-| **User & Authentication**    | âœ… Strong (Root login disabled, MFA enforced) |
-| **Filesystem Security**      | âœ… Enforced (Critical partitions hardened) |
-| **Network & Firewall**       | âœ… Configured (IPv6 disabled, UFW active) |
-| **Kernel & Process Security**| âœ… Secure (Sysctl hardened, ASLR enforced) |
-| **Logging & Monitoring**     | âœ… Active (auditd, journald, logrotate enabled) |
-| **Malware & Intrusion Detection** | âœ… Installed (Fail2Ban, AIDE, chkrootkit, rkhunter) |
+| **System Hardening**         | ✅ Secure (No major issues) |
+| **User & Authentication**    | ✅ Strong (Root login disabled, MFA enforced) |
+| **Filesystem Security**      | ✅ Enforced (Critical partitions hardened) |
+| **Network & Firewall**       | ✅ Configured (IPv6 disabled, UFW active) |
+| **Kernel & Process Security**| ✅ Secure (Sysctl hardened, ASLR enforced) |
+| **Logging & Monitoring**     | ✅ Active (auditd, journald, logrotate enabled) |
+| **Malware & Intrusion Detection** | ✅ Installed (Fail2Ban, AIDE, chkrootkit, rkhunter) |
 
-**ðŸŸ¢ Final Score: 87 (CIS L2 Compliant, Fully Operational)**
+**🟢 Final Score: 87 (CIS L2 Compliant, Fully Operational)**
 
-âœ… **Ensures compliance with hardened security benchmarks**  
-âœ… **Prevents common misconfigurations that lead to vulnerabilities**  
+✅ **Ensures compliance with hardened security benchmarks**  
+✅ **Prevents common misconfigurations that lead to vulnerabilities**  
 
 ---
 
 ## **5. Addressed Findings & Security Enhancements**  
 
-### **ðŸ”¹ Notable Findings from the Scan**  
+### **🔹 Notable Findings from the Scan**  
 
-âœ… **Secure Boot & UEFI Enabled**  
-âœ… **Fail2Ban installed and active**  
-âœ… **PAM password hashing secured**  
-âœ… **SSH hardened (No root login, only key-based authentication)**  
-âœ… **Firewall active (iptables/UFW configured)**  
-âœ… **Audit logs & system integrity tools configured (AIDE, auditd)**  
+✅ **Secure Boot & UEFI Enabled**  
+✅ **Fail2Ban installed and active**  
+✅ **PAM password hashing secured**  
+✅ **SSH hardened (No root login, only key-based authentication)**  
+✅ **Firewall active (iptables/UFW configured)**  
+✅ **Audit logs & system integrity tools configured (AIDE, auditd)**  
 
-### **ðŸ”¹ Addressed Warnings & Suggestions**  
+### **🔹 Addressed Warnings & Suggestions**  
 
 | **Finding** | **Action Taken** |
 |------------|------------------|
-| `/etc/sudoers.d/ permissions warning` | âœ… Manually reviewed, no security risk |
-| `Sysctl values differ from scan profile (KRNL-6000)` | âœ… Non-critical, reviewed for operational impact |
-| `PAM password hashing rounds should be increased (AUTH-9229)` | âœ… Evaluated, no immediate security concern |
-| `Some accounts without expiration dates (AUTH-9282)` | âœ… Service accounts reviewed, user accounts updated |
+| `/etc/sudoers.d/ permissions warning` | ✅ Manually reviewed, no security risk |
+| `Sysctl values differ from scan profile (KRNL-6000)` | ✅ Non-critical, reviewed for operational impact |
+| `PAM password hashing rounds should be increased (AUTH-9229)` | ✅ Evaluated, no immediate security concern |
+| `Some accounts without expiration dates (AUTH-9282)` | ✅ Service accounts reviewed, user accounts updated |
 
 These suggestions were evaluated based on **security vs. operational trade-offs**.
 
@@ -116,33 +117,34 @@ These suggestions were evaluated based on **security vs. operational trade-offs*
 
 ## **6. Deployment & Use in the Lab**  
 
-### **ðŸ”¹ VM Deployment Strategy**  
+### **🔹 VM Deployment Strategy**  
 
 All **Linux-based virtual machines** are deployed from this golden image, ensuring:  
-âœ… **Uniform security settings across all systems**  
-âœ… **Minimal post-deployment configuration drift**  
-âœ… **Full compliance with CISv8, NIST 800-53, and ISO 27001**  
+✅ **Uniform security settings across all systems**  
+✅ **Minimal post-deployment configuration drift**  
+✅ **Full compliance with CISv8, NIST 800-53, and ISO 27001**  
 
 Each VM can be configured with **additional storage volumes** while maintaining the **base OS integrity**.
 
-### **ðŸ”¹ Image Versioning & Updates**  
+### **🔹 Image Versioning & Updates**  
 
 - **Stored as a Proxmox template** for easy cloning.  
 - **Periodic security updates applied** and validated before production use.  
 
 ---
 
-## **âœ… Approval & Review**  
+## **✅ Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-04 | âœ… Approved |
+| VintageDon | Lead Engineer | 2025-03-04 | ✅ Approved |
 
 ---
 
-## **ðŸ“œ Change Log**  
+## **📜 Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-04 | Initial version | VintageDon |
+
 

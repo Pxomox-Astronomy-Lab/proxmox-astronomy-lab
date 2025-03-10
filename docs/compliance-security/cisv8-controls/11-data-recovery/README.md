@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "README - CIS Control 11: Data Recovery"
 description: "An overview of CIS Control 11 and its implementation within the Proxmox Astronomy Lab, ensuring critical data is securely backed up and recoverable."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-04"
 ---
+ -->
 
 # **📜 README - CIS Control 11: Data Recovery**
 
@@ -112,3 +113,4 @@ To prevent unauthorized access or corruption, **backup security is enforced**.
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-04 | Initial version | VintageDon |
+

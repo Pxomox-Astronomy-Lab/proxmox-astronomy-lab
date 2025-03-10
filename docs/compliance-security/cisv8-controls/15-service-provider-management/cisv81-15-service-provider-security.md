@@ -1,4 +1,4 @@
-﻿---
+<!-- ---
 title: "CISv8-15 Service Provider Management Policy"
 description: "Defines the service provider management policy for the Proxmox Astronomy Lab, ensuring all vendors, cloud providers, and service platforms are inventoried, monitored, and decommissioned securely."
 author: "VintageDon"
@@ -9,8 +9,9 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-03"
 ---
+ -->
 
-# **ðŸ“œ CISv8-15 Service Provider Management Policy**
+# **📜 CISv8-15 Service Provider Management Policy**
 
 ## **1. Overview**
 
@@ -39,9 +40,9 @@ This policy aligns with **industry security frameworks** to maintain best practi
 
 | **Framework** | **Control Mapping** |
 |--------------|------------------|
-| **CISv8** | CIS Control 15 â€“ Service Provider Management |
-| **NIST 800-53** | SA-9 â€“ External System Services |
-| **ISO 27001** | A.15 â€“ Supplier Relationships |
+| **CISv8** | CIS Control 15 – Service Provider Management |
+| **NIST 800-53** | SA-9 – External System Services |
+| **ISO 27001** | A.15 – Supplier Relationships |
 
 ---
 
@@ -119,19 +120,20 @@ Only **approved** service providers may be used for enterprise data and services
 
 ---
 
-## **âœ… Approval & Review**  
+## **✅ Approval & Review**  
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-03 | âœ… DRAFT |  
+| VintageDon | Lead Engineer | 2025-03-03 | ✅ DRAFT |  
 
 ---
 
-## **ðŸ“œ Change Log**  
+## **📜 Change Log**  
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
 
-ðŸš€ **This policy ensures that service provider management remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+🚀 **This policy ensures that service provider management remains a structured, actively enforced, and auditable process in the Proxmox Astronomy Lab.**
+
 

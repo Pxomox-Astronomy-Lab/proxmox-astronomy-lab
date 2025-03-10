@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Lab-Port01 Portainer Master Control Node"
 description: "Documentation for the Lab-Port01 Portainer master node, detailing its role in orchestrating containerized workloads across the Proxmox Astronomy Lab."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Published"
 last_updated: "2025-03-09"
 ---
+ -->
 
 # **Lab-Port01 Portainer Master Control Node**
 

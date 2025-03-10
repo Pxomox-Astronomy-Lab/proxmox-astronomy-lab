@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Lab-Apps01 Portainer Docker Application Node"
 description: "Documentation for the Lab-Apps01 Portainer worker node, detailing its role in hosting lab-wide applications and containerized services."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Published"
 last_updated: "2025-03-08"
 ---
+ -->
 
 # **Lab-Apps01 Portainer Docker Application Node**
 
@@ -245,3 +246,4 @@ Additional resources provide detailed information on specific aspects of the sys
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-08 | Initial documentation | VintageDon |
+

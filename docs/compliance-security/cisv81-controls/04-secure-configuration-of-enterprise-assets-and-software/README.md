@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "CIS Control 4: Secure Configuration Management in the Proxmox Astronomy Lab"
 description: "Overview of CIS Control 4, ensuring all systems in the lab follow secure configuration practices through golden templates, automation, and continuous monitoring."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-03"
 ---
+ -->
 
 # **🛠 CIS Control 4: Secure Configuration Management in the Proxmox Astronomy Lab**
 
@@ -193,3 +194,4 @@ To verify compliance, refer to the **implementation KB**:
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
+

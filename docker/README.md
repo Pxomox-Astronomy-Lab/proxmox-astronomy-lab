@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Docker & Portainer - Proxmox Astronomy Lab"
 description: "Overview of the Docker and Portainer implementation in the Proxmox Astronomy Lab, including architecture, deployment strategy, and organization principles."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Published"
 last_updated: "2025-03-08"
 ---
+ -->
 
 # **Docker & Portainer - Proxmox Astronomy Lab**
 
@@ -255,3 +256,4 @@ Detailed documentation is available in the following sections:
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-08 | Initial documentation | VintageDon |
+

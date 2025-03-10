@@ -1,4 +1,4 @@
-﻿---
+<!-- ---
 title: "Lab-Port01 Service Documentation"
 description: "Comprehensive ITIL-aligned documentation of Lab-Port01, including infrastructure, security policies, and service management details."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.1"
 status: "Draft"
 last_updated: "2025-03-07"
 ---
+ -->
 
 # **Lab-Port01 Service**  
 
@@ -47,8 +48,8 @@ This node serves as the **GUI and API control plane**, allowing for **role-based
 | **Metric** | **Target** | **Measurement Method** |
 |------------|----------|------------------------|
 | **Container Management Availability** | 99.99% | Prometheus monitoring |
-| **Deployment Time for New Services** | â‰¤ 1 minute | Portainer logs |
-| **Backup Sync Interval** | â‰¤ 1 day | Proxmox Backup Server logs |
+| **Deployment Time for New Services** | ≤ 1 minute | Portainer logs |
+| **Backup Sync Interval** | ≤ 1 day | Proxmox Backup Server logs |
 | **Recovery Time** | RTO: 4 hours | Restore test validation |
 
 ### **2.2 Monitoring and Reporting**  
@@ -155,7 +156,7 @@ Lab-Port01 is the **Portainer control node**, managing **multiple Portainer work
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-07 | â± Pending |
+| VintageDon | Lead Engineer | 2025-03-07 | ⏱ Pending |
 
 ---
 
@@ -164,4 +165,5 @@ Lab-Port01 is the **Portainer control node**, managing **multiple Portainer work
 | **Version** | **Date** | **Changes** |
 |------------|---------|-------------|
 | 1.1 | 2025-03-07 | Fully realigned to template, added missing sections |
+
 

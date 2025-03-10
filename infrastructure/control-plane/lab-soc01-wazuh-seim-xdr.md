@@ -1,4 +1,4 @@
-﻿---
+<!-- ---
 title: "Lab-SOC1 Service Documentation"
 description: "Comprehensive ITIL-aligned documentation of Lab-SOC1, including infrastructure, security policies, and service management details."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-07"
 ---
+ -->
 
 # **Lab-SOC1 Service**  
 
@@ -16,7 +17,7 @@ last_updated: "2025-03-07"
 
 ### **1.1 Service Description**  
 
-Lab-SOC1 is the **primary Security Operations Center (SOC) server** for the Proxmox Astronomy Lab, responsible for **real-time security monitoring, intrusion detection, and compliance auditing**. It runs **Wazuh on Ubuntu 24.04**, providing **host-based intrusion detection (HIDS), log analysis, and security event correlation** across the labâ€™s infrastructure.
+Lab-SOC1 is the **primary Security Operations Center (SOC) server** for the Proxmox Astronomy Lab, responsible for **real-time security monitoring, intrusion detection, and compliance auditing**. It runs **Wazuh on Ubuntu 24.04**, providing **host-based intrusion detection (HIDS), log analysis, and security event correlation** across the lab’s infrastructure.
 
 This node ensures **continuous threat monitoring, centralized logging, and security alerting**, supporting **threat intelligence, vulnerability assessment, and forensic analysis**.
 
@@ -46,9 +47,9 @@ This node ensures **continuous threat monitoring, centralized logging, and secur
 
 | **Metric** | **Target** | **Measurement Method** |
 |------------|----------|------------------------|
-| **Security Event Processing Latency** | â‰¤ 5s | Wazuh logs |
+| **Security Event Processing Latency** | ≤ 5s | Wazuh logs |
 | **Uptime** | 99.99% | Prometheus alerts |
-| **Backup Sync Interval** | â‰¤ 1 day | Proxmox Backup Server logs |
+| **Backup Sync Interval** | ≤ 1 day | Proxmox Backup Server logs |
 | **Recovery Time** | RTO: 4 hours | Restore test validation |
 
 ### **2.2 Monitoring and Reporting**  
@@ -127,7 +128,7 @@ Lab-SOC1 runs **Wazuh on Ubuntu 24.04**, providing **centralized security monito
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-07 | â± Pending |
+| VintageDon | Lead Engineer | 2025-03-07 | ⏱ Pending |
 
 ---
 
@@ -136,4 +137,5 @@ Lab-SOC1 runs **Wazuh on Ubuntu 24.04**, providing **centralized security monito
 | **Version** | **Date** | **Changes** |
 |------------|---------|-------------|
 | 1.0 | 2025-03-07 | Initial version, defines Lab-SOC1 as the primary security operations center server |
+
 

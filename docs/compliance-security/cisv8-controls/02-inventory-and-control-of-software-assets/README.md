@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "CIS Control 2: Inventory and Control of Software Assets in the Proxmox Astronomy Lab"
 description: "Overview of CIS Control 2, which focuses on maintaining an inventory of software assets, ensuring only authorized and supported software is used, and mitigating security risks associated with unauthorized applications."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-03"
 ---
+ -->
 
 # **📦 CIS Control 2: Inventory and Control of Software Assets in the Proxmox Astronomy Lab**
 
@@ -136,3 +137,4 @@ To verify compliance, refer to the **implementation KB**:
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-03 | Initial version | VintageDon |
+

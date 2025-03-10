@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "CIS Control 6: Access Control Management in the Proxmox Astronomy Lab"
 description: "Overview of CIS Control 6, ensuring strong access control policies through Entra Identity Governance, MFA enforcement, and centralized identity management."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.1"
 status: "Draft"
 last_updated: "2025-03-04"
 ---
+ -->
 
 # **🔐 CIS Control 6: Access Control Management in the Proxmox Astronomy Lab**
 
@@ -104,3 +105,4 @@ All administrative access follows just-in-time (JIT) principles with strong auth
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.1 | 2025-03-04 | Standardized KBFormatv1 applied. Article interlinking. | VintageDon |
+

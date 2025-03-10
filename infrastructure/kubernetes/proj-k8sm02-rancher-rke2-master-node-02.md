@@ -1,4 +1,4 @@
-﻿---
+<!-- ---
 title: "Proj-K8SM02 Service Documentation"
 description: "Comprehensive ITIL-aligned documentation of Proj-K8SM02, including infrastructure, security policies, and service management details."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-07"
 ---
+ -->
 
 # **Proj-K8SM02 Service**  
 
@@ -16,7 +17,7 @@ last_updated: "2025-03-07"
 
 ### **1.1 Service Description**  
 
-Proj-K8SM02 is the **secondary Kubernetes control plane node** for the Proxmox Astronomy Lab, running **RKE2 on Ubuntu 24.04**. It provides **high availability, redundancy, and workload scheduling** for Kubernetes workloads across the labâ€™s research and production environments.
+Proj-K8SM02 is the **secondary Kubernetes control plane node** for the Proxmox Astronomy Lab, running **RKE2 on Ubuntu 24.04**. It provides **high availability, redundancy, and workload scheduling** for Kubernetes workloads across the lab’s research and production environments.
 
 This node ensures **fault tolerance, API failover, and security enforcement**, supporting **containerized applications, microservices, and automation workflows**.
 
@@ -46,9 +47,9 @@ This node ensures **fault tolerance, API failover, and security enforcement**, s
 
 | **Metric** | **Target** | **Measurement Method** |
 |------------|----------|------------------------|
-| **K8s API Response Time** | â‰¤ 50ms | Prometheus metrics |
+| **K8s API Response Time** | ≤ 50ms | Prometheus metrics |
 | **Cluster Uptime** | 99.99% | Prometheus alerts |
-| **Backup Sync Interval** | â‰¤ 1 day | Proxmox Backup Server logs |
+| **Backup Sync Interval** | ≤ 1 day | Proxmox Backup Server logs |
 | **Recovery Time** | RTO: 4 hours | Restore test validation |
 
 ### **2.2 Monitoring and Reporting**  
@@ -127,7 +128,7 @@ Proj-K8SM02 runs **RKE2 on Ubuntu 24.04**, providing **Kubernetes API redundancy
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-07 | â± Pending |
+| VintageDon | Lead Engineer | 2025-03-07 | ⏱ Pending |
 
 ---
 
@@ -136,4 +137,5 @@ Proj-K8SM02 runs **RKE2 on Ubuntu 24.04**, providing **Kubernetes API redundancy
 | **Version** | **Date** | **Changes** |
 |------------|---------|-------------|
 | 1.0 | 2025-03-07 | Initial version, defines Proj-K8SM02 as the secondary Kubernetes control plane node |
+
 

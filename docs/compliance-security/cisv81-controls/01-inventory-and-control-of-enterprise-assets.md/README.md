@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "CIS Control 1: Inventory and Control of Enterprise Assets in the Proxmox Astronomy Lab"
 description: "Overview of CIS Control 1, which focuses on maintaining an inventory of all enterprise assets and ensuring unauthorized devices are detected and managed."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.1"
 status: "Draft"
 last_updated: "2025-03-04"
 ---
+ -->
 
 # **📋 CIS Control 1: Inventory and Control of Enterprise Assets in the Proxmox Astronomy Lab**
 
@@ -103,3 +104,4 @@ To verify compliance with CIS Control 1, evidence is documented and maintained.
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.1 | 2025-03-04 | Standardized KBFormatv1 applied. Article interlinking. | VintageDon |
+

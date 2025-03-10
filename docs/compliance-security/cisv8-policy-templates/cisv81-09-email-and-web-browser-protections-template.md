@@ -1,4 +1,4 @@
-﻿---
+<!-- ---
 title: "CISv8-09 Secure Configuration Management Policy Template"
 description: "Presents the official CISv8 Secure Configuration Management Policy Template, with additional information on possible solutions and an example of its application in the Proxmox Astronomy Lab."
 author: "VintageDon"
@@ -9,8 +9,9 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-03"
 ---
+ -->
 
-# **ðŸ“œ CISv8-09 Secure Configuration Management Policy Template**
+# **📜 CISv8-09 Secure Configuration Management Policy Template**
 
 ## **1. Overview**  
 
@@ -20,10 +21,10 @@ Secure configurations ensure that enterprise assets are **properly hardened, fre
 
 ### **Key Aspects of This Policy:**  
 
-âœ… **Enforces a baseline configuration for all enterprise systems and applications.**  
-âœ… **Ensures configurations are monitored and deviations are flagged.**  
-âœ… **Reduces the risk of security misconfigurations leading to data breaches.**  
-âœ… **Supports compliance with CIS benchmarks and regulatory frameworks.**  
+✅ **Enforces a baseline configuration for all enterprise systems and applications.**  
+✅ **Ensures configurations are monitored and deviations are flagged.**  
+✅ **Reduces the risk of security misconfigurations leading to data breaches.**  
+✅ **Supports compliance with CIS benchmarks and regulatory frameworks.**  
 
 This document **presents the CISv8 Secure Configuration Management Policy Template** and includes **additional information on how organizations may implement it**, along with a **generalized example of its application in the Proxmox Astronomy Lab**.
 
@@ -33,9 +34,9 @@ This document **presents the CISv8 Secure Configuration Management Policy Templa
 
 | **Framework**      | **Control Mapping** |
 |--------------------|--------------------|
-| **CIS Controls**   | CIS Control 9 â€“ Secure Configuration Management |
-| **NIST 800-53**    | CM-6 â€“ Configuration Management |
-| **ISO 27001**      | A.14.2 â€“ Security in Development & Maintenance |
+| **CIS Controls**   | CIS Control 9 – Secure Configuration Management |
+| **NIST 800-53**    | CM-6 – Configuration Management |
+| **ISO 27001**      | A.14.2 – Security in Development & Maintenance |
 
 ---
 
@@ -67,7 +68,7 @@ Exceptions to this policy may be requested in writing and must include:
 ## **Policy**  
 
 ### **4.1 Secure Configuration Planning & Selection**  
-1. Configuration guidelines must be selected based on either **vendor-provided hardening requirements or industry standards** (e.g., CIS Benchmarksâ„¢, DISA STIGs).  
+1. Configuration guidelines must be selected based on either **vendor-provided hardening requirements or industry standards** (e.g., CIS Benchmarks™, DISA STIGs).  
 2. A **set of secure configurations must be selected before deployment** for:  
    - **Operating systems and applications**.  
    - **Cloud platforms or third-party services**.  
@@ -120,13 +121,13 @@ Exceptions to this policy may be requested in writing and must include:
 
 ## **4. Best Practices for Implementing This Policy**  
 
-Organizations implementing **CIS Control 9 â€“ Secure Configuration Management** may consider the following best practices:  
+Organizations implementing **CIS Control 9 – Secure Configuration Management** may consider the following best practices:  
 
-- **Automated Configuration Management** â€“ Use **Ansible, Terraform, or cloud-native automation** to enforce configurations.  
-- **Baseline Hardening** â€“ Apply **CIS Benchmarks, DISA STIGs, or vendor hardening guides** to all systems.  
-- **Configuration Drift Monitoring** â€“ Detect unauthorized changes using **SIEM tools, integrity monitoring, and compliance scans**.  
-- **Zero Trust Configurations** â€“ Restrict access to **only what is necessary for system operation**.  
-- **Change Control & Logging** â€“ Log all configuration changes and enforce **review & approval workflows**.  
+- **Automated Configuration Management** – Use **Ansible, Terraform, or cloud-native automation** to enforce configurations.  
+- **Baseline Hardening** – Apply **CIS Benchmarks, DISA STIGs, or vendor hardening guides** to all systems.  
+- **Configuration Drift Monitoring** – Detect unauthorized changes using **SIEM tools, integrity monitoring, and compliance scans**.  
+- **Zero Trust Configurations** – Restrict access to **only what is necessary for system operation**.  
+- **Change Control & Logging** – Log all configuration changes and enforce **review & approval workflows**.  
 
 These strategies ensure a **structured approach to secure configuration management** while improving **security posture and compliance readiness**.
 
@@ -138,34 +139,35 @@ In the **Proxmox Astronomy Lab**, CIS Control 9 is implemented with the followin
 
 ### **5.1 System Hardening & Configuration Enforcement**  
 
-âœ… **Golden Templates used for OS deployments (Windows, Linux).**  
-âœ… **Ansible & Intune automate policy enforcement.**  
-âœ… **AppArmor & CIS Benchmarks applied to Linux systems.**  
+✅ **Golden Templates used for OS deployments (Windows, Linux).**  
+✅ **Ansible & Intune automate policy enforcement.**  
+✅ **AppArmor & CIS Benchmarks applied to Linux systems.**  
 
 ### **5.2 DNS & Network Security Enforcement**  
 
-âœ… **Technitium DNS with blocklists prevents malicious domain resolution.**  
-âœ… **All domains use DNSSEC, DKIM, and DMARC for email security.**  
-âœ… **TLS 1.3 is enforced for all encrypted communications.**  
+✅ **Technitium DNS with blocklists prevents malicious domain resolution.**  
+✅ **All domains use DNSSEC, DKIM, and DMARC for email security.**  
+✅ **TLS 1.3 is enforced for all encrypted communications.**  
 
 ### **5.3 Secure Email & Domain Security Policies**  
 
-âœ… **Azure/Exchange Online manages email with phishing & malware filtering.**  
-âœ… **DKIM, DMARC, and DNSSEC enforced for all domains.**  
+✅ **Azure/Exchange Online manages email with phishing & malware filtering.**  
+✅ **DKIM, DMARC, and DNSSEC enforced for all domains.**  
 
 ---
 
 ## **6. Summary and Next Steps**  
 
-âœ… **This document presents the official CISv8 Secure Configuration Management Policy Template.**  
-âœ… **It includes additional information on possible solutions for implementation.**  
-âœ… **A high-level example from the Proxmox Astronomy Lab is provided for reference.**  
+✅ **This document presents the official CISv8 Secure Configuration Management Policy Template.**  
+✅ **It includes additional information on possible solutions for implementation.**  
+✅ **A high-level example from the Proxmox Astronomy Lab is provided for reference.**  
 
-ðŸ“Œ **Actionable Next Steps:**  
+📌 **Actionable Next Steps:**  
 
 - **Ensure secure baselines are documented and enforced across all systems.**  
 - **Implement automated configuration management to prevent drift.**  
 - **Regularly review and update security baselines as threats evolve.**  
 
-ðŸš€ **By following this framework, organizations can ensure structured, secure, and auditable configuration management.**
+🚀 **By following this framework, organizations can ensure structured, secure, and auditable configuration management.**
+
 

@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Grafana Visualization Layer - Proxmox Astronomy Lab"
 description: "Documentation for the Grafana visualization layer, including dashboard structure and integrations."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-09"
 ---
+ -->
 
 # **Grafana Visualization Layer**
 
@@ -101,3 +102,4 @@ Dashboard JSON configurations are stored in the repository under:
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-09 | Initial documentation | VintageDon |
+

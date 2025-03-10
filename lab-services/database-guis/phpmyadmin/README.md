@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "phpMyAdmin - MySQL/MariaDB Management GUI"
 description: "Documentation for phpMyAdmin, the graphical user interface for managing MySQL/MariaDB databases."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-09"
 ---
+ -->
 
 # **phpMyAdmin - MySQL/MariaDB Management GUI**
 
@@ -65,3 +66,4 @@ phpMyAdmin is a **web-based database administration tool** for **MySQL/MariaDB**
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-09 | Initial documentation | VintageDon |
+

@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Proxmox Cluster Monitoring - Proxmox Astronomy Lab"
 description: "Documentation for Proxmox cluster-level monitoring using InfluxDB and Grafana."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Draft"
 last_updated: "2025-03-09"
 ---
+ -->
 
 # **Proxmox Cluster Monitoring**
 
@@ -105,3 +106,4 @@ While Proxmox’s metrics are **better for big-picture monitoring**, **Node Expo
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-09 | Initial documentation | VintageDon |
+

@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "CIS Control 5: Account Management in the Proxmox Astronomy Lab"
 description: "Overview of CIS Control 5, ensuring all user, system, and service accounts follow strict access control policies with auditing, automation, and enforcement via Entra Identity Governance."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.2"
 status: "Draft"
 last_updated: "2025-03-04"
 ---
+ -->
 
 # **🔐 CIS Control 5: Account Management in the Proxmox Astronomy Lab**
 
@@ -115,3 +116,4 @@ Role-based access control (RBAC) and Just-In-Time (JIT) access ensure least priv
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.2 | 2025-03-04 | Standardized KBFormatv1 applied. Article interlinking. | VintageDon |
+

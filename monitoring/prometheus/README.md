@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Prometheus Monitoring Service - Proxmox Astronomy Lab"
 description: "Documentation of Prometheus monitoring service for infrastructure and research observability in the Proxmox Astronomy Lab."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Published"
 last_updated: "2025-03-09"
 ---
+ -->
 
 # **Prometheus Monitoring Service**
 
@@ -174,3 +175,4 @@ Prometheus runs as a **systemd service** on `lab-mon01`, scraping metrics from v
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-09 | Initial documentation | VintageDon |
+

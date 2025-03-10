@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Proxmox Astronomy Lab Documentation"
 description: "The primary documentation hub for the Proxmox Astronomy Lab, explaining the documentation structure, technical choices, and how to navigate the knowledge base."
 author: "VintageDon"
@@ -9,6 +9,7 @@ version: "1.0"
 status: "Published"
 last_updated: "2025-03-06"
 ---
+ -->
 
 # **Proxmox Astronomy Lab Documentation**
 
@@ -257,3 +258,4 @@ All AI-generated content undergoes human review before publication, ensuring tec
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-06 | Initial documentation README | VintageDon |
+

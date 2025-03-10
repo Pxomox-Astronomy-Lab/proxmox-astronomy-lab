@@ -38,6 +38,72 @@ The infrastructure is divided into key areas, each serving a specific function i
 - **Signal Processing Pipelines** → AI-driven **noise reduction, signal validation, and long-term data retention**.
 - **Scientific Data Integration** → Federated research approach leveraging public datasets alongside lab-collected data.
 
+```mermaid
+graph TB
+    %% Identity & Authentication Core
+    subgraph "Identity & Authentication"
+        DC01["lab-dc01<br>Primary DC<br>Windows Server 2025<br>VLAN10"]
+        DC02["lab-dc02<br>Read-Only DC<br>Windows Server 2025<br>VLAN20"]
+        DNS01["lab-dns01<br>DNS Filtering<br>Ubuntu 24.04<br>VLAN10"]
+        DNS02["lab-dns02<br>DNS Filtering<br>Ubuntu 24.04<br>VLAN20"]
+    end
+    
+    %% Security Services
+    subgraph "Security & Monitoring"
+        SOC01["lab-soc01<br>Wazuh SIEM/XDR<br>Ubuntu 24.04<br>VLAN10"]
+        MON01["lab-mon01<br>Prometheus/Loki/Grafana<br>Ubuntu 24.04<br>VLAN10"]
+    end
+    
+    %% Automation & Management
+    subgraph "Automation & Orchestration"
+        ANS01["lab-ansible01<br>Ansible Controller<br>Ubuntu 24.04<br>VLAN10"]
+        PORT01["lab-port01<br>Portainer Control<br>Ubuntu 24.04<br>VLAN10"]
+    end
+    
+    %% Application & Storage
+    subgraph "Application & Data Services"
+        APPS01["lab-apps01<br>Containerized Apps<br>Ubuntu 24.04<br>VLAN10"]
+        DB01["lab-db01<br>Database Host<br>Ubuntu 24.04<br>VLAN10"]
+        FS01["lab-fs01<br>File Shares<br>Windows Server 2025<br>VLAN10"]
+    end
+    
+    %% Core Relationships
+    DC01 --- DC02
+    DC01 --- DNS01
+    DC02 --- DNS02
+    
+    %% Security Monitoring
+    DC01 --> SOC01
+    MON01 --> SOC01
+    
+    %% Automation Relationships
+    ANS01 --> DC01
+    ANS01 --> APPS01
+    ANS01 --> DB01
+    PORT01 --> APPS01
+    PORT01 --> DB01
+    
+    %% Data Relationships
+    DB01 --> FS01
+    APPS01 --> DB01
+    
+    %% Monitoring Relationships
+    MON01 --> DC01
+    MON01 --> DC02
+    MON01 --> APPS01
+    MON01 --> DB01
+    MON01 --> PORT01
+    MON01 --> ANS01
+    MON01 --> DNS01
+    MON01 --> DNS02
+    MON01 --> FS01
+    
+    %% Style Classes - Black boxes with white text
+    classDef default fill:#000000,color:#ffffff,stroke:#333,stroke-width:1px
+    
+    class DC01,DC02,DNS01,DNS02,SOC01,MON01,ANS01,PORT01,APPS01,DB01,FS01 default
+```
+
 ---
 
 ## **How This Section is Organized**

@@ -211,7 +211,16 @@ cd proxmox-astronomy-lab
 This is an **open-source research project**. If you're interested in **AI-powered radio astronomy, high-performance research infrastructure, or IT automation**, feel free to **contribute, test, or collaborate**.
 
 🛰 **Follow the project on GitHub**  
-📖 **Read the full documentation in the `/docs` folder**  
+📖 **Read the full documentation in the `/docs` folder**
+
+## 🤝 Sponsors List
+
+![Sponsor Logo](assets/images/sponsor-logo-msp4.png)
+
+[**MSP4.com**](https://www.sponsorwebsite.com) provides **IT support and consulting for businesses and managed service providers nationwide**. Their team **outworks the competition** to ensure that **you never have to worry about your IT**.
+
+📍 **8000 NW 31st Street, Suite 12, Doral, FL 33122**
+
 
 ## **🤝 Acknowledgments**
 

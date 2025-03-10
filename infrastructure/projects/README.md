@@ -44,6 +44,74 @@ Project infrastructure is deployed following core principles:
 
 The database infrastructure provides specialized data storage and processing capabilities for different research needs, from relational data to geospatial and time-series analysis.
 
+```mermaid
+graph TB
+    %% Database Services
+    subgraph "Database Services"
+        PG01["proj-pg01<br>PostgreSQL<br>4vCPU/16GB<br>VLAN20"]
+        PGGIS["proj-pggis01<br>PostgreSQL+GIS<br>4vCPU/16GB<br>VLAN20"]
+        PGTS["proj-pgts01<br>TimescaleDB<br>4vCPU/16GB<br>VLAN20"]
+    end
+
+    %% Access Services
+    subgraph "User Access Services"
+        RDS01["proj-rds01<br>Remote Desktop<br>4vCPU/16GB<br>VLAN20"]
+        KASM01["proj-kasm01<br>Kasm Workspaces<br>6vCPU/24GB<br>VLAN20"]
+    end
+
+    %% Application Services
+    subgraph "Application Services"
+        APPS01["proj-apps01<br>Docker Apps<br>4vCPU/12GB<br>VLAN20"]
+        FS01["proj-fs01<br>File Server<br>2vCPU/6GB<br>VLAN10"]
+    end
+
+    %% Data Types
+    subgraph "Research Data Flows"
+        SDR["SDR Signal Data"]
+        GEO["Geospatial Data"]
+        TIME["Time-Series Data"]
+        DOC["Documents/Files"]
+    end
+
+    %% Database Relationships
+    PG01 --- PGGIS
+    PG01 --- PGTS
+
+    %% Data Flow Relationships
+    SDR --> PGTS
+    GEO --> PGGIS
+    TIME --> PGTS
+    DOC --> FS01
+
+    %% User Access Relationships
+    KASM01 --> PG01
+    KASM01 --> PGGIS
+    KASM01 --> PGTS
+    RDS01 --> FS01
+
+    %% Application Relationships
+    APPS01 --> PG01
+    APPS01 --> PGGIS
+    APPS01 --> PGTS
+
+    %% User Data Access
+    RDS01 -.-> DOC
+    KASM01 -.-> SDR
+    KASM01 -.-> GEO
+    KASM01 -.-> TIME
+
+    %% Style Classes
+    classDef database fill:#222,stroke:#fff,stroke-width:1px,color:#fff
+    classDef access fill:#444,stroke:#fff,stroke-width:1px,color:#fff
+    classDef application fill:#666,stroke:#fff,stroke-width:1px,color:#fff
+    classDef dataflow fill:#888,stroke:#fff,stroke-width:1px,color:#fff
+
+    class PG01,PGGIS,PGTS database
+    class RDS01,KASM01 access
+    class APPS01,FS01 application
+    class SDR,GEO,TIME,DOC dataflow
+```
+
 ### **2.1 PostgreSQL Database Server (proj-pg01)**
 
 This VM provides the primary **PostgreSQL database service** for the lab, hosting structured research data, user authentication databases, and application data.

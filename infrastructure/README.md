@@ -8,6 +8,8 @@ This section provides a **detailed breakdown of the infrastructure**, from **com
 
 This is not a traditional **enterprise stack**, nor is it a **home lab with ad-hoc infrastructure**—it is a structured system that **blends DevOps methodologies, high-performance computing, and scientific instrumentation into a cohesive environment.**
 
+ ![infrastructure-hardware-network-layer](/assets/diagrams/infrastructure-hardware-network-layer-2.png)
+
 ---
 
 ## **Infrastructure Components**
@@ -23,7 +25,7 @@ The infrastructure is divided into key areas, each serving a specific function i
 ### **Networking & Security**
 
 - **VLAN-Segmented Architecture** → Logical separation between control plane, research workloads, and observatory systems.
-- **Zero-Trust Security** → Enforced via **Entra ID, Conditional Access, and Entra Private Access (EPA)**.
+- **Zero-Trust Security** → Enforced via **Entra ID, Conditional Access, and Tailscale**.
 - **Hybrid Identity Management** → Windows Server 2025 AD & Entra ID hybrid model with Azure Arc integration.
 
 ### **Storage & Data Management**

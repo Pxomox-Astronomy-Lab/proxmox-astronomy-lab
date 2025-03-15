@@ -187,6 +187,14 @@ The lab is being implemented in structured phases, with clear milestones and doc
 
 ---
 
+# ⚠ Disclaimer
+
+This project is a transparent, living process where we document our successes and our mistakes. We follow real-world ITIL project management principles, but this is also a learning experience. We show our work warts and all for transparency. Mistakes and course corrections are part of the process, and that's intentional.
+
+🔹 Security policies and best practices should not be blindly lifted from this repo. Every lab has unique needs, and configurations here are tailored to our environment. Always review and adapt security measures accordingly.
+
+---
+
 ## **🤖 AI Ethics & Responsible Research**
 
 The Proxmox Astronomy Lab integrates AI/ML-enhanced signal processing, automation, and research workflows, but with a strong commitment to ethical AI practices. AI is a tool to enhance scientific discovery, not to replace rigorous analysis or responsible decision-making.
@@ -241,4 +249,3 @@ This lab builds on the work of many open-source projects and communities, partic
 ## **📄 License**
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-

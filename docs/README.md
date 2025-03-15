@@ -13,6 +13,16 @@ last_updated: "2025-03-06"
 
 # **Proxmox Astronomy Lab Documentation**
 
+---
+
+# ⚠ Disclaimer
+
+This project is a transparent, living process where we document our successes and our mistakes. We follow real-world ITIL project management principles, but this is also a learning experience. We show our work warts and all for transparency. Mistakes and course corrections are part of the process, and that's intentional.
+
+🔹 Security policies and best practices should not be blindly lifted from this repo. Every lab has unique needs, and configurations here are tailored to our environment. Always review and adapt security measures accordingly.
+
+---
+
 ## **1. Overview**
 
 Welcome to the **Proxmox Astronomy Lab documentation hub** – a comprehensive knowledge base documenting our infrastructure, processes, and research activities. This documentation serves as both a **practical operational resource** and a **public reference implementation** for others interested in building similar research environments.

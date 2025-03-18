@@ -1,0 +1,35 @@
+trigger: none  # We'll use scheduled triggers
+
+schedules:
+- cron: "0 */6 * * *"  # Run every 6 hours
+  displayName: Mirror schedule
+  branches:
+    include:
+    - main
+  always: true
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- checkout: self
+  persistCredentials: true
+  
+- task: PowerShell@2
+  displayName: 'Mirror to ADO Repository'
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Configure Git
+      git config --global user.name "ADO Pipeline"
+      git config --global user.email "pipeline@example.com"
+      
+      # Set up the path for pushing to ADO
+      $adoUrl = "https://$(ADO_PAT)@dev.azure.com/$(System.TeamFoundationCollectionUri.Split('/')[3])/$(System.TeamProject)/_git/proxmox-astronomy-lab"
+      
+      # Push to ADO repo
+      Write-Host "Pushing to ADO repository at: $adoUrl"
+      git remote set-url origin $adoUrl
+      git push -f origin HEAD:main
+  env:
+    ADO_PAT: $(adoPat)

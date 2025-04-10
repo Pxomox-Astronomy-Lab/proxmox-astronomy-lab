@@ -5,7 +5,6 @@ D:\REPOSITORIES\PROXMOX-ASTRONOMY-LAB
 ¦   .markdownlint.json
 ¦   azure-pipelines.yml
 ¦   CHANGELOG.md
-¦   CNAME
 ¦   CODE_OF_CONDUCT.md
 ¦   CONTRIBUTING.md
 ¦   create-repo.ps1
@@ -184,29 +183,11 @@ D:\REPOSITORIES\PROXMOX-ASTRONOMY-LAB
 ¦                   stack.env.example
 ¦                   
 +---docs
-¦   ¦   Applications.md
-¦   ¦   Compliance-Security.md
-¦   ¦   Control-Plane.md
-¦   ¦   Documentation-Standards.md
-¦   ¦   Entra-Hybrid-Cloud.md
-¦   ¦   Infrastructure.md
-¦   ¦   ITIL-Processes.md
 ¦   ¦   README.md
-¦   ¦   Research-Projects.md
 ¦   ¦   
 ¦   +---Applications
 ¦   ¦   ¦   .order
-¦   ¦   ¦   AI-ML-Platforms.md
-¦   ¦   ¦   Containerized-Services.md
-¦   ¦   ¦   Data-Analysis.md
-¦   ¦   ¦   Databases.md
-¦   ¦   ¦   File-Storage.md
-¦   ¦   ¦   Identity.md
-¦   ¦   ¦   Observability.md
-¦   ¦   ¦   Radio-Astronomy.md
 ¦   ¦   ¦   README.md
-¦   ¦   ¦   Security.md
-¦   ¦   ¦   Version-Control.md
 ¦   ¦   ¦   
 ¦   ¦   +---AI-ML-Platforms
 ¦   ¦   ¦   ¦   README.md
@@ -329,12 +310,7 @@ D:\REPOSITORIES\PROXMOX-ASTRONOMY-LAB
 ¦   ¦               Project-Gitea.md
 ¦   ¦               
 ¦   +---Compliance-Security
-¦   ¦   ¦   Assessment-Tools.md
-¦   ¦   ¦   CIS-Controls.md
 ¦   ¦   ¦   README.md
-¦   ¦   ¦   Remediation.md
-¦   ¦   ¦   Security-Monitoring.md
-¦   ¦   ¦   Security-Policies.md
 ¦   ¦   ¦   
 ¦   ¦   +---Assessment-Tools
 ¦   ¦   ¦   ¦   README.md
@@ -746,17 +722,15 @@ D:\REPOSITORIES\PROXMOX-ASTRONOMY-LAB
 ¦   ¦               README.md
 ¦   ¦               
 ¦   +---Documentation-Standards
-¦   ¦   ¦   Docuimentation-Templates.md
-¦   ¦   ¦   Lifecycle-Management.md
 ¦   ¦   ¦   README.md
-¦   ¦   ¦   Tagging-Standards.md
 ¦   ¦   ¦   
 ¦   ¦   +---Documentation-Templates
 ¦   ¦   ¦   ¦   README.md
 ¦   ¦   ¦   ¦   
 ¦   ¦   ¦   +---General-Templates-Style-Guides
+¦   ¦   ¦   ¦       kb-general-template.md
 ¦   ¦   ¦   ¦       kb-wiki-article-style-guide.md
-¦   ¦   ¦   ¦       kb-wiki-article-template.md
+¦   ¦   ¦   ¦       readme-category-template.md
 ¦   ¦   ¦   ¦       service-documentation-style-guide.md
 ¦   ¦   ¦   ¦       service-documentation-template.md
 ¦   ¦   ¦   ¦       
@@ -794,9 +768,6 @@ D:\REPOSITORIES\PROXMOX-ASTRONOMY-LAB
 ¦   ¦               README.md
 ¦   ¦               
 ¦   +---Entra-Hybrid-Cloud
-¦   ¦   ¦   Azure-Services.md
-¦   ¦   ¦   Identity-Integration.md
-¦   ¦   ¦   Private-Access.md
 ¦   ¦   ¦   README.md
 ¦   ¦   ¦   
 ¦   ¦   +---Azure-Services
@@ -836,11 +807,7 @@ D:\REPOSITORIES\PROXMOX-ASTRONOMY-LAB
 ¦   ¦               README.md
 ¦   ¦               
 ¦   +---Infrastructure
-¦   ¦   ¦   Compute.md
-¦   ¦   ¦   Networking.md
-¦   ¦   ¦   Observatory-Hardware.md
 ¦   ¦   ¦   README.md
-¦   ¦   ¦   Storage.md
 ¦   ¦   ¦   
 ¦   ¦   +---Compute
 ¦   ¦   ¦   ¦   README.md

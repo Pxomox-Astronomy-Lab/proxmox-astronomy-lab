@@ -1,6 +1,6 @@
 <!-- 
 ---
-title: "Applications - Proxmox Astronomy Lab"
+title: "Applications & Services - Proxmox Astronomy Lab"
 description: "Documentation hub for all applications and services running within the Proxmox Astronomy Lab environment"
 author: "VintageDon"
 tags: ["applications", "services", "documentation", "overview"]
@@ -14,45 +14,95 @@ last_updated: "2025-03-16"
 
 # 🖥️ **Applications & Services**
 
-## 🔍 **1. Overview**
+# 🔍 **1. Overview**
 
-The **Applications & Services** section documents all **deployed software systems** within the **Proxmox Astronomy Lab** environment. This includes **containerized applications, databases, supporting services, and research tools** that collectively enable the lab's IT operations and scientific research capabilities.
+The Applications & Services section documents all deployed software systems within the Proxmox Astronomy Lab environment. This includes containerized applications, databases, supporting services, and research tools that collectively enable the lab's IT operations and scientific research capabilities.
 
-Each application is documented with a consistent approach covering **technical architecture, configuration details, access management, and operational procedures** to ensure proper maintenance and support throughout its lifecycle.
-
----
-
-## 📊 **2. Application Categories**
-
-The lab's applications are organized into functional categories that reflect their purpose and technical characteristics. Each category has its own dedicated documentation section.
-
-| **Category** | **Purpose** | **Key Components** |
-|--------------|------------|-------------------|
-| [**AI-ML-Platforms**](AI-ML-Platforms/index.md) | Machine learning and AI capabilities | TensorFlow, Milvus, Jupyter, MLflow |
-| [**Containerized-Services**](Containerized-Services/index.md) | Container orchestration and management | Docker, Kubernetes, Portainer |
-| [**Databases**](Databases/index.md) | Structured and time-series data storage | PostgreSQL, TimescaleDB, Redis, MariaDB, MongoDB |
-| [**Data-Analysis**](Data-Analysis/index.md) | Data processing and visualization | Apache Superset, Apache Airflow |
-| [**File-Storage**](File-Storage/index.md) | File management and sharing | MinIO, Nextcloud, Restic |
-| [**Identity**](Identity/index.md) | Authentication and authorization | Zitadel |
-| [**Observability**](Observability/index.md) | Monitoring, logging, and alerting | Prometheus, Grafana, Loki |
-| [**Radio-Astronomy**](Radio-Astronomy/index.md) | Scientific research applications | GNU Radio, SDR tools, CASA, Presto |
-| [**Security**](Security/index.md) | Security monitoring and protection | Wazuh, Vaultwarden |
-| [**Version-Control**](Version-Control/index.md) | Code and configuration management | Gitea |
+Each application is documented with a consistent approach covering technical architecture, configuration details, access management, and operational procedures to ensure proper maintenance and support throughout its lifecycle.
 
 ---
 
-## 🔧 **3. Deployment Architecture**
+# 📊 **2. Application Categories**
 
-### **3.1 Deployment Strategy**
+This section organizes the lab's applications into functional categories that reflect their purpose and technical characteristics, providing a structured way to navigate the application ecosystem.
 
-The lab employs a structured deployment approach that ensures all applications are properly containerized, monitored, and secured:
+## **2.1 AI & ML Platforms**
 
-- **Containerized by default** - Applications are deployed using Docker and Kubernetes
-- **Configuration as code** - All application configurations are version-controlled
-- **Standardized monitoring** - Prometheus and Loki integration is mandatory
-- **Consistent security baselines** - Security controls are applied to all applications
+This subsection covers machine learning and artificial intelligence capabilities that support research and automation within the lab.
 
-### **3.2 Primary Application Hosts**
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **TensorFlow Serving** | ML model deployment | [TensorFlow Serving](AI-ML-Platforms/Inference-Engines/TensorFlow-Serving.md) |
+| **Milvus** | Vector database for knowledge retrieval | [Milvus](AI-ML-Platforms/Vector-Databases/Milvus.md) |
+| **Jupyter Notebook** | Interactive data analysis | [Jupyter Notebook](AI-ML-Platforms/Model-Training/Jupyter-Notebook.md) |
+| **MLflow** | ML experiment tracking | [MLflow](AI-ML-Platforms/Model-Training/MLflow.md) |
+
+The AI and ML platforms listed above form the foundation for data analysis, machine learning, and knowledge retrieval capabilities in the lab environment.
+
+## **2.2 Container Platforms**
+
+This subsection documents the container orchestration and management systems that enable scalable application deployment.
+
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Docker Nodes** | Container hosts | [Docker Nodes](Containerized-Services/Docker-Nodes/lab-apps01.md) |
+| **Kubernetes Cluster** | Container orchestration | [RKE2 Cluster](Containerized-Services/Kubernetes-Workloads/RKE2-Cluster.md) |
+| **Portainer** | Container management UI | [Portainer](Containerized-Services/Portainer/lab-port01.md) |
+| **Traefik** | Container ingress controller | [Traefik Ingress](Containerized-Services/Kubernetes-Workloads/Traefik-Ingress.md) |
+
+The container platforms above provide the deployment infrastructure for scalable, resilient application workloads throughout the lab environment.
+
+## **2.3 Database Systems**
+
+This subsection covers the database platforms that provide structured and time-series data storage for applications and research data.
+
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **PostgreSQL** | Relational database | [PostgreSQL Server](Databases/PostgreSQL/PostgreSQL-Server.md) |
+| **TimescaleDB** | Time-series data | [TimescaleDB Server](Databases/TimescaleDB/TimescaleDB-Server.md) |
+| **PostGIS** | Geospatial data storage | [PostGIS](Databases/GIS-Extensions/PostGIS.md) |
+| **MongoDB** | Document database | [MongoDB Server](Databases/MongoDB/MongoDB-Server.md) |
+| **Redis** | In-memory data store | [Redis Server](Databases/Redis/Redis-Server.md) |
+| **MariaDB** | Relational database | [MariaDB Server](Databases/MariaDB/MariaDB-Server.md) |
+
+The database systems listed above provide specialized data storage services for different application requirements and research data types.
+
+## **2.4 Scientific Applications**
+
+This subsection documents the specialized scientific applications used for radio astronomy research and data analysis.
+
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **GNU Radio** | Signal processing | [GNU Radio](Radio-Astronomy/SDR-Applications/GNU-Radio.md) |
+| **SDR++** | Software-defined radio | [SDR++](Radio-Astronomy/SDR-Applications/SDR-Plus-Plus.md) |
+| **SigDigger** | Signal analysis | [SigDigger](Radio-Astronomy/SDR-Applications/SigDigger.md) |
+| **CASA/Miriad** | Astronomy data analysis | [CASA-Miriad](Radio-Astronomy/Analysis-Tools/CASA-Miriad.md) |
+| **Presto** | Pulsar search and analysis | [Presto](Radio-Astronomy/Analysis-Tools/Presto.md) |
+
+The scientific applications above provide specialized tools for radio astronomy signal processing, analysis, and research workflow management.
+
+---
+
+# 🔧 **3. Deployment Architecture**
+
+This section documents how applications are deployed, managed, and maintained across the lab environment.
+
+## **3.1 Deployment Strategy**
+
+This subsection explains the structured deployment approach that ensures all applications are properly containerized, monitored, and secured.
+
+| **Approach** | **Implementation** | **Documentation** |
+|--------------|-------------------|-------------------|
+| **Containerization** | Docker and Kubernetes packaging | [Container Standards](../ITIL-Processes/Change-Management/RFC-Templates/README.md) |
+| **Configuration as Code** | Git-managed application configs | [GitOps Workflows](../ITIL-Processes/Change-Management/README.md) |
+| **Standardized Monitoring** | Prometheus and Loki integration | [Monitoring Integration](../Observability/Prometheus/README.md) |
+| **Security Baselines** | CISv8-aligned application security | [Application Security](../Compliance-Security/Security-Policies/CIS-Security-Policies/16-application-software-security/README.md) |
+
+The deployment strategy ensures consistent, secure, and maintainable application deployments across the lab environment.
+
+## **3.2 Application Hosts**
+
+This subsection documents the primary hosts where applications are deployed throughout the environment.
 
 | **Host** | **Purpose** | **Primary Applications** |
 |----------|------------|-------------------------|
@@ -63,21 +113,63 @@ The lab employs a structured deployment approach that ensures all applications a
 | **Kubernetes cluster** | Scalable workloads | Milvus, TensorFlow, processing pipelines |
 | **proj-rds02** | Radio astronomy workstation | GNU Radio, SigDigger, SDR++ |
 
+The application hosts table above maps which systems host specific applications, providing context for infrastructure dependencies.
+
 ---
 
-## 🔄 **4. Application Lifecycle Management**
+# 🔐 **5. Security & Compliance**
 
-### **4.1 Deployment Process**
+This section documents how security controls are implemented across applications and how compliance requirements are met.
 
-All applications in the lab follow a structured deployment process:
+## **5.1 Access Control**
 
-1. **Containerization** - Applications are packaged in Docker containers
-2. **Review & Testing** - Security and functionality testing in isolated environments
-3. **Deployment** - Managed via Portainer, Kubernetes, or dedicated Ansible playbooks
-4. **Monitoring Integration** - Exporters and agents are deployed with the application
-5. **Documentation** - Service documentation is created or updated in this wiki
+This subsection documents the consistent approach to application access control implemented throughout the environment.
 
-### **4.2 Maintenance & Updates**
+| **Control Type** | **Implementation** | **Verification Method** |
+|------------------|-------------------|------------------------|
+| **Centralized Authentication** | Zitadel for identity management | Authentication logs, access review |
+| **Role-Based Access** | Permissions assigned by user role | Permission audit, group membership |
+| **Multi-Factor Authentication** | Required for administrative access | MFA enforcement reports |
+| **Access Reviews** | Quarterly access validation | Access review documentation |
+
+The access control table above documents implemented safeguards, providing evidence for security assessments and compliance audits.
+
+## **5.2 Security Monitoring**
+
+This subsection details how applications are monitored for security events and compliance with security baselines.
+
+| **Control Type** | **Implementation** | **Verification Method** |
+|------------------|-------------------|------------------------|
+| **SIEM Integration** | Wazuh agents on all application hosts | Alert verification, log completeness |
+| **Log Analysis** | Centralized logging in Loki | Log retention, security alerting |
+| **Vulnerability Scanning** | Regular assessment cycle | Scan reports, remediation tracking |
+| **Configuration Compliance** | Automated baseline verification | Compliance reports, drift detection |
+
+The security monitoring controls ensure continuous visibility into the security posture of all applications and early detection of potential security issues.
+
+---
+
+# 🔄 **6. Application Lifecycle Management**
+
+This section covers the processes for deploying, maintaining, and retiring applications throughout their lifecycle.
+
+## **6.1 Deployment Process**
+
+This subsection documents the structured process for deploying new applications in the lab environment.
+
+| **Phase** | **Activities** | **Documentation** |
+|-----------|---------------|-------------------|
+| **Containerization** | Package in Docker containers | [Container Standards](../ITIL-Processes/Change-Management/RFC-Templates/README.md) |
+| **Review & Testing** | Security and functionality testing | [Application Testing](../ITIL-Processes/Change-Management/README.md) |
+| **Deployment** | Managed via Portainer or Kubernetes | [Deployment Procedures](../ITIL-Processes/Change-Management/Application-Onboarding.md) |
+| **Monitoring Integration** | Exporters and logging configuration | [Monitoring Setup](../Observability/Prometheus/README.md) |
+| **Documentation** | Service documentation creation | [Documentation Standards](../Documentation-Standards/Documentation-Templates/README.md) |
+
+The deployment process ensures consistent, secure application onboarding that integrates with the lab's operational practices.
+
+## **6.2 Maintenance Activities**
+
+This subsection outlines the routine maintenance activities performed to keep applications secure and up-to-date.
 
 | **Activity** | **Frequency** | **Responsibility** | **Documentation** |
 |--------------|--------------|-------------------|-------------------|
@@ -86,118 +178,80 @@ All applications in the lab follow a structured deployment process:
 | **Configuration Reviews** | Quarterly | Operations | [Configuration Reviews](../ITIL-Processes/Problem-Management/Configuration-Reviews.md) |
 | **Backup Verification** | Monthly | Operations | [Backup Verification](../ITIL-Processes/Service-Catalog/Backup-Verification.md) |
 
----
-
-## 🔐 **5. Security & Access Management**
-
-### **5.1 Access Control**
-
-The lab follows a consistent approach to application access control:
-
-- **Centralized authentication** - Zitadel for identity management
-- **Role-based access control** - Permissions assigned based on user roles
-- **Multi-factor authentication** - Required for all administrative access
-- **Access reviews** - Regular review of user accounts and permissions
-
-### **5.2 Security Monitoring**
-
-All applications are subject to security monitoring via:
-
-- **Wazuh SIEM** - Security event monitoring and alerting
-- **Log analysis** - Centralized logging in Loki with security alerting
-- **Vulnerability scanning** - Regular assessment of application security
-- **Configuration compliance** - Automated verification against security baselines
+The maintenance activities ensure applications remain secure, performant, and aligned with operational requirements throughout their lifecycle.
 
 ---
 
-## 🚀 **6. Getting Started**
+# 🔗 **7. Directory Contents**
 
-### **6.1 New Application Onboarding**
+This section provides direct navigation to all subdirectories and key documents in this category.
 
-To add a new application to the lab environment:
+## **Subdirectories**
 
-1. Review the [Application Onboarding Guide](../ITIL-Processes/Change-Management/Application-Onboarding.md)
-2. Submit a change request following the [RFC Template](../ITIL-Processes/Change-Management/RFC-Templates/RFC-Template.md)
-3. Ensure the application meets security requirements detailed in [Application Security Standards](../Compliance-Security/Security-Policies/Application-Security-Standards.md)
-4. Document the application following templates in [Documentation Standards](../Documentation-Standards/Templates/Service-Documentation/index.md)
+This subsection identifies the main subdirectories within the Applications section, explaining their purpose and providing navigation links.
 
-### **6.2 Documentation Navigation**
+| **Directory** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **AI-ML-Platforms** | Artificial intelligence and machine learning | [AI-ML-Platforms README](AI-ML-Platforms/README.md) |
+| **Containerized-Services** | Container orchestration and management | [Containerized-Services README](Containerized-Services/README.md) |
+| **Databases** | Database platforms and management | [Databases README](Databases/README.md) |
+| **Data-Analysis** | Data processing and visualization | [Data-Analysis README](Data-Analysis/README.md) |
+| **File-Storage** | File management and sharing | [File-Storage README](File-Storage/README.md) |
+| **Identity** | Authentication and authorization | [Identity README](Identity/README.md) |
+| **Observability** | Monitoring, logging, and alerting | [Observability README](Observability/README.md) |
+| **Radio-Astronomy** | Scientific research applications | [Radio-Astronomy README](Radio-Astronomy/README.md) |
+| **Security** | Security monitoring and protection | [Security README](Security/README.md) |
+| **Version-Control** | Code and configuration management | [Version-Control README](Version-Control/README.md) |
 
-For efficient navigation of application documentation:
+The subdirectories table above provides navigation to key sections of the Applications documentation, helping users locate specific information.
 
-1. Start with the category index to identify relevant services
-2. Review application-specific pages for detailed technical information
-3. Reference related operational procedures in the [ITIL Processes](../ITIL-Processes/index.md) section
-4. Check security-related requirements in the [Compliance & Security](../Compliance-Security/index.md) section
+## **Key Documents**
 
----
+This subsection highlights important standalone documents within the Applications section that provide significant information.
 
-## 🔗 **7. Related Documentation**
+| **Document** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Milvus.md** | Vector database configuration | [Milvus Documentation](AI-ML-Platforms/Vector-Databases/Milvus.md) |
+| **RKE2-Cluster.md** | Kubernetes cluster overview | [RKE2 Cluster Documentation](Containerized-Services/Kubernetes-Workloads/RKE2-Cluster.md) |
+| **PostgreSQL-Server.md** | Database configuration details | [PostgreSQL Documentation](Databases/PostgreSQL/PostgreSQL-Server.md) |
 
-| **Documentation Area** | **Purpose** | **Link** |
-|----------------------|------------|---------|
-| **Infrastructure** | Physical and virtual infrastructure supporting applications | [Infrastructure](../Infrastructure/index.md) |
-| **Control Plane** | Core services that enable applications | [Control Plane](../Control-Plane/index.md) |
-| **ITIL Processes** | Operational procedures for application management | [ITIL Processes](../ITIL-Processes/index.md) |
-| **Compliance & Security** | Security standards and requirements | [Compliance & Security](../Compliance-Security/index.md) |
-
----
-
-## 🔄 **8. Application Integration**
-
-### **8.1 Integration Patterns**
-
-Applications in the lab are integrated using several standardized patterns:
-
-- **API-first** - RESTful and GraphQL APIs for service communication
-- **Message queuing** - Event-driven communication using RabbitMQ
-- **Shared storage** - NFS and MinIO for common file access
-- **Data pipelines** - Structured data flows using Apache Airflow
-
-### **8.2 Key Integration Points**
-
-| **Integration** | **Purpose** | **Documentation** |
-|----------------|------------|-------------------|
-| **Zitadel → All Applications** | Centralized authentication | [Identity Integration](../Entra-Hybrid-Cloud/Identity-Integration/index.md) |
-| **Applications → Prometheus/Loki** | Monitoring and logging | [Observability Integration](Observability/index.md) |
-| **Applications → Databases** | Data persistence | [Database Access](Databases/index.md) |
-| **Research Applications → TimescaleDB** | Research data storage | [Research Data Architecture](Research-Projects/Data-Pipelines/Storage-Architecture/index.md) |
+The key documents table above connects this document to other knowledge base articles, supporting comprehensive understanding and navigation.
 
 ---
 
-## 🛠️ **9. Process Integration**
+# 🔄 **8. Related Categories**
 
-### **9.1 ITIL Process Relationship**
+This section identifies other documentation categories related to Applications, establishing relationships between different knowledge areas.
 
-Applications in the lab are managed according to ITIL processes:
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **Infrastructure** | Hosting platform for applications | [Infrastructure README](../Infrastructure/README.md) |
+| **Control-Plane** | Core services for applications | [Control-Plane README](../Control-Plane/README.md) |
+| **ITIL-Processes** | Application lifecycle management | [ITIL-Processes README](../ITIL-Processes/README.md) |
+| **Compliance-Security** | Application security requirements | [Compliance-Security README](../Compliance-Security/README.md) |
 
-- **Change Management** - Controlled application deployment and updates
-- **Incident Management** - Handling application outages and issues
-- **Problem Management** - Root cause analysis and permanent fixes
-- **Service Level Management** - Defining and measuring application performance
-
-### **9.2 Role Responsibilities**
-
-| **Role** | **Application Management Responsibilities** |
-|----------|-------------------------------------------|
-| **Lab Owner** | Strategy, portfolio management, approval authority |
-| **Engineer** | Design, implementation, upgrades, security hardening |
-| **Operations** | Monitoring, incident response, performance management |
-| **Service Desk** | User support, service requests, documentation |
-| **Security Admin** | Security monitoring, compliance verification, vulnerability management |
+The related categories table above documents connections to other knowledge domains, helping users understand the broader context of the Applications section.
 
 ---
 
-## ✅ **Approval & Review**
+# ✅ **9. Approval & Review**
+
+This section documents the formal review and approval process for this document. It ensures accountability and tracks who has verified the accuracy of the content.
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
 | VintageDon | Lead Engineer | 2025-03-16 | ✅ Approved |
 
+The approval and review table above documents who has verified the accuracy of this document and when, establishing accountability and ensuring quality.
+
 ---
 
-## 📜 **Change Log**
+# 📜 **10. Change Log**
+
+This section tracks the document's revision history. It provides transparency into how the document has evolved over time and who made the changes.
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
-| 1.0 | 2025-03-16 | Initial Applications index documentation | VintageDon |
+| 1.0 | 2025-03-16 | Initial Applications README | VintageDon |
+
+The change log table above provides a comprehensive history of document revisions, supporting version control and auditing requirements.

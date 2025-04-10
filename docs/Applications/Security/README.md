@@ -14,211 +14,138 @@ last_updated: "2025-03-16"
 
 # 🛡️ **Security Applications**
 
-The Security Applications section documents the tools, platforms, and services that protect the Proxmox Astronomy Lab infrastructure and data. These applications provide comprehensive security monitoring, threat detection, password management, and compliance verification capabilities.
+# 🔍 **1. Overview**
 
-## 🔍 **1. Overview**
+This section documents the security monitoring systems, password management tools, and compliance verification applications deployed within the Proxmox Astronomy Lab. These applications form the foundation of our defense-in-depth strategy, providing protection for infrastructure, applications, and research data.
 
-This overview provides context for the lab's approach to security applications, covering the purpose and scope of our protection mechanisms.
-
-### **1.1 Purpose**
-
-This section documents the **security monitoring systems, password management tools, and compliance verification applications** deployed within the Proxmox Astronomy Lab. It serves as a reference for the **architecture, configuration, and operational aspects** of these critical services that protect infrastructure, applications, and research data from threats and vulnerabilities.
-
-### **1.2 Scope**
-
-The following table defines what is included and excluded from this documentation to help readers understand its boundaries.
-
-| **In Scope** | **Out of Scope** |
-|--------------|------------------|
-| Security monitoring platforms | Physical security controls |
-| Password and secrets management | Identity provider configuration (see Identity section) |
-| Compliance verification tools | Security policies (see Compliance-Security section) |
-| Security alerting and response | Network security hardware |
-
-### **1.3 Target Audience**
-
-Security administrators, engineers, and operators who need to deploy, manage, or respond to alerts from the lab's security infrastructure.
+The security applications follow a layered approach with monitoring at multiple levels, centralized event collection, automated alerting, and integration with our ITSM workflows for incident management.
 
 ---
 
-## 🔒 **2. Security Components**
+# 🔒 **2. Security Monitoring & SIEM**
 
-Our lab employs a comprehensive set of security applications that work together to provide defense-in-depth protection for all systems.
+## **2.1 Wazuh SIEM/XDR**
 
-The following table outlines our primary security applications and their documentation:
+Wazuh provides our core security information and event management (SIEM) and extended detection and response (XDR) capabilities.
 
-| **Component** | **Purpose** | **Key Documentation** |
-|--------------|------------|----------------------|
-| [**Vaultwarden**](Vaultwarden/README.md) | Password and secrets management | Installation, configuration, integration |
-| [**Wazuh**](Wazuh/README.md) | Security monitoring, SIEM, XDR | Deployment, agents, rule configuration |
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Wazuh Server** | Centralized security event monitoring | [Wazuh Server Configuration](Wazuh/Wazuh-Server.md) |
+| **Wazuh Agents** | Endpoint monitoring and file integrity | [Agent Deployment Guide](Wazuh/Agent-Configuration.md) |
+| **Security Dashboards** | Threat visualization and analysis | [Security Dashboards](Wazuh/Security-Dashboards.md) |
+| **CIS Scanning** | Automated compliance verification | [CIS-CAT Integration](Wazuh/CIS-Compliance-Checks.md) |
 
----
+## **2.2 Security Scanning Tools**
 
-## 🏗️ **3. Technical Documentation**
+These tools provide vulnerability detection and assessment capabilities for the lab environment.
 
-This section covers the technical implementation details of our security applications, including architectural design and integration strategy.
-
-### **3.1 Architecture Overview**
-
-The security applications follow a layered approach that provides multiple levels of protection:
-
-- **Endpoint Protection** - Wazuh agents on all systems for file integrity and threat detection
-- **SIEM/XDR** - Centralized security event monitoring and correlation
-- **Secrets Management** - Secure password storage and sharing with Vaultwarden
-- **Vulnerability Management** - Automated scanning and reporting
-- **Compliance Monitoring** - Continuous verification of security baselines
-- **Active Response** - Automated and manual incident response capabilities
-
-### **3.2 Infrastructure Components**
-
-The following table details the key infrastructure components that make up our security solution:
-
-| **Component** | **Description** | **CMDB ID** |
-|---------------|----------------|------------|
-| Security Monitoring Server | Wazuh SIEM/XDR platform | lab-soc01 |
-| Password Management | Vaultwarden password vault | lab-apps01 |
-| Security Database | PostgreSQL for security events | lab-db01 |
-| Scanning Engine | OpenSCAP/OpenVAS for vulnerability scanning | lab-soc01 |
-| Agents/Collectors | Wazuh agents on all systems | multiple |
-| Alert Management | Alertmanager and MS Teams integration | lab-mon01 |
-
-### **3.3 Dependencies**
-
-The following table outlines the dependencies and relationships between security applications and other infrastructure components:
-
-| **Dependency Type** | **Service/Component** | **Impact if Unavailable** |
-|---------------------|----------------------|---------------------------|
-| **Requires** | PostgreSQL Database | Security event storage unavailable |
-| **Requires** | Reverse Proxy | Web interfaces inaccessible |
-| **Requires** | Entra ID / Zitadel | Authentication limitations |
-| **Requires** | Network Infrastructure | Agent communication disrupted |
-| **Required By** | Compliance Reporting | Security posture visibility reduced |
-| **Required By** | Incident Response | Threat detection capabilities degraded |
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **OpenSCAP** | Security content automation | [OpenSCAP Implementation](Wazuh/OpenSCAP-Integration.md) |
+| **OpenVAS** | Vulnerability assessment | [Vulnerability Scanning](Wazuh/Vulnerability-Scanning.md) |
+| **Lynis** | Security auditing for Linux systems | [Lynis Integration](Wazuh/Lynis-Scanning.md) |
 
 ---
 
-## 🔐 **4. Service Management**
+# 🔑 **3. Credentials & Secrets Management**
 
-This section describes how security applications are managed, including access control and security monitoring of the security systems themselves.
+## **3.1 Vaultwarden**
 
-### **4.1 Access Management**
+Vaultwarden provides secure password management and sharing capabilities for lab personnel.
 
-The following table outlines the access management approach for security applications:
-
-| **User Role** | **Access Level** | **Authorization Process** |
-|---------------|----------------|---------------------------|
-| Security Administrator | Full administration | Approved by Lab Owner via Zitadel |
-| Engineer | View access with limited configuration rights | Approved by Security Administrator |
-| Operator | View-only access to dashboards and events | Approved by Engineer |
-| Application Owner | Access to application-specific views | Approved by Security Administrator |
-| User | Access to own Vaultwarden account only | Self-registration with MFA enforcement |
-
-### **4.2 Security Monitoring & Alerting**
-
-The following table details how the security systems themselves are monitored:
-
-| **Security Aspect** | **Monitoring Method** | **Alert Severity** |
-|---------------------|---------------------|-------------------|
-| Wazuh Availability | Prometheus endpoint, heartbeat | Critical |
-| Vaultwarden Availability | HTTP check, process monitor | Critical |
-| Database Integrity | Regular checksums, backup verification | Critical |
-| Agent Connectivity | Wazuh built-in monitoring | Warning |
-| Ruleset Updates | Verification of policy application | Warning |
-| Encryption Verification | TLS certificate monitoring | Warning |
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Vaultwarden Server** | Password vault and management | [Vault Configuration](Vaultwarden/Vault-Configuration.md) |
+| **Browser Extensions** | Secure password autofill | [Browser Integration](Vaultwarden/Browser-Extensions.md) |
+| **Secrets Sharing** | Secure credential distribution | [Secrets Sharing](Vaultwarden/Secrets-Sharing.md) |
+| **Emergency Access** | Break-glass procedures | [Emergency Access](Vaultwarden/Emergency-Access.md) |
 
 ---
 
-## 🔄 **5. Operational Procedures**
+# 🛠️ **4. Management & Operations**
 
-This section covers routine procedures and troubleshooting approaches for security applications.
+## **4.1 Operational Procedures**
 
-### **5.1 Routine Procedures**
-
-The following table outlines standard operational procedures for security application management:
+The following procedures are performed to maintain security operations:
 
 | **Procedure** | **Frequency** | **Role Responsible** | **Procedure Document** |
 |---------------|--------------|----------------------|------------------------|
-| Rule/Policy Updates | Monthly | Security Administrator | [Security Policy Management](Wazuh/Security-Policy-Management.md) |
-| Vulnerability Scanning | Weekly | Security Administrator | [Vulnerability Scanning](Wazuh/Vulnerability-Scanning.md) |
-| Compliance Verification | Monthly | Security Administrator | [CIS Compliance Checks](Wazuh/CIS-Compliance-Checks.md) |
-| Agent Health Check | Daily | Operations | [Agent Health Verification](Wazuh/Agent-Health-Verification.md) |
-| Alert Review | Daily | Security Administrator | [Alert Triage Process](Wazuh/Alert-Triage-Process.md) |
+| Security Rules Review | Monthly | Security Administrator | [Rule Management](Wazuh/Rule-Management.md) |
+| Vulnerability Scanning | Weekly | Security Administrator | [Scan Procedures](Wazuh/Scan-Procedures.md) |
+| Compliance Assessment | Monthly | Security Administrator | [Compliance Verification](Wazuh/Compliance-Verification.md) |
+| Alert Triage | Daily | Operations | [Alert Handling](Wazuh/Alert-Handling.md) |
 
-### **5.2 Troubleshooting**
+## **4.2 Troubleshooting**
 
-The following table provides guidance for addressing common security application issues:
+Common issues and their resolution approaches:
 
-| **Common Issue** | **Symptoms** | **Resolution Steps** | **KEDB ID** |
+| **Common Issue** | **Symptoms** | **Resolution Steps** | **KB Article** |
 |------------------|------------|---------------------|------------|
-| Agent Disconnection | Agent shown as disconnected in Wazuh | Verify network, restart agent, check certificates | KEDB-SEC-001 |
-| False Positive Alerts | Excessive alerts for normal activity | Tune rules, add exceptions, adjust thresholds | KEDB-SEC-002 |
-| Database Performance | Slow queries, delayed alerts | Optimize indexes, adjust retention, increase resources | KEDB-SEC-003 |
-| Certificate Expiration | TLS errors, connection failures | Renew certificates, update configurations | KEDB-SEC-004 |
-| MFA Issues | Users unable to access Vaultwarden | Reset MFA, verify recovery codes, check authentication flow | KEDB-SEC-005 |
+| Agent Disconnection | Agent shown as disconnected in Wazuh | Verify network, restart agent, check certificates | [Agent Troubleshooting](Wazuh/Agent-Troubleshooting.md) |
+| False Positive Alerts | Excessive alerts for normal activity | Tune rules, add exceptions, adjust thresholds | [Alert Tuning](Wazuh/Alert-Tuning.md) |
+| Database Performance | Slow queries, delayed alerts | Optimize indexes, adjust retention, increase resources | [Database Optimization](Wazuh/Database-Optimization.md) |
 
 ---
 
-## 🔒 **6. Security Considerations**
+# 🔐 **5. Security & Compliance**
 
-This section outlines the security measures implemented for the security applications themselves.
+## **5.1 Security Controls**
 
-The following table highlights key security aspects:
+The following controls protect our security applications:
 
-| **Security Aspect** | **Implementation** | **Documentation** |
-|--------------------|-------------------|--------------------|
-| Authentication | Zitadel SSO with MFA enforcement | [Security App Authentication](../Identity/Zitadel/Security-App-Authentication.md) |
-| Authorization | Strict role-based access control | [Security RBAC](../Identity/Zitadel/Security-RBAC.md) |
-| Network Security | TLS 1.3, isolated security VLAN | [Security Network Architecture](../Compliance-Security/Security-Policies/Security-Network-Architecture.md) |
-| Data Protection | Encrypted databases, secure backups | [Security Data Protection](../Compliance-Security/Security-Policies/Security-Data-Protection.md) |
-| Monitoring | Self-monitoring configuration | [Security Self-Monitoring](Wazuh/Self-Monitoring.md) |
+| **Control Type** | **Implementation** | **Verification Method** | **Control ID** |
+|------------------|-------------------|------------------------|----------------|
+| Access Control | Zitadel SSO with MFA enforcement | Weekly access review | CIS.6.5 |
+| Network Security | Isolated security VLAN with ACLs | Quarterly network scan | CIS.12.2 |
+| Monitoring | Self-monitoring configurations | Daily verification | CIS.8.2 |
+| Data Protection | Encrypted databases, secure backups | Monthly verification | CIS.3.11 |
 
----
+## **5.2 CISv8.1 Compliance Mapping**
 
-## 🔄 **7. Process Integration**
+Our security applications implement these CIS Controls:
 
-This section explains how security applications relate to established ITIL processes and organizational roles.
-
-### **7.1 ITIL Process Relationship**
-
-This documentation relates to the following ITIL processes:
-
-- **Incident Management** - Security event detection and response
-- **Problem Management** - Root cause analysis of security issues
-- **Change Management** - Security impact assessment and verification
-- **Configuration Management** - Security baseline configuration
-- **Availability Management** - Security service uptime and resilience
-- **Service Level Management** - Security monitoring and response SLAs
-- **Risk Management** - Vulnerability assessment and mitigation
-
-### **7.2 Role Responsibilities**
-
-The following table outlines role-specific responsibilities related to security applications:
-
-| **Role** | **Responsibility Related to Security Applications** |
-|----------|----------------------------------------------------|
-| Security Administrator | Platform configuration, rule management, alert response |
-| Engineer | Infrastructure security integration, performance tuning |
-| Operations | Daily monitoring, initial alert triage, first-level response |
-| Application Owner | Application-specific security controls and monitoring |
-| User | Personal password security, MFA enrollment |
+| **CIS Control** | **Implementation** | **Evidence Location** | **Compliance Status** |
+|-----------------|-------------------|----------------------|----------------------|
+| CIS.8.1 | Centralized Log Management | Wazuh Manager | Compliant |
+| CIS.8.2 | Collection of Audit Logs | Wazuh Agents | Compliant |
+| CIS.8.5 | Security Alerting | Wazuh Rules | Compliant |
+| CIS.10.1 | Malware Defenses | Wazuh Anti-malware | Compliant |
+| CIS.13.1 | Network Monitoring | Wazuh Network Module | Compliant |
 
 ---
 
-## 🔗 **8. Related Documentation**
+# 🔗 **6. Directory Contents**
 
-The following table provides links to related documentation resources:
+This section provides direct navigation to all subdirectories and key documents in this category:
 
-| **Document Type** | **Document Name** | **Location** |
-|-------------------|-------------------|-------------|
-| Architecture Document | Security Architecture | [Architecture Documentation](../Compliance-Security/Security-Policies/Security-Architecture.md) |
-| User Guide | Vaultwarden User Guide | [User Guide](Vaultwarden/User-Guide.md) |
-| Security Policy | Security Monitoring Standards | [Security Policies](../Compliance-Security/Security-Policies/Security-Monitoring-Standards.md) |
-| Operational Procedure | Security Incident Response | [Incident Response](../Compliance-Security/Incident-Response/README.md) |
-| Integration Guide | Wazuh Integration with Kubernetes | [Integration Guide](Wazuh/Kubernetes-Integration.md) |
+## **Subdirectories**
+
+| **Directory** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Wazuh** | SIEM/XDR documentation | [Wazuh README](Wazuh/README.md) |
+| **Vaultwarden** | Password management documentation | [Vaultwarden README](Vaultwarden/README.md) |
+
+## **Key Documents**
+
+| **Document** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Wazuh Server** | Wazuh server setup and configuration | [Wazuh Server](Wazuh/Wazuh-Server.md) |
+| **Vault Configuration** | Vaultwarden setup and management | [Vault Configuration](Vaultwarden/Vault-Configuration.md) |
+| **Incident Response** | Security incident handling procedures | [Incident Response](Wazuh/Incident-Response.md) |
 
 ---
 
-## ✅ **Approval & Review**
+# 🔄 **7. Related Categories**
+
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **Compliance-Security** | Security policies and frameworks | [Compliance README](../Compliance-Security/README.md) |
+| **Identity** | Authentication and access management | [Identity README](../Identity/README.md) |
+| **Monitoring** | General monitoring and observability | [Monitoring README](../Observability/README.md) |
+
+---
+
+# ✅ **8. Approval & Review**
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
@@ -226,8 +153,8 @@ The following table provides links to related documentation resources:
 
 ---
 
-## 📜 **Change Log**
+# 📜 **9. Change Log**
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
-| 1.0 | 2025-03-16 | Initial Security Applications documentation | VintageDon |
+| 1.0 | 2025-03-16 | Initial version | VintageDon |

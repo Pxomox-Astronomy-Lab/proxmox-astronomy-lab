@@ -14,160 +14,195 @@ last_updated: "2025-03-16"
 
 # 🔧 **Security Remediation**
 
-## 🔍 **1. Overview**
+# 🔍 **1. Overview**
 
-This section documents the **remediation processes, tools, and automation** used to address security findings and maintain compliance in the Proxmox Astronomy Lab. Our approach emphasizes **efficient, repeatable corrections** that strengthen security posture while minimizing operational impact.
+This section documents the remediation processes, tools, and automation used to address security findings and maintain compliance in the Proxmox Astronomy Lab. Our approach emphasizes efficient, repeatable corrections that strengthen security posture while minimizing operational impact.
 
-Our remediation strategy combines **automated solutions, documented procedures, and verification mechanisms** to ensure timely resolution of security issues. This documentation provides resources for addressing compliance gaps, vulnerability findings, and security enhancement opportunities.
-
----
-
-## 🛠️ **2. Remediation Components**
-
-Our security remediation framework consists of several key components:
-
-| **Component** | **Purpose** | **Implementation** | **Documentation** |
-|--------------|------------|-------------------|-------------------|
-| [**Ansible Playbooks**](Ansible-Playbooks/README.md) | Automated configuration and remediation | Infrastructure as Code | [Playbook Guide](Ansible-Playbooks/playbook-guide.md) |
-| [**Scripts**](Scripts/README.md) | Targeted issue resolution | Bash, PowerShell, Python scripts | [Script Usage](Scripts/usage-guide.md) |
-| [**Exceptions**](Exceptions/README.md) | Documented deviations with compensating controls | Formal exception process | [Exception Management](Exceptions/management-process.md) |
-
-These components work together to provide a systematic approach to security remediation across our environment.
+Our remediation strategy combines automated solutions, documented procedures, and verification mechanisms to ensure timely resolution of security issues. This documentation provides resources for addressing compliance gaps, vulnerability findings, and security enhancement opportunities.
 
 ---
 
-## 📊 **3. Remediation Process**
+# 🛠️ **2. Remediation Components**
 
-### **3.1 Issue Identification to Resolution**
+## **2.1 Ansible Automation**
 
-Our remediation follows a structured workflow:
+Ansible playbooks provide the primary automation framework for security remediation.
 
-| **Stage** | **Activities** | **Tools** | **Documentation** |
-|-----------|---------------|-----------|-------------------|
-| **Detection** | Security findings from assessment tools | CIS-CAT Lite, Lynis, Wazuh | [Detection Process](detection-process.md) |
-| **Prioritization** | Risk-based ranking of issues | CVSS scoring, business impact analysis | [Prioritization Framework](prioritization-framework.md) |
-| **Solution Development** | Creation of remediation approaches | Ansible development, scripting | [Solution Development](solution-development.md) |
-| **Testing** | Validation in test environment | Lab testing, verification scripts | [Testing Procedures](testing-procedures.md) |
-| **Implementation** | Applying solutions to production | Change management process | [Implementation Procedures](implementation-procedures.md) |
-| **Verification** | Confirmation of successful remediation | Validation scripts, rescanning | [Verification Methods](verification-methods.md) |
-
-This lifecycle ensures a methodical approach to addressing security issues with appropriate controls and verification.
-
-### **3.2 Remediation Timeframes**
-
-Issue resolution follows risk-based timeframes:
-
-| **Severity** | **Resolution Timeframe** | **Escalation Point** | **Example Issues** |
-|--------------|------------------------|----------------------|-------------------|
-| **Critical** | 24-48 hours | Immediate lab owner notification | Remote code execution vulnerabilities |
-| **High** | 7 days | Daily status updates | Authentication bypass, privilege escalation |
-| **Medium** | 30 days | Weekly status updates | Security misconfigurations, outdated software |
-| **Low** | 90 days | Monthly status updates | Non-critical compliance findings |
-
-These timeframes ensure appropriate response based on risk while maintaining operational stability.
-
----
-
-## 🤖 **4. Automation Components**
-
-### **4.1 Ansible Automation**
-
-Ansible automation is our primary remediation tool:
-
-| **Playbook Category** | **Purpose** | **Documentation** |
-|-----------------------|------------|-------------------|
-| **CIS Hardening** | Automated application of CIS benchmarks | [CIS Playbooks](Ansible-Playbooks/cis-hardening/README.md) |
-| **Vulnerability Remediation** | Common vulnerability fixes | [Vulnerability Playbooks](Ansible-Playbooks/vulnerability-fixes/README.md) |
-| **Configuration Management** | Baseline configuration enforcement | [Configuration Playbooks](Ansible-Playbooks/configuration/README.md) |
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **CIS Hardening Playbooks** | Automated security baseline enforcement | [CIS Playbooks](Ansible-Playbooks/cis-hardening/README.md) |
+| **Vulnerability Remediation** | Fixes for common security issues | [Vulnerability Playbooks](Ansible-Playbooks/vulnerability-fixes/README.md) |
 | **Compliance Verification** | Post-remediation validation | [Verification Playbooks](Ansible-Playbooks/verification/README.md) |
+| **Role-Based Remediation** | Service-specific security fixes | [Role Playbooks](Ansible-Playbooks/role-based/README.md) |
 
-These playbooks provide repeatable, consistent remediation across multiple systems while maintaining documentation of changes.
+## **2.2 Remediation Scripts**
 
-### **4.2 Remediation Scripts**
+Custom scripts for targeted security fixes and verification.
 
-Targeted scripts address specific scenarios:
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Linux Hardening Scripts** | System-specific hardening | [Linux Scripts](Scripts/linux/README.md) |
+| **Windows Security Scripts** | Windows security enhancement | [Windows Scripts](Scripts/windows/README.md) |
+| **Application Security Scripts** | Application-specific fixes | [Application Scripts](Scripts/applications/README.md) |
+| **Verification Scripts** | Control validation | [Verification Scripts](Scripts/verification/README.md) |
 
-| **Script Category** | **Purpose** | **Implementation** |
-|--------------------|------------|-------------------|
-| **Linux Hardening** | System-specific security fixes | Bash scripts with verification checks |
-| **Windows Security** | Windows Server security adjustments | PowerShell scripts with logging |
-| **Application Fixes** | Application-specific remediation | Python scripts with application API integration |
-| **Verification Scripts** | Independent validation of fixes | Shell scripts with detailed reporting |
+## **2.3 Exception Management**
 
-These scripts supplement Ansible automation for scenarios requiring specialized handling.
+Formal process for handling security findings that cannot be immediately remediated.
 
----
-
-## 📝 **5. Exception Management**
-
-### **5.1 Exception Process**
-
-When remediation is not immediately possible, we follow a structured exception process:
-
-| **Step** | **Activities** | **Documentation** |
-|----------|---------------|-------------------|
-| **Request** | Formal documentation of exception need | [Exception Request Form](Exceptions/exception-request-template.md) |
-| **Risk Assessment** | Evaluation of security impact | [Risk Assessment Methodology](Exceptions/risk-assessment.md) |
-| **Compensating Controls** | Implementation of alternative protections | [Control Development](Exceptions/compensating-controls.md) |
-| **Approval** | Formal signoff by lab owner | [Approval Process](Exceptions/approval-process.md) |
-| **Documentation** | Recording of exception details | [Exception Register](Exceptions/register.md) |
-| **Periodic Review** | Regular reassessment of exceptions | [Review Schedule](Exceptions/review-schedule.md) |
-
-This process ensures all exceptions are properly evaluated, documented, and regularly reviewed.
-
-### **5.2 Current Exceptions**
-
-The lab maintains detailed records of approved exceptions:
-
-| **Exception Category** | **Count** | **Review Frequency** | **Documentation** |
-|------------------------|----------|----------------------|-------------------|
-| **Technical Limitations** | 3 | Quarterly | [Technical Exceptions](Exceptions/technical-exceptions.md) |
-| **Operational Requirements** | 2 | Quarterly | [Operational Exceptions](Exceptions/operational-exceptions.md) |
-| **Risk Acceptance** | 1 | Monthly | [Risk Exceptions](Exceptions/risk-exceptions.md) |
-
-For detailed information on specific exceptions, see the [Exception Register](Exceptions/register.md).
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Exception Process** | Structured exception workflow | [Exception Process](Exceptions/exception-process.md) |
+| **Risk Assessment** | Security impact evaluation | [Risk Assessment](Exceptions/risk-assessment.md) |
+| **Compensating Controls** | Alternative protections | [Compensating Controls](Exceptions/compensating-controls.md) |
+| **Exception Register** | Documented exceptions | [Exception Register](Exceptions/register.md) |
 
 ---
 
-## 📊 **6. Metrics & Reporting**
+# 📊 **3. Remediation Process**
 
-### **6.1 Remediation Metrics**
+## **3.1 Issue Identification to Resolution**
 
-Performance metrics track remediation effectiveness:
+The end-to-end remediation lifecycle from finding to verification.
 
-- **Mean Time to Remediate (MTTR)** - Average time from detection to resolution
-- **First-pass success rate** - Percentage of issues resolved without rework
-- **Compliance improvement** - Change in overall compliance scores after remediation
-- **Automation coverage** - Percentage of issues addressed through automation
-- **Exception ratio** - Percentage of findings with approved exceptions
+| **Phase** | **Activities** | **Tools/Methods** | **Documentation** |
+|-----------|---------------|-------------------|-------------------|
+| **Detection** | Security scanning, assessment | CIS-CAT, Lynis, Wazuh | [Detection Process](detection-process.md) |
+| **Prioritization** | Risk-based ranking | Severity assessment, impact analysis | [Prioritization Framework](prioritization-framework.md) |
+| **Solution Development** | Remediation approach creation | Playbook/script development | [Solution Development](solution-development.md) |
+| **Testing** | Pre-production validation | Test environment verification | [Testing Procedures](testing-procedures.md) |
+| **Implementation** | Applying fixes in production | Change management process | [Implementation Guide](implementation-guide.md) |
+| **Verification** | Post-remediation validation | Rescanning, verification scripts | [Verification Methods](verification-methods.md) |
 
-These metrics provide quantitative measurement of the remediation program's effectiveness.
+## **3.2 Remediation Timeframes**
 
-### **6.2 Reporting**
+Risk-based timeframes for addressing security findings.
 
-Regular reporting provides visibility into remediation status:
-
-| **Report Type** | **Audience** | **Frequency** | **Content** |
-|----------------|--------------|--------------|-------------|
-| **Remediation Dashboard** | Lab Owner, Security Admin | Real-time | Current status of all remediation activities |
-| **Progress Report** | Lab Owner | Weekly | Completed actions, pending items, blockers |
-| **Compliance Trend** | All Roles | Monthly | Long-term compliance improvement trends |
-| **Exception Report** | Lab Owner, Security Admin | Monthly | Current exceptions and review status |
-
----
-
-## 🔗 **7. Related Documentation**
-
-| **Section** | **Description** | **Link** |
-|------------|----------------|---------|
-| **Assessment Tools** | Security scanning and verification tools | [Assessment Tools](../Assessment-Tools/README.md) |
-| **CIS Controls** | Security control framework implementation | [CIS Controls](../CIS-Controls/README.md) |
-| **Security Monitoring** | Ongoing security surveillance | [Security Monitoring](../Security-Monitoring/README.md) |
-| **Security Policies** | Formal security requirements | [Security Policies](../Security-Policies/README.md) |
+| **Severity** | **Resolution Timeline** | **Escalation Path** | **Documentation** |
+|--------------|------------------------|---------------------|-------------------|
+| **Critical** | 24-48 hours | Immediate lab owner notification | [Critical Remediation](timeframes/critical-remediation.md) |
+| **High** | 7 days | Daily status updates | [High Remediation](timeframes/high-remediation.md) |
+| **Medium** | 30 days | Weekly status updates | [Medium Remediation](timeframes/medium-remediation.md) |
+| **Low** | 90 days | Monthly status updates | [Low Remediation](timeframes/low-remediation.md) |
 
 ---
 
-## ✅ **8. Approval & Review**
+# 🤖 **4. Automation Framework**
+
+## **4.1 Infrastructure as Code Approach**
+
+Our security remediation employs infrastructure as code methodologies.
+
+| **Aspect** | **Implementation** | **Documentation** |
+|------------|-------------------|-------------------|
+| **Version Control** | Git-based playbook/script management | [Version Control](automation/version-control.md) |
+| **Testing Framework** | Automated test cases | [Test Framework](automation/testing-framework.md) |
+| **CI/CD Integration** | Automated deployment pipeline | [CI/CD Integration](automation/ci-cd-integration.md) |
+| **Documentation Generation** | Automatic documentation updates | [Documentation Pipeline](automation/documentation-pipeline.md) |
+
+## **4.2 Remediation Templates**
+
+Standardized templates for consistent remediation implementation.
+
+| **Template Type** | **Purpose** | **Documentation** |
+|-------------------|------------|-------------------|
+| **Ansible Role Template** | Structure for new remediation roles | [Role Template](templates/ansible-role-template.md) |
+| **Script Template** | Framework for remediation scripts | [Script Template](templates/script-template.md) |
+| **Verification Template** | Standard verification approach | [Verification Template](templates/verification-template.md) |
+| **Exception Template** | Exception documentation format | [Exception Template](templates/exception-template.md) |
+
+---
+
+# 🔒 **5. Security & Compliance**
+
+## **5.1 Remediation Security**
+
+Security controls for the remediation process itself.
+
+| **Control Type** | **Implementation** | **Verification Method** |
+|------------------|-------------------|------------------------|
+| **Access Control** | Role-based access to remediation tools | Weekly access review |
+| **Change Management** | Formal approval process | Change documentation audit |
+| **Testing Coverage** | Pre-production validation | Automated test execution |
+| **Verification** | Independent validation | Post-implementation scanning |
+
+## **5.2 Compliance Integration**
+
+Alignment between remediation activities and compliance frameworks.
+
+| **Framework** | **Remediation Alignment** | **Documentation** |
+|--------------|---------------------------|-------------------|
+| **CIS Controls** | Direct remediation of findings | [CIS Alignment](compliance/cis-alignment.md) |
+| **ISO 27001** | Control implementation and evidence | [ISO Alignment](compliance/iso-alignment.md) |
+| **NIST 800-53** | Control implementation mapping | [NIST Alignment](compliance/nist-alignment.md) |
+
+---
+
+# 📈 **6. Metrics & Reporting**
+
+## **6.1 Remediation Metrics**
+
+Key performance indicators for measuring remediation effectiveness.
+
+| **Metric** | **Measurement Method** | **Target** | **Documentation** |
+|------------|----------------------|-----------|-------------------|
+| **Mean Time to Remediate (MTTR)** | Time from detection to resolution | Critical: <48h, High: <7d | [MTTR Tracking](metrics/mttr-tracking.md) |
+| **First-Pass Success Rate** | % of issues fixed without rework | >85% | [Quality Metrics](metrics/quality-metrics.md) |
+| **Automation Coverage** | % of issues with automated remediation | >70% | [Automation Metrics](metrics/automation-metrics.md) |
+| **Compliance Improvement** | Change in compliance score | Positive trend | [Compliance Metrics](metrics/compliance-metrics.md) |
+
+## **6.2 Reporting & Dashboards**
+
+Standard reports and visualizations for remediation tracking.
+
+| **Report Type** | **Audience** | **Frequency** | **Documentation** |
+|----------------|------------|--------------|-------------------|
+| **Remediation Dashboard** | Security Team | Real-time | [Dashboard Guide](reporting/dashboard-guide.md) |
+| **Progress Report** | Lab Owner | Weekly | [Progress Reporting](reporting/progress-reporting.md) |
+| **Trend Analysis** | All Stakeholders | Monthly | [Trend Analysis](reporting/trend-analysis.md) |
+| **Exception Report** | Security Team | Monthly | [Exception Reporting](reporting/exception-reporting.md) |
+
+---
+
+# 🗄️ **7. Directory Contents**
+
+This section provides direct navigation to all subdirectories and key documents in this category:
+
+## **Subdirectories**
+
+| **Directory** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Ansible-Playbooks** | Ansible-based remediation automation | [Ansible Playbooks README](Ansible-Playbooks/README.md) |
+| **Scripts** | Custom remediation scripts | [Scripts README](Scripts/README.md) |
+| **Exceptions** | Exception management documentation | [Exceptions README](Exceptions/README.md) |
+| **Templates** | Standardized remediation templates | [Templates README](Templates/README.md) |
+| **Compliance** | Compliance framework alignment | [Compliance README](Compliance/README.md) |
+| **Metrics** | Remediation effectiveness measurement | [Metrics README](Metrics/README.md) |
+| **Reporting** | Status and trend reporting | [Reporting README](Reporting/README.md) |
+
+## **Key Documents**
+
+| **Document** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Remediation Workflow** | End-to-end remediation process | [Remediation Workflow](remediation-workflow.md) |
+| **Prioritization Framework** | Risk-based issue ranking | [Prioritization Framework](prioritization-framework.md) |
+| **Implementation Guide** | Production remediation procedures | [Implementation Guide](implementation-guide.md) |
+| **Exception Process** | Managing security exceptions | [Exception Process](exception-process.md) |
+
+---
+
+# 🔄 **8. Related Categories**
+
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **Assessment Tools** | Identifies issues requiring remediation | [Assessment Tools README](../Assessment-Tools/README.md) |
+| **CIS Controls** | Defines security control requirements | [CIS Controls README](../CIS-Controls/README.md) |
+| **Security Monitoring** | Monitors control effectiveness | [Security Monitoring README](../Security-Monitoring/README.md) |
+| **Security Policies** | Establishes security requirements | [Security Policies README](../Security-Policies/README.md) |
+
+---
+
+# ✅ **9. Approval & Review**
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
@@ -175,7 +210,7 @@ Regular reporting provides visibility into remediation status:
 
 ---
 
-## 📜 **9. Change Log**
+# 📜 **10. Change Log**
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|

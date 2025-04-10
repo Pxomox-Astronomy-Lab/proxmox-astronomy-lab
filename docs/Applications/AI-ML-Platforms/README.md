@@ -1,6 +1,6 @@
 <!-- 
 ---
-title: "AI/ML Platforms - Proxmox Astronomy Lab"
+title: "AI & ML Platforms - Proxmox Astronomy Lab"
 description: "Documentation for AI and Machine Learning platforms, tools, and workflows in the Proxmox Astronomy Lab"
 author: "VintageDon"
 tags: ["ai", "machine-learning", "data-science", "tensorflow", "milvus", "vector-database", "jupyter"]
@@ -14,165 +14,237 @@ last_updated: "2025-03-16"
 
 # 🧠 **AI/ML Platforms**
 
-## 🔍 **1. Overview**
+# 🔍 **1. Overview**
 
-### **1.1 Purpose**
+This section documents the AI and machine learning platforms deployed within the Proxmox Astronomy Lab environment. It serves as a reference for the infrastructure, configuration, and operational aspects of these systems that support advanced data analysis and research workflows.
 
-This section documents the **AI and machine learning platforms** deployed within the Proxmox Astronomy Lab environment. It serves as a reference for the **infrastructure, configuration, and operational aspects** of these systems that support advanced data analysis and research workflows.
-
-### **1.2 Scope**
-
-| **In Scope** | **Out of Scope** |
-|--------------|------------------|
-| AI/ML infrastructure deployment and configuration | Scientific methodology of AI models |
-| Vector database implementation and management | Deep algorithmic details of ML models |
-| Model serving and inference architecture | Research-specific model parameters |
-| Operational monitoring and maintenance | Data preprocessing for specific experiments |
-
-### **1.3 Target Audience**
-
-Engineers, operators, and researchers working with the lab's AI/ML infrastructure who need information on deployment, access, and management of these platforms.
+The lab's AI/ML infrastructure combines vector databases, model serving, and training platforms to enable research in radio astronomy signal processing, automated knowledge retrieval, and scientific data analysis.
 
 ---
 
-## 📊 **2. Platform Components**
+# 🤖 **2. Core AI Components**
 
-The lab's AI/ML infrastructure consists of several core components:
+This section covers the primary AI and ML infrastructure components that form the foundation of the lab's machine learning capabilities.
 
-| **Component** | **Purpose** | **Key Documentation** |
-|--------------|------------|----------------------|
-| [**Inference-Engines**](Inference-Engines/index.md) | Model serving for prediction workflows | Deployment, scaling, API access |
-| [**Model-Training**](Model-Training/index.md) | Development environment for model creation | Jupyter configuration, MLflow tracking |
-| [**Vector-Databases**](Vector-Databases/index.md) | Similarity-based knowledge retrieval | Milvus setup, collection management |
+## **2.1 Inference Engines**
 
----
+This subsection documents the platforms used for deploying trained models into production for inference and prediction capabilities.
 
-## 🏗️ **3. Technical Documentation**
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **TensorFlow Serving** | Model deployment and inference | [TensorFlow Serving](Inference-Engines/TensorFlow-Serving.md) |
 
-### **3.1 Architecture Overview**
+The inference engines above provide standardized APIs for accessing trained models, enabling consistent integration with applications and research workflows.
 
-The AI/ML platforms follow a containerized architecture designed for both performance and maintainability:
+## **2.2 Model Training**
 
-- **Kubernetes-orchestrated** inference and database services
-- **GPU acceleration** through device plugins and node labeling
-- **NVMe storage** for high-performance data access
-- **API-based interfaces** for programmatic interaction
+This subsection covers the tools and platforms used for developing, training, and tracking machine learning models.
 
-### **3.2 Infrastructure Components**
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Jupyter Notebook** | Interactive model development | [Jupyter Notebook](Model-Training/Jupyter-Notebook.md) |
+| **MLflow** | Experiment tracking and model registry | [MLflow](Model-Training/MLflow.md) |
 
-| **Component** | **Description** | **CMDB ID** |
-|---------------|----------------|------------|
-| GPU-Accelerated Node | Ryzen 5950X with RTX A4000 GPU | node04-proxmox-gpu-hpc |
-| Kubernetes Worker | Worker node with GPU passthrough | proj-k8sw04 |
-| NVMe Storage | High-speed storage for model artifacts | gpu-nvme-storage-pool |
-| Vector Database | Milvus instance for embeddings | milvus-vector-01 |
+The model training platforms provide researchers with environments for developing, testing, and tracking machine learning experiments and models.
 
-### **3.3 Dependencies**
+## **2.3 Vector Databases**
 
-| **Dependency Type** | **Service/Component** | **Impact if Unavailable** |
-|---------------------|----------------------|---------------------------|
-| **Requires** | Kubernetes Cluster | AI/ML services cannot be scheduled |
-| **Requires** | GPU Resources | Reduced inference performance |
-| **Requires** | PostgreSQL Database | Vector metadata storage unavailable |
-| **Required By** | Research Applications | Pattern recognition capabilities degraded |
-| **Required By** | Documentation Wiki | Vector search functionality unavailable |
+This subsection documents the vector database platforms used for similarity search and knowledge retrieval applications.
+
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Milvus** | Vector similarity search | [Milvus](Vector-Databases/Milvus.md) |
+
+The vector database platforms enable semantic search and retrieval across the lab's documentation, research data, and structured knowledge assets.
 
 ---
 
-## 📈 **4. Service Management**
+# 🏗️ **3. Technical Architecture**
 
-### **4.1 Access Management**
+This section details the technical implementation of the AI/ML infrastructure, including deployment patterns, hardware requirements, and integration points.
 
-| **User Role** | **Access Level** | **Authorization Process** |
-|---------------|----------------|---------------------------|
-| Research Lead | Full management access | Approved by Lab Owner via Zitadel |
-| Engineer | Administrative access | Approved by Lab Owner via Zitadel |
-| Operator | Monitoring access | Approved by Engineer via Zitadel |
-| Researcher | Service usage access | Approved by Research Lead via Zitadel |
+## **3.1 Deployment Architecture**
 
-### **4.2 Monitoring & Alerting**
+This subsection explains how AI/ML components are deployed and managed within the lab environment.
 
-| **Metric** | **Threshold** | **Alert Severity** |
-|------------|--------------|-------------------|
-| GPU Utilization | >95% for >15 min | Warning |
-| Model Latency | >500ms p95 | Critical |
-| Vector Query Time | >1s average | Warning |
-| Available GPU Memory | <10% | Critical |
+| **Component** | **Deployment Method** | **Host System** |
+|--------------|----------------------|----------------|
+| **Milvus** | Kubernetes (StatefulSet) | proj-k8sw04 (GPU node) |
+| **TensorFlow Serving** | Kubernetes (Deployment) | proj-k8sw04 (GPU node) |
+| **Jupyter Notebook** | Kubernetes (Deployment) | proj-k8sw04 (GPU node) |
+| **MLflow** | Docker container | proj-apps01 |
 
----
+The deployment architecture leverages containerization for consistency, scalability, and isolation of AI/ML workloads across the lab environment.
 
-## 🔄 **5. Operational Procedures**
+## **3.2 Hardware Resources**
 
-### **5.1 Routine Procedures**
+This subsection details the specialized hardware resources allocated for AI/ML workloads.
 
-| **Procedure** | **Frequency** | **Role Responsible** | **Procedure Document** |
-|---------------|--------------|----------------------|------------------------|
-| Model Backup | Weekly | Operations | [AI Model Backup](../File-Storage/Restic/Model-Backup.md) |
-| Performance Optimization | Monthly | Engineer | [GPU Optimization](Inference-Engines/GPU-Optimization.md) |
-| Vector Database Reindexing | Quarterly | Engineer | [Milvus Maintenance](Vector-Databases/Milvus-Maintenance.md) |
+| **Resource** | **Specifications** | **Allocation** |
+|--------------|-------------------|----------------|
+| **GPU** | NVIDIA RTX A4000 (16GB VRAM) | Dedicated to AI/ML workloads |
+| **Memory** | 64GB RAM | Reserved for vector operations |
+| **Storage** | 1TB NVMe | Model artifacts and vectors |
+| **Network** | 10Gbps | Data transfer between components |
 
-### **5.2 Troubleshooting**
-
-| **Common Issue** | **Symptoms** | **Resolution Steps** | **KEDB ID** |
-|------------------|------------|---------------------|------------|
-| GPU Memory Leak | Increasing memory usage, degraded performance | Restart TensorFlow Serving pod | KEDB-AI-001 |
-| Vector Index Corruption | Search failures, inconsistent results | Rebuild affected collection | KEDB-AI-002 |
-| Model Loading Failure | HTTP 503 from inference API | Check model path and permissions | KEDB-AI-003 |
+The hardware resource allocation ensures AI/ML workloads have the computational power required for efficient model training, inference, and vector operations.
 
 ---
 
-## 🔐 **6. Security Considerations**
+# 📊 **4. Research Applications**
 
-| **Security Aspect** | **Implementation** | **Documentation** |
-|--------------------|-------------------|--------------------|
-| API Authentication | OAuth2 token-based auth via Zitadel | [API Security](../Identity/Zitadel/API-Security.md) |
-| Network Isolation | Namespace-based network policies | [K8s Network Policies](../Containerized-Services/Kubernetes-Workloads/Network-Policies.md) |
-| Model Integrity | Hash verification on model loading | [Model Validation](Inference-Engines/Model-Validation.md) |
+This section documents how AI/ML platforms are applied to specific research domains within the lab environment.
 
----
+## **4.1 Radio Astronomy Applications**
 
-## 🔄 **7. Process Integration**
+This subsection covers how AI/ML capabilities are used specifically for radio astronomy research.
 
-### **7.1 ITIL Process Relationship**
+| **Application** | **Purpose** | **Implementation** |
+|----------------|------------|-------------------|
+| **Signal Enhancement** | Improve hydrogen line signal quality | TensorFlow CNN models |
+| **Interference Rejection** | Filter RFI from observations | Autoencoder models |
+| **Pattern Recognition** | Identify signal phenomena | Classification models |
 
-This documentation relates to the following ITIL processes:
+The radio astronomy applications leverage AI/ML capabilities to enhance signal processing, reduce noise, and identify patterns in astronomical data.
 
-- **Change Management** - AI platform upgrades and model deployments
-- **Incident Management** - Handling AI service disruptions
-- **Problem Management** - Root cause analysis for recurring AI issues
-- **Service Level Management** - Performance metrics for AI services
+## **4.2 Knowledge Discovery Applications**
 
-### **7.2 Role Responsibilities**
+This subsection documents how AI/ML platforms support knowledge management and discovery within the lab.
 
-| **Role** | **Responsibility Related to AI/ML Platforms** |
-|----------|--------------------------------------------|
-| Engineer | Architecture design, deployment, security hardening |
-| Operations | Monitoring, incident response, performance tuning |
-| Research Lead | Model governance, research requirements |
-| Security Admin | Security policy enforcement, access review |
+| **Application** | **Purpose** | **Implementation** |
+|----------------|------------|-------------------|
+| **RAGGraph** | AI-powered documentation search | Milvus + LLM integration |
+| **Research Assistant** | Context-aware research support | Vector retrieval + LLM |
+| **Knowledge Clustering** | Topic identification in research data | Unsupervised ML models |
+
+The knowledge discovery applications enhance research productivity by making information more accessible and providing intelligent assistance for complex research tasks.
 
 ---
 
-## 🔗 **8. Related Documentation**
+# 🔐 **5. Security & Compliance**
 
-| **Document Type** | **Document Name** | **Location** |
-|-------------------|-------------------|-------------|
-| Design Document | AI Infrastructure Architecture | [Architecture Documentation](../Infrastructure/Compute/Kubernetes/AI-Infrastructure.md) |
-| User Guide | AI Platform Access Guide | [User Access](../ITIL-Processes/Service-Catalog/AI-Platform-Access.md) |
-| Security Policy | Model Deployment Security | [Security Documentation](../Compliance-Security/Security-Policies/Model-Deployment.md) |
+This section documents how security controls are implemented and how compliance requirements are met for AI/ML platforms.
+
+## **5.1 Access Control**
+
+This subsection documents the access management approach for AI/ML resources and services.
+
+| **Resource** | **Access Method** | **Authorization** |
+|--------------|------------------|-------------------|
+| **Model APIs** | REST API with token auth | Zitadel OAuth2 |
+| **Training Platforms** | Jupyter authentication | Zitadel SSO |
+| **Vector Databases** | Service account credentials | Role-based permissions |
+
+The access control mechanisms ensure appropriate authorization for all interactions with AI/ML platforms while maintaining audit capabilities.
+
+## **5.2 Data Protection**
+
+This subsection covers how research data and model artifacts are protected throughout their lifecycle.
+
+| **Data Category** | **Protection Mechanism** | **Access Constraints** |
+|-------------------|--------------------------|------------------------|
+| **Training Data** | Encrypted at rest | Research team only |
+| **Model Artifacts** | Version-controlled, backed up | Read-only for inference |
+| **Vector Embeddings** | Encrypted collection | Query-only access |
+
+The data protection controls ensure research integrity while maintaining appropriate access for authorized users and processes.
 
 ---
 
-## ✅ **Approval & Review**
+# 🛠️ **6. Operations & Maintenance**
+
+This section covers the operational procedures for maintaining AI/ML platforms in optimal condition.
+
+## **6.1 Monitoring**
+
+This subsection details how AI/ML components are monitored for performance, availability, and resource utilization.
+
+| **Metric Category** | **Monitored Elements** | **Alerting Threshold** |
+|---------------------|------------------------|------------------------|
+| **Resource Utilization** | GPU, memory, storage | >85% sustained usage |
+| **Service Health** | API endpoints, containers | Any failed health check |
+| **Query Performance** | Inference latency, vector queries | P95 > 200ms |
+
+The monitoring approach ensures early detection of performance issues, resource constraints, or service degradation for AI/ML platforms.
+
+## **6.2 Maintenance Procedures**
+
+This subsection documents routine maintenance activities for AI/ML platforms.
+
+| **Procedure** | **Frequency** | **Responsible Role** |
+|---------------|--------------|----------------------|
+| **Model Updates** | As required | Research Lead |
+| **Platform Patching** | Monthly | Engineer |
+| **Vector Database Optimization** | Quarterly | Engineer |
+| **Resource Scaling Review** | Monthly | Operations |
+
+The maintenance procedures ensure AI/ML platforms remain secure, performant, and aligned with research requirements through regular care and updates.
+
+---
+
+# 🔗 **7. Directory Contents**
+
+This section provides direct navigation to all subdirectories and key documents in this category.
+
+## **Subdirectories**
+
+This subsection identifies the main subdirectories within the AI/ML Platforms section, explaining their purpose and providing navigation links.
+
+| **Directory** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Inference-Engines** | Model deployment platforms | [Inference-Engines](Inference-Engines/) |
+| **Model-Training** | Development environments | [Model-Training](Model-Training/) |
+| **Vector-Databases** | Similarity search platforms | [Vector-Databases](Vector-Databases/) |
+
+The subdirectories table above provides navigation to key sections of the AI/ML Platforms documentation, helping users locate specific information.
+
+## **Key Documents**
+
+This subsection highlights important standalone documents within the AI/ML Platforms section that provide significant information.
+
+| **Document** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **TensorFlow-Serving.md** | TF Serving deployment guide | [TensorFlow Serving](Inference-Engines/TensorFlow-Serving.md) |
+| **MLflow.md** | Experiment tracking setup | [MLflow](Model-Training/MLflow.md) |
+| **Milvus.md** | Vector database configuration | [Milvus](Vector-Databases/Milvus.md) |
+
+The key documents table above connects this document to other knowledge base articles, supporting comprehensive understanding and navigation.
+
+---
+
+# 🔄 **8. Related Categories**
+
+This section identifies other documentation categories related to AI/ML Platforms, establishing relationships between different knowledge areas.
+
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **Radio-Astronomy** | Primary research application | [Radio-Astronomy README](../Radio-Astronomy/README.md) |
+| **Databases** | Data storage integration | [Databases README](../Databases/README.md) |
+| **Infrastructure** | Compute resources | [Infrastructure README](../../Infrastructure/README.md) |
+| **Observability** | Monitoring integration | [Observability README](../Observability/README.md) |
+
+The related categories table above documents connections to other knowledge domains, helping users understand the broader context of AI/ML platforms.
+
+---
+
+# ✅ **9. Approval & Review**
+
+This section documents the formal review and approval process for this document. It ensures accountability and tracks who has verified the accuracy of the content.
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
 | VintageDon | Lead Engineer | 2025-03-16 | ✅ Approved |
 
+The approval and review table above documents who has verified the accuracy of this document and when, establishing accountability and ensuring quality.
+
 ---
 
-## 📜 **Change Log**
+# 📜 **10. Change Log**
+
+This section tracks the document's revision history. It provides transparency into how the document has evolved over time and who made the changes.
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
-| 1.0 | 2025-03-16 | Initial AI/ML Platforms documentation | VintageDon |
+| 1.0 | 2025-03-16 | Initial AI/ML Platforms README | VintageDon |
+
+The change log table above provides a comprehensive history of document revisions, supporting version control and auditing requirements.

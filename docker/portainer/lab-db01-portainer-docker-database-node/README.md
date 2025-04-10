@@ -1,4 +1,5 @@
-<!-- ---
+<!-- 
+---
 title: "Lab-DB01 Portainer Docker Database Node"
 description: "Documentation for the Lab-DB01 Portainer worker node, detailing its role in hosting containerized database services for the control plane."
 author: "VintageDon"
@@ -9,15 +10,21 @@ version: "1.0"
 status: "Published"
 last_updated: "2025-03-09"
 ---
- -->
+-->
 
-# **Lab-DB01 Portainer Docker Database Node**
+# 🗄️ **Lab-DB01 Portainer Docker Database Node**
+
+# 🔍 **1. Overview**
 
 Lab-DB01 is a dedicated **Portainer worker node** responsible for hosting **containerized database services** that support the **control plane infrastructure** of the Proxmox Astronomy Lab. Managed by **Lab-Port01** (Portainer master node), it provides a range of database technologies including relational, NoSQL, time-series, and messaging systems that serve as backend services for various lab applications.
 
 This specialized node isolates database workloads from application services, ensuring optimal performance, security, and resource allocation for these critical infrastructure components.
 
-## **1. Technical Specifications**
+---
+
+# 🖥️ **2. Technical Specifications**
+
+## **2.1 Virtual Machine Configuration**
 
 This VM is configured with resources optimized for database performance, with emphasis on memory capacity, storage performance, and CPU resources to handle concurrent database operations.
 
@@ -34,13 +41,25 @@ This VM is configured with resources optimized for database performance, with em
 | **Gateway** | 10.25.10.1 |
 | **DNS** | 10.25.10.3, 10.25.20.3 |
 
-## **2. Docker Infrastructure**
+## **2.2 Physical Node Placement**
+
+The VM is hosted on a specific physical Proxmox node to ensure adequate resources and performance.
+
+| **Attribute** | **Value** |
+|--------------|-----------|
+| **Proxmox Node** | node03 |
+| **Resource Pool** | control-plane |
+| **VM Location** | local-lvm |
+| **Backup Schedule** | Daily at 01:00 |
+| **Migration Policy** | Allowed with constraints |
+
+---
+
+# 🐳 **3. Docker Infrastructure**
+
+## **3.1 Docker Configuration**
 
 The Docker environment is configured specifically for database workloads, with emphasis on persistent storage, data integrity, and performance optimization.
-
-### **2.1 Docker Configuration**
-
-The Docker daemon is configured with optimizations for database containers, prioritizing data persistence and I/O performance.
 
 ```json
 {
@@ -62,7 +81,7 @@ The Docker daemon is configured with optimizations for database containers, prio
 }
 ```
 
-### **2.2 Storage Configuration**
+## **3.2 Storage Configuration**
 
 The storage is designed to maintain CIS compliance while providing adequate space for database operations. The OS drive is partitioned according to CIS compliance requirements, with Docker data relocated to a separate volume.
 
@@ -72,38 +91,50 @@ The storage is designed to maintain CIS compliance while providing adequate spac
 | **/var/lib/portainer** | Part of OS volume | Portainer agent data |
 | **/backup/databases** | Part of OS volume | Database backup staging |
 
-## **3. Hosted Database Services**
+## **3.3 Portainer Integration**
 
-Lab-DB01 hosts a variety of containerized database services that form the data persistence layer for the lab's control plane infrastructure.
+This node is managed through Portainer's agent architecture, providing centralized control while maintaining isolation.
 
-### **3.1 Relational Databases**
+| **Component** | **Details** |
+|--------------|------------|
+| **Portainer Control Node** | [lab-port01](/infrastructure/control-plane/lab-port01-portainer-control-node.md) |
+| **Agent Version** | 2.19.4 |
+| **Agent Endpoint** | 10.25.10.17:9001 |
+| **Edge Key** | Managed via Vault |
+| **Stacks Path** | `/docker/portainer-stacks/lab-db01-portainer-docker-database-node/` |
+
+---
+
+# 📂 **4. Hosted Database Services**
+
+## **4.1 Relational Databases**
 
 SQL-based database engines that provide ACID-compliant data storage for structured data needs across the infrastructure.
 
-| **Container** | **Purpose** | **Port** |
-|--------------|-------------|---------|
-| **postgresql** | General-purpose relational database | 5432 |
-| **mariadb** | MySQL-compatible database server | 3306 |
+| **Container** | **Purpose** | **Stack Documentation** |
+|--------------|-------------|-----------------|
+| **postgresql** | General-purpose relational database | [PostgreSQL Stack](/docker/portainer-stacks/lab-db01-portainer-docker-database-node/postgresql/README.md) |
+| **mariadb** | MySQL-compatible database server | [MariaDB Stack](/docker/portainer-stacks/lab-db01-portainer-docker-database-node/mariadb/README.md) |
 
-### **3.2 NoSQL Databases**
+## **4.2 NoSQL Databases**
 
 Document-oriented and key-value stores providing flexible schema designs for specific application needs.
 
-| **Container** | **Purpose** | **Port** |
-|--------------|-------------|---------|
-| **mongodb** | Document-oriented database | 27017 |
-| **redis** | In-memory key-value store & cache | 6379 |
+| **Container** | **Purpose** | **Stack Documentation** |
+|--------------|-------------|-----------------|
+| **mongodb** | Document-oriented database | [MongoDB Stack](/docker/portainer-stacks/lab-db01-portainer-docker-database-node/mongodb/README.md) |
+| **redis** | In-memory key-value store & cache | [Redis Stack](/docker/portainer-stacks/lab-db01-portainer-docker-database-node/redis/README.md) |
 
-### **3.3 Messaging & Time-Series**
+## **4.3 Messaging & Time-Series**
 
 Specialized database services for messaging, event processing, and time-series data storage.
 
-| **Container** | **Purpose** | **Port** |
-|--------------|-------------|---------|
-| **rabbitmq** | Message broker & queue manager | 5672, 15672 |
-| **influxdb** | Time-series database | 8086 |
+| **Container** | **Purpose** | **Stack Documentation** |
+|--------------|-------------|-----------------|
+| **rabbitmq** | Message broker & queue manager | [RabbitMQ Stack](/docker/portainer-stacks/lab-db01-portainer-docker-database-node/rabbitmq/README.md) |
+| **influxdb** | Time-series database | [InfluxDB Stack](/docker/portainer-stacks/lab-db01-portainer-docker-database-node/influxdb/README.md) |
 
-### **3.4 Network Configuration**
+## **4.4 Network Configuration**
 
 Docker networks are segmented to isolate different database services while enabling controlled access from application containers.
 
@@ -113,22 +144,24 @@ Docker networks are segmented to isolate different database services while enabl
 | **messaging-network** | 172.19.1.0/24 | RabbitMQ and related services |
 | **metrics-network** | 172.19.2.0/24 | InfluxDB and monitoring |
 
-## **4. Security & Compliance**
+---
 
-Database services require special security considerations to protect sensitive data while maintaining accessibility for authorized services.
+# 🔐 **5. Security & Compliance**
 
-### **4.1 Security Hardening**
+## **5.1 Security Hardening**
 
 The VM implements comprehensive security measures at both the OS and container levels to protect against common vulnerabilities and ensure compliance with security standards.
 
-- **CIS Ubuntu 24.04 Level 2** compliance for base OS
-- **AppArmor profiles** for container isolation
-- **Limited network exposure** with internal-only networks
-- **Authentication required** for all database services
-- **Automated TLS certificate management**
-- **Regular security scanning** via integrated tools
+| **Control Type** | **Implementation** | **Verification Method** |
+|------------------|-------------------|------------------------|
+| **OS Hardening** | CIS Ubuntu 24.04 Level 2 | Lynis scans, CIS-CAT Pro |
+| **Container Isolation** | AppArmor profiles | Profile validation |
+| **Network Security** | Internal-only networks | Network ACLs |
+| **Authentication** | Secret management via Vault | Access logs |
+| **TLS Certificates** | Automated cert management | Certificate validation |
+| **Security Scanning** | Daily vulnerability scans | Scan reports |
 
-### **4.2 Access Control**
+## **5.2 Access Control**
 
 Access to database services is strictly controlled through multiple authentication mechanisms, ensuring only authorized applications and users can access sensitive data.
 
@@ -141,11 +174,23 @@ Access to database services is strictly controlled through multiple authenticati
 | **RabbitMQ** | Username/password | Virtual hosts, permissions |
 | **InfluxDB** | Token-based authentication | Organization/bucket permissions |
 
-## **5. Backup & Disaster Recovery**
+## **5.3 CISv8.1 Compliance Mapping**
 
-Database services require specialized backup approaches to ensure data integrity and recoverability while minimizing service disruption.
+This subsection explicitly maps implementation details to CIS Controls, documenting compliance status and evidence location.
 
-### **5.1 Backup Strategy**
+| **CIS Control** | **Implementation** | **Evidence Location** | **Compliance Status** |
+|-----------------|-------------------|----------------------|----------------------|
+| **CIS.1.1** | Hardware inventory in GLPI | CMDB record #2005 | Compliant |
+| **CIS.4.1** | Secure configuration baseline | Ansible playbooks | Compliant |
+| **CIS.5.1** | AD-integrated authentication | Access logs | Compliant |
+| **CIS.8.2** | Audit logging enabled | Loki logs | Compliant |
+| **CIS.10.1** | ClamAV, AppArmor | Daily scan reports | Compliant |
+
+---
+
+# 💾 **6. Backup & Recovery**
+
+## **6.1 Backup Strategy**
 
 A comprehensive backup strategy ensures all database services are properly backed up with consideration for their specific requirements.
 
@@ -159,38 +204,37 @@ A comprehensive backup strategy ensures all database services are properly backe
 | **All Services** | Docker volume backups | Daily | 7 days |
 | **Full VM** | Proxmox Backup Server | Weekly | 4 backups |
 
-### **5.2 Recovery Procedure**
+## **6.2 Recovery Procedure**
 
 Database restoration procedures are documented to ensure minimal data loss and downtime during recovery operations.
 
-1. **Assess failure scope** and determine optimal recovery path
-2. **Restore VM** from Proxmox Backup Server if needed
-3. **Verify Docker installation** and configuration
-4. **Restore database containers** from Portainer templates
-5. **Restore data** from appropriate backup source:
-   - From volume backups for container-level issues
-   - From database-specific backups for data corruption
-   - From VM backup for complete system failure
-6. **Verify database integrity** and functionality
-7. **Reconnect dependent services** and verify end-to-end operation
+| **Scenario** | **RTO** | **RPO** | **Recovery Steps** | **Responsible Role** |
+|--------------|--------|--------|-------------------|----------------------|
+| **Container Failure** | 15 min | 15 min | Restore container from Portainer template | Infrastructure Engineer |
+| **Data Corruption** | 30 min | 1 hour | Restore from database-specific backup | Database Administrator |
+| **Volume Failure** | 1 hour | 24 hours | Restore from volume backup | Infrastructure Engineer |
+| **VM Failure** | 2 hours | 24 hours | Restore VM from Proxmox Backup | Infrastructure Engineer |
+| **Node Failure** | 4 hours | 24 hours | Migrate to alternative node | Infrastructure Engineer |
 
-## **6. Monitoring & Alerting**
+The recovery procedure table above outlines steps to restore service in different failure scenarios, supporting business continuity objectives.
 
-Database services require specialized monitoring to ensure performance, availability, and data integrity.
+---
 
-### **6.1 Health Checks**
+# 📊 **7. Monitoring & Management**
 
-Comprehensive health monitoring ensures that database services remain operational and perform within expected parameters.
+## **7.1 Monitoring Integration**
 
-- **Database connectivity** checks via TCP probes
-- **Query execution** tests for functional verification
-- **Storage capacity** monitoring with predictive alerts
-- **Replication status** checks where applicable
-- **Backup success/failure** monitoring
-- **Container resource usage** tracking
-- **Host system performance** metrics
+The node and its database services are monitored through multiple systems to ensure comprehensive visibility.
 
-### **6.2 Alert Thresholds**
+| **Monitoring System** | **Components Monitored** | **Dashboard** |
+|----------------------|--------------------------|--------------|
+| **Prometheus** | Host metrics, container metrics | [Node Exporter Dashboard](/monitoring/grafana/dashboards/node-exporter-full-dashboard-screenshot.png) |
+| **Loki** | Container logs, OS logs | [Log Dashboard](/docs/applications/observability/loki/log-dashboard.md) |
+| **PostgreSQL Exporter** | Database metrics | [PostgreSQL Dashboard](/monitoring/grafana/dashboards/postgresql-dashboard-screenshot.png) |
+| **Database-specific** | Service health, performance | [Database Metrics Dashboard](/docs/applications/observability/grafana/dashboards/database-metrics.md) |
+| **Wazuh** | Security events, file integrity | [Security Dashboard](/docs/applications/security/wazuh/security-dashboard.md) |
+
+## **7.2 Alert Thresholds**
 
 Database-specific thresholds are configured to provide early warning of potential issues.
 
@@ -203,65 +247,67 @@ Database-specific thresholds are configured to provide early warning of potentia
 | **Query Latency** | 2x baseline | 5x baseline |
 | **Failed Transactions** | >0.1% | >1% |
 
-## **7. Management & Operations**
-
-Structured operational procedures ensure stable and predictable management of database services.
-
-### **7.1 Maintenance Schedule**
+## **7.3 Maintenance Schedule**
 
 Database maintenance follows the lab's rotating schedule with special consideration for minimizing service disruption to dependent systems.
 
-- **OS Updates**: Weekly on predefined maintenance windows
-- **Security Patches**: Applied as needed with priority
-- **Docker Updates**: Evaluated monthly
-- **Database Updates**: Version upgrades scheduled quarterly
-- **Schema Changes**: Implemented via change management process
+| **Maintenance Type** | **Schedule** | **Notification** | **Procedure Document** |
+|----------------------|-------------|-----------------|------------------------|
+| **OS Updates** | Weekly (Sundays 00:00-02:00) | 48 hours | [OS Update Procedure](/docs/infrastructure/maintenance/os-update-procedure.md) |
+| **Security Patches** | As needed | 24 hours (standard)/None (critical) | [Security Patching Procedure](/docs/infrastructure/maintenance/security-patching.md) |
+| **Docker Updates** | Monthly (First Saturday) | 72 hours | [Docker Update Procedure](/docs/infrastructure/maintenance/docker-update-procedure.md) |
+| **Database Upgrades** | Quarterly | 1 week | [Database Upgrade Procedure](/docs/applications/databases/upgrade-procedure.md) |
 
-VMs are updated and rebooted weekly on a rotating schedule to avoid service downtimes, with database components scheduled to minimize impact on dependent services.
+---
 
-### **7.2 Update Procedure**
+# 🔗 **8. Directory Contents**
 
-Updates follow a standardized process with special considerations for database continuity.
+This section provides direct navigation to all subdirectories and key documents related to this node:
 
-1. **Review change documentation** in GLPI
-2. **Notify dependent services** of maintenance window
-3. **Create database backups** before any changes
-4. **Implement updates** according to plan
-5. **Verify database functionality** post-update
-6. **Test dependent applications** to ensure proper operation
-7. **Update documentation** with any changes
+## **8.1 Related Documentation**
 
-### **7.3 Troubleshooting Quick Reference**
+| **Document Type** | **Document Name** | **Location** |
+|-------------------|-------------------|-------------|
+| **Service Document** | Lab-DB01 ITIL Service Doc | [Service Documentation](/docs/control-plane/services/lab-db01-service-documentation.md) |
+| **Stack Configurations** | Database Stack Definitions | [Stack Configurations](/docker/portainer-stacks/lab-db01-portainer-docker-database-node/) |
+| **Infrastructure Architecture** | Database Node Architecture | [Infrastructure Design](/docs/infrastructure/compute/database-nodes.md) |
+| **Monitoring Configuration** | Database Monitoring | [Monitoring Setup](/docs/applications/observability/database-monitoring.md) |
+| **Security Baseline** | Database Security Controls | [Security Baseline](/docs/compliance-security/implementation-guides/Linux/Ubuntu-24-04-Server/CISv8-L2-hardening-guide.md) |
 
-Common database issues are documented with standard resolution paths to speed recovery and reduce downtime.
+## **8.2 Related GLPI Items**
 
-| **Problem** | **First Response** | **Second Response** |
-|------------|-------------------|---------------------|
-| **Connection Failures** | Check network connectivity and credentials | Inspect container logs |
-| **High CPU/Memory** | Identify resource-intensive queries | Tune database parameters |
-| **Storage Issues** | Verify available space | Investigate growing tables/collections |
-| **Replication Lag** | Check network performance | Investigate system load |
-| **Slow Queries** | Identify problematic queries | Review indexing strategy |
+ITSM system references for this service:
 
-## **8. Documentation References**
+| **Item Type** | **ID** | **Name** | **Relationship** |
+|--------------|-------|----------|-----------------|
+| **CI** | CI-2005 | lab-db01 | Primary configuration item |
+| **Service** | SVC-103 | Database Services | Delivered service |
+| **KB Article** | KB-405 | Database Troubleshooting | Support documentation |
+| **Change Template** | CHG-DB-01 | Database Maintenance | Change template |
 
-Additional resources provide detailed information on database-specific configurations and management practices.
+---
 
-| **Document** | **Purpose** | **Location** |
-|-------------|------------|-------------|
-| **Service Documentation** | ITIL-aligned service document | [Lab-DB01 Service Documentation](../../../applications-services/lab-db01-docker-database-node.md) |
-| **Database Sizing Guidelines** | Resource allocation recommendations | [Database Sizing Guidelines](../../../infrastructure/database/sizing-guidelines.md) |
-| **Backup Procedures** | Detailed backup and restore instructions | [Database Backup Procedures](../../../infrastructure/database/backup-procedures.md) |
+# 🔄 **9. Related Infrastructure**
 
-## **Approval & Review**
+| **Component** | **Relationship** | **Documentation** |
+|--------------|----------------|-------------------|
+| **lab-port01** | Manages this Portainer node | [lab-port01](/infrastructure/control-plane/lab-port01-portainer-control-node.md) |
+| **lab-apps01** | Hosts applications using these databases | [lab-apps01](/infrastructure/control-plane/lab-apps01-docker-application-node.md) |
+| **lab-mon01** | Monitors database performance | [lab-mon01](/infrastructure/control-plane/lab-mon01-prometheus-monitoring-logging-stack.md) |
+| **node03** | Hosts this VM | [node03](/infrastructure/proxmox/node03-proxmox-compute.md) |
+
+---
+
+# ✅ **10. Approval & Review**
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
 | VintageDon | Lead Engineer | 2025-03-09 | ✅ Approved |
 
-## **Change Log**
+---
+
+# 📜 **11. Change Log**
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-09 | Initial documentation | VintageDon |
-

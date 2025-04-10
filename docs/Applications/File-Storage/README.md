@@ -14,211 +14,204 @@ last_updated: "2025-03-16"
 
 # 📁 **File Storage**
 
-The File Storage section documents the systems and applications that provide secure, reliable data storage and backup capabilities throughout the Proxmox Astronomy Lab. These services form the foundation for research data persistence, application storage, and disaster recovery capabilities.
+# 🔍 **1. Overview**
 
-## 🔍 **1. Overview**
+This section documents the file storage systems, object storage platforms, and backup solutions deployed within the Proxmox Astronomy Lab. It serves as a reference for the architecture, configuration, and management of storage infrastructure that handles research data, user files, and system backups.
 
-This overview provides context for the lab's approach to file storage, covering the purpose of these systems and their role in the overall infrastructure.
-
-### **1.1 Purpose**
-
-This section documents the **file storage systems, object storage platforms, and backup solutions** deployed within the Proxmox Astronomy Lab. It serves as a reference for the **architecture, configuration, and management** of storage infrastructure that handles research data, user files, and system backups.
-
-### **1.2 Scope**
-
-The following table defines what is included and excluded from this documentation to help readers understand its boundaries.
-
-| **In Scope** | **Out of Scope** |
-|--------------|------------------|
-| Object storage deployment and configuration | Research-specific data organization |
-| File sharing system setup and management | Content management workflows |
-| Backup system architecture and policies | Database-level backup internals |
-| Storage access control and security | Application-specific storage implementations |
-
-### **1.3 Target Audience**
-
-Engineers, researchers, and operators who need to deploy, manage, or utilize the lab's storage infrastructure.
+These storage services form the foundation for research data persistence, application storage, and disaster recovery capabilities while providing secure, scalable access to information across the lab environment.
 
 ---
 
-## 📊 **2. Storage Components**
+# 🗄️ **2. Storage Platforms**
 
-The lab employs several storage technologies to address different data storage needs, each with distinct capabilities and use cases.
+This section outlines the core storage technologies deployed in the lab environment for different storage requirements and access patterns.
 
-The following table outlines our primary storage platforms and their documentation:
+## **2.1 Object Storage**
 
-| **Component** | **Purpose** | **Key Documentation** |
-|--------------|------------|----------------------|
-| [**MinIO**](MinIO/index.md) | S3-compatible object storage | Installation, bucket management, access policies |
-| [**Nextcloud**](Nextcloud/index.md) | File sharing and collaboration | Setup, integration, user management |
-| [**Restic**](Restic/index.md) | Backup system for data protection | Backup policies, schedules, recovery procedures |
+This subsection documents the S3-compatible object storage platform used for unstructured data and scalable research storage.
 
----
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **MinIO** | S3-compatible object storage | [MinIO Server](MinIO/MinIO-Server.md) |
 
-## 🏗️ **3. Technical Documentation**
+MinIO provides a scalable, S3-compatible object storage platform for research datasets, application artifacts, and large unstructured data, with robust security and access control capabilities.
 
-This section covers the technical implementation details of our storage infrastructure, including architectural design and component relationships.
+## **2.2 File Sharing**
 
-### **3.1 Architecture Overview**
+This subsection covers the collaborative file sharing platform used for user data and shared documents.
 
-The file storage infrastructure is designed to provide secure, scalable storage options for different data types and access patterns:
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Nextcloud** | File sharing and collaboration | [Nextcloud Server](Nextcloud/Nextcloud-Server.md) |
 
-- **MinIO** for S3-compatible object storage of research data and artifacts
-- **Nextcloud** for user-friendly file sharing and collaboration
-- **Restic** for efficient, encrypted backups to protect critical data
-- **Tiered storage approach** with hot, warm, and cold storage options
+Nextcloud enables secure file sharing, document collaboration, and user-friendly access to shared research assets, integrating with lab identity management for access control.
 
-### **3.2 Infrastructure Components**
+## **2.3 Backup Systems**
 
-The following table details the key infrastructure components that make up our storage solution:
+This subsection documents the backup solution used to protect critical data across the lab environment.
 
-| **Component** | **Description** | **CMDB ID** |
-|---------------|----------------|------------|
-| Object Storage Server | MinIO S3-compatible storage | lab-minio01 |
-| File Sharing Server | Nextcloud server for user files | lab-nextcloud01 |
-| Backup Server | Restic backup coordinator | lab-backup01 |
-| Primary Storage | High-performance ZFS storage pool | zpool-primary |
-| Archive Storage | Large-capacity storage for long-term retention | zpool-archive |
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Restic** | Backup management | [Backup Strategy](Restic/Backup-Strategy.md) |
 
-### **3.3 Dependencies**
-
-The following table outlines the dependencies and relationships between our storage systems and other infrastructure components:
-
-| **Dependency Type** | **Service/Component** | **Impact if Unavailable** |
-|---------------------|----------------------|---------------------------|
-| **Requires** | Docker Container Runtime | Storage services unavailable |
-| **Requires** | ZFS Storage Pools | Data persistence affected |
-| **Requires** | Network Infrastructure | Storage access disrupted |
-| **Required By** | Research Applications | Data storage unavailable |
-| **Required By** | Web Applications | File access impacted |
-| **Required By** | Kubernetes Workloads | Persistent volumes unavailable |
+Restic provides efficient, secure backups with deduplication, encryption, and versatile target support, protecting critical data across the lab environment.
 
 ---
 
-## 📈 **4. Service Management**
+# 🏗️ **3. Technical Architecture**
 
-This section describes how storage services are managed, including access control and monitoring approaches.
+This section details the technical implementation of the storage infrastructure, including deployment patterns, hardware configurations, and integration points.
 
-### **4.1 Access Management**
+## **3.1 Storage Architecture**
 
-The following table outlines the access management approach for storage services:
+This subsection explains how storage systems are deployed and managed within the lab environment.
 
-| **User Role** | **Access Level** | **Authorization Process** |
-|---------------|----------------|---------------------------|
-| Storage Administrator | Full administration | Approved by Lab Owner via Zitadel |
-| Research Lead | Project storage management | Approved by Storage Administrator |
-| Researcher | Read/write to assigned storage | Approved by Research Lead |
-| Operations | Monitoring and maintenance access | Approved by Storage Administrator |
+| **Component** | **Deployment Method** | **Host System** |
+|--------------|----------------------|----------------|
+| **MinIO** | Docker container | lab-apps01 |
+| **Nextcloud** | Docker container | proj-apps01 |
+| **Restic** | System service | Multiple hosts |
 
-### **4.2 Monitoring & Alerting**
+The storage architecture leverages containerization for isolation and manageability, deploying services on appropriate hosts based on access patterns and resource requirements.
 
-The following table details the key metrics monitored for storage systems and their associated alert thresholds:
+## **3.2 Storage Tiers**
 
-| **Metric** | **Threshold** | **Alert Severity** |
-|------------|--------------|-------------------|
-| Storage Capacity | >85% utilized | Warning |
-| Storage Capacity | >95% utilized | Critical |
-| Service Availability | <99.9% uptime | Warning |
-| Backup Completion | >24h since last successful | Critical |
-| Storage IOPS | >90% of capacity | Warning |
-| Error Rate | >0.1% of operations | Warning |
+This subsection details the tiered storage approach implemented across the lab environment.
 
----
+| **Storage Tier** | **Technology** | **Use Case** |
+|-----------------|---------------|--------------|
+| **Hot Storage** | Local NVMe | Active datasets, high-performance needs |
+| **Warm Storage** | SAS/SATA SSD | General file storage, application data |
+| **Cold Storage** | HDD Arrays | Archive data, backups, long-term retention |
 
-## 🔄 **5. Operational Procedures**
-
-This section covers routine procedures and troubleshooting approaches for storage systems.
-
-### **5.1 Routine Procedures**
-
-The following table outlines standard operational procedures for storage management:
-
-| **Procedure** | **Frequency** | **Role Responsible** | **Procedure Document** |
-|---------------|--------------|----------------------|------------------------|
-| Storage Capacity Review | Weekly | Operations | [Capacity Management](MinIO/Capacity-Management.md) |
-| Backup Verification | Monthly | Storage Administrator | [Backup Verification](Restic/Backup-Verification.md) |
-| Storage Performance Tuning | Quarterly | Engineer | [Storage Optimization](MinIO/Performance-Optimization.md) |
-| Access Audit | Quarterly | Security Admin | [Access Review](../Compliance-Security/Security-Policies/Storage-Access-Review.md) |
-
-### **5.2 Troubleshooting**
-
-The following table provides guidance for addressing common storage-related issues:
-
-| **Common Issue** | **Symptoms** | **Resolution Steps** | **KEDB ID** |
-|------------------|------------|---------------------|------------|
-| Storage Capacity Exhaustion | Write failures, service degradation | Implement emergency cleanup, add capacity | KEDB-ST-001 |
-| Backup Failures | Failed backup tasks, incomplete snapshots | Check connectivity, verify permissions | KEDB-ST-002 |
-| File Access Issues | Permission denied errors, timeouts | Verify user rights, check connectivity | KEDB-ST-003 |
-| Storage Performance Degradation | Increased latency, slow operations | Check disk health, optimize workload | KEDB-ST-004 |
+The tiered storage approach optimizes performance and cost by placing data on appropriate storage media based on access patterns and performance requirements.
 
 ---
 
-## 🔐 **6. Security Considerations**
+# 🔐 **5. Security & Compliance**
 
-This section outlines the security measures implemented to protect storage systems and data.
+This section documents how security controls are implemented and how compliance requirements are met for storage systems.
 
-The following table highlights key security aspects:
+## **5.1 Access Control**
 
-| **Security Aspect** | **Implementation** | **Documentation** |
-|--------------------|-------------------|--------------------|
-| Data Encryption | At-rest and in-transit encryption | [Storage Encryption](../Compliance-Security/Security-Policies/Storage-Encryption.md) |
-| Access Control | RBAC with fine-grained permissions | [Storage Access Control](MinIO/Access-Control.md) |
-| Backup Security | Encrypted backups with key management | [Backup Security](Restic/Security-Configuration.md) |
-| Audit Logging | Comprehensive access and operation logs | [Storage Auditing](../Compliance-Security/Security-Policies/Storage-Auditing.md) |
+This subsection documents the access management approach for storage systems.
 
----
+| **Control Type** | **Implementation** | **Verification Method** |
+|------------------|-------------------|------------------------|
+| **Authentication** | Integration with Zitadel | Authentication logs |
+| **Authorization** | Role-based access + ACLs | Permission audit |
+| **Encryption** | TLS for transport, at-rest encryption | Configuration verification |
 
-## 🔄 **7. Process Integration**
+The access control mechanisms ensure appropriate authorization for all storage interactions while maintaining comprehensive audit capabilities.
 
-This section explains how storage systems relate to established ITIL processes and organizational roles.
+## **5.2 Data Protection**
 
-### **7.1 ITIL Process Relationship**
+This subsection covers how data is protected within storage systems throughout its lifecycle.
 
-This documentation relates to the following ITIL processes:
+| **Protection Mechanism** | **Implementation** | **Data Types Protected** |
+|--------------------------|-------------------|--------------------------|
+| **Backup Protection** | Encrypted, versioned backups | All critical data |
+| **Retention Policies** | Age-based, automated policies | Research data, backups |
+| **Immutability** | Object locking for critical data | Baseline research datasets |
 
-- **Change Management** - Storage system upgrades, configuration changes
-- **Incident Management** - Storage outages, performance issues, data access problems
-- **Problem Management** - Root cause analysis for storage-related issues
-- **Service Level Management** - Storage performance and availability targets
-- **Capacity Management** - Storage growth planning and resource allocation
-- **Continuity Management** - Backup and recovery procedures
-
-### **7.2 Role Responsibilities**
-
-The following table outlines role-specific responsibilities related to storage systems:
-
-| **Role** | **Responsibility Related to File Storage** |
-|----------|--------------------------------------------|
-| Engineer | Architecture design, integration, performance tuning |
-| Storage Administrator | Day-to-day management, access control, capacity planning |
-| Operations | Monitoring, incident response, routine maintenance |
-| Security Admin | Security policy enforcement, encryption management |
+These data protection mechanisms ensure appropriate safeguards for research and operational data through encryption, backup, and retention controls.
 
 ---
 
-## 🔗 **8. Related Documentation**
+# 🔄 **6. Operations & Maintenance**
 
-The following table provides links to related documentation resources:
+This section covers the operational procedures for maintaining storage systems in optimal condition.
 
-| **Document Type** | **Document Name** | **Location** |
-|-------------------|-------------------|-------------|
-| Architecture Document | Storage Infrastructure | [Infrastructure Documentation](../Infrastructure/Storage/README.md) |
-| User Guide | File Storage Access Guide | [User Guide](../ITIL-Processes/Service-Catalog/Storage-Access-Guide.md) |
-| Security Policy | Data Protection Standards | [Security Policies](../Compliance-Security/Security-Policies/Data-Protection.md) |
-| Disaster Recovery | Storage Recovery Procedures | [DR Documentation](../ITIL-Processes/Service-Design/DR-Storage-Recovery.md) |
+## **6.1 Routine Procedures**
+
+This subsection documents regular maintenance activities required to keep storage systems functioning properly.
+
+| **Procedure** | **Frequency** | **Responsible Role** |
+|---------------|--------------|----------------------|
+| **Storage Monitoring** | Continuous | Operations |
+| **Capacity Planning** | Monthly | Engineer |
+| **Backup Verification** | Weekly | Operations |
+| **Access Review** | Quarterly | Security Admin |
+
+These routine procedures ensure storage systems remain secure, performant, and properly sized through regular maintenance activities.
+
+## **6.2 Troubleshooting**
+
+This subsection provides guidance for identifying and resolving common storage-related issues.
+
+| **Common Issue** | **Symptoms** | **Resolution Steps** |
+|------------------|------------|---------------------|
+| **Storage Exhaustion** | Write failures | Clean unnecessary data, add capacity |
+| **Performance Degradation** | Slow access, timeouts | Identify bottlenecks, optimize access patterns |
+| **Backup Failures** | Failed backup jobs | Check connectivity, verify credentials |
+
+The troubleshooting guidance provides structured approaches to resolving common storage issues, minimizing impact to users and applications.
 
 ---
 
-## ✅ **Approval & Review**
+# 🔗 **7. Directory Contents**
+
+This section provides direct navigation to all subdirectories and key documents in this category.
+
+## **Subdirectories**
+
+This subsection identifies the main subdirectories within the File Storage section, explaining their purpose and providing navigation links.
+
+| **Directory** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **MinIO** | Object storage documentation | [MinIO](MinIO/) |
+| **Nextcloud** | File sharing documentation | [Nextcloud](Nextcloud/) |
+| **Restic** | Backup system documentation | [Restic](Restic/) |
+
+The subdirectories table above provides navigation to key sections of the File Storage documentation, helping users locate specific information.
+
+## **Key Documents**
+
+This subsection highlights important standalone documents within the File Storage section that provide significant information.
+
+| **Document** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **MinIO-Server.md** | MinIO configuration guide | [MinIO Server](MinIO/MinIO-Server.md) |
+| **Nextcloud-Server.md** | Nextcloud setup and management | [Nextcloud Server](Nextcloud/Nextcloud-Server.md) |
+| **Backup-Strategy.md** | Backup implementation details | [Backup Strategy](Restic/Backup-Strategy.md) |
+
+The key documents table above connects this document to other knowledge base articles, supporting comprehensive understanding and navigation.
+
+---
+
+# 🔄 **8. Related Categories**
+
+This section identifies other documentation categories related to File Storage, establishing relationships between different knowledge areas.
+
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **Infrastructure** | Physical storage resources | [Infrastructure README](../../Infrastructure/README.md) |
+| **Databases** | Structured data storage | [Databases README](../Databases/README.md) |
+| **Radio-Astronomy** | Research data generation | [Radio-Astronomy README](../Radio-Astronomy/README.md) |
+| **Compliance-Security** | Storage security requirements | [Compliance-Security README](../../Compliance-Security/README.md) |
+
+The related categories table above documents connections to other knowledge domains, helping users understand the broader context of file storage systems.
+
+---
+
+# ✅ **9. Approval & Review**
+
+This section documents the formal review and approval process for this document. It ensures accountability and tracks who has verified the accuracy of the content.
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
 | VintageDon | Lead Engineer | 2025-03-16 | ✅ Approved |
 
+The approval and review table above documents who has verified the accuracy of this document and when, establishing accountability and ensuring quality.
+
 ---
 
-## 📜 **Change Log**
+# 📜 **10. Change Log**
+
+This section tracks the document's revision history. It provides transparency into how the document has evolved over time and who made the changes.
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
-| 1.0 | 2025-03-16 | Initial File Storage documentation | VintageDon |
+| 1.0 | 2025-03-16 | Initial File Storage README | VintageDon |
+
+The change log table above provides a comprehensive history of document revisions, supporting version control and auditing requirements.

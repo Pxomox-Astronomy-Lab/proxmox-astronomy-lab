@@ -14,191 +14,227 @@ last_updated: "2025-03-16"
 
 # 🔧 **Control Plane**
 
-## 🔍 **1. Overview**
+# 🔍 **1. Overview**
 
-The **Control Plane** is the foundational layer that enables **secure, automated, and structured IT operations** in the **Proxmox Astronomy Lab**. It provides the **identity, automation, monitoring, and security infrastructure** required to support both **research workloads and IT services**.
+The Control Plane is the foundational layer that enables secure, automated, and structured IT operations in the Proxmox Astronomy Lab. It provides the identity, automation, monitoring, and security infrastructure required to support both research workloads and IT services.
 
-This section documents the **core services, architecture, and compliance considerations** that govern control plane operations.
-
----
-
-## 🎯 **2. Scope**
-
-The Control Plane includes **all core infrastructure services** related to **identity management, automation, observability, and security**. It ensures that **all compute, storage, and network functions** are centrally managed and enforced.
-
-| **Function Area** | **Key Components** | **Primary Services** |
-|-------------------|-------------------|----------------------|
-| **Identity & Authentication** | Active Directory, Entra ID | lab-dc01, lab-dc02 |
-| **Automation & Configuration** | Ansible, GitOps workflows | lab-ansible01 |
-| **Monitoring & Logging** | Prometheus, Loki, Grafana | lab-mon01 |
-| **Security Operations** | Wazuh SIEM, vulnerability scanning | lab-soc01 |
-| **Service Orchestration** | Portainer, Docker | lab-port01, lab-apps01 |
-
-This section **does not cover** Kubernetes workloads or research-specific applications—those are addressed in their respective sections.
+This section documents the core services, architecture, and compliance considerations that govern control plane operations.
 
 ---
 
-## 🏗️ **3. Service Architecture**
+# 🔑 **2. Identity & Authentication**
 
-### **3.1 Service Overview**
+This section covers the identity and authentication services that form the foundation of our security model, enabling centralized user management and access control.
 
-The control plane consists of **mission-critical services** that ensure the lab remains operational, secure, and automated.
+## **2.1 Active Directory Services**
+
+This subsection documents our Windows Server 2025 Active Directory implementation with Entra ID integration, providing the core identity foundation for the lab environment.
+
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **lab-dc01 (PDC)** | Primary Domain Controller, Entra Connect | [DC01 Documentation](Identity-Management/Active-Directory/README.md) |
+| **lab-dc02 (RODC)** | Read-Only Domain Controller, redundancy | [DC02 Documentation](Identity-Management/Active-Directory/README.md) |
+| **Entra Integration** | Hybrid identity, conditional access | [Entra Documentation](Identity-Management/Entra-Integration/README.md) |
+
+The table above lists the key identity components and their respective roles in the authentication infrastructure, including links to detailed documentation.
+
+## **2.2 Access Control Framework**
+
+This subsection explains our structured approach to access control and permission management, ensuring proper security boundaries across the environment.
+
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Group Policy** | Centralized configuration enforcement | [Group Policy Documentation](Identity-Management/Active-Directory/README.md) |
+| **RBAC** | Role-based access control implementation | [RBAC Documentation](Identity-Management/Access-Control/README.md) |
+| **Conditional Access** | Risk-based authentication and MFA | [Conditional Access Documentation](Identity-Management/Entra-Integration/README.md) |
+
+The table above details the access control mechanisms in place, providing links to implementation documentation for each component.
+
+---
+
+# 📊 **3. Observability Infrastructure**
+
+This section documents our comprehensive monitoring, logging, and alerting infrastructure that provides visibility into all lab components and operations.
+
+## **3.1 Monitoring Stack**
+
+This subsection covers the core monitoring tools that collect, analyze, and visualize operational metrics across the environment.
+
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Prometheus** | Metrics collection and alerting | [Prometheus Documentation](Observability/Prometheus/README.md) |
+| **Loki** | Log aggregation and analysis | [Loki Documentation](Observability/Loki/README.md) |
+| **Grafana** | Visualization and dashboards | [Grafana Documentation](Observability/Grafana/README.md) |
+
+The monitoring components listed above work together to provide comprehensive visibility into system performance, availability, and health.
+
+## **3.2 Alert Management**
+
+This subsection describes how alerts are managed, routed, and responded to within the lab environment, ensuring timely mitigation of issues.
+
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **AlertManager** | Alert routing and notification | [AlertManager Documentation](Observability/Prometheus/README.md) |
+| **Incident Workflows** | Standardized incident response procedures | [Incident Management](../ITIL-Processes/Incident-Management/README.md) |
+
+The alert management framework above ensures that system issues are promptly detected, properly routed, and efficiently resolved according to established procedures.
+
+---
+
+# 🛠️ **4. Core Services**
+
+This section covers the essential infrastructure services that support the broader lab environment, providing critical functionality for day-to-day operations.
+
+## **4.1 Infrastructure Services**
+
+This subsection documents the fundamental services required for basic lab operations, establishing the operational foundation for all other services.
 
 | **Service** | **Function** | **Documentation** |
-|-------------|-------------|-------------------|
-| [**lab-ansible01**](lab-ansible01-automation-master.md) | Configuration management and automation via Ansible playbooks | [Ansible Documentation](lab-ansible01-automation-master.md) |
-| [**lab-apps01**](lab-apps01-docker-application-node.md) | Hosts containerized microservices for lab operations | [Apps Node Documentation](lab-apps01-docker-application-node.md) |
-| [**lab-db01**](lab-db01-docker-database-node.md) | PostgreSQL and TimescaleDB instance for structured data | [Database Node Documentation](lab-db01-docker-database-node.md) |
-| [**lab-dc01**](lab-dc01-primary-domain-controller.md) | Manages Active Directory authentication and Entra ID synchronization | [Primary DC Documentation](lab-dc01-primary-domain-controller.md) |
-| [**lab-dc02**](lab-dc02-ro-domain-controller.md) | Provides redundancy and high availability for domain services | [RODC Documentation](lab-dc02-ro-domain-controller.md) |
-| [**lab-dns01**](lab-dns01-dns-filtering.md) | Technitium-based DNS filtering and security enforcement (VLAN10) | [DNS01 Documentation](lab-dns01-dns-filtering.md) |
-| [**lab-dns02**](lab-dns02-dns-filtering.md) | Technitium-based DNS filtering and security enforcement (VLAN20) | [DNS02 Documentation](lab-dns02-dns-filtering.md) |
-| [**lab-fs01**](lab-fs01-active-directory-file-shares.md) | Centralized SMB shares for controlled data access | [File Share Documentation](lab-fs01-active-directory-file-shares.md) |
-| [**lab-mon01**](lab-mon01-prometheus-monitoring-logging-stack.md) | Prometheus, Loki, and Grafana for system observability | [Monitoring Documentation](lab-mon01-prometheus-monitoring-logging-stack.md) |
-| [**lab-port01**](lab-port01-portainer-control-node.md) | Manages Docker-based microservices and containerized workloads | [Portainer Documentation](lab-port01-portainer-control-node.md) |
-| [**lab-soc01**](lab-soc01-wazuh-seim-xdr.md) | Security event correlation, log monitoring, and intrusion detection | [Wazuh Documentation](lab-soc01-wazuh-seim-xdr.md) |
+|------------|-------------|-------------------|
+| **DNS Filtering** | Secure DNS resolution (lab-dns01/02) | [DNS Services](Services/Domain-Controllers/README.md) |
+| **File Services** | Centralized file storage and sharing | [File Services](Services/Domain-Controllers/README.md) |
+| **Automation** | Ansible-based configuration management | [Automation](Services/Automation/README.md) |
 
-### **3.2 Service Dependencies**
+The infrastructure services listed above provide essential functionality for network operations, data management, and system configuration across the lab environment.
 
-The control plane services have interdependencies that ensure proper function:
+## **4.2 Security Services**
 
-| **Service** | **Dependencies** | **Dependent Services** |
-|-------------|-----------------|------------------------|
-| **lab-dc01** | Network infrastructure | All other services (authentication) |
-| **lab-dns01/02** | lab-dc01 | All network services (name resolution) |
-| **lab-ansible01** | lab-dc01, lab-dns01 | None (configuration source) |
-| **lab-mon01** | lab-dc01, lab-dns01 | All services (monitoring targets) |
-| **lab-soc01** | lab-dc01, lab-dns01, lab-mon01 | All services (security monitoring) |
+This subsection covers the specialized services dedicated to maintaining the security posture of the lab, enabling threat detection and response.
+
+| **Service** | **Function** | **Documentation** |
+|------------|-------------|-------------------|
+| **Wazuh SIEM/XDR** | Security event monitoring and response | [Security Services](Services/Security-Services/README.md) |
+| **Vulnerability Management** | Scanning and remediation tracking | [Security Services](Services/Security-Services/README.md) |
+| **Security Automation** | Automated security control enforcement | [Security Services](Services/Security-Services/README.md) |
+
+The security services described above work together to detect threats, manage vulnerabilities, and enforce security controls across the environment.
 
 ---
 
-## 📊 **4. IT Service Management**
+# 🛡️ **5. Security & Compliance**
 
-### **4.1 ITIL Alignment**
+This section documents how security controls are implemented and how compliance requirements are met. It provides the mapping between security requirements and their practical implementation.
 
-The Control Plane follows a structured **ITIL-lite** approach for **incident, change, and service management**.
+## **5.1 Security Controls**
 
-| **ITIL Process** | **Implementation in the Lab** | **Documentation** |
-|------------------|-------------------------------|-------------------|
-| **Change Management** | Changes tracked via **GLPI**, automated playbooks where possible | [Change Management Process](../itil-processes/change-management-process.md) |
-| **Incident Management** | Alerts via **Prometheus & Wazuh**, centralized logging with Loki | [Incident Management Process](../itil-processes/incident-management-process.md) |
-| **Configuration Management** | Automated configuration drift enforcement via **Ansible playbooks** | [Configuration Management](../itil-processes/configuration-management.md) |
-| **Access & Identity Management** | Managed via **Entra ID, Conditional Access, and AD Group Policies** | [Access Management Process](../itil-processes/access-management-process.md) |
+This subsection documents specific security measures implemented within the control plane, how they are verified, and which compliance controls they satisfy.
 
-### **4.2 Service Level Objectives**
+| **Control Area** | **Implementation** | **Verification Method** |
+|-----------------|-------------------|-------------------------|
+| **Identity Security** | MFA, Conditional Access, JIT | User rights audit, sign-in logs |
+| **Network Security** | Segmentation, filtering, encryption | ACL validation, traffic analysis |
+| **System Hardening** | CIS benchmarks, secure baselines | Compliance scanning, configuration audit |
+| **Monitoring & Detection** | SIEM, log analysis, anomaly detection | Alert verification, detection testing |
 
-| **Service** | **Availability Target** | **Performance Metrics** | **Recovery Time Objective** |
-|-------------|-------------------------|-------------------------|----------------------------|
-| **Domain Services** | 99.9% | Authentication < 1s | 15 minutes |
-| **DNS Services** | 99.95% | Query response < 100ms | 10 minutes |
-| **Monitoring Stack** | 99.5% | Alert latency < 2 minutes | 30 minutes |
-| **Security Services** | 99.5% | Alert processing < 5 minutes | 30 minutes |
+The security controls table above documents implemented safeguards, providing evidence for security assessments and compliance audits.
 
----
+## **5.2 Compliance Framework**
 
-## 🔐 **5. Compliance & Security**
+This subsection explicitly maps implementation details to compliance frameworks, documenting compliance status and evidence location.
 
-### **5.1 Security Controls**
+| **Framework** | **Implementation Level** | **Documentation** |
+|--------------|-------------------------|-------------------|
+| **CIS Controls v8** | Level 2 (Linux), Level 1 (Windows) | [CIS Implementation](../Compliance-Security/CIS-Controls/README.md) |
+| **NIST 800-53** | Mapped via CIS Controls | [NIST Mapping](../Compliance-Security/CIS-Controls/Framework/NIST-Mappings/README.md) |
+| **ISO 27001** | Mapped via CIS Controls | [ISO Mapping](../Compliance-Security/CIS-Controls/Framework/ISO27001-Mappings/README.md) |
 
-The control plane aligns with **CIS Benchmarks and security best practices**.
-
-| **Compliance Standard** | **Implementation** | **Verification Method** |
-|-------------------------|-------------------|-------------------------|
-| **CIS v8 Level 2 (Linux)** | All Linux-based nodes hardened via Ansible playbooks | Lynis, Wazuh agent scans |
-| **CIS v9 Level 1 (Windows)** | Windows Server 2025 domain controllers hardened to CIS L1 | CIS-CAT scans, GPO enforcement |
-| **Entra ID Conditional Access** | MFA, risk-based sign-in enforcement, and strict access control | Azure Security Center |
-| **Security Logging** | Full log aggregation in **Loki and Wazuh**, retained per policy | Log retention verification |
-| **Automated Security Scanning** | Daily scans via **RKHunter, CHKRoot, Lynis, and OSQuery** | Scan results review |
-
-### **5.2 Vulnerability Management**
-
-| **Activity** | **Frequency** | **Tooling** | **Response Time** |
-|--------------|--------------|------------|-------------------|
-| **Vulnerability Scanning** | Daily | Wazuh, OpenSCAP | Critical: 24h, High: 72h |
-| **Patch Management** | Monthly (or as needed) | Ansible automation | Based on severity |
-| **Configuration Verification** | Daily | Ansible check mode | 24h for drift correction |
+The compliance mapping table above demonstrates how our control plane implementation satisfies specific requirements across multiple security frameworks.
 
 ---
 
-## 🛠️ **6. Automation & Management**
+# 🔄 **6. Backup & Recovery**
 
-### **6.1 Ansible Configuration Management**
+This section documents data protection measures, backup strategies, and recovery procedures for the control plane. It provides the guidance needed to ensure business continuity and disaster recovery capabilities.
 
-Ansible manages **infrastructure automation, security compliance, and configuration drift prevention**.
+## **6.1 Backup Strategy**
 
-| **Automation Area** | **Implementation** | **Documentation** |
-|--------------------|-------------------|-------------------|
-| **Baseline Configuration** | All nodes provisioned with predefined security and service settings | [Baseline Playbooks](lab-ansible01-automation-master.md) |
-| **Patch & Compliance Enforcement** | Security updates applied per compliance schedule | [Patch Management](lab-ansible01-automation-master.md) |
-| **Role-Based Playbooks** | Ensures modular, scalable automation of services | [Ansible Roles](lab-ansible01-automation-master.md) |
+This subsection details how control plane services are protected through backups, including schedules, methods, retention policies, and verification processes.
 
-### **6.2 Portainer for Docker Management**
+| **Service** | **Backup Method** | **Retention** | **Recovery Time Objective** |
+|------------|-------------------|--------------|---------------------------|
+| **Domain Controllers** | Proxmox Backup Server | 7 daily, 1 weekly, 1 monthly | 30 minutes |
+| **Monitoring** | Configuration in Git, data in PBS | 7 daily | 1 hour |
+| **Automation** | Git repository, PBS | Git history, 7 daily | 30 minutes |
 
-Portainer provides **centralized control of Docker-based workloads**, ensuring **efficient service orchestration and monitoring**.
+The backup details table above documents critical information about data protection measures for control plane services, ensuring resilience and recoverability.
 
-| **Portainer Feature** | **Use Case** | **Documentation** |
-|-----------------------|-------------|-------------------|
-| **Container Management** | Lifecycle management for all Docker containers | [Container Management](lab-port01-portainer-control-node.md) |
-| **Stack Deployment** | Docker Compose deployment for multi-container applications | [Stack Management](lab-port01-portainer-control-node.md) |
-| **Resource Monitoring** | Real-time container resource usage tracking | [Container Monitoring](lab-port01-portainer-control-node.md) |
+## **6.2 Disaster Recovery**
 
----
+This subsection provides recovery steps for various failure scenarios, including recovery time objectives and responsible parties.
 
-## 📈 **7. Monitoring & Observability**
+| **Scenario** | **Recovery Procedure** | **Documentation** |
+|--------------|----------------------|-------------------|
+| **DC Failure** | FSMO role transfer, restore from backup | [DC Recovery](Identity-Management/Active-Directory/README.md) |
+| **Monitoring Failure** | Prometheus/Grafana restore | [Monitoring Recovery](Observability/README.md) |
+| **Automation Failure** | Repository restore, server rebuild | [Automation Recovery](Services/Automation/README.md) |
 
-### **7.1 Monitoring Architecture**
-
-| **Component** | **Function** | **Scope** |
-|---------------|-------------|-----------|
-| **Prometheus** | Metrics collection and alerting | All infrastructure and services |
-| **Loki** | Log aggregation and search | Centralized logging repository |
-| **Grafana** | Visualization and dashboards | User interface for monitoring data |
-| **Wazuh** | Security monitoring and compliance | Security-focused event monitoring |
-
-### **7.2 Key Dashboards**
-
-| **Dashboard** | **Purpose** | **Primary Users** |
-|---------------|------------|-------------------|
-| **Infrastructure Overview** | High-level status of all systems | Lab Owner, Engineers |
-| **Security Monitoring** | Security events and compliance status | Security Administrator |
-| **Service Performance** | Detailed service metrics and SLO tracking | Operations |
-| **Alert Management** | Active and historical alerts | All roles |
+The recovery procedure table above outlines steps to restore service in different failure scenarios, supporting business continuity objectives.
 
 ---
 
-## 🔄 **8. Ongoing Development**
+# 🔗 **7. Directory Contents**
 
-The Control Plane is the **foundational framework** for the lab, ensuring **secure, automated, and well-managed IT operations**.
+This section provides direct navigation to all subdirectories and key documents in this category, establishing the document ecosystem and knowledge relationships.
 
-| **Enhancement Area** | **Planned Improvements** | **Timeline** |
-|----------------------|--------------------------|-------------|
-| **Service Recovery** | Expanded self-healing automation for service recovery | Q2 2025 |
-| **Security Analytics** | Improved AI-driven security event correlation | Q3 2025 |
-| **Process Refinement** | Refinement of ITIL-based change and incident management | Ongoing |
+## **Subdirectories**
+
+This subsection identifies the main subdirectories within the Control Plane section, explaining their purpose and providing navigation links.
+
+| **Directory** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Identity-Management** | Authentication and access control | [Identity-Management README](Identity-Management/README.md) |
+| **Observability** | Monitoring, logging, and alerting | [Observability README](Observability/README.md) |
+| **Services** | Core infrastructure services | [Services README](Services/README.md) |
+
+The subdirectories table above provides navigation to key sections of the Control Plane documentation, helping users locate specific information.
+
+## **Key Documents**
+
+This subsection highlights important standalone documents within the Control Plane section that provide significant information.
+
+| **Document** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Identity-Management** | Identity strategy overview | [Identity-Management.md](Identity-Management.md) |
+| **Observability** | Monitoring architecture overview | [Observability.md](Observability.md) |
+| **Services** | Service catalog and management | [Services.md](Services.md) |
+
+The key documents table above connects this document to other knowledge base articles, supporting comprehensive understanding and navigation.
 
 ---
 
-## 🔗 **9. Related Documentation**
+# 🔄 **8. Related Categories**
 
-| **Document Area** | **Description** | **Link** |
-|-------------------|----------------|---------|
-| **ITIL Processes** | Detailed service management procedures | [ITIL Documentation](../itil-processes/README.md) |
-| **Security Framework** | Lab-wide security policies and controls | [Security Documentation](../compliance-security/README.md) |
-| **Infrastructure Overview** | Broader infrastructure context | [Infrastructure Documentation](../README.md) |
-| **Kubernetes Control Plane** | Research workload orchestration | [Kubernetes Documentation](../kubernetes/README.md) |
+This section identifies other documentation categories related to the Control Plane, establishing relationships between different knowledge areas.
+
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **Infrastructure** | Physical & virtual platforms | [Infrastructure README](../Infrastructure/README.md) |
+| **Compliance-Security** | Security framework & controls | [Compliance-Security README](../Compliance-Security/README.md) |
+| **ITIL-Processes** | Service management processes | [ITIL-Processes README](../ITIL-Processes/README.md) |
+| **Applications** | Supported applications | [Applications README](../Applications/README.md) |
+
+The related categories table above documents connections to other knowledge domains, helping users understand the broader context of the Control Plane.
 
 ---
 
-## ✅ **10. Approval & Review**
+# ✅ **9. Approval & Review**
+
+This section documents the formal review and approval process for this document. It ensures accountability and tracks who has verified the accuracy of the content.
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
 | VintageDon | Lead Engineer | 2025-03-16 | ✅ Approved |
 
+The approval and review table above documents who has verified the accuracy of this document and when, establishing accountability and ensuring quality.
+
 ---
 
-## 📜 **11. Change Log**
+# 📜 **10. Change Log**
+
+This section tracks the document's revision history. It provides transparency into how the document has evolved over time and who made the changes.
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
-| 1.0 | 2025-03-16 | Standardized Control Plane README | VintageDon |
+| 1.0 | 2025-03-16 | Initial Control Plane README | VintageDon |
+
+The change log table above provides a comprehensive history of document revisions, supporting version control and auditing requirements.

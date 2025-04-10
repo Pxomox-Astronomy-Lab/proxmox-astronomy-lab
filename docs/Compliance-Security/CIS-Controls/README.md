@@ -1,6 +1,6 @@
 ﻿<!-- 
 ---
-title: "CIS Controls Implementation - Proxmox Astronomy Lab"
+title: "CIS Controls Framework - Proxmox Astronomy Lab"
 description: "Documentation of the CIS Controls v8.1 implementation framework, security controls, and verification methods used in the Proxmox Astronomy Lab"
 author: "VintageDon"
 tags: ["security", "cis-controls", "cisv8", "compliance", "security-framework", "implementation"]
@@ -12,21 +12,21 @@ last_updated: "2025-03-16"
 ---
 -->
 
-# 🛡️ **CIS Controls Implementation**
+# 🛡️ **CIS Controls Framework**
 
-## 🔍 **1. Overview**
+# 🔍 **1. Overview**
 
-This section documents the **implementation of CIS Controls v8.1** within the Proxmox Astronomy Lab. The CIS Controls provide a **prioritized, structured approach to cybersecurity** that forms the foundation of our security program.
+This section documents the Center for Internet Security (CIS) Controls implementation within the Proxmox Astronomy Lab. The CIS Controls provide a prioritized, structured approach to cybersecurity that forms the foundation of our security program.
 
-Our implementation focuses on **practical, effective controls** that balance security requirements with operational needs. The controls are implemented through a combination of **technical configurations, policies, and procedural safeguards**, with an emphasis on automation and consistent verification.
+Our implementation focuses on practical, effective controls that balance security requirements with operational needs. The framework is implemented through a combination of technical configurations, policies, and procedural safeguards, with an emphasis on automation and consistent verification.
 
 ---
 
-## 📚 **2. CIS Controls Framework**
+# 📚 **2. Framework Structure**
 
-### **2.1 Framework Structure**
+## **2.1 Implementation Groups**
 
-The CIS Controls v8.1 framework consists of 18 control domains organized into three Implementation Groups (IGs) based on complexity and resource requirements:
+The CIS Controls are organized into Implementation Groups (IGs) based on complexity and resource requirements.
 
 | **Implementation Group** | **Description** | **Lab Implementation** |
 |--------------------------|----------------|------------------------|
@@ -34,11 +34,9 @@ The CIS Controls v8.1 framework consists of 18 control domains organized into th
 | **IG2 (Foundational)** | Defense-in-depth approach for organizations with moderate resources | 92% implemented |
 | **IG3 (Organizational)** | Advanced controls for organizations with significant resources | Selected controls implemented |
 
-The lab primarily targets **IG2 compliance** with implementation of selected IG3 controls in critical areas.
+## **2.2 Control Categories**
 
-### **2.2 Control Categories**
-
-CIS Controls are organized into logical groupings:
+The control domains are organized into logical groupings by security function.
 
 | **Category** | **Control Numbers** | **Focus Area** |
 |--------------|---------------------|----------------|
@@ -46,13 +44,11 @@ CIS Controls are organized into logical groupings:
 | **Foundational CIS Controls** | Controls 7-16 | Technical security capabilities |
 | **Organizational CIS Controls** | Controls 17-18 | Process and procedural controls |
 
-For detailed documentation on each control, see the [Framework section](Framework/Overview/README.md).
-
 ---
 
-## 🛠️ **3. Implementation Approach**
+# 🛠️ **3. Implementation Approach**
 
-### **3.1 Implementation Methodology**
+## **3.1 Implementation Methodology**
 
 Our implementation follows a structured process:
 
@@ -62,166 +58,146 @@ Our implementation follows a structured process:
 4. **Verification**: Validate control effectiveness
 5. **Documentation**: Document implementation details and evidence
 
-This systematic approach ensures consistent, effective implementation of security controls.
+## **3.2 Control Documentation**
 
-### **3.2 Implementation Status**
+Each control domain is thoroughly documented to support implementation and verification.
 
-The following table summarizes our overall implementation status:
-
-| **Control Domain** | **Implementation Status** | **Documentation** |
-|---------------------|--------------------------|-------------------|
-| **01 - Inventory & Control of Enterprise Assets** | ✅ Implemented | [CIS 1 Documentation](Framework/Overview/01-inventory-control-enterprise-assets.md) |
-| **02 - Inventory & Control of Software Assets** | ✅ Implemented | [CIS 2 Documentation](Framework/Overview/02-inventory-control-software-assets.md) |
-| **03 - Data Protection** | ✅ Implemented | [CIS 3 Documentation](Framework/Overview/03-data-protection.md) |
-| **04 - Secure Configuration of Enterprise Assets & Software** | ✅ Implemented | [CIS 4 Documentation](Framework/Overview/04-secure-configuration.md) |
-| **05 - Account Management** | ✅ Implemented | [CIS 5 Documentation](Framework/Overview/05-account-management.md) |
-| **06 - Access Control Management** | ✅ Implemented | [CIS 6 Documentation](Framework/Overview/06-access-control-management.md) |
-| **07 - Continuous Vulnerability Management** | ✅ Implemented | [CIS 7 Documentation](Framework/Overview/07-continuous-vulnerability-management.md) |
-| **08 - Audit Log Management** | ✅ Implemented | [CIS 8 Documentation](Framework/Overview/08-audit-log-management.md) |
-| **09 - Email & Web Browser Protections** | ✅ Implemented | [CIS 9 Documentation](Framework/Overview/09-email-web-browser-protections.md) |
-| **10 - Malware Defenses** | ✅ Implemented | [CIS 10 Documentation](Framework/Overview/10-malware-defenses.md) |
-| **11 - Data Recovery** | ✅ Implemented | [CIS 11 Documentation](Framework/Overview/11-data-recovery.md) |
-| **12 - Network Infrastructure Management** | ✅ Implemented | [CIS 12 Documentation](Framework/Overview/12-network-infrastructure-management.md) |
-| **13 - Network Monitoring & Defense** | ✅ Implemented | [CIS 13 Documentation](Framework/Overview/13-network-monitoring-defense.md) |
-| **14 - Security Awareness & Skills Training** | ✅ Implemented | [CIS 14 Documentation](Framework/Overview/14-security-awareness-training.md) |
-| **15 - Service Provider Management** | ✅ Implemented | [CIS 15 Documentation](Framework/Overview/15-service-provider-management.md) |
-| **16 - Application Software Security** | ✅ Implemented | [CIS 16 Documentation](Framework/Overview/16-application-software-security.md) |
-| **17 - Incident Response Management** | ✅ Implemented | [CIS 17 Documentation](Framework/Overview/17-incident-response-management.md) |
-| **18 - Penetration Testing** | ✅ Implemented | [CIS 18 Documentation](Framework/Overview/18-penetration-testing.md) |
-
-For detailed implementation status of individual sub-controls, see the control-specific documentation.
+| **Control Domain** | **Documentation** | **Implementation Status** |
+|---------------------|-------------------|--------------------------|
+| **01 - Inventory & Control of Enterprise Assets** | [CIS 1 Documentation](Framework/Overview/01-inventory-control-enterprise-assets.md) | ✅ Implemented |
+| **02 - Inventory & Control of Software Assets** | [CIS 2 Documentation](Framework/Overview/02-inventory-control-software-assets.md) | ✅ Implemented |
+| **03 - Data Protection** | [CIS 3 Documentation](Framework/Overview/03-data-protection.md) | ✅ Implemented |
+| **04 - Secure Configuration of Enterprise Assets & Software** | [CIS 4 Documentation](Framework/Overview/04-secure-configuration.md) | ✅ Implemented |
+| **05 - Account Management** | [CIS 5 Documentation](Framework/Overview/05-account-management.md) | ✅ Implemented |
+| **06 - Access Control Management** | [CIS 6 Documentation](Framework/Overview/06-access-control-management.md) | ✅ Implemented |
+| **07 - Continuous Vulnerability Management** | [CIS 7 Documentation](Framework/Overview/07-continuous-vulnerability-management.md) | ✅ Implemented |
+| **08 - Audit Log Management** | [CIS 8 Documentation](Framework/Overview/08-audit-log-management.md) | ✅ Implemented |
+| **09 - Email & Web Browser Protections** | [CIS 9 Documentation](Framework/Overview/09-email-web-browser-protections.md) | ✅ Implemented |
+| **10 - Malware Defenses** | [CIS 10 Documentation](Framework/Overview/10-malware-defenses.md) | ✅ Implemented |
+| **11 - Data Recovery** | [CIS 11 Documentation](Framework/Overview/11-data-recovery.md) | ✅ Implemented |
+| **12 - Network Infrastructure Management** | [CIS 12 Documentation](Framework/Overview/12-network-infrastructure-management.md) | ✅ Implemented |
+| **13 - Network Monitoring & Defense** | [CIS 13 Documentation](Framework/Overview/13-network-monitoring-defense.md) | ✅ Implemented |
+| **14 - Security Awareness & Skills Training** | [CIS 14 Documentation](Framework/Overview/14-security-awareness-training.md) | ✅ Implemented |
+| **15 - Service Provider Management** | [CIS 15 Documentation](Framework/Overview/15-service-provider-management.md) | ✅ Implemented |
+| **16 - Application Software Security** | [CIS 16 Documentation](Framework/Overview/16-application-software-security.md) | ✅ Implemented |
+| **17 - Incident Response Management** | [CIS 17 Documentation](Framework/Overview/17-incident-response-management.md) | ✅ Implemented |
+| **18 - Penetration Testing** | [CIS 18 Documentation](Framework/Overview/18-penetration-testing.md) | ✅ Implemented |
 
 ---
 
-## 🔄 **4. Implementation Guides**
+# 📋 **4. Implementation Guides**
 
-### **4.1 System-Specific Implementation Guides**
+## **4.1 Platform-Specific Implementation**
 
-Detailed implementation guides are available for different system types:
+Detailed implementation guides are available for different system types.
 
 | **System Type** | **Guide** | **Implementation Level** |
 |----------------|----------|-------------------------|
-| [**Ubuntu 24.04 Server**](Implementation-Guides/Linux/Ubuntu-24-04-Server/README.md) | CIS Ubuntu Linux 24.04 LTS Benchmark | Level 2 |
-| [**Windows Server 2025**](Implementation-Guides/Windows/Server-2025-Standard/README.md) | CIS Microsoft Windows Server 2025 Benchmark | Level 1 |
-| [**Debian/Proxmox**](Implementation-Guides/Linux/Debian-Proxmox/README.md) | CIS Debian Linux 12 Benchmark (adapted) | Level 2 |
-| [**Windows 11**](Implementation-Guides/Windows/Windows-11-Pro/README.md) | CIS Microsoft Windows 11 Benchmark | Level 1 |
+| **Ubuntu 24.04 Server** | [Ubuntu Server Guide](Implementation-Guides/Linux/Ubuntu-24-04-Server/README.md) | Level 2 |
+| **Windows Server 2025** | [Windows Server Guide](Implementation-Guides/Windows/Server-2025-Standard/README.md) | Level 1 |
+| **Debian/Proxmox** | [Proxmox Guide](Implementation-Guides/Linux/Debian-Proxmox/README.md) | Level 2 |
+| **Windows 11** | [Windows 11 Guide](Implementation-Guides/Windows/Windows-11-Pro/README.md) | Level 1 |
 
-These guides provide step-by-step instructions for implementing CIS Controls on specific platforms.
+## **4.2 Implementation Templates**
 
-### **4.2 Validation Documents**
+Standard templates supporting consistent implementation and documentation.
 
-Implementation validation documents provide verification procedures and expected results:
-
-| **Validation Area** | **Purpose** | **Documentation** |
-|--------------------|------------|-------------------|
-| **File Integrity** | AIDE configuration and validation | [AIDE Validation](Implementation-Guides/Linux/Ubuntu-24-04-Server/Validation-Documents/01-aide-file-integrity/README.md) |
-| **MAC Controls** | AppArmor configuration and validation | [AppArmor Validation](Implementation-Guides/Linux/Ubuntu-24-04-Server/Validation-Documents/02-apparmor-mac/README.md) |
-| **Rootkit Detection** | Chkrootkit and RKHunter configuration | [Rootkit Detection](Implementation-Guides/Linux/Ubuntu-24-04-Server/Validation-Documents/03-chkrootkit-scan/README.md) |
-| **Intrusion Prevention** | Fail2ban configuration and validation | [Fail2ban Validation](Implementation-Guides/Linux/Ubuntu-24-04-Server/Validation-Documents/04-fail2ban-config/README.md) |
-
-These documents provide evidence of control implementation and effectiveness.
+| **Template Type** | **Purpose** | **Documentation** |
+|-------------------|------------|-------------------|
+| **Policy Templates** | Security policy documentation | [Policy Templates](Templates/Policy-Templates/README.md) |
+| **Implementation Templates** | Technical documentation | [Implementation Templates](Templates/Implementation-Templates/README.md) |
+| **Compliance Templates** | Verification evidence | [Compliance Templates](Templates/Compliance-Templates/README.md) |
 
 ---
 
-## 🔗 **5. Framework Mappings**
+# 🔄 **5. Security & Compliance**
 
-### **5.1 Mapping to Other Frameworks**
+## **5.1 Framework Mappings**
 
-CIS Controls are mapped to other security frameworks for comprehensive coverage:
+CIS Controls are mapped to other security frameworks for comprehensive coverage.
 
-| **Framework** | **Mapping Status** | **Documentation** |
-|--------------|-------------------|-------------------|
-| **NIST 800-53 Rev. 5** | Complete mapping | [NIST Mapping](Framework/NIST-Mappings/README.md) |
-| **ISO 27001:2022** | Complete mapping | [ISO Mapping](Framework/ISO27001-Mappings/README.md) |
+| **Framework** | **Mapping Documentation** | **Mapping Status** |
+|--------------|--------------------------|-------------------|
+| **NIST 800-53 Rev. 5** | [NIST Mapping](Framework/NIST-Mappings/README.md) | Complete mapping |
+| **ISO 27001:2022** | [ISO Mapping](Framework/ISO27001-Mappings/README.md) | Complete mapping |
+| **DISA STIG** | [STIG Mapping](Framework/STIG-Mappings/README.md) | Partial mapping |
 
-These mappings help demonstrate compliance with multiple frameworks while maintaining a single control implementation approach.
+## **5.2 Verification Methods**
 
----
+Controls are verified through multiple complementary methods.
 
-## 📑 **6. Templates and Resources**
-
-### **6.1 Documentation Templates**
-
-Standardized templates support consistent documentation:
-
-| **Template Type** | **Purpose** | **Location** |
-|-------------------|------------|-------------|
-| **Policy Templates** | Standard security policy documents | [Policy Templates](Templates/Policy-Templates/README.md) |
-| **Implementation Templates** | Technical implementation documentation | [Implementation Templates](Templates/Implementation-Templates/README.md) |
-| **Compliance Templates** | Compliance verification evidence | [Compliance Templates](Templates/Compliance-Templates/README.md) |
-
-These templates ensure consistent documentation across the security program.
-
-### **6.2 CIS Resources**
-
-Key resources from the Center for Internet Security:
-
-| **Resource** | **Description** | **Usage** |
-|--------------|----------------|-----------|
-| **CIS Controls v8.1** | Core control framework | Primary security framework |
-| **CIS Benchmarks** | Secure configuration guidelines | System hardening baseline |
-| **CIS-CAT Lite** | Assessment tool | Compliance verification |
-| **CIS Implementation Groups** | Control prioritization framework | Implementation planning |
+| **Verification Method** | **Description** | **Documentation** |
+|------------------------|----------------|-------------------|
+| **CIS-CAT Lite** | Automated scanning | [Scanning Procedures](../Assessment-Tools/CIS-CAT/Scanning-Procedures.md) |
+| **Lynis** | Linux security auditing | [Lynis Procedures](../Assessment-Tools/Lynis/Scanning-Procedures.md) |
+| **Custom Scripts** | Specialized verification | [Script Documentation](../Assessment-Tools/Custom-Scripts/README.md) |
+| **Manual Review** | Administrator verification | [Manual Verification](Verification/Manual-Verification-Procedures.md) |
 
 ---
 
-## 📊 **7. Verification and Metrics**
+# 📊 **6. Metrics & Reporting**
 
-### **7.1 Verification Methods**
+## **6.1 Compliance Metrics**
 
-Controls are verified through multiple methods:
+Key performance indicators for measuring security posture:
 
-| **Method** | **Description** | **Tools** |
-|------------|----------------|-----------|
-| **Automated Scanning** | Regular compliance assessment | CIS-CAT Lite, Lynis, Wazuh SCA |
-| **Manual Verification** | Direct examination of configurations | Checklists, admin review |
-| **Penetration Testing** | Adversarial testing of controls | Controlled security testing |
-| **Log Analysis** | Review of security logs | Wazuh, log analytics |
+| **Metric** | **Target** | **Measurement Method** | **Current Status** |
+|------------|-----------|------------------------|-------------------|
+| **Overall CIS Compliance** | >90% | CIS-CAT Lite score | 94% |
+| **Critical Control Implementation** | 100% | CIS Controls 1-6 compliance | 100% |
+| **Vulnerability Remediation Efficiency** | <14 days MTTR | Tracking system data | 12.3 days |
+| **Security Incidents** | Decreasing trend | Incident count and severity | Trending down |
 
-This multi-layered approach ensures controls are effectively implemented and maintained.
+## **6.2 Reporting & Dashboards**
 
-### **7.2 Key Metrics**
+Standard reports and visualizations for security posture monitoring:
 
-Performance metrics track security posture:
-
-| **Metric** | **Target** | **Measurement Method** |
-|------------|-----------|------------------------|
-| **Overall CIS Compliance** | >90% | CIS-CAT Lite score |
-| **Critical Control Implementation** | 100% | CIS Controls 1-6 compliance |
-| **Vulnerability Management Efficiency** | <14 days MTTR | Time to resolve findings |
-| **Security Incidents** | Decreasing trend | Incident count and severity |
-
-These metrics provide quantitative measurement of security program effectiveness.
+| **Report Type** | **Audience** | **Frequency** | **Documentation** |
+|----------------|------------|--------------|-------------------|
+| **Executive Summary** | Leadership | Monthly | [Executive Reporting](Reporting/Executive-Reporting.md) |
+| **Technical Compliance** | IT Administration | Weekly | [Technical Reporting](Reporting/Technical-Reporting.md) |
+| **Trend Analysis** | Security Team | Monthly | [Trend Analysis](Reporting/Trend-Analysis.md) |
+| **Remediation Tracking** | IT Operations | Daily | [Remediation Tracking](Reporting/Remediation-Tracking.md) |
 
 ---
 
-## 🔄 **8. Continuous Improvement**
+# 🗄️ **7. Directory Contents**
 
-Our CIS Controls implementation follows a continuous improvement cycle:
+This section provides direct navigation to all subdirectories and key documents in this category:
 
-| **Phase** | **Activities** | **Frequency** | **Documentation** |
-|-----------|---------------|--------------|-------------------|
-| **Assessment** | Evaluate control effectiveness | Quarterly | [Assessment Process](Framework/Overview/assessment-methodology.md) |
-| **Gap Analysis** | Identify improvement opportunities | Quarterly | [Gap Analysis](Framework/Overview/gap-analysis.md) |
-| **Enhancement Planning** | Plan control improvements | Quarterly | [Enhancement Planning](Framework/Overview/enhancement-planning.md) |
-| **Implementation** | Execute enhancement plans | Ongoing | [Implementation Tracking](Framework/Overview/implementation-tracking.md) |
+## **Subdirectories**
 
-This cycle ensures our security controls remain effective and adapt to changing threats and requirements.
+| **Directory** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Framework** | Core CIS Controls documentation | [Framework README](Framework/README.md) |
+| **Implementation-Guides** | Platform-specific implementation instructions | [Implementation Guides README](Implementation-Guides/README.md) |
+| **Templates** | Documentation and implementation templates | [Templates README](Templates/README.md) |
+| **Verification** | Control verification procedures | [Verification README](Verification/README.md) |
+| **Reporting** | Compliance reporting and metrics | [Reporting README](Reporting/README.md) |
+
+## **Key Documents**
+
+| **Document** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Implementation Methodology** | Overall approach to implementing controls | [Implementation Methodology](Implementation-Methodology.md) |
+| **Gap Analysis** | Current implementation gaps and remediation plans | [Gap Analysis](Gap-Analysis.md) |
+| **CIS Resources** | Links to official CIS references and tools | [CIS Resources](CIS-Resources.md) |
+| **Assessment Schedule** | Security control assessment schedule | [Assessment Schedule](Assessment-Schedule.md) |
 
 ---
 
-## 🔗 **9. Related Documentation**
+# 🔄 **8. Related Categories**
 
-| **Section** | **Description** | **Link** |
-|------------|----------------|---------|
-| **Security Policies** | Formal security policy documents | [Security Policies](../Security-Policies/README.md) |
-| **Assessment Tools** | Security evaluation tools | [Assessment Tools](../Assessment-Tools/README.md) |
-| **Remediation** | Addressing security findings | [Remediation](../Remediation/README.md) |
-| **Security Monitoring** | Ongoing security verification | [Security Monitoring](../Security-Monitoring/README.md) |
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **Assessment Tools** | Verifies control implementation | [Assessment Tools README](../Assessment-Tools/README.md) |
+| **Security Policies** | Formalizes security requirements | [Security Policies README](../Security-Policies/README.md) |
+| **Remediation** | Addresses control gaps | [Remediation README](../Remediation/README.md) |
+| **Security Monitoring** | Monitors control effectiveness | [Security Monitoring README](../Security-Monitoring/README.md) |
 
 ---
 
-## ✅ **10. Approval & Review**
+# ✅ **9. Approval & Review**
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
@@ -229,7 +205,7 @@ This cycle ensures our security controls remain effective and adapt to changing 
 
 ---
 
-## 📜 **11. Change Log**
+# 📜 **10. Change Log**
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|

@@ -14,225 +14,244 @@ last_updated: "2025-03-16"
 
 # 💾 **Databases**
 
-The Databases section documents the relational, time-series, and NoSQL database systems that provide structured data storage throughout the Proxmox Astronomy Lab. These systems form the foundation for application data persistence, research datasets, and operational metrics that enable both IT services and scientific research.
+# 🔍 **1. Overview**
 
-## 🔍 **1. Overview**
+This section documents the database systems and data storage platforms deployed within the Proxmox Astronomy Lab. It serves as a reference for the architecture, configuration, and operational aspects of these critical systems that support research data storage, application persistence, and time-series analysis.
 
-This overview provides context for the lab's database infrastructure, covering both general-purpose and specialized database systems.
-
-### **1.1 Purpose**
-
-This section documents the **database systems and data storage platforms** deployed within the Proxmox Astronomy Lab. It serves as a reference for the **architecture, configuration, and operational aspects** of these critical systems that support research data storage, application persistence, and time-series analysis.
-
-### **1.2 Scope**
-
-The following table defines what is included and excluded from this documentation to help readers understand its boundaries.
-
-| **In Scope** | **Out of Scope** |
-|--------------|------------------|
-| Database server deployment and configuration | Application-specific data schemas |
-| Management interfaces and monitoring setup | Detailed query optimization |
-| Backup and recovery procedures | Research-specific data analysis |
-| High availability configuration | Database development methodologies |
-
-### **1.3 Target Audience**
-
-Engineers, operators, and application developers who need to deploy, manage, or integrate with the lab's database infrastructure.
+The lab employs a diverse set of database technologies optimized for different workloads, from general-purpose relational databases to specialized time-series and document stores, providing comprehensive data management capabilities.
 
 ---
 
-## 📊 **2. Database Platforms**
+# 📊 **2. Database Platforms**
 
-Our lab employs several database technologies, each selected to address specific data storage requirements and workloads.
+This section outlines the primary database technologies deployed in the lab environment, categorized by their specialized functions and use cases.
 
-The following table outlines our primary database platforms and their documentation:
+## **2.1 Relational Databases**
 
-| **Database** | **Purpose** | **Key Documentation** |
-|--------------|------------|----------------------|
-| [**PostgreSQL**](PostgreSQL/index.md) | Relational data storage for applications | Installation, configuration, management |
-| [**TimescaleDB**](TimescaleDB/index.md) | Time-series data for research observations | Setup, hypertables, retention policies |
-| [**MongoDB**](MongoDB/index.md) | Document storage for unstructured data | Configuration, sharding, backup |
-| [**Redis**](Redis/index.md) | In-memory cache and message broker | Sentinel setup, persistence config |
-| [**GIS-Extensions**](GIS-Extensions/index.md) | Spatial data capabilities | PostGIS installation and usage |
-| [**MariaDB**](MariaDB/index.md) | Relational data for web applications | Installation, replication, tuning |
+This subsection documents the relational database platforms used for structured data storage with ACID compliance.
 
----
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **PostgreSQL** | Primary relational database | [PostgreSQL Server](PostgreSQL/PostgreSQL-Server.md) |
+| **MariaDB** | Web application data storage | [MariaDB Server](MariaDB/MariaDB-Server.md) |
 
-## 🏗️ **3. Technical Documentation**
+The relational database platforms provide structured, transactional data storage for applications requiring strong consistency and complex querying capabilities.
 
-This section covers the technical implementation details of our database infrastructure, including architectural design and deployment strategies.
+## **2.2 Specialized Databases**
 
-### **3.1 Architecture Overview**
+This subsection covers the purpose-built database platforms optimized for specific data types and access patterns.
 
-The database infrastructure follows a containerized deployment model with specific considerations for data persistence, performance, and reliability:
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **TimescaleDB** | Time-series data | [TimescaleDB Server](TimescaleDB/TimescaleDB-Server.md) |
+| **MongoDB** | Document storage | [MongoDB Server](MongoDB/MongoDB-Server.md) |
+| **Redis** | In-memory data store | [Redis Server](Redis/Redis-Server.md) |
 
-- **Docker-based deployment** using Portainer for management
-- **Dedicated volumes** for data persistence
-- **Automated backup** to NAS and cloud storage
-- **Performance tuning** for different workload types
-- **High availability** for critical database services
+These specialized database platforms are optimized for specific data models and access patterns, providing high performance for time-series data, document storage, and caching use cases.
 
-### **3.2 Infrastructure Components**
+## **2.3 Database Extensions**
 
-The following table details the key infrastructure components that make up our database environment:
+This subsection documents the database extensions that add specialized capabilities to the core database platforms.
 
-| **Component** | **Description** | **CMDB ID** |
-|---------------|----------------|------------|
-| Primary Database Server | Containerized database host | lab-db01 |
-| Database Storage Volume | Dedicated 2TB NVMe storage | db01-data-volume |
-| Database Backup Server | Backup storage and management | lab-backup01 |
-| Database Management Tools | phpMyAdmin, pgAdmin, Redis Commander | lab-dbadmin |
-| TimescaleDB Server | Specialized time-series database | lab-timescale01 |
-| PostGIS Server | Geospatial-enabled PostgreSQL | lab-postgis01 |
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **PostGIS** | Geospatial data capabilities | [PostGIS](GIS-Extensions/PostGIS.md) |
 
-### **3.3 Dependencies**
-
-The following table outlines the dependencies and relationships between our database systems and other infrastructure components:
-
-| **Dependency Type** | **Service/Component** | **Impact if Unavailable** |
-|---------------------|----------------------|---------------------------|
-| **Requires** | Docker Container Runtime | Database services unavailable |
-| **Requires** | Dedicated Storage | Data persistence affected |
-| **Requires** | Backup System | Backup failures, recovery risk |
-| **Required By** | Web Applications | Application functionality degraded |
-| **Required By** | Research Analysis Tools | Research data inaccessible |
-| **Required By** | Authentication Services | User login failures |
-| **Required By** | Monitoring Systems | Metrics and alert history lost |
+Database extensions enhance the core functionality of database platforms with specialized capabilities like geospatial data processing.
 
 ---
 
-## 📈 **4. Service Management**
+# 🔧 **3. Technical Architecture**
 
-This section describes how database services are managed, including access control and monitoring approaches.
+This section details the technical implementation of the database infrastructure, including deployment patterns, high availability approaches, and integration points.
 
-### **4.1 Access Management**
+## **3.1 Deployment Architecture**
 
-The following table outlines the access management approach for database services:
+This subsection explains how database systems are deployed and managed within the lab environment.
 
-| **User Role** | **Access Level** | **Authorization Process** |
-|---------------|----------------|---------------------------|
-| Database Administrator | Full administration | Approved by Lab Owner via Zitadel |
-| Application Owner | Database-specific access | Approved by Engineer via RBAC |
-| Developer | Read/write to specific schemas | Approved by Application Owner |
-| Analyst | Read-only to specific datasets | Approved by Application Owner |
-| Monitoring System | Metrics collection | Service account with read-only access |
+| **Database** | **Deployment Method** | **Host System** |
+|--------------|----------------------|----------------|
+| **PostgreSQL** | Docker container | lab-db01 |
+| **TimescaleDB** | Docker container | lab-db01 |
+| **MongoDB** | Docker container | lab-db01 |
+| **Redis** | Docker container | lab-db01 |
+| **MariaDB** | Docker container | lab-db01 |
 
-### **4.2 Monitoring & Alerting**
+The deployment architecture leverages containerization for consistency, isolation, and manageability of database workloads, centralizing them on dedicated database hosts.
 
-The following table details the key metrics monitored for database systems and their associated alert thresholds:
+## **3.2 Storage Configuration**
 
-| **Metric** | **Threshold** | **Alert Severity** |
-|------------|--------------|-------------------|
-| Database CPU Usage | >80% for >5 min | Warning |
-| Database Memory Usage | >90% | Critical |
-| Free Disk Space | <15% | Critical |
-| Connection Count | >80% of max connections | Warning |
-| Replication Lag | >60 seconds | Warning |
-| Query Execution Time | >10s average | Warning |
-| Failed Transactions | >5% of total | Critical |
+This subsection details the storage infrastructure that supports database systems.
 
----
+| **Storage Aspect** | **Implementation** | **Capacity** |
+|--------------------|-------------------|-------------|
+| **Data Volumes** | Dedicated docker volumes | 2TB total capacity |
+| **Backup Destination** | NFS share to Proxmox Backup Server | 4TB allocated space |
+| **High-Performance Data** | Local NVMe storage | 500GB for active datasets |
 
-## 🔄 **5. Operational Procedures**
-
-This section covers routine procedures and troubleshooting approaches for database management.
-
-### **5.1 Routine Procedures**
-
-The following table outlines standard operational procedures for database management:
-
-| **Procedure** | **Frequency** | **Role Responsible** | **Procedure Document** |
-|---------------|--------------|----------------------|------------------------|
-| Database Backup | Daily | Operations | [Database Backup](../File-Storage/Restic/Database-Backup.md) |
-| Index Maintenance | Weekly | Database Administrator | [Index Optimization](PostgreSQL/Index-Optimization.md) |
-| Performance Review | Monthly | Engineer | [Performance Tuning](PostgreSQL/Performance-Tuning.md) |
-| Capacity Planning | Quarterly | Engineer | [Capacity Management](../ITIL-Processes/Service-Design/Capacity-Management.md) |
-| Security Audit | Quarterly | Security Administrator | [Database Security Audit](../Compliance-Security/Security-Policies/Database-Security-Audit.md) |
-
-### **5.2 Troubleshooting**
-
-The following table provides guidance for addressing common database-related issues:
-
-| **Common Issue** | **Symptoms** | **Resolution Steps** | **KEDB ID** |
-|------------------|------------|---------------------|------------|
-| Connection Pooling Exhaustion | Connection timeout errors | Reset connection pools, check for leaks | KEDB-DB-001 |
-| Slow Query Performance | Increased latency, timeouts | Identify and optimize problematic queries | KEDB-DB-002 |
-| Database Lock Contention | Transaction blocks, timeouts | Identify blocking queries, adjust transaction isolation | KEDB-DB-003 |
-| Disk Space Exhaustion | Write failures, service crashes | Clean logs, archive data, add capacity | KEDB-DB-004 |
-| Replication Failures | Replication lag, synchronization errors | Check network, verify replication slots | KEDB-DB-005 |
+The storage configuration ensures data durability, performance, and appropriate capacity for database workloads while supporting comprehensive backup capabilities.
 
 ---
 
-## 🔐 **6. Security Considerations**
+# 🔄 **4. Operations & Management**
 
-This section outlines the security measures implemented to protect database systems and data.
+This section covers the processes and tools for managing database systems through their lifecycle, from routine operations to troubleshooting.
 
-The following table highlights key security aspects:
+## **4.1 Management Interfaces**
 
-| **Security Aspect** | **Implementation** | **Documentation** |
-|--------------------|-------------------|--------------------|
-| Authentication | RBAC with password policy enforcement | [Database Authentication](PostgreSQL/Authentication.md) |
-| Network Security | VLAN isolation, TLS encryption | [Database Network Security](../Compliance-Security/Security-Policies/Database-Network-Security.md) |
-| Data Encryption | TDE for sensitive data, encrypted backups | [Data Encryption](../Compliance-Security/Security-Policies/Data-Encryption.md) |
-| Vulnerability Management | Regular patching, security scanning | [Database Patching](../ITIL-Processes/Change-Management/Database-Patching.md) |
-| Audit Logging | Comprehensive query and access logging | [Database Auditing](../Compliance-Security/Security-Policies/Database-Auditing.md) |
+This subsection documents the tools used to administer and monitor database systems.
 
----
+| **Interface** | **Purpose** | **Documentation** |
+|--------------|------------|-------------------|
+| **pgAdmin** | PostgreSQL administration | [PGAdmin](PostgreSQL/PGAdmin.md) |
+| **phpMyAdmin** | MariaDB administration | [phpMyAdmin](MariaDB/phpMyAdmin.md) |
+| **Redis Commander** | Redis monitoring and management | [Redis Commander](Redis/Redis-Commander.md) |
 
-## 🔄 **7. Process Integration**
+These management interfaces provide web-based tools for database administration, monitoring, and operational management across different database technologies.
 
-This section explains how database systems relate to established ITIL processes and organizational roles.
+## **4.2 Backup Procedures**
 
-### **7.1 ITIL Process Relationship**
+This subsection details the backup strategies implemented for database systems to ensure data durability and recoverability.
 
-This documentation relates to the following ITIL processes:
+| **Database** | **Backup Method** | **Schedule** | **Retention** |
+|--------------|-------------------|------------|--------------|
+| **PostgreSQL** | pg_dump + filesystem | Daily | 7 daily, 4 weekly |
+| **TimescaleDB** | pg_dump + continuous archiving | Hourly | 24 hourly, 7 daily |
+| **MongoDB** | mongodump | Daily | 7 daily, 4 weekly |
+| **MariaDB** | mariabackup | Daily | 7 daily, 4 weekly |
 
-- **Change Management** - Database upgrades, schema changes, configuration updates
-- **Incident Management** - Database outages, performance issues, data corruption
-- **Problem Management** - Root cause analysis for database-related issues
-- **Service Level Management** - Performance metrics and availability targets
-- **Capacity Management** - Resource planning for database growth
-- **Availability Management** - High availability configuration and monitoring
-- **IT Service Continuity** - Backup strategy and disaster recovery
-
-### **7.2 Role Responsibilities**
-
-The following table outlines role-specific responsibilities related to database management:
-
-| **Role** | **Responsibility Related to Databases** |
-|----------|--------------------------------------------|
-| Engineer | Architecture design, capacity planning, HA configuration |
-| Database Administrator | Day-to-day management, user access, performance tuning |
-| Operations | Monitoring, incident response, backup verification |
-| Security Administrator | Security policy enforcement, vulnerability assessment |
-| Application Owner | Schema design, data architecture, application integration |
+The backup procedures ensure comprehensive data protection through appropriate backup methods and retention policies tailored to each database system.
 
 ---
 
-## 🔗 **8. Related Documentation**
+# 🔐 **5. Security & Compliance**
 
-The following table provides links to related documentation resources:
+This section documents how security controls are implemented and how compliance requirements are met for database systems.
 
-| **Document Type** | **Document Name** | **Location** |
-|-------------------|-------------------|-------------|
-| Architecture Document | Database Architecture | [Architecture Documentation](../Infrastructure/Storage/Database-Architecture.md) |
-| User Guide | Database Access Request | [Service Catalog](../ITIL-Processes/Service-Catalog/Database-Access-Request.md) |
-| Security Policy | Database Security Standards | [Security Policies](../Compliance-Security/Security-Policies/Database-Security-Standards.md) |
-| Backup Documentation | Database Backup & Recovery | [Backup Strategy](../File-Storage/Restic/Database-Backup-Strategy.md) |
-| Performance Guide | Query Optimization | [Performance Documentation](PostgreSQL/Query-Optimization.md) |
+## **5.1 Access Control**
+
+This subsection documents the access management approach for database systems.
+
+| **Control Type** | **Implementation** | **Verification Method** |
+|------------------|-------------------|------------------------|
+| **Authentication** | Local accounts with strong passwords | Password policy audit |
+| **Network Access** | VLAN isolation + container networks | Network ACL verification |
+| **Connection Encryption** | TLS for all external connections | Connection inspection |
+
+The access control mechanisms ensure appropriate authentication and authorization for all database interactions while maintaining network isolation for security.
+
+## **5.2 Data Protection**
+
+This subsection covers how sensitive data is protected within database systems.
+
+| **Protection Mechanism** | **Implementation** | **Data Types Covered** |
+|--------------------------|-------------------|------------------------|
+| **Encryption at Rest** | Volume-level encryption | All database data |
+| **Encrypted Backups** | Encrypted backup archives | All backup data |
+| **Access Logging** | Comprehensive query logs | Administrative operations |
+
+These data protection mechanisms ensure appropriate safeguards for research and operational data throughout its lifecycle.
 
 ---
 
-## ✅ **Approval & Review**
+# 🛠️ **6. Troubleshooting & Maintenance**
+
+This section provides guidance for maintaining database systems and resolving common issues.
+
+## **6.1 Routine Maintenance**
+
+This subsection documents regular maintenance activities required to keep database systems functioning optimally.
+
+| **Procedure** | **Frequency** | **Responsible Role** |
+|---------------|--------------|----------------------|
+| **Index Optimization** | Weekly | Database Administrator |
+| **Vacuum/Cleanup** | Weekly | Automated job |
+| **Performance Review** | Monthly | Engineer |
+| **Capacity Planning** | Quarterly | Engineer |
+
+These routine maintenance activities ensure database systems remain performant and properly resourced through regular care.
+
+## **6.2 Common Issues**
+
+This subsection provides guidance for identifying and resolving common database-related problems.
+
+| **Common Issue** | **Symptoms** | **Resolution Steps** |
+|------------------|------------|---------------------|
+| **Connection Exhaustion** | Connection timeout errors | Reset pools, tune max_connections |
+| **Slow Query Performance** | Increased latency | Identify and optimize problematic queries |
+| **Disk Space Depletion** | Write failures | Clean logs, archive data, add capacity |
+| **Memory Pressure** | OOM errors, swapping | Tune memory parameters, add resources |
+
+The troubleshooting guidance provides structured approaches to resolving common database issues, minimizing impact to applications and users.
+
+---
+
+# 🔗 **7. Directory Contents**
+
+This section provides direct navigation to all subdirectories and key documents in this category.
+
+## **Subdirectories**
+
+This subsection identifies the main subdirectories within the Databases section, explaining their purpose and providing navigation links.
+
+| **Directory** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **PostgreSQL** | PostgreSQL database documentation | [PostgreSQL](PostgreSQL/) |
+| **TimescaleDB** | TimescaleDB documentation | [TimescaleDB](TimescaleDB/) |
+| **MongoDB** | MongoDB database documentation | [MongoDB](MongoDB/) |
+| **Redis** | Redis cache documentation | [Redis](Redis/) |
+| **MariaDB** | MariaDB database documentation | [MariaDB](MariaDB/) |
+| **GIS-Extensions** | Geospatial extension documentation | [GIS-Extensions](GIS-Extensions/) |
+
+The subdirectories table above provides navigation to key sections of the Databases documentation, helping users locate specific information.
+
+## **Key Documents**
+
+This subsection highlights important standalone documents within the Databases section that provide significant information.
+
+| **Document** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **PostgreSQL-Server.md** | PostgreSQL configuration guide | [PostgreSQL Server](PostgreSQL/PostgreSQL-Server.md) |
+| **TimescaleDB-Server.md** | TimescaleDB setup and tuning | [TimescaleDB Server](TimescaleDB/TimescaleDB-Server.md) |
+| **PostGIS.md** | PostGIS extension documentation | [PostGIS](GIS-Extensions/PostGIS.md) |
+
+The key documents table above connects this document to other knowledge base articles, supporting comprehensive understanding and navigation.
+
+---
+
+# 🔄 **8. Related Categories**
+
+This section identifies other documentation categories related to Databases, establishing relationships between different knowledge areas.
+
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **Data-Analysis** | Consumes database data | [Data-Analysis README](../Data-Analysis/README.md) |
+| **Containerized-Services** | Hosts database containers | [Containerized-Services README](../Containerized-Services/README.md) |
+| **Radio-Astronomy** | Generates research data | [Radio-Astronomy README](../Radio-Astronomy/README.md) |
+| **File-Storage** | Hosts database backups | [File-Storage README](../File-Storage/README.md) |
+
+The related categories table above documents connections to other knowledge domains, helping users understand the broader context of database systems.
+
+---
+
+# ✅ **9. Approval & Review**
+
+This section documents the formal review and approval process for this document. It ensures accountability and tracks who has verified the accuracy of the content.
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
 | VintageDon | Lead Engineer | 2025-03-16 | ✅ Approved |
 
+The approval and review table above documents who has verified the accuracy of this document and when, establishing accountability and ensuring quality.
+
 ---
 
-## 📜 **Change Log**
+# 📜 **10. Change Log**
+
+This section tracks the document's revision history. It provides transparency into how the document has evolved over time and who made the changes.
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
-| 1.0 | 2025-03-16 | Initial Databases documentation | VintageDon |
+| 1.0 | 2025-03-16 | Initial Databases README | VintageDon |
+
+The change log table above provides a comprehensive history of document revisions, supporting version control and auditing requirements.

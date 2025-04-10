@@ -1,9 +1,9 @@
 <!-- 
 ---
-title: "Radio Astronomy Applications - Proxmox Astronomy Lab"
-description: "Documentation for radio astronomy software, signal processing tools, and data analysis applications used in the Proxmox Astronomy Lab"
+title: "Radio Astronomy - Proxmox Astronomy Lab"
+description: "Documentation for radio astronomy applications, SDR processing tools, and scientific analysis software in the Proxmox Astronomy Lab"
 author: "VintageDon"
-tags: ["radio-astronomy", "hydrogen-line", "sdr", "gnu-radio", "signal-processing", "spectral-analysis", "data-analysis"]
+tags: ["radio-astronomy", "hydrogen-line", "sdr", "gnu-radio", "scientific-computing", "signal-processing"]
 category: "Applications"
 kb_type: "Reference"
 version: "1.0"
@@ -12,220 +12,229 @@ last_updated: "2025-03-16"
 ---
 -->
 
-# 📡 **Radio Astronomy Applications**
+# 📡 **Radio Astronomy**
 
-The Radio Astronomy Applications section documents the software tools, signal processing chains, and data analysis platforms that enable scientific research within the Proxmox Astronomy Lab. These applications form the core of our hydrogen line studies, spectral analysis workflows, and astronomical data processing capabilities.
+# 🔍 **1. Overview**
 
-## 🔍 **1. Overview**
+This section documents the radio astronomy applications deployed in the Proxmox Astronomy Lab environment. It covers software-defined radio (SDR) tools, signal processing applications, and scientific analysis platforms that enable hydrogen line studies and other radio astronomy research.
 
-This overview provides context for the lab's approach to radio astronomy software, covering the purpose and scope of our research applications.
-
-### **1.1 Purpose**
-
-This section documents the **specialized radio astronomy software, signal processing tools, and data analysis applications** deployed within the Proxmox Astronomy Lab. It serves as a reference for the **installation, configuration, and scientific workflows** of these applications that enable our hydrogen line research, spectral analysis, and astronomical data processing.
-
-### **1.2 Scope**
-
-The following table defines what is included and excluded from this documentation to help readers understand its boundaries.
-
-| **In Scope** | **Out of Scope** |
-|--------------|------------------|
-| SDR software installation and configuration | Detailed radio astronomy theory |
-| Signal processing pipelines and workflows | Hardware-specific antenna configurations |
-| Data analysis tools and scientific applications | Research findings and scientific publications |
-| Automation of observation tasks | Mechanical antenna control systems |
-
-### **1.3 Target Audience**
-
-Scientists, researchers, and engineers who need to use, configure, or extend the lab's radio astronomy applications for scientific observations and data analysis.
+These applications form the scientific core of the lab's research capabilities, providing the tools necessary for data collection, processing, and analysis of astronomical radio signals.
 
 ---
 
-## 📊 **2. Radio Astronomy Components**
+# 📊 **2. Radio Astronomy Components**
 
-Our lab employs a comprehensive set of radio astronomy applications that work together to capture, process, and analyze astronomical signals.
+This section covers the core radio astronomy software components deployed in the lab environment, organized by their role in the research workflow.
 
-The following table outlines our primary radio astronomy applications and their documentation:
+## **2.1 SDR Applications**
 
-| **Component** | **Purpose** | **Key Documentation** |
-|--------------|------------|----------------------|
-| [**Analysis Tools**](Analysis-Tools/README.md) | Specialized astronomical data analysis | Hydrogen Line analysis, spectral processing |
-| [**SDR Applications**](SDR-Applications/README.md) | Software-defined radio platforms | SDR++, GQRX, SigDigger, GNU Radio |
+This subsection documents the software-defined radio applications used for signal capture and initial processing.
 
----
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **GNU Radio** | SDR signal processing framework | [GNU Radio](SDR-Applications/GNU-Radio.md) |
+| **SDR++** | SDR receiver and analyzer | [SDR Plus Plus](SDR-Applications/SDR-Plus-Plus.md) |
+| **SigDigger** | Signal analysis and debugging | [SigDigger](SDR-Applications/SigDigger.md) |
 
-## 🏗️ **3. Technical Documentation**
+These SDR applications provide the frontend interfaces for capturing, visualizing, and processing radio signals from astronomical sources.
 
-This section covers the technical implementation details of our radio astronomy applications, including architectural design and integration strategy.
+## **2.2 Analysis Tools**
 
-### **3.1 Architecture Overview**
+This subsection covers specialized scientific analysis applications for processing and analyzing astronomical data.
 
-The radio astronomy software follows a modular workflow that processes signals through several stages:
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **CASA/Miriad** | Radio astronomy data analysis | [CASA-Miriad](Analysis-Tools/CASA-Miriad.md) |
+| **Presto** | Pulsar search and analysis | [Presto](Analysis-Tools/Presto.md) |
 
-- **Data Acquisition** - SDR hardware interfaces and initial capture
-- **Signal Processing** - GNU Radio pipelines and custom processing blocks
-- **Frequency Analysis** - Spectral analysis and hydrogen line detection
-- **Data Storage** - TimescaleDB for time-series data and PostgreSQL for metadata
-- **Scientific Analysis** - AstroPy, Jupyter, and custom Python tools
-- **Visualization** - Specialized spectral visualization tools and Grafana dashboards
-
-### **3.2 Infrastructure Components**
-
-The following table details the key infrastructure components that make up our radio astronomy solution:
-
-| **Component** | **Description** | **CMDB ID** |
-|---------------|----------------|------------|
-| SDR Processing Node | Edge capture and preprocessing | proj-edge01 |
-| Data Analysis Server | GPU-accelerated signal processing | proj-rds02 |
-| Notebook Environment | Jupyter Hub for interactive analysis | proj-jup01 |
-| Hydrogen Line Database | TimescaleDB for spectral time-series | lab-db01 |
-| Pipeline Orchestration | Apache Airflow for workflow management | proj-apps01 |
-| Public Data Storage | MinIO S3 for research data sharing | lab-db01 |
-
-### **3.3 Dependencies**
-
-The following table outlines the dependencies and relationships between radio astronomy applications and other infrastructure components:
-
-| **Dependency Type** | **Service/Component** | **Impact if Unavailable** |
-|---------------------|----------------------|---------------------------|
-| **Requires** | SDR Hardware | Signal acquisition unavailable |
-| **Requires** | TimescaleDB | Time-series data storage unavailable |
-| **Requires** | GPU Computing | Signal processing significantly degraded |
-| **Requires** | NVMe Storage | High-speed data capture impaired |
-| **Required By** | Research Dashboards | Scientific visualization unavailable |
-| **Required By** | Data Analysis Pipelines | Automated processing halted |
+These analysis tools provide specialized capabilities for scientific processing of radio astronomy data, enabling detailed study of hydrogen line emissions and other astronomical phenomena.
 
 ---
 
-## 📊 **4. Service Management**
+# 🏗️ **3. Technical Architecture**
 
-This section describes how radio astronomy applications are managed, including access control, scheduling, and data retention policies.
+This section details the technical implementation of the radio astronomy software stack, including deployment patterns, data flows, and hardware integration.
 
-### **4.1 Access Management**
+## **3.1 Signal Processing Pipeline**
 
-The following table outlines the access management approach for radio astronomy platforms:
+This subsection explains the end-to-end signal processing workflow for radio astronomy observations.
 
-| **User Role** | **Access Level** | **Authorization Process** |
-|---------------|----------------|---------------------------|
-| Research Lead | Full administration of all tools | Approved by Lab Owner via Zitadel |
-| Researcher | Edit access to analysis tools and data | Approved by Research Lead |
-| Collaborator | View access with limited edit rights | Approved by Research Lead |
-| Student | View access to specific datasets | Approved by Researcher |
-| Guest | Limited view of public datasets | Self-registration with approval |
+| **Pipeline Stage** | **Implementation** | **Data Flow** |
+|--------------------|-------------------|--------------|
+| **Signal Acquisition** | Airspy R2 + GNU Radio | Raw IQ samples → Formatted SigMF |
+| **Signal Processing** | GNU Radio flowgraphs | SigMF → Calibrated spectra |
+| **Data Storage** | PostgreSQL/TimescaleDB | Processed spectra → Time-series database |
+| **Analysis** | Python + Jupyter | Database → Analysis results |
 
-### **4.2 Observation Scheduling & Data Retention**
+The signal processing pipeline provides a structured workflow from initial signal capture through scientific analysis, with appropriate transformations and storage at each stage.
 
-The following table details the scheduling and data retention policies for radio astronomy applications:
+## **3.2 Hardware Integration**
 
-| **Data Type** | **Retention Period** | **Storage Location** |
-|------------|--------------|-------------------|
-| Raw SDR Data | 7 days | NVMe on proj-edge01 |
-| Processed Spectra | 1 year | TimescaleDB on lab-db01 |
-| Analysis Results | Indefinite | PostgreSQL on lab-db01 |
-| Research Datasets | 5 years | MinIO on lab-db01 |
-| Public Data | Indefinite | MinIO on lab-db01 |
+This subsection documents how software components integrate with radio astronomy hardware.
 
----
+| **Hardware Component** | **Software Interface** | **Integration Method** |
+|------------------------|----------------------|------------------------|
+| **Hydrogen Line Feed** | GNU Radio source block | USB via Airspy R2 driver |
+| **Calibration Source** | GNU Radio control block | GPIO via USB relay |
+| **Mount Control** | INDI driver | Network via INDI server |
 
-## 🔄 **5. Operational Procedures**
-
-This section covers routine procedures and troubleshooting approaches for radio astronomy applications.
-
-### **5.1 Routine Procedures**
-
-The following table outlines standard operational procedures for radio astronomy application management:
-
-| **Procedure** | **Frequency** | **Role Responsible** | **Procedure Document** |
-|---------------|--------------|----------------------|------------------------|
-| Software Updates | Monthly | Engineer | [Software Update Management](../ITIL-Processes/Change-Management/Software-Updates.md) |
-| Calibration Check | Weekly | Researcher | [SDR Calibration Procedure](SDR-Applications/Calibration-Procedure.md) |
-| Data Backup | Daily | Operations | [Astronomy Data Backup](../ITIL-Processes/Service-Catalog/Astronomy-Data-Backup.md) |
-| Pipeline Verification | Weekly | Researcher | [Pipeline Testing](Analysis-Tools/Pipeline-Testing.md) |
-| Public Data Release | Quarterly | Research Lead | [Data Publication Process](Analysis-Tools/Data-Publication-Process.md) |
-
-### **5.2 Troubleshooting**
-
-The following table provides guidance for addressing common radio astronomy application issues:
-
-| **Common Issue** | **Symptoms** | **Resolution Steps** | **KEDB ID** |
-|------------------|------------|---------------------|------------|
-| SDR Signal Loss | No data flowing from SDR | Check hardware connections, restart SDR service | KEDB-RADIO-001 |
-| Spectrum Distortion | Unusual artifacts in spectral data | Verify calibration, check for RFI sources | KEDB-RADIO-002 |
-| Processing Pipeline Failure | Airflow DAG failures | Check pipeline logs, verify input data integrity | KEDB-RADIO-003 |
-| Analysis Script Errors | Python exceptions in notebooks | Verify dependencies, check input data format | KEDB-RADIO-004 |
-| Data Export Failures | Incomplete or corrupted exports | Check storage capacity, verify API connectivity | KEDB-RADIO-005 |
+The hardware integration enables software control and data acquisition from radio astronomy equipment, providing a complete observation system.
 
 ---
 
-## 🔐 **6. Security Considerations**
+# 🔬 **4. Research Workflows**
 
-This section outlines the security measures implemented for radio astronomy applications.
+This section documents the scientific workflows enabled by the radio astronomy software stack.
 
-The following table highlights key security aspects:
+## **4.1 Hydrogen Line Observation**
 
-| **Security Aspect** | **Implementation** | **Documentation** |
-|--------------------|-------------------|--------------------|
-| Authentication | Zitadel SSO integration | [Application Authentication](../Identity/Zitadel/Authentication.md) |
-| Data Integrity | Checksum verification, immutable storage | [Data Integrity Controls](../Compliance-Security/Security-Policies/Data-Integrity.md) |
-| Access Control | Role-based permissions | [Research Data RBAC](../Identity/Zitadel/Research-RBAC.md) |
-| Sensitive Data | Data classification and handling | [Research Data Classification](../Compliance-Security/Security-Policies/Data-Classification.md) |
-| API Security | Token-based authentication, rate limiting | [API Security Standards](../Compliance-Security/Security-Policies/API-Security.md) |
+This subsection details the specific workflow for hydrogen line (21cm) observations.
 
----
+| **Workflow Step** | **Tool Used** | **Output** |
+|-------------------|--------------|------------|
+| **Observation Planning** | Custom planning scripts | Observation schedule |
+| **Data Collection** | GNU Radio hydrogen line flowgraph | Spectral data files |
+| **Calibration** | Custom calibration scripts | Calibrated spectra |
+| **Analysis** | Jupyter notebooks | Doppler analysis, velocity mapping |
 
-## 🔄 **7. Process Integration**
+The hydrogen line workflow enables systematic collection and analysis of 21cm emissions, providing insights into galactic structure and dynamics.
 
-This section explains how radio astronomy applications relate to established ITIL processes and organizational roles.
+## **4.2 RFI Monitoring**
 
-### **7.1 ITIL Process Relationship**
+This subsection covers the workflow for radio frequency interference monitoring and mitigation.
 
-This documentation relates to the following ITIL processes:
+| **Workflow Step** | **Tool Used** | **Output** |
+|-------------------|--------------|------------|
+| **Spectrum Monitoring** | SDR++ + custom scripts | Spectral occupancy data |
+| **Interference Detection** | SigDigger + ML models | Classified RFI events |
+| **Mitigation** | GNU Radio RFI filters | Cleaned observation data |
 
-- **Service Level Management** - Observation scheduling and data processing SLAs
-- **Capacity Management** - Storage planning for astronomical data
-- **Availability Management** - SDR and processing tools uptime
-- **Knowledge Management** - Documentation of research methodologies
-- **Change Management** - Software updates and calibration changes
-- **Release Management** - New processing pipeline deployments
-
-### **7.2 Role Responsibilities**
-
-The following table outlines role-specific responsibilities related to radio astronomy applications:
-
-| **Role** | **Responsibility Related to Radio Astronomy Applications** |
-|----------|---------------------------------------------|
-| Research Lead | Scientific direction, public data releases, collaboration management |
-| Researcher | Observation scheduling, data analysis, pipeline development |
-| Engineer | SDR integration, processing pipeline maintenance, performance tuning |
-| Operations | Daily monitoring, data backup, routine maintenance |
-| Collaborator | Focused research questions, specific analysis tasks |
+The RFI monitoring workflow ensures data quality by identifying and mitigating terrestrial interference that could affect astronomical observations.
 
 ---
 
-## 🔗 **8. Related Documentation**
+# 🔐 **5. Security & Compliance**
 
-The following table provides links to related documentation resources:
+This section documents how security controls are implemented and how compliance requirements are met for radio astronomy applications.
 
-| **Document Type** | **Document Name** | **Location** |
-|-------------------|-------------------|-------------|
-| Architecture Document | Radio Astronomy Architecture | [Architecture Documentation](../Infrastructure/Research-Projects/Radio-Astronomy-Architecture.md) |
-| User Guide | GNU Radio Tutorial | [User Guide](Analysis-Tools/GNU-Radio-Tutorial.md) |
-| Research Methodology | Hydrogen Line Observation Protocol | [Research Documentation](../Research-Projects/Hydrogen-Line-Studies/Observation-Protocol.md) |
-| Integration Guide | SDR Hardware Integration | [Integration Guide](SDR-Applications/Hardware-Integration.md) |
-| Pipeline Documentation | Data Processing Workflow | [Pipeline Documentation](Analysis-Tools/Data-Processing-Workflow.md) |
+## **5.1 Data Protection**
+
+This subsection covers how research data is protected throughout its lifecycle.
+
+| **Data Type** | **Protection Mechanism** | **Access Control** |
+|---------------|--------------------------|-------------------|
+| **Raw Observation Data** | Immutable storage | Role-based access |
+| **Processed Results** | Version-controlled storage | Project-based permissions |
+| **Published Datasets** | Public repository with attribution | Creative Commons licensing |
+
+The data protection mechanisms ensure research integrity while facilitating appropriate sharing and collaboration.
+
+## **5.2 Radio Regulations**
+
+This subsection documents compliance with radio regulations for receive-only operations.
+
+| **Regulatory Aspect** | **Implementation** | **Verification Method** |
+|----------------------|-------------------|------------------------|
+| **Passive Operation** | Receive-only equipment | Hardware inspection |
+| **Local Interference** | RFI monitoring and reporting | Spectrum analysis |
+| **Frequency Allocation** | Operation in allocated bands | Configuration verification |
+
+The radio regulatory compliance ensures that research activities adhere to appropriate regulations for radio astronomy operations.
 
 ---
 
-## ✅ **Approval & Review**
+# 🔄 **6. Operations & Maintenance**
+
+This section covers the operational procedures for maintaining radio astronomy applications and hardware.
+
+## **6.1 Calibration Procedures**
+
+This subsection documents the processes for ensuring measurement accuracy.
+
+| **Calibration Type** | **Frequency** | **Procedure** |
+|----------------------|--------------|--------------|
+| **Noise Source Calibration** | Monthly | [Calibration Procedure](SDR-Applications/Calibration-Procedure.md) |
+| **Frequency Calibration** | Weekly | GPSDO verification |
+| **Gain Calibration** | Per observation | Known source comparison |
+
+These calibration procedures ensure accurate and consistent measurements across observations, maintaining scientific validity.
+
+## **6.2 Troubleshooting**
+
+This subsection provides guidance for identifying and resolving common radio astronomy issues.
+
+| **Common Issue** | **Symptoms** | **Resolution Steps** |
+|------------------|------------|---------------------|
+| **RFI Contamination** | Unexpected spectral features | RFI identification, filtering |
+| **Calibration Drift** | Baseline shift | Recalibration, temperature control |
+| **Software Configuration** | Flow graph errors | Configuration validation |
+
+The troubleshooting guidance provides structured approaches to resolving common radio astronomy issues, minimizing impact to research activities.
+
+---
+
+# 🔗 **7. Directory Contents**
+
+This section provides direct navigation to all subdirectories and key documents in this category.
+
+## **Subdirectories**
+
+This subsection identifies the main subdirectories within the Radio Astronomy section, explaining their purpose and providing navigation links.
+
+| **Directory** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Analysis-Tools** | Scientific analysis applications | [Analysis-Tools](Analysis-Tools/) |
+| **SDR-Applications** | Software-defined radio tools | [SDR-Applications](SDR-Applications/) |
+
+The subdirectories table above provides navigation to key sections of the Radio Astronomy documentation, helping users locate specific information.
+
+## **Key Documents**
+
+This subsection highlights important standalone documents within the Radio Astronomy section that provide significant information.
+
+| **Document** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **GNU-Radio.md** | GNU Radio configuration guide | [GNU Radio](SDR-Applications/GNU-Radio.md) |
+| **CASA-Miriad.md** | CASA/Miriad usage documentation | [CASA-Miriad](Analysis-Tools/CASA-Miriad.md) |
+| **SDR-Plus-Plus.md** | SDR++ configuration and usage | [SDR Plus Plus](SDR-Applications/SDR-Plus-Plus.md) |
+
+The key documents table above connects this document to other knowledge base articles, supporting comprehensive understanding and navigation.
+
+---
+
+# 🔄 **8. Related Categories**
+
+This section identifies other documentation categories related to Radio Astronomy, establishing relationships between different knowledge areas.
+
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **Infrastructure** | Hardware hosting applications | [Infrastructure README](../../Infrastructure/README.md) |
+| **AI-ML-Platforms** | Enhanced signal processing | [AI-ML-Platforms README](../AI-ML-Platforms/README.md) |
+| **Data-Analysis** | Scientific data processing | [Data-Analysis README](../Data-Analysis/README.md) |
+| **Databases** | Research data storage | [Databases README](../Databases/README.md) |
+
+The related categories table above documents connections to other knowledge domains, helping users understand the broader context of radio astronomy applications.
+
+---
+
+# ✅ **9. Approval & Review**
+
+This section documents the formal review and approval process for this document. It ensures accountability and tracks who has verified the accuracy of the content.
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
 | VintageDon | Lead Engineer | 2025-03-16 | ✅ Approved |
 
+The approval and review table above documents who has verified the accuracy of this document and when, establishing accountability and ensuring quality.
+
 ---
 
-## 📜 **Change Log**
+# 📜 **10. Change Log**
+
+This section tracks the document's revision history. It provides transparency into how the document has evolved over time and who made the changes.
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
-| 1.0 | 2025-03-16 | Initial Radio Astronomy Applications documentation | VintageDon |
+| 1.0 | 2025-03-16 | Initial Radio Astronomy README | VintageDon |
+
+The change log table above provides a comprehensive history of document revisions, supporting version control and auditing requirements.

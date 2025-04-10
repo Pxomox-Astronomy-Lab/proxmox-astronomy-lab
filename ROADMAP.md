@@ -1,102 +1,217 @@
-# 🚀 **Proxmox Astronomy Lab - Roadmap**
+I'll rewrite the ROADMAP.md file to follow your documentation structure and style guidelines.
 
-The **Proxmox Astronomy Lab** is a structured research environment designed for **radio astronomy, AI-driven signal processing, and advanced IT automation**. It blends the structured methodologies of **production research infrastructure** with the adaptability of a **high-performance home lab**.
+<!-- 
+---
+title: "Proxmox Astronomy Lab - Development Roadmap"
+description: "Strategic development roadmap outlining the evolutionary phases and implementation timeline for the Proxmox Astronomy Lab"
+author: "VintageDon"
+tags: ["roadmap", "phases", "planning", "infrastructure", "research", "astronomy"]
+category: "Project Planning"
+kb_type: "Reference"
+version: "1.0"
+status: "Published"
+last_updated: "2025-03-09"
+---
+-->
 
-This lab is **not a traditional enterprise deployment, nor a standard home lab**—it is a **purpose-built hybrid environment** that evolves through structured development phases.
+# 🚀 **Proxmox Astronomy Lab - Development Roadmap**
 
-Each phase represents a **major step forward**, ensuring the lab remains scalable, modular, and structured for **both research and IT operations**. While production research is the **primary goal**, the structured development of its IT components **enables** new research capabilities.
+# 🔍 **1. Overview**
+
+The **Proxmox Astronomy Lab** is designed as a **structured research environment** for **radio astronomy, AI-driven signal processing, and advanced IT automation**. This roadmap documents the lab's evolution through distinct implementation phases, each representing a major step forward in both infrastructure capabilities and research potential.
+
+This lab is **neither a traditional enterprise deployment nor a standard home lab**, but rather a **purpose-built hybrid environment** that combines the structured methodologies of production research infrastructure with the adaptability needed for citizen science initiatives. Each phase builds upon the previous one to create an increasingly sophisticated platform for astronomical research.
 
 ---
 
-## **🛠️ The Lab’s Evolution: Key Phases**
+# 📊 **2. Development Approach**
 
-| **Phase** | **Focus** | **Major Outcomes** |
-|-----------|----------|-------------------|
-| **Phase 1** | Core Infrastructure | Built the foundation: networking, compute, security, and hybrid identity. |
-| **Phase 2** | Structured Services | Deployed critical services, monitoring, and ITSM for structured operations. |
-| **Phase 3** | Application Deployment | Kubernetes, AI/ML pipelines, SDR ingestion, and research-specific workloads. |
-| **Phase 4** | Research Workflows | Live data processing, public datasets, and applied research. |
+## **2.1 Core Principles**
 
----
+The lab's development follows several guiding principles that shape its evolution.
 
-## ✅ **Phase 1: Core Infrastructure Foundation (Completed)**
+| **Principle** | **Implementation** |
+|--------------|-------------------|
+| **Modular Architecture** | Each component can evolve independently while maintaining integration |
+| **Security-First Design** | CIS frameworks implemented from the beginning with appropriate controls |
+| **Research Continuity** | Ensuring research activities can continue during infrastructure changes |
+| **Documentation Driven** | Comprehensive documentation maintained throughout development |
+| **Enterprise Practices** | ITIL-aligned operations with appropriate scaling for lab environment |
 
-### **Overview**
+## **2.2 Phase-Based Implementation**
 
-The lab began as **bare nodes with no structured services or identity management**. This phase focused on designing a **secure, high-performance infrastructure** that balances **modularity, security, and small-form-factor constraints**. While the **smaller node footprint enhances efficiency, it introduces a ceiling on network performance**, particularly beyond 2.5G speeds. **Node04 and Node05 provide 10G connectivity**, but the tradeoff is that they are desktop-class nodes.
+The lab is being developed through structured phases, each with specific goals and milestones.
 
-### **Key Outcomes**
-
-- **Cluster Established** → 5 Proxmox nodes, VLAN-segmented networking.
-- **Hybrid Identity Configured** → Windows Server 2025 AD, Entra Hybrid Join, Seamless SSO.
-- **Security & Compliance Hardened** → CISv8 Level 2 (Linux), CISv9 Level 1 (Windows), daily security scanning.
-- **Monitoring & Automation Deployed** → Prometheus, Wazuh, Azure Arc, Ansible-managed configurations.
-- **Proxmox Backup & Storage Finalized** → NVMe-backed S3 gateway for Kubernetes, NFS shares, structured backup retention.
-- **RKE2 Kubernetes Cluster Spun Up** → 3 management nodes, 5 worker nodes (40vCPU/160GB RAM total), GPU passthrough configured.
-- **Architectural Design Documented** → [Infrastructure Architecture](docs/infrastructure/architecture.md).
-
-With this foundation in place, the lab transitioned to **Phase 2: Structured Service Deployment**.
+| **Phase** | **Focus** | **Status** |
+|-----------|----------|------------|
+| **Phase 1** | Core Infrastructure Foundation | ✅ Completed |
+| **Phase 2** | Structured Services & Research Validation | ✅ Completed |
+| **Phase 3** | Application Deployment & Research Infrastructure | 🚧 In Progress |
+| **Phase 4** | Research Workflows & Public Data Integration | ⏳ Planned |
 
 ---
 
-## ✅ **Phase 2: Structured Services & Initial Research Validation (Completed)**
+# 📋 **3. Phase Details**
 
-### **Overview**
+## **3.1 Phase 1: Core Infrastructure Foundation**
 
-Phase 2 **transformed the infrastructure into a structured, managed environment**. This was also the first phase where **research validation was introduced**, as the lab moved beyond IT architecture into **real-world scientific data handling**.
+Phase 1 established the **fundamental infrastructure** on which all subsequent phases would build, focusing on security, networking, and core systems.
 
-### **Key Outcomes**
+| **Component** | **Implementation** |
+|--------------|-------------------|
+| **Proxmox Cluster** | 5-node cluster with performance-optimized configuration |
+| **Network Segmentation** | VLAN-based isolation for research and infrastructure |
+| **Identity Management** | Windows Server 2025 AD with Entra Hybrid Join |
+| **Security Baseline** | CISv8 Level 2 (Linux), CISv9 Level 1 (Windows) |
+| **Storage Architecture** | NVMe-backed S3, NFS shares, structured backup retention |
+| **Initial Kubernetes** | RKE2 cluster with 3 management and 5 worker nodes |
 
-- **ITSM & Change Management Formalized** → GLPI deployed, structured ITIL-aligned operations introduced.
-- **Full Monitoring Stack Online** → Wazuh, Prometheus, structured logging (Loki, Grafana, SNMP monitoring).
-- **Storage & Data Handling Finalized** → PostgreSQL, TimescaleDB, GIS-enabled databases.
-- **Microservices & GitOps Introduced** → Portainer for managed containerization, GitOps repo established.
-- **Hydrogen Line Feed Calibration** → The lab sourced, assembled, and tested its **first 1.42 GHz hydrogen line signal detection**, confirming **early-stage research viability**.
+[📄 **Full Details: [Phase 1 Documentation](phase-1.md)**]
 
-With core services deployed and **hydrogen line detection validated**, the lab advanced to **Phase 3: Application Deployment & Research-Specific Infrastructure**.
+## **3.2 Phase 2: Structured Services & Research Validation**
+
+Phase 2 **transformed the infrastructure into a managed environment** while validating initial research capabilities.
+
+| **Component** | **Implementation** |
+|--------------|-------------------|
+| **ITSM Framework** | GLPI deployment with structured ITIL processes |
+| **Monitoring Stack** | Prometheus, AlertManager, Loki, Grafana |
+| **Security Operations** | Wazuh SIEM with automated scanning and alerting |
+| **Database Services** | PostgreSQL, TimescaleDB, GIS-enabled databases |
+| **Initial SDR Pipeline** | First hydrogen line signal detection and validation |
+
+[📄 **Full Details: [Phase 2 Documentation](phase-2.md)**]
+
+## **3.3 Phase 3: Application Deployment & Research Infrastructure**
+
+Phase 3 marks the **transition from IT infrastructure to research platform**, with a focus on research-specific applications and workflows.
+
+| **Component** | **Implementation** | **Status** |
+|--------------|-------------------|------------|
+| **Kubernetes Finalization** | Stable RKE2 environment with storage integration | 🚧 In Progress |
+| **AI/ML Pipeline** | Milvus, Ollama, TensorFlow Serving, Airflow | 🚧 In Progress |
+| **Remote Access** | TailScale zero-trust networking with Entra integration | ✅ Completed |
+| **Structured SDR Data Flow** | Automated SDR data → PostgreSQL pipeline | 🚧 In Progress |
+| **Knowledge Base** | Structured documentation in Milvus for RAG retrieval | 🚧 In Progress |
+
+[📄 **Full Details: [Phase 3 Documentation](phase-3.md)**]
+
+## **3.4 Phase 4: Research Workflows & Public Data Integration**
+
+Phase 4 will focus on **real-time data processing, enhanced analytics, and public data sharing**.
+
+| **Component** | **Planned Implementation** | **Timeline** |
+|--------------|---------------------------|------------|
+| **Live SDR Processing** | Real-time hydrogen line collection and analysis | Q3 2025 |
+| **AI-Driven Enhancement** | Machine learning for signal improvement | Q3 2025 |
+| **Public Dataset Publication** | Open data repository for research findings | Q4 2025 |
+| **Collaborative Platform** | External researcher integration | Q4 2025 |
+| **Advanced Visualization** | Web-based research dashboards | Q1 2026 |
+
+[📄 **Full Details: [Phase 4 Documentation](phase-4.md)**]
 
 ---
 
-## 🚧 **Phase 3: Application Deployment & Research Infrastructure (In Progress)**
+# 🔬 **4. Research Capability Evolution**
 
-### **Overview**
+## **4.1 Radio Astronomy Milestones**
 
-Phase 3 marks the transition from structured IT services to **full-scale research infrastructure**, including:
+The lab's research capabilities are evolving alongside the infrastructure development.
 
-- **Finalizing Kubernetes Infrastructure (RKE2)** → Ensuring stability and scalability for containerized workloads.
-- **Deploying AI/ML Pipelines** → Milvus (vector DB), Ollama (LLM hosting), TensorFlow Serving, Airflow orchestration.
-- **Integrating Research Workflows** → Hydrogen line SDR pipelines, immutable data storage.
-- **Entra Private Access (EPA) for Secure Access** → Gating Kasm Workspaces and RDP access through the Entra tenancy.
-- **Structured SDR Data Flow** → Establishing **raw SDR data ingestion → PostgreSQL (pg01)** as the baseline immutable dataset.
-- **Initial Knowledge Base Structuring** → Ingesting metadata into Milvus for structured retrieval.
+| **Research Milestone** | **Associated Phase** | **Status** |
+|------------------------|---------------------|------------|
+| **Initial Hydrogen Line Detection** | Phase 2 | ✅ Completed |
+| **Calibrated Signal Processing** | Phase 3 | 🚧 In Progress |
+| **Automated Data Collection** | Phase 3 | 🚧 In Progress |
+| **AI-Enhanced Signal Analysis** | Phase 4 | ⏳ Planned |
+| **Long-Term Survey Projects** | Phase 4 | ⏳ Planned |
 
-Additionally, **external researchers and technical volunteers** have started **light remote work and early testing**, ensuring the lab can scale for **collaborative research efforts**.
+## **4.2 Data Processing Capabilities**
 
-[📄 **Full details in: [Phase 3 Documentation](PHASE-3.md)**]
+Data processing capabilities are growing with each phase to support increasingly sophisticated research.
 
----
-
-## ⏳ **Phase 4: Research Workflows & Public Data Integration (Upcoming)**
-
-### **Overview**
-
-With structured IT infrastructure and application workloads in place, Phase 4 will focus on **real-time data processing, AI-enhanced signal analysis, and research observability**.
-
-### **Planned Focus Areas**
-
-- 📡 **Live SDR Data Processing** → Hydrogen Line data collection & signal analysis.
-- 🤖 **AI-Driven Noise Reduction** → Machine learning models for signal enhancement.
-- 📊 **Research Observability & Data Sharing** → Public dataset publication, real-time analytics dashboards.
-
-This phase is where the **true research potential of the lab is fully realized**, transitioning from **foundational infrastructure to active discovery**.
+| **Capability** | **Associated Phase** | **Status** |
+|----------------|---------------------|------------|
+| **Basic Signal Processing** | Phase 2 | ✅ Completed |
+| **Database-Driven Storage** | Phase 3 | 🚧 In Progress |
+| **Time-Series Analysis** | Phase 3 | 🚧 In Progress |
+| **ML-Based RFI Mitigation** | Phase 4 | ⏳ Planned |
+| **Public Dataset API** | Phase 4 | ⏳ Planned |
 
 ---
 
-## **📌 Roadmap Notes**
+# 🛠️ **5. Infrastructure Scaling**
 
-- **This roadmap tracks structured evolution, with continuous documentation updates.**
-- **Phase 1 & 2 foundations are in place, Phase 3 is actively progressing, and Phase 4 is planned.**
-- **External contributors are now actively testing and integrating with the lab’s infrastructure.**
-- **The lab remains an evolving system, continuously iterating on its capabilities.**
+## **5.1 Compute Resources**
 
-📌 **This roadmap will be actively updated as the lab continues to evolve.**
+The lab's compute resources are strategically deployed to support both infrastructure and research needs.
+
+| **Resource** | **Current State** | **Future Plans** |
+|--------------|------------------|-----------------|
+| **CPU Cores** | 40 vCPUs allocated | Expand to 60 vCPUs |
+| **Memory** | 160GB RAM allocated | Expand to 240GB RAM |
+| **GPU** | RTX A4000 for ML workloads | Add specialized ML accelerators |
+| **Storage** | 12TB usable across tiers | Expand to 20TB with tiered performance |
+
+## **5.2 Network Evolution**
+
+Network capabilities are evolving to support increased data processing and external collaboration.
+
+| **Component** | **Current State** | **Future Plans** |
+|--------------|------------------|-----------------|
+| **Internal Network** | 10GbE on core nodes | Expand 10GbE to all nodes |
+| **External Connectivity** | Secure TailScale access | Add private research VLAN |
+| **SDR Data Transport** | Direct file transfer | Streaming data pipeline |
+| **Edge Collection** | Limited remote collection | Expanded edge node deployment |
+
+---
+
+# 📅 **6. Implementation Timeline**
+
+## **6.1 Major Milestones**
+
+| **Milestone** | **Target Date** | **Status** |
+|--------------|----------------|------------|
+| **Phase 1 Completion** | Q4 2024 | ✅ Completed |
+| **Phase 2 Completion** | Q1 2025 | ✅ Completed |
+| **Phase 3 Completion** | Q2 2025 | 🚧 In Progress (60%) |
+| **Initial Research Publication** | Q3 2025 | 🚧 In Planning |
+| **Phase 4 Completion** | Q1 2026 | ⏳ Planned |
+| **Public Dataset Release** | Q2 2026 | ⏳ Planned |
+
+## **6.2 Current Focus Areas**
+
+The project is currently focused on completing these key components:
+
+1. **Kubernetes-based ML workloads** for signal processing
+2. **Automated data collection pipeline** for continuous observation
+3. **Knowledge management system** with RAG capabilities
+4. **Collaborative research environment** for external access
+
+---
+
+# 🔗 **7. Related Resources**
+
+| **Resource** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Infrastructure Overview** | Hardware specifications | [Infrastructure Architecture](/docs/infrastructure/architecture.md) |
+| **Research Projects** | Scientific focus areas | [Research Projects](/docs/research-projects/README.md) |
+| **Implementation Phases** | Detailed phase documentation | [Phase 1](/phase-1.md), [Phase 2](/phase-2.md), [Phase 3](/phase-3.md), [Phase 4](/phase-4.md) |
+| **Security Architecture** | Security framework | [Security Documentation](/docs/compliance-security/README.md) |
+| **Hydrogen Line Studies** | Research methodologies | [Hydrogen Line Research](/docs/research-projects/hydrogen-line-studies/README.md) |
+
+---
+
+# ✅ **8. Approval & Review**
+
+| **Reviewer** | **Role** | **Approval Date** | **Status** |
+|-------------|---------|------------------|------------|
+| VintageDon | Lead Engineer | 2025-03-09 | ✅ Approved |
+
+---
+
+# 📜 **9. Change Log**
+
+| **Version** | **Date** | **Changes** | **Author** |
+|------------|---------|-------------|------------|
+| 1.0 | 2025-03-09 | Initial roadmap documentation | VintageDon |

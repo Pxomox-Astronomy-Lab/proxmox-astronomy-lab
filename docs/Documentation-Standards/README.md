@@ -14,216 +14,247 @@ last_updated: "2025-03-16"
 
 # 📖 **Documentation Standards & Processes**
 
-## 🔍 **1. Overview**
+# 🔍 **1. Overview**
 
-This section outlines the **structured approach to documentation** within the **Proxmox Astronomy Lab**. Our documentation system is designed to be **clear, consistent, and retrievable** while supporting both **human readers and AI-assisted search capabilities**.
+This section establishes the documentation framework for the Proxmox Astronomy Lab, ensuring consistent, high-quality knowledge management. Our documentation system balances human readability with AI-assisted retrieval capabilities.
 
-Documentation in the lab serves multiple purposes:
-
-- **Operational reference** for day-to-day administration and troubleshooting
-- **Knowledge transfer** for new contributors and external collaborators
-- **Research continuity** ensuring scientific methodologies are well-documented
-- **Compliance evidence** supporting our security and governance frameworks
-
-This README explains our **documentation philosophy, standards, and workflows**.
+Documentation in the lab serves multiple purposes: operational reference for daily administration, knowledge transfer for new contributors, research continuity for scientific methods, and compliance evidence for our security controls.
 
 ---
 
-## 📂 **2. Documentation Structure**
+# 📜 **2. Documentation Templates**
 
-### **2.1 Documentation Components**
+This section covers the standardized templates used for different document types across the knowledge base.
 
-Our documentation system consists of several key components:
+## **2.1 Standard Templates**
 
-| **Component** | **Purpose** | **Location** |
-|--------------|-------------|-------------|
-| **Templates** | Standardized formats for different document types | `/documentation-processes/templates/` |
-| **Style Guides** | Rules for consistent formatting and terminology | `/documentation-processes/style-guides/` |
-| **Workflow Documentation** | Processes for creating and reviewing documentation | `/documentation-processes/workflows/` |
-| **Security Guidelines** | Security considerations for documentation | `/documentation-processes/security/` |
+This subsection provides access to the core document templates that ensure consistency across the knowledge base.
 
-### **2.2 Key Files & Resources**
+| **Template** | **Purpose** | **Documentation** |
+|--------------|-------------|-------------------|
+| **General KB Template** | Standard structure for most documentation | [KB General Template](Documentation-Templates/General-Templates-Style-Guides/kb-general-template.md) |
+| **Service Documentation** | Specialized template for service documentation | [Service Documentation Template](Documentation-Templates/General-Templates-Style-Guides/service-documentation-template.md) |
+| **README Template** | Structure for directory-level navigation | [README Category Template](Documentation-Templates/General-Templates-Style-Guides/readme-category-template.md) |
 
-| **Resource** | **Purpose** | **Link** |
-|--------------|-------------|---------|
-| [**General KB Template**](template-kb-general.md) | Template for general knowledge base articles | [View Template](template-kb-general.md) |
-| [**Service Documentation Template**](template-kb-service.md) | Template for service-specific documentation | [View Template](template-kb-service.md) |
-| [**Architecting a Secure Lab**](architecting-a-secure-lab.md) | Security considerations in documentation | [View Document](architecting-a-secure-lab.md) |
+These templates provide standardized structures for creating new documentation, ensuring consistent formatting and content organization across the knowledge base.
 
----
+## **2.2 Style Guides**
 
-## 📝 **3. Documentation Standards**
+This subsection covers the style guidelines that govern documentation formatting and content structure.
 
-### **3.1 Markdown Formatting**
+| **Style Guide** | **Purpose** | **Documentation** |
+|-----------------|-------------|-------------------|
+| **Wiki Article Style Guide** | General writing and formatting standards | [Wiki Article Style Guide](Documentation-Templates/General-Templates-Style-Guides/kb-wiki-article-style-guide.md) |
+| **Service Documentation Style** | Standards for service documentation | [Service Documentation Style Guide](Documentation-Templates/General-Templates-Style-Guides/service-documentation-style-guide.md) |
+| **README Category Style** | Structure for directory README files | [README Style Guide](Documentation-Templates/General-Templates-Style-Guides/readme-category-template.md) |
 
-All documentation uses **Markdown with consistent formatting**:
-
-| **Element** | **Standard** | **Example** |
-|-------------|--------------|-------------|
-| **Headers** | Use `#` for main title, `##` for sections, `###` for subsections | `## 2. System Configuration` |
-| **Emphasis** | Use `**bold**` for important terms and concepts | `Configure the **firewall rules** first` |
-| **Lists** | Use `-` for unordered lists, numbered lists for sequential steps | `1. Install dependencies` |
-| **Code Blocks** | Use triple backticks with language specification | ``````bash ``` |
-| **Tables** | Use pipe tables with headers and alignment | `\| Column 1 \| Column 2 \|` |
-| **Links** | Use descriptive text in Markdown links | `[Proxmox Documentation](link)` |
-
-### **3.2 Frontmatter Requirements**
-
-Every document **must include YAML frontmatter** with the following fields:
-
-```yaml
----
-title: "Document Title"
-description: "Brief description of document purpose and content"
-author: "Author Name"
-tags: ["tag1", "tag2", "tag3"]
-category: "Primary Category"
-kb_type: "Reference/Tutorial/Procedure/Troubleshooting"
-version: "1.0"
-status: "Draft/Published/Under Review"
-last_updated: "YYYY-MM-DD"
----
-```
-
-| **Field** | **Purpose** | **Required?** |
-|-----------|-------------|---------------|
-| **title** | Document title (descriptive, concise) | Yes |
-| **description** | Brief summary of document content | Yes |
-| **author** | Document creator or maintainer | Yes |
-| **tags** | Keywords for search and categorization | Yes |
-| **category** | Primary classification | Yes |
-| **kb_type** | Document type classification | Yes |
-| **version** | Document version number | Yes |
-| **status** | Current document state | Yes |
-| **last_updated** | Date of last modification | Yes |
+These style guides provide detailed instructions on formatting, writing style, and organization to maintain consistency across all documentation.
 
 ---
 
-## 🤖 **4. AI-Enabled Documentation**
+# 🏷️ **3. Tagging & Metadata Standards**
 
-### **4.1 RAG-Optimized Content Structure**
+This section defines how documentation is categorized, tagged, and made discoverable through consistent metadata.
 
-Our documentation is designed to work with **Retrieval-Augmented Generation (RAG)** systems:
+## **3.1 Frontmatter Requirements**
 
-| **RAG Feature** | **Implementation** | **Benefit** |
-|-----------------|-------------------|--------------|
-| **Consistent Metadata** | Structured frontmatter with controlled vocabulary | Enables precise document retrieval |
-| **Content Chunking** | Logical section breaks with clear headers | Facilitates contextual searching |
-| **Semantic Linking** | Related document references and explicit relationships | Creates knowledge graph connections |
-| **Vector Integration** | Documents optimized for embedding in Milvus | Supports similarity-based retrieval |
+This subsection specifies the required metadata for all documentation files, enabling proper categorization and retrieval.
 
-### **4.2 Milvus Integration**
+| **Metadata Field** | **Purpose** | **Example** |
+|-------------------|-------------|-------------|
+| **title** | Document identification | "Identity Management Architecture" |
+| **description** | Brief content summary | "Overview of identity sources and authentication flows" |
+| **tags** | Categorization and search | ["identity", "authentication", "security"] |
+| **author** | Content ownership | "VintageDon" |
+| **kb_type** | Document classification | "Reference", "Procedure", "Tutorial" |
+| **version** | Version tracking | "1.0", "2.3" |
+| **status** | Document state | "Draft", "Published", "Archived" |
+| **last_updated** | Recency information | "2025-03-16" |
 
-Our documentation is indexed in **Milvus vector database** for advanced retrieval:
+The frontmatter fields above are required for all documentation files and enable proper organization, versioning, and retrieval of content.
 
-| **Component** | **Function** | **Implementation** |
-|---------------|--------------|-------------------|
-| **Document Embeddings** | Creates vector representations of content | Automated pipeline using OpenAI embeddings |
-| **Metadata Indexing** | Maps frontmatter to searchable fields | Custom metadata extraction process |
-| **Query Processing** | Handles natural language questions | Semantic matching to relevant document sections |
-| **Result Ranking** | Determines most relevant content | Combined vector similarity and metadata relevance |
+## **3.2 Taxonomy Guidelines**
 
----
+This subsection provides guidance on the controlled vocabulary used for tagging and categorization.
 
-## 📊 **5. Documentation Workflow**
+| **Tag Category** | **Purpose** | **Managed By** |
+|-----------------|-------------|----------------|
+| **Service Tags** | Link to specific services | [Taxonomy Documentation](Tagging-Standards/Taxonomy/README.md) |
+| **Topic Tags** | Subject matter categorization | [Taxonomy Documentation](Tagging-Standards/Taxonomy/README.md) |
+| **Role Tags** | Target audience | [Taxonomy Documentation](Tagging-Standards/Taxonomy/README.md) |
+| **Phase Tags** | Project phase relevance | [Taxonomy Documentation](Tagging-Standards/Taxonomy/README.md) |
 
-### **5.1 Creation & Review Process**
-
-| **Stage** | **Activities** | **Participants** |
-|-----------|----------------|-----------------|
-| **Planning** | Identify need, choose template, gather information | Document author |
-| **Drafting** | Create initial content following templates and standards | Document author |
-| **Review** | Technical accuracy check, standards compliance | Technical reviewer |
-| **Approval** | Final verification and publication approval | Document approver |
-| **Publication** | Merge to main branch, update indexes | Document author |
-
-### **5.2 Version Control**
-
-All documentation follows strict version control practices:
-
-| **Practice** | **Implementation** | **Purpose** |
-|--------------|-------------------|-------------|
-| **Git-Based Storage** | All documentation in Git repository | Track changes, maintain history |
-| **Meaningful Commits** | Descriptive commit messages | Document change rationale |
-| **Version Numbering** | Semantic versioning in frontmatter | Track document maturity |
-| **Change Logs** | Documented changes in each file | Maintain audit trail |
+The taxonomy guidelines ensure consistent categorization, improving searchability and relationship mapping within the documentation system.
 
 ---
 
-## 🛠️ **6. Templates & Document Types**
+# 🔄 **4. Documentation Lifecycle**
 
-### **6.1 Primary Document Types**
+This section covers the processes for creating, reviewing, updating, and retiring documentation throughout its lifecycle.
 
-The lab uses several standardized document types:
+## **4.1 Review Process**
 
-| **Document Type** | **Purpose** | **Template** |
-|-------------------|-------------|--------------|
-| **Reference** | Factual information about systems and configurations | [General KB Template](template-kb-general.md) |
-| **Procedure** | Step-by-step instructions for specific tasks | [General KB Template](template-kb-general.md) |
-| **Service Document** | Comprehensive documentation of a service | [Service Template](template-kb-service.md) |
-| **Troubleshooting Guide** | Problem resolution procedures | [General KB Template](template-kb-general.md) |
+This subsection details the structured approach to document review and approval, ensuring accuracy and quality.
 
-### **6.2 Template Selection Guide**
+| **Review Type** | **Frequency** | **Responsible Roles** |
+|----------------|--------------|----------------------|
+| **Technical Accuracy** | Per change | Subject matter expert |
+| **Compliance Review** | Quarterly | Security officer |
+| **Quality Assurance** | Monthly | Documentation team |
+| **Comprehensiveness** | Semi-annually | Service owner |
 
-| **If you're documenting...** | **Use this template...** | **Key sections to include...** |
-|------------------------------|--------------------------|-------------------------------|
-| **A service or application** | [Service Documentation Template](template-kb-service.md) | Service overview, architecture, dependencies |
-| **A process or procedure** | [General KB Template](template-kb-general.md) | Steps, prerequisites, verification |
-| **An infrastructure component** | [General KB Template](template-kb-general.md) | Specifications, configuration, management |
-| **A troubleshooting scenario** | [General KB Template](template-kb-general.md) | Symptoms, diagnosis, resolution |
+The review process ensures documentation remains accurate, complete, and up-to-date through regular validation by appropriate stakeholders.
+
+## **4.2 Version Control**
+
+This subsection explains how documentation changes are tracked and managed over time.
+
+| **Aspect** | **Implementation** | **Process** |
+|------------|-------------------|-------------|
+| **Change Tracking** | Git-based versioning | [Version Control Documentation](Lifecycle-Management/Version-Control/README.md) |
+| **Versioning Scheme** | Semantic versioning | [Version Control Documentation](Lifecycle-Management/Version-Control/README.md) |
+| **Branching Strategy** | Feature branches | [Version Control Documentation](Lifecycle-Management/Version-Control/README.md) |
+| **Review Workflow** | Pull request process | [Review Process Documentation](Lifecycle-Management/Review-Process/README.md) |
+
+The version control procedures ensure all documentation changes are tracked, approved, and properly integrated into the knowledge base.
+
+## **4.3 Archival Policy**
+
+This subsection outlines how outdated or superseded documentation is handled to maintain a clean knowledge base.
+
+| **Archival Trigger** | **Process** | **Retention Period** |
+|----------------------|------------|----------------------|
+| **Service Retirement** | Archive procedure | 1 year after retirement |
+| **Major Version Update** | Previous version archival | Duration of n-1 support |
+| **Superseded Content** | Redirect implementation | Until references updated |
+
+The archival policy ensures outdated documentation is properly preserved while maintaining a clean, current knowledge base.
 
 ---
 
-## 🔐 **7. Security Considerations**
+# 🤖 **5. AI-Assisted Knowledge Management**
 
-### **7.1 Sensitive Information Guidelines**
+This section explains how documentation is structured to support AI-powered knowledge retrieval and assistance.
 
-Documentation must adhere to security guidelines:
+## **5.1 RAGGraph Implementation**
 
-| **Information Type** | **Handling Requirement** | **Documentation** |
+This subsection details how Retrieval-Augmented Generation is implemented for AI-assisted knowledge discovery.
+
+| **Component** | **Purpose** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Vector Embeddings** | Semantic search capability | [RAG Documentation](../Applications/AI-ML-Platforms/Vector-Databases/Milvus.md) |
+| **Knowledge Graph** | Relationship mapping | [RAGGraph Architecture](../Applications/AI-ML-Platforms/README.md) |
+| **LLM Integration** | Context-aware assistance | [RAG Documentation](../Applications/AI-ML-Platforms/README.md) |
+
+The RAGGraph implementation enhances documentation discovery through semantic search and relationship mapping across the knowledge base.
+
+## **5.2 Content Structuring for Retrieval**
+
+This subsection provides guidance on optimizing content for effective AI-powered retrieval.
+
+| **Technique** | **Purpose** | **Implementation** |
+|--------------|-------------|-------------------|
+| **Section Chunking** | Optimal retrieval granularity | [RAGGraph Structure Guide](../lab-services/database-guis/milvus-attu/README.md) |
+| **Cross-References** | Explicit relationship mapping | [RAGGraph Structure Guide](../lab-services/database-guis/milvus-attu/README.md) |
+| **Self-Contained Sections** | Context preservation | [RAGGraph Structure Guide](../lab-services/database-guis/milvus-attu/README.md) |
+
+The content structuring techniques ensure documentation is optimally prepared for AI-powered knowledge retrieval and assistance.
+
+---
+
+# 🔒 **6. Security & Compliance**
+
+This section documents how security controls are implemented and how compliance requirements are met in documentation management.
+
+## **6.1 Security Controls**
+
+This subsection documents specific security measures implemented for documentation, how they are verified, and which compliance controls they satisfy.
+
+| **Control Type** | **Implementation** | **Verification Method** |
+|------------------|-------------------|------------------------|
+| **Access Control** | Permission-based access to repositories | Periodic access review |
+| **Information Classification** | Sensitivity labeling in frontmatter | Automated validation checks |
+| **Sensitive Information** | Credential handling guidelines | Documentation audits |
+
+The security controls table above documents implemented safeguards for documentation, providing evidence for security assessments and compliance audits.
+
+## **6.2 Documentation Security Guidelines**
+
+This subsection provides guidelines for handling sensitive information in documentation to prevent security risks.
+
+| **Information Type** | **Handling Requirement** | **Verification** |
 |----------------------|--------------------------|-------------------|
-| **Credentials** | Never include in documentation | Use credential references |
-| **IP Addresses** | Include only approved internal addresses | Follow IP documentation policy |
-| **Personal Data** | Never include PII or sensitive user data | Use generic examples |
-| **Security Controls** | Document without exposing vulnerabilities | Focus on implementation, not gaps |
+| **Credentials** | Never include in documentation | Automated scanning |
+| **IP Addresses** | Only include approved addresses | Documentation review |
+| **Architecture Details** | Appropriate classification | Security review |
+| **Personal Data** | Never include PII | Automated scanning |
 
-For a full overview of security documentation practices, see [Architecting a Secure Lab](architecting-a-secure-lab.md).
-
----
-
-## 🔄 **8. Continuous Improvement**
-
-Our documentation system evolves through:
-
-| **Activity** | **Frequency** | **Process** |
-|--------------|--------------|-------------|
-| **Template Reviews** | Quarterly | Assess template effectiveness and update as needed |
-| **Quality Audits** | Monthly | Random sampling of documents for standards compliance |
-| **User Feedback** | Ongoing | Collect and incorporate feedback on usability |
-| **AI Enhancement** | Ongoing | Improve RAG capabilities and retrieval accuracy |
+These guidelines ensure documentation maintains security by appropriately handling sensitive information while still providing necessary technical details.
 
 ---
 
-## 🔗 **9. Related Documentation**
+# 🔗 **7. Directory Contents**
 
-| **Document** | **Description** |
-|--------------|----------------|
-| [Main Documentation Hub](../README.md) | Central documentation entry point |
-| [ITIL Processes](../itil-processes/README.md) | Documentation change management |
-| [Knowledge Base Overview](../applications-services/knowledge-base.md) | Knowledge management approach |
+This section provides direct navigation to all subdirectories and key documents in this category.
+
+## **Subdirectories**
+
+This subsection identifies the main subdirectories within the Documentation Standards section, explaining their purpose and providing navigation links.
+
+| **Directory** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Documentation-Templates** | Templates for different document types | [Documentation-Templates README](Documentation-Templates/README.md) |
+| **Lifecycle-Management** | Processes for document lifecycle | [Lifecycle-Management README](Lifecycle-Management/README.md) |
+| **Tagging-Standards** | Taxonomy and metadata guidelines | [Tagging-Standards README](Tagging-Standards/README.md) |
+
+The subdirectories table above provides navigation to key sections of the Documentation Standards, helping users locate specific information.
+
+## **Key Documents**
+
+This subsection highlights important standalone documents within the Documentation Standards section that provide significant information.
+
+| **Document** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **kb-general-template.md** | Standard documentation template | [KB General Template](Documentation-Templates/General-Templates-Style-Guides/kb-general-template.md) |
+| **kb-wiki-article-style-guide.md** | Writing and formatting standards | [Wiki Article Style Guide](Documentation-Templates/General-Templates-Style-Guides/kb-wiki-article-style-guide.md) |
+| **service-documentation-template.md** | Service documentation format | [Service Documentation Template](Documentation-Templates/General-Templates-Style-Guides/service-documentation-template.md) |
+
+The key documents table above connects this document to other knowledge base articles, supporting comprehensive understanding and navigation.
 
 ---
 
-## ✅ **10. Approval & Review**
+# 🔄 **8. Related Categories**
+
+This section identifies other documentation categories related to Documentation Standards, establishing relationships between different knowledge areas.
+
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **ITIL-Processes** | Change management integration | [ITIL-Processes README](../ITIL-Processes/README.md) |
+| **Compliance-Security** | Documentation security requirements | [Compliance-Security README](../Compliance-Security/README.md) |
+| **Applications** | Documentation tools and platforms | [Applications README](../Applications/README.md) |
+
+The related categories table above documents connections to other knowledge domains, helping users understand the broader context of documentation standards.
+
+---
+
+# ✅ **9. Approval & Review**
+
+This section documents the formal review and approval process for this document. It ensures accountability and tracks who has verified the accuracy of the content.
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
 | VintageDon | Lead Engineer | 2025-03-16 | ✅ Approved |
 
+The approval and review table above documents who has verified the accuracy of this document and when, establishing accountability and ensuring quality.
+
 ---
 
-## 📜 **11. Change Log**
+# 📜 **10. Change Log**
+
+This section tracks the document's revision history. It provides transparency into how the document has evolved over time and who made the changes.
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
-| 1.0 | 2025-03-16 | Standardized Documentation Standards README | VintageDon |
+| 1.0 | 2025-03-16 | Initial Documentation Standards README | VintageDon |
+
+The change log table above provides a comprehensive history of document revisions, supporting version control and auditing requirements.

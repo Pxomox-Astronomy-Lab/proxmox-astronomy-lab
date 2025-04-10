@@ -1,129 +1,175 @@
-﻿<!-- 
+﻿# 🌐 **Networking**
+
+# 🔍 **1. Overview**
+
+The networking infrastructure of the Proxmox Astronomy Lab implements a security-focused, segmented architecture that separates control plane traffic from research workloads while providing appropriate performance characteristics for different traffic types. Our design balances enterprise network principles with the practical constraints of a lab environment, creating a robust foundation that supports both infrastructure services and scientific research activities.
+
+This section documents the network design, implementation, security controls, and physical components that comprise our networking infrastructure, providing a comprehensive reference for both operational management and architecture understanding.
+
 ---
-title: "Proxmox Astronomy Lab - Networking Infrastructure"
-description: "Overview of the lab's networking architecture, segmentation strategy, and physical components"
-author: "VintageDon"
-tags: ["networking", "vlan", "firewall", "routing", "switching"]
-category: "Infrastructure"
-kb_type: "Reference"
-version: "1.0"
-status: "Published"
-last_updated: "2025-03-16"
----
--->
 
-# 🌐 **Proxmox Astronomy Lab - Networking Infrastructure**
+# 🏗️ **2. Network Architecture**
 
-Our network infrastructure implements a security-focused, segmented architecture that separates control plane traffic from research workloads while providing appropriate performance characteristics for different traffic types.
+## **2.1 Design Principles**
 
-## 🛡️ **1. Network Design Philosophy**
+Our network architecture follows these core design principles:
 
-The lab's network design follows these core principles:
+| **Principle** | **Implementation Approach** | **Documentation** |
+|--------------|---------------------------|-------------------|
+| **Security Through Segmentation** | VLAN isolation of traffic types | [Segmentation Strategy](VLAN-Segmentation/segmentation-strategy.md) |
+| **Defense in Depth** | Layered controls at multiple points | [Security Architecture](Firewalls/defense-in-depth.md) |
+| **Performance Optimization** | Strategic 10G deployment | [Network Performance](performance-optimization.md) |
+| **Simplified Management** | Centralized configuration | [Network Administration](network-administration.md) |
 
-- **Security through segmentation** - Logical separation of traffic types
-- **Defense in depth** - Layered security controls at multiple levels
-- **Performance where needed** - Targeted 10G connectivity for data-intensive workloads
-- **Practical implementation** - Balancing enterprise practices with lab constraints
-
-This approach creates a secure, performance-optimized foundation for both infrastructure services and research operations.
-
-## 🔀 **2. VLAN Architecture**
+## **2.2 VLAN Segmentation**
 
 Our network uses VLAN segmentation to enforce traffic boundaries and control communication flows.
 
-| **VLAN ID** | **Name** | **Purpose** | **IP Range** | **Default Gateway** |
+| **VLAN ID** | **Name** | **Purpose** | **IP Range** | **Documentation** |
 |------------|---------|------------|------------|-------------------|
-| **VLAN10** | Control Plane | Infrastructure management and security services | 10.25.10.0/24 | 10.25.10.1 |
-| **VLAN20** | Research | Scientific workloads and applications | 10.25.20.0/24 | 10.25.20.1 |
-| **VLAN30** | Storage | High-performance storage traffic | 10.25.30.0/24 | 10.25.30.1 |
-| **VLAN40** | External | Edge services and external access | 10.25.40.0/24 | 10.25.40.1 |
+| **VLAN10** | Control Plane | Infrastructure management | 10.25.10.0/24 | [VLAN10 Details](VLAN-Segmentation/vlan10-control-plane.md) |
+| **VLAN20** | Research | Scientific workloads | 10.25.20.0/24 | [VLAN20 Details](VLAN-Segmentation/vlan20-research.md) |
+| **VLAN30** | Storage | High-performance storage | 10.25.30.0/24 | [VLAN30 Details](VLAN-Segmentation/vlan30-storage.md) |
+| **VLAN40** | External | Edge services | 10.25.40.0/24 | [VLAN40 Details](VLAN-Segmentation/vlan40-external.md) |
 
-VLANs are implemented consistently across all switches and hypervisors, with appropriate routing and firewall controls.
+---
 
-## 🔒 **3. Security Controls**
+# 🔒 **3. Security Infrastructure**
+
+## **3.1 Firewall Implementation**
 
 Network security is implemented through multiple complementary mechanisms:
 
-### **3.1 Edge Firewall**
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Edge Firewall** | Perimeter security and VPN termination | [Fortigate 40F](Firewalls/fw1-fortigate40f-edge-firewall.md) |
+| **Internal Segmentation** | Inter-VLAN access control | [Internal ACLs](Firewalls/internal-segmentation.md) |
+| **Host-based Firewalls** | VM-level protection | [UFW Configuration](Firewalls/host-firewall-configuration.md) |
 
-The [Fortigate 40F Edge Firewall](fw1-fortigate40f-edge-firewall.md) provides:
+## **3.2 Traffic Inspection**
 
-- **Stateful packet inspection** for all external traffic
-- **IPS/IDS** with regular signature updates
-- **Zero Trust Network Access** via Entra Private Access integration
-- **Geofencing** with U.S.-only access restrictions
-- **SSL inspection** for select traffic categories
+Deep packet inspection and traffic analysis protections:
 
-### **3.2 Internal Segmentation**
+| **Capability** | **Implementation** | **Documentation** |
+|----------------|-------------------|-------------------|
+| **IPS/IDS** | Signature and anomaly-based detection | [IPS Configuration](Firewalls/ips-configuration.md) |
+| **SSL Inspection** | Selective decryption for sensitive traffic | [SSL Inspection](Firewalls/ssl-inspection.md) |
+| **Traffic Analysis** | Flow monitoring and behavioral analysis | [Traffic Monitoring](Firewalls/traffic-analysis.md) |
 
-- **VLAN-based ACLs** restrict cross-VLAN communication
-- **Host-based firewalls** provide additional protection
-- **Service-specific access controls** limit connections to authorized sources
+---
 
-## 🖧 **4. Physical Network Components**
+# 🖧 **4. Physical Network Infrastructure**
 
-Our physical network infrastructure consists of enterprise-grade components configured for reliability and performance.
+## **4.1 Core Switching**
 
-| **Device** | **Model** | **Documentation** | **Primary Role** |
-|-----------|----------|-------------------|-----------------|
-| **fw1** | Fortigate 40F | [Details →](fw1-fortigate40f-edge-firewall.md) | Edge security, VPN, IPS |
-| **labswitch01** | Mokerlink 2G16210GSM | [Details →](labswitch01-mokerlink-2g16210gsm.md) | Primary switch with 10G uplinks |
-| **labswitch02** | Sodola SL-swtg3c12f | [Details →](labswitch02-sodola-SL-swtg3c12f.md) | Secondary switch, 10G inter-rack |
+Primary switching infrastructure components:
 
-## 🔄 **5. Connectivity Architecture**
+| **Device** | **Model** | **Ports** | **Documentation** |
+|-----------|----------|----------|-------------------|
+| **labswitch01** | Mokerlink 2G16210GSM | 16x1G, 2x10G SFP+ | [labswitch01 Configuration](labswitch01-mokerlink-2g16210gsm.md) |
+| **labswitch02** | Sodola SL-swtg3c12f | 8x2.5G, 4x10G SFP+ | [labswitch02 Configuration](labswitch02-sodola-SL-swtg3c12f.md) |
 
-### **5.1 External Connectivity**
+## **4.2 Edge Connectivity**
 
-- **Primary Internet**: Fiber connection (1Gbps symmetric)
-- **Backup Internet**: LTE failover via Fortigate 40F
-- **External Access**: Exclusively through Entra Private Access (EPA)
+External connectivity components:
 
-### **5.2 Internal Architecture**
+| **Device** | **Model** | **Function** | **Documentation** |
+|-----------|----------|-------------|-------------------|
+| **fw1** | Fortigate 40F | Edge security, routing | [fw1 Configuration](fw1-fortigate40f-edge-firewall.md) |
+| **ISP Modem** | Fiber ONT | WAN connectivity | [WAN Configuration](wan-connectivity.md) |
 
-The internal network implements a modified spine-leaf topology:
+---
 
-![Network Topology Diagram](../assets/network-topology.png)
+# 📡 **5. Specialized Networks**
 
-- **Core Layer**: Fortigate 40F providing inter-VLAN routing
-- **Access Layer**: Mokerlink and Sodola switches with VLAN trunking
-- **Node Connectivity**: 2.5G for general nodes, 10G for high-performance nodes
+## **5.1 SDR Data Network**
 
-## 📡 **6. SDR Data Network**
+Specialized network for radio astronomy data:
 
-A specialized network segment handles raw SDR data from our radio astronomy equipment:
+| **Component** | **Purpose** | **Documentation** |
+|--------------|------------|-------------------|
+| **SDR Data VLAN** | Isolated SDR traffic flow | [SDR Network](sdr-data-network.md) |
+| **Feed Processing** | Hydrogen Line data acquisition | [Feed Network](feed-processing-network.md) |
 
-- **Dedicated Interfaces**: Separate physical NICs for SDR data flow
-- **Direct Connectivity**: Point-to-point links between SDR devices and processing nodes
-- **Traffic Isolation**: SDR traffic isolated from general infrastructure traffic
+## **5.2 High-Performance Compute Network**
 
-For details on SDR hardware integration, see the [Observatory Hardware section](../observatory-hardware/README.md).
+Dedicated network for compute-intensive workflows:
 
-## 🔍 **7. Monitoring & Management**
+| **Component** | **Purpose** | **Documentation** |
+|--------------|------------|-------------------|
+| **10G Backbone** | High-speed node interconnect | [10G Network](high-performance-networking.md) |
+| **Node04-05 Connectivity** | Direct GPU-to-storage path | [Direct Connect](node-direct-connectivity.md) |
 
-Network monitoring utilizes multiple complementary approaches:
+---
 
-- **SNMP Monitoring**: All network devices report to Prometheus
-- **Traffic Analysis**: NetFlow data collection and visualization
-- **Performance Tracking**: Latency, bandwidth, and error monitoring
-- **Configuration Backup**: Automated configuration archival
+# 🔧 **6. Management & Configuration**
 
-## 📝 **8. Documentation Resources**
+## **6.1 Network Services**
 
-Detailed network documentation is available for each component:
+Core network services supporting the infrastructure:
 
-- [**Fortigate 40F Configuration**](fw1-fortigate40f-edge-firewall.md)
-- [**Primary Switch Configuration**](labswitch01-mokerlink-2g16210gsm.md)
-- [**Secondary Switch Configuration**](labswitch02-sodola-SL-swtg3c12f.md)
-- [**VLAN Assignment Reference**](vlan-assignments.md)
+| **Service** | **Implementation** | **Documentation** |
+|------------|-------------------|-------------------|
+| **DNS** | Redundant internal DNS servers | [DNS Configuration](DNS/dns-architecture.md) |
+| **DHCP** | Centralized IP management | [DHCP Configuration](dhcp-configuration.md) |
+| **NTP** | Time synchronization | [NTP Services](ntp-configuration.md) |
 
-## **✅ Approval & Review**
+## **6.2 Network Monitoring**
+
+Tools and approaches for network visibility:
+
+| **Monitoring Tool** | **Purpose** | **Dashboard** |
+|--------------------|------------|--------------|
+| **Prometheus SNMP** | Device metrics collection | [SNMP Dashboard](../monitoring/network-monitoring-dashboard.md) |
+| **NetFlow Analysis** | Traffic pattern analysis | [NetFlow Dashboard](../monitoring/netflow-analysis-dashboard.md) |
+| **Interface Statistics** | Bandwidth and error tracking | [Interface Dashboard](../monitoring/interface-statistics-dashboard.md) |
+
+---
+
+# 🔗 **7. Directory Contents**
+
+This section provides direct navigation to all subdirectories and key documents in this category:
+
+## **Subdirectories**
+
+| **Directory** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **DNS** | DNS server configuration and management | [DNS README](DNS/README.md) |
+| **Firewalls** | Firewall configurations and security controls | [Firewalls README](Firewalls/README.md) |
+| **VLAN-Segmentation** | VLAN architecture and implementation | [VLAN Segmentation README](VLAN-Segmentation/README.md) |
+
+## **Key Documents**
+
+| **Document** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Network Diagram** | Visual representation of network topology | [Network Diagram](network-topology-diagram.md) |
+| **IP Address Scheme** | IP allocation and addressing strategy | [IP Addressing](ip-addressing-scheme.md) |
+| **Firewall Rule Matrix** | Documentation of inter-VLAN access controls | [Firewall Rules](firewall-rule-matrix.md) |
+
+---
+
+# 🔄 **8. Related Categories**
+
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **Infrastructure** | Parent directory for networking | [Infrastructure README](../README.md) |
+| **Compute** | Network connectivity for compute resources | [Compute README](../Compute/README.md) |
+| **Storage** | Network connectivity for storage services | [Storage README](../Storage/README.md) |
+| **Observatory-Hardware** | Network connectivity for scientific equipment | [Observatory Hardware README](../Observatory-Hardware/README.md) |
+
+---
+
+# ✅ **9. Approval & Review**
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-16 | ✅ Approved |
+| VintageDon | Lead Engineer | 2025-04-04 | ✅ Approved |
 
-## **📜 Change Log**
+---
+
+# 📜 **10. Change Log**
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
+| 2.0 | 2025-04-04 | Updated to standardized format with expanded sections | VintageDon |
 | 1.0 | 2025-03-16 | Initial networking README | VintageDon |

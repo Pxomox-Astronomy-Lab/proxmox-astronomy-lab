@@ -1,9 +1,9 @@
 <!-- 
 ---
-title: "Compliance & Security - Proxmox Astronomy Lab"
-description: "Overview of security controls, compliance frameworks, and security implementation in the Proxmox Astronomy Lab"
+title: "Security & Compliance Framework"
+description: "Comprehensive security and compliance documentation for the Proxmox Astronomy Lab environment"
 author: "VintageDon"
-tags: ["security", "compliance", "cisv8", "security-monitoring", "hardening", "policies"]
+tags: ["security", "compliance", "cisv8", "hardening", "policies", "assessment"]
 category: "Security"
 kb_type: "Reference"
 version: "1.0"
@@ -12,181 +12,127 @@ last_updated: "2025-03-16"
 ---
 -->
 
-# 🔐 **Compliance & Security**
+# 🔐 **Security & Compliance Framework**
 
-This section contains the comprehensive security documentation for the Proxmox Astronomy Lab, covering our implementation of industry-standard security frameworks, hardening guides, security monitoring configuration, and policy documentation.
+# 🔍 **1. Overview**
 
-## 🔍 **1. Overview**
+The Security & Compliance section provides the comprehensive security architecture, controls implementation, and compliance mapping for the Proxmox Astronomy Lab. This framework is built primarily around CIS Controls v8.1, with additional mappings to NIST 800-53 and ISO 27001 to ensure a comprehensive security posture.
 
-The Proxmox Astronomy Lab implements a **defense-in-depth security strategy** aligned with **industry best practices and frameworks**. Our security implementation focuses on **practical controls, automation, and continuous verification** to maintain a strong security posture while supporting research objectives.
-
-The security framework centers on **CIS Controls v8.1** as the primary structure, with mappings to additional frameworks such as **NIST 800-53 and ISO 27001** for comprehensive coverage. This documentation serves both as a **reference for operational security** and a **demonstration of a structured approach to lab security**.
+Our implementation emphasizes defense-in-depth principles, automation of security controls, continuous verification, and thorough documentation to support both operational security and educational objectives related to implementing practical security in small-scale lab environments.
 
 ---
 
-## 🗂️ **2. Section Structure**
+# 📏 **2. CIS Controls Framework**
 
-Our security documentation is organized into functional areas that support different aspects of the security program:
+## **2.1 Framework Implementation**
 
-| **Section** | **Content** | **Primary Users** |
-|------------|-----------|-------------------|
-| [**CIS-Controls**](CIS-Controls/README.md) | Framework implementation, control documentation | Security Administrators, Auditors |
-| [**Security-Policies**](Security-Policies/README.md) | Formal security policy documents | All Users, Security Personnel |
-| [**Assessment-Tools**](Assessment-Tools/README.md) | Security evaluation and compliance checking tools | Security Administrators, Engineers |
-| [**Remediation**](Remediation/README.md) | Scripts and procedures for addressing security findings | Engineers, System Administrators |
-| [**Security-Monitoring**](Security-Monitoring/README.md) | Configuration of security monitoring solutions | Security Administrators, Operations |
+Documentation of our security controls framework based on CIS v8.1.
 
-Each section contains detailed documentation on specific security aspects with consistent formatting and metadata.
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Control Overview** | CIS control mapping | [CIS Framework](/docs/Compliance-Security/CIS-Controls/Framework/README.md) |
+| **ISO27001 Mappings** | Equivalence to ISO standards | [ISO Mappings](/docs/Compliance-Security/CIS-Controls/Framework/ISO27001-Mappings/README.md) |
+| **NIST Mappings** | Equivalence to NIST standards | [NIST Mappings](/docs/Compliance-Security/CIS-Controls/Framework/NIST-Mappings/README.md) |
 
----
+## **2.2 Implementation Guides**
 
-## 🛡️ **3. Security Framework**
+Detailed instructions for implementing security controls across platforms.
 
-### **3.1 CIS Controls Implementation**
-
-The lab uses **CIS Controls v8.1** as its primary security framework, providing a structured approach to risk management.
-
-| **CIS Implementation Group** | **Coverage** | **Documentation** |
-|------------------------------|------------|-------------------|
-| **IG1 (Basic)** | 100% of controls | [IG1 Implementation](CIS-Controls/Framework/Overview/README.md) |
-| **IG2 (Foundational)** | 92% of controls | [IG2 Implementation](CIS-Controls/Framework/Overview/README.md) |
-| **IG3 (Organizational)** | Selected controls | [IG3 Implementation](CIS-Controls/Framework/Overview/README.md) |
-
-Our implementation emphasizes **automation, verification, and documentation** to ensure consistent application of security controls across all systems.
-
-### **3.2 System Hardening Standards**
-
-All systems follow standardized hardening baselines based on CIS Benchmarks:
-
-| **System Type** | **Hardening Standard** | **Verification Method** |
-|----------------|------------------------|------------------------|
-| **Linux Servers** | Ubuntu 24.04 CIS v8.1 Level 2 | Lynis, OpenSCAP, Wazuh agents |
-| **Windows Servers** | Windows Server 2025 CIS v9 Level 1 | CIS-CAT Pro, GPO enforcement |
-| **Containers** | CIS Docker Benchmark | Trivy, container scanning |
-| **Kubernetes** | CIS Kubernetes Benchmark | kube-bench, Falco |
-
-For detailed implementation guidance, see the [Hardening Guides](CIS-Controls/Implementation-Guides/README.md) section.
+| **Platform** | **Function** | **Documentation** |
+|-------------|-------------|-------------------|
+| **Linux Implementation** | Security for Linux systems | [Linux Guides](/docs/Compliance-Security/CIS-Controls/Implementation-Guides/Linux/README.md) |
+| **Windows Implementation** | Security for Windows systems | [Windows Guides](/docs/Compliance-Security/CIS-Controls/Implementation-Guides/Windows/README.md) |
 
 ---
 
-## 🔍 **4. Security Assessment & Monitoring**
+# 🔍 **3. Assessment Tools**
 
-### **4.1 Security Monitoring Stack**
+## **3.1 Security Verification Tools**
 
-The lab implements a comprehensive security monitoring solution:
+Tools and methodologies for verifying security control effectiveness.
 
-| **Component** | **Purpose** | **Implementation** |
-|--------------|------------|-------------------|
-| **Wazuh SIEM** | Security event monitoring, compliance | Wazuh Manager on lab-soc01 |
-| **CIS-CAT Pro** | Automated benchmark scanning | Scheduled scans via Ansible |
-| **Lynis** | Linux security auditing | Daily automated scans |
-| **OpenSCAP** | Compliance verification | XCCDF-based assessments |
-| **Custom Scripts** | Specialized security checks | Security verification automation |
-
-This multi-layered approach ensures comprehensive coverage of security events and compliance requirements.
-
-### **4.2 Vulnerability Management**
-
-Our vulnerability management process follows a structured lifecycle:
-
-| **Phase** | **Key Activities** | **Documentation** |
-|-----------|-------------------|-------------------|
-| **Detection** | Regular scanning, asset inventory matching | [Vulnerability Detection](Security-Monitoring/Vulnerability-Management/detection.md) |
-| **Prioritization** | Risk-based vulnerability ranking | [Risk Prioritization](Security-Monitoring/Vulnerability-Management/prioritization.md) |
-| **Remediation** | Patching, configuration changes, compensating controls | [Remediation Process](Remediation/README.md) |
-| **Verification** | Post-remediation testing | [Verification Procedures](Security-Monitoring/Vulnerability-Management/verification.md) |
-
-This approach ensures a consistent, methodical response to security vulnerabilities across all systems.
+| **Tool** | **Function** | **Documentation** |
+|----------|-------------|-------------------|
+| **CIS-CAT** | CIS benchmark evaluation | [CIS-CAT](/docs/Compliance-Security/Assessment-Tools/CIS-CAT/README.md) |
+| **Lynis** | Linux security assessment | [Lynis](/docs/Compliance-Security/Assessment-Tools/Lynis/README.md) |
+| **Custom Scripts** | Specialized security checks | [Custom Scripts](/docs/Compliance-Security/Assessment-Tools/Custom-Scripts/README.md) |
 
 ---
 
-## 📑 **5. Security Policies**
+# 🛠️ **4. Remediation**
 
-### **5.1 CIS-Aligned Policies**
+## **4.1 Remediation Resources**
 
-Our security policies are structured to align with CIS Controls:
+Tools and procedures for addressing security findings.
 
-| **Policy Area** | **CIS Control Mapping** | **Policy Document** |
-|----------------|------------------------|--------------------|
-| **Asset Management** | CIS 1, 2 | [Asset Management Policy](Security-Policies/CIS-Security-Policies/01-inventory-and-control-of-enterprise-assets.md) |
-| **Access Control** | CIS 5, 6 | [Access Control Policy](Security-Policies/CIS-Security-Policies/06-access-control-management/README.md) |
-| **Data Protection** | CIS 3 | [Data Protection Policy](Security-Policies/CIS-Security-Policies/03-data-protection/README.md) |
-| **Configuration Management** | CIS 4 | [Configuration Management Policy](Security-Policies/CIS-Security-Policies/04-secure-configuration-of-enterprise-assets-and-software/README.md) |
-| **Incident Response** | CIS 17 | [Incident Response Policy](Security-Policies/CIS-Security-Policies/17-incident-response-management/README.md) |
-
-Each policy includes specific requirements, implementation guidance, and verification methods.
-
-### **5.2 Policy Templates**
-
-For organizations looking to implement similar security policies, we provide standardized templates:
-
-| **Template Type** | **Purpose** | **Location** |
-|------------------|------------|-------------|
-| **Policy Templates** | Starting points for security policies | [Policy Templates](CIS-Controls/Templates/Policy-Templates/README.md) |
-| **Implementation Templates** | Technical implementation guides | [Implementation Templates](CIS-Controls/Templates/Implementation-Templates/README.md) |
-| **Compliance Templates** | Verification and audit documentation | [Compliance Templates](CIS-Controls/Templates/Compliance-Templates/README.md) |
-
-These templates provide a structured approach to security policy development and implementation.
+| **Resource** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Ansible Playbooks** | Automated remediation | [Ansible Playbooks](/docs/Compliance-Security/Remediation/Ansible-Playbooks/README.md) |
+| **Scripts** | Targeted security fixes | [Remediation Scripts](/docs/Compliance-Security/Remediation/Scripts/README.md) |
+| **Exceptions** | Documented control exceptions | [Exceptions](/docs/Compliance-Security/Remediation/Exceptions/README.md) |
 
 ---
 
-## 🔄 **6. Continuous Security Process**
+# 👁️ **5. Security Monitoring**
 
-### **6.1 Security Assessment Cycle**
+## **5.1 Monitoring Framework**
 
-Security is maintained through a continuous improvement process:
+Components that provide ongoing security assessment and alerting.
 
-| **Activity** | **Frequency** | **Responsible Role** | **Documentation** |
-|--------------|--------------|----------------------|-------------------|
-| **Automated Compliance Scans** | Daily | Security Automation | [Compliance Scanning](Security-Monitoring/Compliance-Scanning/README.md) |
-| **Vulnerability Assessments** | Weekly | System Administrator | [Vulnerability Management](Security-Monitoring/Vulnerability-Management/README.md) |
-| **Security Policy Review** | Quarterly | Security Administrator | [Policy Management](Security-Policies/README.md) |
-| **Penetration Testing** | Annually | Security Engineer | [Penetration Testing](Security-Policies/CIS-Security-Policies/18-penetration-testing/README.md) |
-
-This continuous cycle ensures that security controls remain effective and adapt to evolving threats.
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Compliance Scanning** | Automated security checks | [Compliance Scanning](/docs/Compliance-Security/Security-Monitoring/Compliance-Scanning/README.md) |
+| **Log Management** | Security event logging | [Log Management](/docs/Compliance-Security/Security-Monitoring/Log-Management/README.md) |
+| **Vulnerability Management** | CVE tracking and resolution | [Vulnerability Management](/docs/Compliance-Security/Security-Monitoring/Vulnerability-Management/README.md) |
+| **Wazuh** | SIEM/XDR implementation | [Wazuh](/docs/Compliance-Security/Security-Monitoring/Wazuh/README.md) |
 
 ---
 
-## 🚀 **7. Implementation Resources**
+# 📜 **6. Security Policies**
 
-### **7.1 Hardening Guides**
+## **6.1 Core Security Policies**
 
-Detailed step-by-step guides for system hardening:
+Formal policy documentation that governs security operations.
 
-| **System Type** | **Guide** | **Documentation** |
-|----------------|----------|-------------------|
-| **Ubuntu 24.04 Server** | CIS v8.1 Level 2 Hardening | [Ubuntu 24.04 Hardening](CIS-Controls/Implementation-Guides/Linux/Ubuntu-24-04-Server/Ubuntu-24-04-CISv81-L2-Hardening-Guide/README.md) |
-| **Windows Server 2025** | CIS v9 Level 1 Hardening | [Windows Server Hardening](CIS-Controls/Implementation-Guides/Windows/Server-2025-Standard/L1-Hardening-Guide/README.md) |
-| **Proxmox Nodes** | CIS-aligned Hardening | [Proxmox Hardening](CIS-Controls/Implementation-Guides/Linux/Debian-Proxmox/L2-Hardening-Guide/README.md) |
-
-### **7.2 Automation Resources**
-
-Scripts and playbooks for security automation:
-
-| **Resource Type** | **Purpose** | **Location** |
-|------------------|------------|-------------|
-| **Ansible Playbooks** | Automated hardening and remediation | [Ansible Security](Remediation/Ansible-Playbooks/README.md) |
-| **Verification Scripts** | Automated security validation | [Validation Scripts](Assessment-Tools/Custom-Scripts/README.md) |
-| **Remediation Scripts** | Issue-specific fixes | [Remediation Scripts](Remediation/Scripts/README.md) |
-
-These resources enable consistent implementation of security controls across the lab environment.
+| **Policy Area** | **Function** | **Documentation** |
+|----------------|-------------|-------------------|
+| **Access Management** | Identity and access controls | [Access Management](/docs/Compliance-Security/Security-Policies/Access-Management/README.md) |
+| **Architecture** | Security architecture | [Architecture](/docs/Compliance-Security/Security-Policies/Architecture/README.md) |
+| **CIS Security Policies** | CIS-aligned policy documents | [CIS Policies](/docs/Compliance-Security/Security-Policies/CIS-Security-Policies/README.md) |
+| **Data Protection** | Data security controls | [Data Protection](/docs/Compliance-Security/Security-Policies/Data-Protection/README.md) |
+| **Incident Response** | Security incident handling | [Incident Response](/docs/Compliance-Security/Security-Policies/Incident-Response/README.md) |
+| **Risk Management** | Security risk framework | [Risk Management](/docs/Compliance-Security/Security-Policies/Risk-Management/README.md) |
 
 ---
 
-## 📊 **8. Security Metrics & Reporting**
+# 🗂️ **7. Directory Contents**
 
-The lab tracks security performance through key metrics:
+This section provides direct navigation to all main subdirectories in this category:
 
-- **Compliance score** - CIS Controls implementation percentage
-- **Vulnerability management** - Mean time to remediate, open vulnerability count
-- **Security incidents** - Count, mean time to resolve, root cause categories
-- **Security posture** - Risk assessment based on multiple security factors
+## **Subdirectories**
 
-These metrics provide quantitative measurement of our security program effectiveness.
+| **Directory** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Assessment-Tools** | Security evaluation tools | [Assessment Tools](/docs/Compliance-Security/Assessment-Tools/README.md) |
+| **CIS-Controls** | Security framework | [CIS Controls](/docs/Compliance-Security/CIS-Controls/README.md) |
+| **Remediation** | Finding resolution | [Remediation](/docs/Compliance-Security/Remediation/README.md) |
+| **Security-Monitoring** | Ongoing assessment | [Security Monitoring](/docs/Compliance-Security/Security-Monitoring/README.md) |
+| **Security-Policies** | Policy documentation | [Security Policies](/docs/Compliance-Security/Security-Policies/README.md) |
 
 ---
 
-## ✅ **9. Approval & Review**
+# 🔄 **8. Related Categories**
+
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **Infrastructure** | Secured systems | [Infrastructure](/infrastructure/README.md) |
+| **Control Plane** | Security services | [Control Plane](/docs/Control-Plane/README.md) |
+| **ITIL Processes** | Security processes | [ITIL](/itil/README.md) |
+| **Monitoring** | Security monitoring | [Monitoring](/monitoring/README.md) |
+
+---
+
+# ✅ **9. Approval & Review**
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
@@ -194,8 +140,8 @@ These metrics provide quantitative measurement of our security program effective
 
 ---
 
-## 📜 **10. Change Log**
+# 📜 **10. Change Log**
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
-| 1.0 | 2025-03-16 | Initial Compliance & Security README | VintageDon |
+| 1.0 | 2025-03-16 | Initial documentation | VintageDon |

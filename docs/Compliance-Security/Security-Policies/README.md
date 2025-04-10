@@ -14,17 +14,17 @@ last_updated: "2025-03-16"
 
 # 📜 **Security Policies**
 
-## 🔍 **1. Overview**
+# 🔍 **1. Overview**
 
-This section contains the **formal security policies, standards, and procedures** that govern security practices within the Proxmox Astronomy Lab. These documents provide the **authoritative foundation for our security program**, establishing requirements, responsibilities, and guidelines for maintaining information security.
+This section contains the formal security policies, standards, and procedures that govern security practices within the Proxmox Astronomy Lab. These documents provide the authoritative foundation for our security program, establishing requirements, responsibilities, and guidelines for maintaining information security.
 
-Our policies are structured to align with the **CIS Controls v8.1 framework** while addressing the specific needs of a hybrid research and IT environment. Each policy document includes clear requirements, implementation guidance, and compliance verification methods to support effective security governance.
+Our policies are structured to align with the CIS Controls v8.1 framework while addressing the specific needs of a hybrid research and IT environment. Each policy document includes clear requirements, implementation guidance, and compliance verification methods to support effective security governance.
 
 ---
 
-## 📑 **2. Policy Structure**
+# 📑 **2. Policy Structure**
 
-### **2.1 Policy Hierarchy**
+## **2.1 Policy Hierarchy**
 
 Our security documentation follows a hierarchical structure:
 
@@ -37,7 +37,7 @@ Our security documentation follows a hierarchical structure:
 
 This structure ensures appropriate governance while maintaining practical, actionable security guidance.
 
-### **2.2 Document Components**
+## **2.2 Document Components**
 
 Each policy document contains standard components:
 
@@ -53,9 +53,9 @@ This consistent structure ensures comprehensive coverage of security requirement
 
 ---
 
-## 🔐 **3. CIS Security Policies**
+# 🔐 **3. CIS Security Policies**
 
-### **3.1 CIS Controls-Aligned Policies**
+## **3.1 CIS Controls-Aligned Policies**
 
 Our core security policies align with CIS Controls v8.1:
 
@@ -82,7 +82,7 @@ Our core security policies align with CIS Controls v8.1:
 
 Each policy document translates CIS Controls requirements into specific, actionable policies for our environment.
 
-### **3.2 Policy Templates**
+## **3.2 Policy Templates**
 
 For organizations looking to implement similar security policies, we provide standardized templates:
 
@@ -94,9 +94,9 @@ These templates provide a foundation for developing comprehensive security polic
 
 ---
 
-## 🔒 **4. Functional Security Policies**
+# 🔒 **4. Functional Security Policies**
 
-### **4.1 Access Management**
+## **4.1 Access Management**
 
 Policies governing identity and access:
 
@@ -108,7 +108,7 @@ Policies governing identity and access:
 
 These policies ensure appropriate access controls throughout the environment.
 
-### **4.2 Data Protection**
+## **4.2 Data Protection**
 
 Policies for securing data assets:
 
@@ -120,7 +120,7 @@ Policies for securing data assets:
 
 These policies provide a framework for protecting data throughout its lifecycle.
 
-### **4.3 Incident Response**
+## **4.3 Incident Response**
 
 Policies for security incident handling:
 
@@ -132,7 +132,7 @@ Policies for security incident handling:
 
 These policies ensure appropriate response to security incidents.
 
-### **4.4 Risk Management**
+## **4.4 Risk Management**
 
 Policies governing security risk:
 
@@ -146,9 +146,9 @@ These policies provide a framework for managing security risks.
 
 ---
 
-## 🏛️ **5. Security Architecture**
+# 🏛️ **5. Security Architecture**
 
-### **5.1 Reference Architecture**
+## **5.1 Reference Architecture**
 
 Documents defining our security architecture:
 
@@ -161,7 +161,7 @@ Documents defining our security architecture:
 
 These documents define the technical implementation of our security principles.
 
-### **5.2 Security Principles**
+## **5.2 Security Principles**
 
 Guiding principles for security design:
 
@@ -176,9 +176,9 @@ These principles guide our security architecture and implementation decisions.
 
 ---
 
-## 📋 **6. Policy Compliance & Exceptions**
+# 📋 **6. Policy Compliance & Exceptions**
 
-### **6.1 Compliance Verification**
+## **6.1 Compliance Verification**
 
 Methods for verifying policy compliance:
 
@@ -191,7 +191,7 @@ Methods for verifying policy compliance:
 
 These methods ensure ongoing verification of policy compliance.
 
-### **6.2 Policy Exceptions**
+## **6.2 Policy Exceptions**
 
 Process for managing policy exceptions:
 
@@ -207,7 +207,7 @@ This structured process ensures all exceptions are properly evaluated, documente
 
 ---
 
-## 🔄 **7. Policy Lifecycle Management**
+# 🔄 **7. Policy Lifecycle Management**
 
 The lab follows a structured approach to policy management:
 
@@ -224,18 +224,47 @@ This lifecycle ensures policies remain current, effective, and aligned with secu
 
 ---
 
-## 🔗 **8. Related Documentation**
+# 🗄️ **8. Directory Contents**
 
-| **Section** | **Description** | **Link** |
-|------------|----------------|---------|
-| **CIS Controls** | Security control framework | [CIS Controls](../CIS-Controls/README.md) |
-| **Security Monitoring** | Monitoring and verification | [Security Monitoring](../Security-Monitoring/README.md) |
-| **Remediation** | Addressing compliance gaps | [Remediation](../Remediation/README.md) |
-| **Assessment Tools** | Compliance verification tools | [Assessment Tools](../Assessment-Tools/README.md) |
+This section provides direct navigation to all subdirectories and key documents in this category:
+
+## **Subdirectories**
+
+| **Directory** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **CIS-Security-Policies** | CIS Controls-aligned policies | [CIS Policies README](CIS-Security-Policies/README.md) |
+| **CIS-Security-Policy-Templates** | Policy development templates | [CIS Templates README](CIS-Security-Policy-Templates/README.md) |
+| **Access-Management** | Access control policies | [Access Management README](Access-Management/README.md) |
+| **Data-Protection** | Data security policies | [Data Protection README](Data-Protection/README.md) |
+| **Incident-Response** | Security incident procedures | [Incident Response README](Incident-Response/README.md) |
+| **Risk-Management** | Risk management framework | [Risk Management README](Risk-Management/README.md) |
+| **Architecture** | Security architecture documentation | [Architecture README](Architecture/README.md) |
+| **Exception-Management** | Exception handling procedures | [Exception Management README](Exception-Management/README.md) |
+| **Policy-Lifecycle** | Policy management procedures | [Policy Lifecycle README](Policy-Lifecycle/README.md) |
+
+## **Key Documents**
+
+| **Document** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Policy Structure** | Overall policy organization | [Policy Structure](policy-structure.md) |
+| **Policy Development Guide** | Creating effective policies | [Development Guide](policy-development-guide.md) |
+| **Compliance Framework** | Verification methodology | [Compliance Framework](compliance-framework.md) |
+| **Exception Process** | Managing policy exceptions | [Exception Process](exception-process.md) |
 
 ---
 
-## ✅ **9. Approval & Review**
+# 🔄 **9. Related Categories**
+
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **CIS Controls** | Security control framework | [CIS Controls README](../CIS-Controls/README.md) |
+| **Security Monitoring** | Monitors policy compliance | [Security Monitoring README](../Security-Monitoring/README.md) |
+| **Remediation** | Addresses compliance gaps | [Remediation README](../Remediation/README.md) |
+| **Assessment Tools** | Verifies policy implementation | [Assessment Tools README](../Assessment-Tools/README.md) |
+
+---
+
+# ✅ **10. Approval & Review**
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
@@ -243,7 +272,7 @@ This lifecycle ensures policies remain current, effective, and aligned with secu
 
 ---
 
-## 📜 **10. Change Log**
+# 📜 **11. Change Log**
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|

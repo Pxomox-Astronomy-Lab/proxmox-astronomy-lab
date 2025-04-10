@@ -1,9 +1,9 @@
 <!-- 
 ---
-title: "AI/ML Platforms - Proxmox Astronomy Lab"
-description: "Documentation for AI and Machine Learning platforms, tools, and workflows in the Proxmox Astronomy Lab"
+title: "Containerized Services - Proxmox Astronomy Lab"
+description: "Documentation for container platforms, orchestration, and deployments in the Proxmox Astronomy Lab"
 author: "VintageDon"
-tags: ["ai", "machine-learning", "data-science", "tensorflow", "milvus", "vector-database", "jupyter"]
+tags: ["containers", "docker", "kubernetes", "portainer", "rke2", "orchestration"]
 category: "Applications"
 kb_type: "Reference"
 version: "1.0"
@@ -12,167 +12,232 @@ last_updated: "2025-03-16"
 ---
 -->
 
-# 🧠 **AI/ML Platforms**
+# 🐳 **Containerized Services**
 
-## 🔍 **1. Overview**
+# 🔍 **1. Overview**
 
-### **1.1 Purpose**
+This section documents the containerization platforms that form the foundation for application deployment in the Proxmox Astronomy Lab. Our container strategy combines Docker-based deployments via Portainer for simpler workloads with a full Kubernetes cluster for scalable, resilient research applications.
 
-This section documents the **AI and machine learning platforms** deployed within the Proxmox Astronomy Lab environment. It serves as a reference for the **infrastructure, configuration, and operational aspects** of these systems that support advanced data analysis and research workflows.
-
-### **1.2 Scope**
-
-| **In Scope** | **Out of Scope** |
-|--------------|------------------|
-| AI/ML infrastructure deployment and configuration | Scientific methodology of AI models |
-| Vector database implementation and management | Deep algorithmic details of ML models |
-| Model serving and inference architecture | Research-specific model parameters |
-| Operational monitoring and maintenance | Data preprocessing for specific experiments |
-
-### **1.3 Target Audience**
-
-Engineers, operators, and researchers working with the lab's AI/ML infrastructure who need information on deployment, access, and management of these platforms.
+Containerization provides consistent deployment, isolation, and resource management across our diverse application portfolio, supporting both operational infrastructure and scientific research workloads.
 
 ---
 
-## 📊 **2. Platform Components**
+# 🖥️ **2. Docker Infrastructure**
 
-The lab's AI/ML infrastructure consists of several core components:
+This section covers the Docker deployment infrastructure that hosts containerized applications using Portainer for management and orchestration.
 
-| **Component** | **Purpose** | **Key Documentation** |
-|--------------|------------|----------------------|
-| [**Inference-Engines**](Inference-Engines/index.md) | Model serving for prediction workflows | Deployment, scaling, API access |
-| [**Model-Training**](Model-Training/index.md) | Development environment for model creation | Jupyter configuration, MLflow tracking |
-| [**Vector-Databases**](Vector-Databases/index.md) | Similarity-based knowledge retrieval | Milvus setup, collection management |
+## **2.1 Docker Nodes**
 
----
+This subsection documents the dedicated hosts for Docker-based containerized workloads, including their configuration and deployed applications.
 
-## 🏗️ **3. Technical Documentation**
+| **Host** | **Function** | **Documentation** |
+|----------|------------|-------------------|
+| **lab-apps01** | Lab services and applications | [lab-apps01](Docker-Nodes/lab-apps01.md) |
+| **lab-db01** | Database containers | [lab-db01 README](../../docker/portainer/lab-db01-portainer-docker-database-node/README.md) |
+| **proj-apps01** | Project-specific applications | [proj-apps01 README](../../docker/portainer/proj-apps01-portainer-docker-application-node/README.md) |
 
-### **3.1 Architecture Overview**
+These Docker hosts provide dedicated environments for various containerized workloads, each serving a specific functional domain within the lab infrastructure.
 
-The AI/ML platforms follow a containerized architecture designed for both performance and maintainability:
+## **2.2 Portainer Management**
 
-- **Kubernetes-orchestrated** inference and database services
-- **GPU acceleration** through device plugins and node labeling
-- **NVMe storage** for high-performance data access
-- **API-based interfaces** for programmatic interaction
+This subsection details the Portainer deployment used for centralized Docker management across the lab environment.
 
-### **3.2 Infrastructure Components**
+| **Component** | **Function** | **Documentation** |
+|--------------|------------|-------------------|
+| **lab-port01** | Portainer control node | [lab-port01](Portainer/lab-port01.md) |
+| **Stack Templates** | Standardized application definitions | [Portainer Stacks](../../docker/portainer-stacks/README.md) |
 
-| **Component** | **Description** | **CMDB ID** |
-|---------------|----------------|------------|
-| GPU-Accelerated Node | Ryzen 5950X with RTX A4000 GPU | node04-proxmox-gpu-hpc |
-| Kubernetes Worker | Worker node with GPU passthrough | proj-k8sw04 |
-| NVMe Storage | High-speed storage for model artifacts | gpu-nvme-storage-pool |
-| Vector Database | Milvus instance for embeddings | milvus-vector-01 |
-
-### **3.3 Dependencies**
-
-| **Dependency Type** | **Service/Component** | **Impact if Unavailable** |
-|---------------------|----------------------|---------------------------|
-| **Requires** | Kubernetes Cluster | AI/ML services cannot be scheduled |
-| **Requires** | GPU Resources | Reduced inference performance |
-| **Requires** | PostgreSQL Database | Vector metadata storage unavailable |
-| **Required By** | Research Applications | Pattern recognition capabilities degraded |
-| **Required By** | Documentation Wiki | Vector search functionality unavailable |
+The Portainer infrastructure provides a centralized management interface for Docker deployments, enabling consistent application management through standardized stack definitions.
 
 ---
 
-## 📈 **4. Service Management**
+# ☸️ **3. Kubernetes Infrastructure**
 
-### **4.1 Access Management**
+This section documents the Kubernetes cluster that hosts scalable, resilient containerized workloads in the lab environment.
 
-| **User Role** | **Access Level** | **Authorization Process** |
-|---------------|----------------|---------------------------|
-| Research Lead | Full management access | Approved by Lab Owner via Zitadel |
-| Engineer | Administrative access | Approved by Lab Owner via Zitadel |
-| Operator | Monitoring access | Approved by Engineer via Zitadel |
-| Researcher | Service usage access | Approved by Research Lead via Zitadel |
+## **3.1 RKE2 Cluster**
 
-### **4.2 Monitoring & Alerting**
+This subsection details the RKE2 Kubernetes implementation, including control plane and worker nodes.
 
-| **Metric** | **Threshold** | **Alert Severity** |
-|------------|--------------|-------------------|
-| GPU Utilization | >95% for >15 min | Warning |
-| Model Latency | >500ms p95 | Critical |
-| Vector Query Time | >1s average | Warning |
-| Available GPU Memory | <10% | Critical |
+| **Component** | **Function** | **Documentation** |
+|--------------|------------|-------------------|
+| **Control Plane** | Kubernetes management layer | [RKE2 Cluster](Kubernetes-Workloads/RKE2-Cluster.md) |
+| **Worker Nodes** | Compute resources for workloads | [Worker Nodes](../../infrastructure/kubernetes/README.md) |
+| **Storage Integration** | Persistent storage for workloads | [K8s Storage](Kubernetes-Workloads/RKE2-Cluster.md) |
 
----
+The RKE2 Kubernetes cluster provides a robust, scalable platform for deploying more complex containerized workloads that require orchestration capabilities beyond what Docker alone can provide.
 
-## 🔄 **5. Operational Procedures**
+## **3.2 Kubernetes Components**
 
-### **5.1 Routine Procedures**
+This subsection covers the key supporting components that enhance the Kubernetes platform capabilities.
 
-| **Procedure** | **Frequency** | **Role Responsible** | **Procedure Document** |
-|---------------|--------------|----------------------|------------------------|
-| Model Backup | Weekly | Operations | [AI Model Backup](../File-Storage/Restic/Model-Backup.md) |
-| Performance Optimization | Monthly | Engineer | [GPU Optimization](Inference-Engines/GPU-Optimization.md) |
-| Vector Database Reindexing | Quarterly | Engineer | [Milvus Maintenance](Vector-Databases/Milvus-Maintenance.md) |
+| **Component** | **Function** | **Documentation** |
+|--------------|------------|-------------------|
+| **Traefik Ingress** | External access management | [Traefik Ingress](Kubernetes-Workloads/Traefik-Ingress.md) |
+| **Cert Manager** | SSL certificate automation | [RKE2 Cluster](Kubernetes-Workloads/RKE2-Cluster.md) |
+| **Prometheus Operator** | Monitoring infrastructure | [RKE2 Cluster](Kubernetes-Workloads/RKE2-Cluster.md) |
 
-### **5.2 Troubleshooting**
-
-| **Common Issue** | **Symptoms** | **Resolution Steps** | **KEDB ID** |
-|------------------|------------|---------------------|------------|
-| GPU Memory Leak | Increasing memory usage, degraded performance | Restart TensorFlow Serving pod | KEDB-AI-001 |
-| Vector Index Corruption | Search failures, inconsistent results | Rebuild affected collection | KEDB-AI-002 |
-| Model Loading Failure | HTTP 503 from inference API | Check model path and permissions | KEDB-AI-003 |
+These Kubernetes components provide essential functionalities for routing, certificate management, and monitoring that support containerized application deployments.
 
 ---
 
-## 🔐 **6. Security Considerations**
+# 📦 **4. Container Deployments**
 
-| **Security Aspect** | **Implementation** | **Documentation** |
-|--------------------|-------------------|--------------------|
-| API Authentication | OAuth2 token-based auth via Zitadel | [API Security](../Identity/Zitadel/API-Security.md) |
-| Network Isolation | Namespace-based network policies | [K8s Network Policies](../Containerized-Services/Kubernetes-Workloads/Network-Policies.md) |
-| Model Integrity | Hash verification on model loading | [Model Validation](Inference-Engines/Model-Validation.md) |
+This section documents the containerized applications deployed across the Docker and Kubernetes infrastructure.
 
----
+## **4.1 Docker Application Stacks**
 
-## 🔄 **7. Process Integration**
+This subsection lists the primary Docker-based application stacks deployed in the environment.
 
-### **7.1 ITIL Process Relationship**
+| **Application Stack** | **Host** | **Documentation** |
+|----------------------|----------|-------------------|
+| **Gitea** | lab-apps01 | [Gitea Stack](../../docker/portainer-stacks/lab-apps01-portainer-docker-application-node/gitea/README.md) |
+| **GLPI** | lab-apps01 | [GLPI Stack](../../docker/portainer-stacks/lab-apps01-portainer-docker-application-node/glpi/README.md) |
+| **Vault** | lab-apps01 | [Vault Stack](../../docker/portainer-stacks/lab-apps01-portainer-docker-application-node/vault/README.md) |
+| **PostgreSQL** | lab-db01 | [PostgreSQL Stack](../../docker/portainer-stacks/lab-db01-portainer-docker-database-node/postgresql/README.md) |
 
-This documentation relates to the following ITIL processes:
+These Docker application stacks provide a variety of services, from version control to database platforms, supporting both infrastructure and research needs.
 
-- **Change Management** - AI platform upgrades and model deployments
-- **Incident Management** - Handling AI service disruptions
-- **Problem Management** - Root cause analysis for recurring AI issues
-- **Service Level Management** - Performance metrics for AI services
+## **4.2 Kubernetes Workloads**
 
-### **7.2 Role Responsibilities**
+This subsection covers the primary applications deployed on the Kubernetes platform.
 
-| **Role** | **Responsibility Related to AI/ML Platforms** |
-|----------|--------------------------------------------|
-| Engineer | Architecture design, deployment, security hardening |
-| Operations | Monitoring, incident response, performance tuning |
-| Research Lead | Model governance, research requirements |
-| Security Admin | Security policy enforcement, access review |
+| **Workload** | **Type** | **Documentation** |
+|--------------|----------|-------------------|
+| **Milvus** | Vector Database | [AI Workloads](../AI-ML-Platforms/Vector-Databases/Milvus.md) |
+| **TensorFlow Serving** | ML Model Serving | [Inference Engines](../AI-ML-Platforms/Inference-Engines/TensorFlow-Serving.md) |
+| **Airflow** | Workflow Orchestration | [Workflow Configuration](../Data-Analysis/Apache-Airflow/Workflow-Configuration.md) |
 
----
-
-## 🔗 **8. Related Documentation**
-
-| **Document Type** | **Document Name** | **Location** |
-|-------------------|-------------------|-------------|
-| Design Document | AI Infrastructure Architecture | [Architecture Documentation](../Infrastructure/Compute/Kubernetes/AI-Infrastructure.md) |
-| User Guide | AI Platform Access Guide | [User Access](../ITIL-Processes/Service-Catalog/AI-Platform-Access.md) |
-| Security Policy | Model Deployment Security | [Security Documentation](../Compliance-Security/Security-Policies/Model-Deployment.md) |
+These Kubernetes workloads represent more complex, scalable applications that benefit from Kubernetes orchestration capabilities for resilience and resource management.
 
 ---
 
-## ✅ **Approval & Review**
+# 🔐 **5. Security & Compliance**
+
+This section documents how security controls are implemented and how compliance requirements are met for containerized services.
+
+## **5.1 Container Security Controls**
+
+This subsection documents specific security measures implemented for containerized workloads.
+
+| **Control Type** | **Implementation** | **Verification Method** |
+|------------------|-------------------|------------------------|
+| **Image Security** | Verified image sources, scanning | Image scan reports |
+| **Network Policies** | Segmentation between workloads | Policy verification |
+| **Secret Management** | Vault integration for credentials | Secret access audit |
+| **Privilege Restrictions** | Non-root containers, security contexts | Configuration audit |
+
+The security controls table above documents implemented safeguards for containerized workloads, providing evidence for security assessments and compliance audits.
+
+## **5.2 Compliance Framework**
+
+This subsection explicitly maps container security implementation to compliance frameworks.
+
+| **Framework Control** | **Implementation** | **Evidence** |
+|----------------------|-------------------|-------------|
+| **CIS Docker Benchmark** | Hardened Docker daemon config | Configuration audit |
+| **Kubernetes CIS Benchmark** | Secured API server, RBAC | CIS-CAT reports |
+| **Data Protection (CIS 3)** | Encrypted volumes, network policies | Configuration validation |
+
+The compliance mapping table above demonstrates how containerized service implementations satisfy specific requirements across security frameworks.
+
+---
+
+# 🔄 **6. Operations & Maintenance**
+
+This section covers the operational procedures for maintaining containerized services in optimal condition.
+
+## **6.1 Routine Procedures**
+
+This subsection documents regular maintenance activities required to keep containerized services functioning properly.
+
+| **Procedure** | **Frequency** | **Responsible Role** |
+|---------------|--------------|----------------------|
+| **Image Updates** | Monthly | Engineer |
+| **Security Scanning** | Weekly | Security Admin |
+| **Resource Monitoring** | Continuous | Operations |
+| **Backup Verification** | Monthly | Operations |
+
+The routine procedures ensure containerized services remain secure, up-to-date, and properly resourced through regular maintenance activities.
+
+## **6.2 Troubleshooting Processes**
+
+This subsection provides guidance for identifying and resolving common issues with containerized services.
+
+| **Common Issue** | **Symptoms** | **Resolution Steps** |
+|------------------|------------|---------------------|
+| **Resource Exhaustion** | OOM errors, throttling | Resource limit adjustment |
+| **Network Connectivity** | Connection timeouts | Network policy verification |
+| **Storage Issues** | Volume mount failures | PV/PVC status check |
+| **Image Pull Errors** | Container creation failure | Registry authentication check |
+
+The troubleshooting processes provide structured approaches to resolving common container-related issues, minimizing downtime and service impact.
+
+---
+
+# 🔗 **7. Directory Contents**
+
+This section provides direct navigation to all subdirectories and key documents in this category.
+
+## **Subdirectories**
+
+This subsection identifies the main subdirectories within the Containerized Services section, explaining their purpose and providing navigation links.
+
+| **Directory** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Docker-Nodes** | Docker host documentation | [Docker-Nodes](Docker-Nodes/) |
+| **Kubernetes-Workloads** | Kubernetes deployment docs | [Kubernetes-Workloads](Kubernetes-Workloads/) |
+| **Portainer** | Portainer management platform | [Portainer](Portainer/) |
+
+The subdirectories table above provides navigation to key sections of the Containerized Services documentation, helping users locate specific information.
+
+## **Key Documents**
+
+This subsection highlights important standalone documents within the Containerized Services section that provide significant information.
+
+| **Document** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **RKE2-Cluster.md** | Kubernetes cluster overview | [RKE2 Cluster](Kubernetes-Workloads/RKE2-Cluster.md) |
+| **Traefik-Ingress.md** | Ingress controller configuration | [Traefik Ingress](Kubernetes-Workloads/Traefik-Ingress.md) |
+| **lab-port01.md** | Portainer server documentation | [Portainer Control Node](Portainer/lab-port01.md) |
+
+The key documents table above connects this document to other knowledge base articles, supporting comprehensive understanding and navigation.
+
+---
+
+# 🔄 **8. Related Categories**
+
+This section identifies other documentation categories related to Containerized Services, establishing relationships between different knowledge areas.
+
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **Infrastructure** | Physical hosts for containers | [Infrastructure README](../../Infrastructure/README.md) |
+| **Databases** | Containerized database platforms | [Databases README](../Databases/README.md) |
+| **AI-ML-Platforms** | ML workloads on Kubernetes | [AI-ML-Platforms README](../AI-ML-Platforms/README.md) |
+| **Observability** | Container monitoring integration | [Observability README](../Observability/README.md) |
+
+The related categories table above documents connections to other knowledge domains, helping users understand the broader context of containerized services.
+
+---
+
+# ✅ **9. Approval & Review**
+
+This section documents the formal review and approval process for this document. It ensures accountability and tracks who has verified the accuracy of the content.
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
 | VintageDon | Lead Engineer | 2025-03-16 | ✅ Approved |
 
+The approval and review table above documents who has verified the accuracy of this document and when, establishing accountability and ensuring quality.
+
 ---
 
-## 📜 **Change Log**
+# 📜 **10. Change Log**
+
+This section tracks the document's revision history. It provides transparency into how the document has evolved over time and who made the changes.
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
-| 1.0 | 2025-03-16 | Initial AI/ML Platforms documentation | VintageDon |
+| 1.0 | 2025-03-16 | Initial Containerized Services README | VintageDon |
+
+The change log table above provides a comprehensive history of document revisions, supporting version control and auditing requirements.

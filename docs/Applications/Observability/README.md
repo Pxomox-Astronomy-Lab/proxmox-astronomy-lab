@@ -14,223 +14,241 @@ last_updated: "2025-03-16"
 
 # 📊 **Observability**
 
-The Observability section documents the monitoring, logging, and alerting systems that provide comprehensive visibility into the Proxmox Astronomy Lab infrastructure. These platforms collect, analyze, and visualize metrics and logs to ensure reliable operations, rapid troubleshooting, and data-driven decision making.
+# 🔍 **1. Overview**
 
-## 🔍 **1. Overview**
+This section documents the monitoring, logging, and alerting systems that provide comprehensive visibility into the Proxmox Astronomy Lab infrastructure. These platforms collect, analyze, and visualize metrics and logs to ensure reliable operations, rapid troubleshooting, and data-driven decision making.
 
-This overview provides context for the lab's approach to observability, covering the purpose and scope of our monitoring infrastructure.
-
-### **1.1 Purpose**
-
-This section documents the **monitoring systems, logging platforms, and visualization tools** deployed within the Proxmox Astronomy Lab. It serves as a reference for the **architecture, configuration, and operational aspects** of these critical services that provide visibility into infrastructure performance, application health, and security events.
-
-### **1.2 Scope**
-
-The following table defines what is included and excluded from this documentation to help readers understand its boundaries.
-
-| **In Scope** | **Out of Scope** |
-|--------------|------------------|
-| Monitoring platform deployment and configuration | Application-specific internals monitoring |
-| Logging system setup and management | Research-specific data analysis |
-| Alert configuration and notification rules | Business intelligence reporting |
-| Dashboard creation and management | Network probe configuration details |
-
-### **1.3 Target Audience**
-
-Engineers, operators, and administrators who need to deploy, manage, or use the lab's observability infrastructure for monitoring and troubleshooting.
+Our observability stack combines Prometheus for metrics collection, Loki for centralized logging, and Grafana for unified visualization, providing a complete picture of infrastructure health and performance.
 
 ---
 
-## 📈 **2. Observability Components**
+# 📈 **2. Monitoring Components**
 
-Our lab employs a comprehensive set of observability tools that work together to provide complete visibility into all systems.
+This section covers the primary monitoring platforms deployed in the lab environment, documenting their purpose and key capabilities.
 
-The following table outlines our primary observability platforms and their documentation:
+## **2.1 Prometheus**
 
-| **Component** | **Purpose** | **Key Documentation** |
-|--------------|------------|----------------------|
-| [**Prometheus**](Prometheus/index.md) | Metrics collection and alerting | Installation, configuration, exporters |
-| [**Grafana**](Grafana/index.md) | Visualization and dashboards | Setup, dashboard creation, data sources |
-| [**Loki**](Loki/index.md) | Log aggregation and querying | Deployment, Promtail setup, log queries |
+This subsection documents the metrics collection and alerting platform that forms the foundation of our monitoring infrastructure.
 
----
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Prometheus Server** | Time-series metrics database | [Prometheus Server](Prometheus/Prometheus-Server.md) |
+| **AlertManager** | Alert routing and notification | [Prometheus Server](Prometheus/Prometheus-Server.md) |
+| **Exporters** | Specialized metrics collectors | [Exporters](Prometheus/Exporters/) |
 
-## 🏗️ **3. Technical Documentation**
+The Prometheus platform provides comprehensive metrics collection, time-series storage, and alerting capabilities for all infrastructure components and applications.
 
-This section covers the technical implementation details of our observability infrastructure, including architectural design and integration strategy.
+## **2.2 Loki**
 
-### **3.1 Architecture Overview**
+This subsection details the log aggregation system used for centralized logging across the environment.
 
-The observability infrastructure follows a modular design that separates concerns while providing integrated insights:
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Loki Server** | Log aggregation and querying | [Log Pipelines](Loki/Log-Pipelines.md) |
 
-- **Prometheus** for metrics collection, storage, and alerting
-- **Loki** for centralized log aggregation and searching
-- **Grafana** for unified visualization of both metrics and logs
-- **Alertmanager** for alert routing and notification management
-- **Node Exporters** for system-level metrics collection
-- **Promtail** for log shipping from all systems
+Loki enables efficient log collection, storage, and analysis across the lab environment, providing rapid access to log data for troubleshooting and audit purposes.
 
-### **3.2 Infrastructure Components**
+## **2.3 Grafana**
 
-The following table details the key infrastructure components that make up our observability solution:
+This subsection documents the visualization platform used to create dashboards and explore metrics and logs.
 
-| **Component** | **Description** | **CMDB ID** |
-|---------------|----------------|------------|
-| Monitoring Server | Central Prometheus and Alertmanager | lab-mon01 |
-| Logging Server | Loki log aggregation platform | lab-mon01 |
-| Visualization Platform | Grafana dashboards and alerts | lab-mon01 |
-| Metrics Database | Prometheus time-series database | prom-tsdb-volume |
-| Log Storage | Loki chunks and index storage | loki-storage-volume |
-| Metric Collectors | Node exporters on all systems | multiple |
-| Log Collectors | Promtail agents on all systems | multiple |
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Grafana Server** | Visualization and dashboarding | [Grafana Server](Grafana/Grafana-Server.md) |
+| **Dashboards** | Pre-configured visualizations | [Dashboards](Grafana/Dashboards/) |
 
-### **3.3 Dependencies**
-
-The following table outlines the dependencies and relationships between our observability systems and other infrastructure components:
-
-| **Dependency Type** | **Service/Component** | **Impact if Unavailable** |
-|---------------------|----------------------|---------------------------|
-| **Requires** | Docker Container Runtime | Observability services unavailable |
-| **Requires** | Storage Systems | Metrics and logs not retained |
-| **Requires** | Network Infrastructure | Data collection disrupted |
-| **Required By** | Alert Notification System | Alerts not triggered or delivered |
-| **Required By** | Capacity Planning | Performance trending unavailable |
-| **Required By** | Incident Response | Troubleshooting capabilities reduced |
+Grafana provides a powerful interface for creating interactive dashboards and exploring metrics and logs, enabling operational insight across all lab systems.
 
 ---
 
-## 📈 **4. Service Management**
+# 🏗️ **3. Technical Architecture**
 
-This section describes how observability services are managed, including access control and monitoring of the monitoring systems themselves.
+This section details the technical implementation of the observability infrastructure, including deployment patterns, data flows, and integration points.
 
-### **4.1 Access Management**
+## **3.1 Deployment Architecture**
 
-The following table outlines the access management approach for observability platforms:
+This subsection explains how observability components are deployed and managed within the lab environment.
 
-| **User Role** | **Access Level** | **Authorization Process** |
-|---------------|----------------|---------------------------|
-| Monitoring Administrator | Full administration | Approved by Lab Owner via Zitadel |
-| Engineer | Edit access to dashboards and alerts | Approved by Monitoring Administrator |
-| Operator | View access with limited edit rights | Approved by Engineer |
-| Application Owner | View access to specific dashboards | Approved by Engineer |
-| Researcher | View access to research dashboards | Approved by Research Lead |
+| **Component** | **Deployment Method** | **Host System** |
+|--------------|----------------------|----------------|
+| **Prometheus** | Docker container | lab-mon01 |
+| **Loki** | Docker container | lab-mon01 |
+| **Grafana** | Docker container | lab-mon01 |
+| **Exporters** | System services / containers | Various hosts |
 
-### **4.2 Monitoring & Alerting**
+The deployment architecture provides a centralized platform for metrics and logs collection, with distributed collectors deployed across the environment.
 
-The following table details how the monitoring systems themselves are monitored for reliability:
+## **3.2 Data Storage**
 
-| **Metric** | **Threshold** | **Alert Severity** |
-|------------|--------------|-------------------|
-| Prometheus Availability | <99.9% uptime | Critical |
-| Loki Availability | <99.5% uptime | Critical |
-| Grafana Availability | <99.5% uptime | Warning |
-| Scrape Interval Delays | >2x target interval | Warning |
-| Failed Targets | Any for >5 minutes | Warning |
-| Storage Capacity | >85% utilized | Warning |
-| Query Latency | >5s p95 | Warning |
+This subsection details how observability data is stored and retained throughout its lifecycle.
 
----
+| **Data Type** | **Storage Technology** | **Retention Period** |
+|--------------|------------------------|----------------------|
+| **Metrics** | Time-series database (TSDB) | 30 days |
+| **Logs** | Object storage (MinIO) | 14 days |
+| **Alerts** | In-memory database | 7 days active, 30 days history |
 
-## 🔄 **5. Operational Procedures**
-
-This section covers routine procedures and troubleshooting approaches for observability systems.
-
-### **5.1 Routine Procedures**
-
-The following table outlines standard operational procedures for observability management:
-
-| **Procedure** | **Frequency** | **Role Responsible** | **Procedure Document** |
-|---------------|--------------|----------------------|------------------------|
-| Alert Rule Review | Monthly | Monitoring Administrator | [Alert Rule Management](Prometheus/Alert-Rule-Management.md) |
-| Dashboard Maintenance | Quarterly | Engineer | [Dashboard Maintenance](Grafana/Dashboard-Maintenance.md) |
-| Retention Policy Review | Quarterly | Engineer | [Retention Management](Prometheus/Retention-Management.md) |
-| Performance Tuning | Quarterly | Engineer | [Query Optimization](Prometheus/Query-Optimization.md) |
-| Exporter Health Check | Monthly | Operations | [Exporter Verification](Prometheus/Exporter-Verification.md) |
-
-### **5.2 Troubleshooting**
-
-The following table provides guidance for addressing common observability-related issues:
-
-| **Common Issue** | **Symptoms** | **Resolution Steps** | **KEDB ID** |
-|------------------|------------|---------------------|------------|
-| Missing Metrics | Data gaps in dashboards | Check exporter status, verify scrape configs | KEDB-OBS-001 |
-| Alert Storms | Multiple related alerts firing | Implement alert grouping, adjust thresholds | KEDB-OBS-002 |
-| Query Performance | Slow dashboard loading | Optimize queries, adjust time ranges | KEDB-OBS-003 |
-| Log Indexing Issues | Missing logs, search failures | Verify Promtail configuration, check Loki indexing | KEDB-OBS-004 |
-| Storage Exhaustion | Service crashes, data loss | Adjust retention, increase storage capacity | KEDB-OBS-005 |
+The storage implementation balances retention requirements with resource constraints, providing appropriate data availability for troubleshooting and analysis.
 
 ---
 
-## 🔐 **6. Security Considerations**
+# 📊 **4. Monitoring Coverage**
 
-This section outlines the security measures implemented for observability systems.
+This section documents the scope of monitoring coverage across different infrastructure domains.
 
-The following table highlights key security aspects:
+## **4.1 Infrastructure Monitoring**
 
-| **Security Aspect** | **Implementation** | **Documentation** |
-|--------------------|-------------------|--------------------|
-| Authentication | Zitadel SSO integration | [Grafana Authentication](Grafana/Authentication.md) |
-| Authorization | Role-based access control | [Grafana RBAC](Grafana/RBAC-Configuration.md) |
-| Network Security | TLS encryption, restricted access | [Observability Network Security](../Compliance-Security/Security-Policies/Observability-Network-Security.md) |
-| Data Protection | Sensitive data filtering | [Data Protection](Prometheus/Data-Protection.md) |
-| API Security | Token-based authentication, rate limiting | [API Security](Prometheus/API-Security.md) |
+This subsection covers how physical and virtual infrastructure components are monitored.
 
----
+| **Target** | **Metrics Collected** | **Dashboard** |
+|------------|----------------------|---------------|
+| **Proxmox Nodes** | CPU, memory, disk, network | [Node Exporter Dashboard](Grafana/Dashboards/node-exporter-full-dashboard-screenshot.png) |
+| **Virtual Machines** | Resource utilization, availability | [Proxmox Cluster Dashboard](Grafana/Dashboards/promox-cluster-flux-graphical-dashboard-screenshot.png) |
+| **Network Devices** | Interface status, throughput | [SNMP Dashboard](Grafana/Dashboards/network-snmp-device-smmary-dashboard-screenshot.png) |
+| **Storage Systems** | Capacity, IOPS, latency | [Node Exporter Dashboard](Grafana/Dashboards/node-exporter-full-dashboard-screenshot.png) |
 
-## 🔄 **7. Process Integration**
+The infrastructure monitoring provides comprehensive visibility into the health, performance, and capacity of all physical and virtual components.
 
-This section explains how observability systems relate to established ITIL processes and organizational roles.
+## **4.2 Application Monitoring**
 
-### **7.1 ITIL Process Relationship**
+This subsection documents how applications and services are monitored.
 
-This documentation relates to the following ITIL processes:
+| **Application Type** | **Metrics Collected** | **Dashboard** |
+|----------------------|----------------------|---------------|
+| **Databases** | Query performance, connections | [PostgreSQL Dashboard](Grafana/Dashboards/postgresql-dashboard-screenshot.png) |
+| **Containers** | Resource usage, state | [cAdvisor Dashboard](Grafana/Dashboards/cadvisor-compute-resources-dashboard-screenshot.png) |
+| **Kubernetes** | Pod status, resource utilization | [K8s Dashboard](Grafana/Dashboards/) |
+| **Service Health** | Availability, latency | [Service Health Dashboard](Grafana/Dashboards/) |
 
-- **Event Management** - Monitoring, alerting, and notification workflow
-- **Incident Management** - Detection, diagnosis, and resolution tracking
-- **Problem Management** - Root cause analysis and trend identification
-- **Service Level Management** - SLA monitoring and reporting
-- **Availability Management** - Uptime tracking and service health monitoring
-- **Capacity Management** - Resource utilization trending and forecasting
-- **Change Management** - Impact assessment and verification
-
-### **7.2 Role Responsibilities**
-
-The following table outlines role-specific responsibilities related to observability:
-
-| **Role** | **Responsibility Related to Observability** |
-|----------|---------------------------------------------|
-| Engineer | Architecture design, integration, performance tuning |
-| Monitoring Administrator | Platform configuration, alert rules, retention policy |
-| Operations | Daily monitoring, alert response, first-level troubleshooting |
-| Security Administrator | Security monitoring, audit log review |
-| Application Owner | Application-specific metrics and alert thresholds |
+The application monitoring provides detailed insights into the performance, availability, and resource usage of all applications and services.
 
 ---
 
-## 🔗 **8. Related Documentation**
+# 🔐 **5. Security & Compliance**
 
-The following table provides links to related documentation resources:
+This section documents how security controls are implemented and how compliance requirements are met within the observability infrastructure.
 
-| **Document Type** | **Document Name** | **Location** |
-|-------------------|-------------------|-------------|
-| Architecture Document | Observability Architecture | [Architecture Documentation](../Infrastructure/Control-Plane/Observability-Architecture.md) |
-| User Guide | Grafana Dashboard Guide | [User Guide](../ITIL-Processes/Service-Catalog/Grafana-Dashboard-Guide.md) |
-| Security Policy | Monitoring Security Standards | [Security Policies](../Compliance-Security/Security-Policies/Monitoring-Security-Standards.md) |
-| Operational Procedure | Alert Response Procedures | [Incident Management](../ITIL-Processes/Incident-Management/Alert-Response-Procedures.md) |
-| Integration Guide | Exporter Deployment | [Integration Guide](Prometheus/Exporter-Deployment.md) |
+## **5.1 Access Control**
+
+This subsection documents the access management approach for observability platforms.
+
+| **Control Type** | **Implementation** | **Verification Method** |
+|------------------|-------------------|------------------------|
+| **Authentication** | Zitadel SSO integration | Login audit logs |
+| **Authorization** | Role-based access control | Permission audit |
+| **API Security** | Token-based access, TLS | Configuration review |
+
+The access control mechanisms ensure appropriate authorization for all interactions with observability platforms while maintaining audit capabilities.
+
+## **5.2 Secure Data Handling**
+
+This subsection covers how sensitive data is protected within monitoring systems.
+
+| **Data Type** | **Protection Mechanism** | **Verification Method** |
+|---------------|--------------------------|------------------------|
+| **Credentials** | Scrubbed from logs | Log inspection |
+| **Personal Data** | Filtered at collection time | Pipeline configuration review |
+| **Security Events** | Access-restricted dashboards | Permission validation |
+
+The data protection mechanisms ensure that sensitive information is appropriately safeguarded throughout the monitoring infrastructure.
 
 ---
 
-## ✅ **Approval & Review**
+# 🔄 **6. Operations & Maintenance**
+
+This section covers the operational procedures for maintaining observability systems in optimal condition.
+
+## **6.1 Routine Procedures**
+
+This subsection documents regular maintenance activities required to keep observability platforms functioning properly.
+
+| **Procedure** | **Frequency** | **Responsible Role** |
+|---------------|--------------|----------------------|
+| **Alert Rule Review** | Monthly | Engineer |
+| **Dashboard Maintenance** | Quarterly | Engineer |
+| **Retention Policy Review** | Quarterly | Engineer |
+| **Performance Tuning** | Monthly | Engineer |
+
+These routine procedures ensure observability platforms remain optimized and properly configured through regular maintenance activities.
+
+## **6.2 Troubleshooting**
+
+This subsection provides guidance for identifying and resolving common observability-related issues.
+
+| **Common Issue** | **Symptoms** | **Resolution Steps** |
+|------------------|------------|---------------------|
+| **Missing Metrics** | Data gaps in dashboards | Check exporter status, verify scrape configs |
+| **Alert Storms** | Multiple related alerts firing | Implement alert grouping, adjust thresholds |
+| **Query Performance** | Slow dashboard loading | Optimize queries, adjust time ranges |
+| **Storage Exhaustion** | Service crashes, data loss | Adjust retention, increase storage capacity |
+
+The troubleshooting guidance provides structured approaches to resolving common observability issues, minimizing impact to monitoring capabilities.
+
+---
+
+# 🔗 **7. Directory Contents**
+
+This section provides direct navigation to all subdirectories and key documents in this category.
+
+## **Subdirectories**
+
+This subsection identifies the main subdirectories within the Observability section, explaining their purpose and providing navigation links.
+
+| **Directory** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Grafana** | Visualization platform documentation | [Grafana](Grafana/) |
+| **Loki** | Logging platform documentation | [Loki](Loki/) |
+| **Prometheus** | Metrics platform documentation | [Prometheus](Prometheus/) |
+
+The subdirectories table above provides navigation to key sections of the Observability documentation, helping users locate specific information.
+
+## **Key Documents**
+
+This subsection highlights important standalone documents within the Observability section that provide significant information.
+
+| **Document** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Prometheus-Server.md** | Prometheus configuration details | [Prometheus Server](Prometheus/Prometheus-Server.md) |
+| **Log-Pipelines.md** | Log collection configuration | [Log Pipelines](Loki/Log-Pipelines.md) |
+| **Grafana-Server.md** | Grafana setup and management | [Grafana Server](Grafana/Grafana-Server.md) |
+
+The key documents table above connects this document to other knowledge base articles, supporting comprehensive understanding and navigation.
+
+---
+
+# 🔄 **8. Related Categories**
+
+This section identifies other documentation categories related to Observability, establishing relationships between different knowledge areas.
+
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **Infrastructure** | Monitored systems | [Infrastructure README](../../Infrastructure/README.md) |
+| **Containerized-Services** | Container monitoring | [Containerized-Services README](../Containerized-Services/README.md) |
+| **Databases** | Database monitoring | [Databases README](../Databases/README.md) |
+| **Control-Plane** | Core monitoring services | [Control-Plane README](../../Control-Plane/README.md) |
+
+The related categories table above documents connections to other knowledge domains, helping users understand the broader context of observability platforms.
+
+---
+
+# ✅ **9. Approval & Review**
+
+This section documents the formal review and approval process for this document. It ensures accountability and tracks who has verified the accuracy of the content.
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
 | VintageDon | Lead Engineer | 2025-03-16 | ✅ Approved |
 
+The approval and review table above documents who has verified the accuracy of this document and when, establishing accountability and ensuring quality.
+
 ---
 
-## 📜 **Change Log**
+# 📜 **10. Change Log**
+
+This section tracks the document's revision history. It provides transparency into how the document has evolved over time and who made the changes.
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
-| 1.0 | 2025-03-16 | Initial Observability documentation | VintageDon |
+| 1.0 | 2025-03-16 | Initial Observability README | VintageDon |
+
+The change log table above provides a comprehensive history of document revisions, supporting version control and auditing requirements.

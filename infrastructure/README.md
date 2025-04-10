@@ -1,149 +1,153 @@
-# **Proxmox Astronomy Lab - Infrastructure Overview**
+<!-- 
+---
+title: "Infrastructure Overview - Proxmox Astronomy Lab"
+description: "High-level documentation of the core infrastructure components that support the Proxmox Astronomy Lab's research and IT operations"
+author: "VintageDon"
+tags: ["infrastructure", "architecture", "proxmox", "virtualization", "kubernetes", "networking", "storage", "observatory"]
+kb_type: "Reference"
+version: "1.0"
+status: "Published"
+last_updated: "2025-04-04"
+related_services: ["Proxmox", "Kubernetes", "Storage", "Networking", "Control Plane"]
+implements_policies: ["Infrastructure Security Policy", "High Availability Policy"]
+phase: "phase-1"
+---
+-->
 
-## **Introduction**
+# 🏗️ **Infrastructure Overview - Proxmox Astronomy Lab**
 
-The **Proxmox Astronomy Lab** is a purpose-built hybrid research and IT environment that supports **radio astronomy, AI-driven signal processing, and structured IT operations**. Infrastructure plays a foundational role in ensuring that the lab is **scalable, high-performance, and secure** while maintaining the flexibility needed for continuous research.
+# 🔍 **1. Overview**
 
-This section provides a **detailed breakdown of the infrastructure**, from **compute resources and Kubernetes deployments** to **networking, storage, and observatory hardware**. Each component has been architected to balance **performance, modularity, and security**, ensuring that the lab can evolve alongside its research needs.
+The Proxmox Astronomy Lab infrastructure provides a purpose-built hybrid research and IT environment that supports radio astronomy, AI-driven signal processing, and structured IT operations. This infrastructure forms the foundation for all lab capabilities, balancing performance, security, and modularity to create a cohesive system that bridges high-performance computing and scientific research.
 
-This is not a traditional **enterprise stack**, nor is it a **home lab with ad-hoc infrastructure**—it is a structured system that **blends DevOps methodologies, high-performance computing, and scientific instrumentation into a cohesive environment.**
-
- ![infrastructure-hardware-network-layer](/assets/diagrams/infrastructure-hardware-network-layer-2.png)
+This section offers a comprehensive overview of the lab's infrastructure components, from compute resources and virtualization to networking, storage, and specialized observatory hardware. Rather than being either a traditional enterprise stack or an ad-hoc home lab, this infrastructure represents a carefully designed middle ground that implements professional practices at an appropriate scale for research and education.
 
 ---
 
-## **Infrastructure Components**
+# 🖥️ **2. Core Infrastructure Components**
 
-The infrastructure is divided into key areas, each serving a specific function in the lab's operations.
+## **2.1 Compute & Virtualization**
 
-### **Compute & Virtualization**
+The compute infrastructure provides the processing capabilities that power all lab services and research workloads.
 
-- **Proxmox Cluster** → Five-node cluster supporting research workloads, virtualized infrastructure, and GPU-accelerated processing.
-- **Kubernetes (RKE2)** → A containerized workload environment optimized for ML/AI, automation, and scientific data pipelines.
-- **GPU Workloads** → Dedicated compute resources for AI-driven signal processing and astronomical data analysis.
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Proxmox Cluster** | Five-node virtualization platform supporting all lab services | [Proxmox Documentation](./proxmox/README.md) |
+| **Kubernetes (RKE2)** | Container orchestration for research applications and services | [Kubernetes Documentation](./kubernetes/README.md) |
+| **Control Plane Services** | Core infrastructure services managing identity, security, and automation | [Control Plane Documentation](./control-plane/README.md) |
 
-### **Networking & Security**
+## **2.2 Networking & Connectivity**
 
-- **VLAN-Segmented Architecture** → Logical separation between control plane, research workloads, and observatory systems.
-- **Zero-Trust Security** → Enforced via **Entra ID, Conditional Access, and Tailscale**.
-- **Hybrid Identity Management** → Windows Server 2025 AD & Entra ID hybrid model with Azure Arc integration.
+The network infrastructure enables secure, high-performance communication between all lab components.
 
-### **Storage & Data Management**
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **VLAN Segmentation** | Logical separation of management, research, and observatory traffic | [Networking Documentation](./networking/README.md) |
+| **Edge Security** | Perimeter protection and filtering for external communications | [Networking Documentation](./networking/README.md) |
+| **Zero-Trust Access** | Secure remote connectivity via Entra ID and conditional access | [Entra Documentation](/entra-hybrid-cloud/README.md) |
 
-- **NVMe-Backed Object Storage** → High-speed S3 gateway for research data and Kubernetes workloads.
-- **PostgreSQL & TimescaleDB** → Structured database solutions for astronomical data and signal storage.
-- **Proxmox Backup Server (PBS)** → Daily snapshot-based backup strategy with offsite replication.
+## **2.3 Storage Infrastructure**
 
-### **Observatory & Research Hardware**
+Multi-tiered storage solutions support various performance, capacity, and reliability requirements.
 
-- **Hydrogen Line Research Systems** → Custom-built **radio astronomy hardware, antennas, and SDR receivers**.
-- **Signal Processing Pipelines** → AI-driven **noise reduction, signal validation, and long-term data retention**.
-- **Scientific Data Integration** → Federated research approach leveraging public datasets alongside lab-collected data.
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Local NVMe Storage** | High-performance storage for virtualization and databases | [Storage Documentation](./storage/README.md) |
+| **ZFS Storage Pool** | Reliable, snapshot-capable storage for research data | [Storage Documentation](./storage/README.md) |
+| **Object Storage** | S3-compatible storage for unstructured research data | [Storage Documentation](./storage/README.md) |
 
-```mermaid
-graph TB
-    %% Identity & Authentication Core
-    subgraph "Identity & Authentication"
-        DC01["lab-dc01<br>Primary DC<br>Windows Server 2025<br>VLAN10"]
-        DC02["lab-dc02<br>Read-Only DC<br>Windows Server 2025<br>VLAN20"]
-        DNS01["lab-dns01<br>DNS Filtering<br>Ubuntu 24.04<br>VLAN10"]
-        DNS02["lab-dns02<br>DNS Filtering<br>Ubuntu 24.04<br>VLAN20"]
-    end
-    
-    %% Security Services
-    subgraph "Security & Monitoring"
-        SOC01["lab-soc01<br>Wazuh SIEM/XDR<br>Ubuntu 24.04<br>VLAN10"]
-        MON01["lab-mon01<br>Prometheus/Loki/Grafana<br>Ubuntu 24.04<br>VLAN10"]
-    end
-    
-    %% Automation & Management
-    subgraph "Automation & Orchestration"
-        ANS01["lab-ansible01<br>Ansible Controller<br>Ubuntu 24.04<br>VLAN10"]
-        PORT01["lab-port01<br>Portainer Control<br>Ubuntu 24.04<br>VLAN10"]
-    end
-    
-    %% Application & Storage
-    subgraph "Application & Data Services"
-        APPS01["lab-apps01<br>Containerized Apps<br>Ubuntu 24.04<br>VLAN10"]
-        DB01["lab-db01<br>Database Host<br>Ubuntu 24.04<br>VLAN10"]
-        FS01["lab-fs01<br>File Shares<br>Windows Server 2025<br>VLAN10"]
-    end
-    
-    %% Core Relationships
-    DC01 --- DC02
-    DC01 --- DNS01
-    DC02 --- DNS02
-    
-    %% Security Monitoring
-    DC01 --> SOC01
-    MON01 --> SOC01
-    
-    %% Automation Relationships
-    ANS01 --> DC01
-    ANS01 --> APPS01
-    ANS01 --> DB01
-    PORT01 --> APPS01
-    PORT01 --> DB01
-    
-    %% Data Relationships
-    DB01 --> FS01
-    APPS01 --> DB01
-    
-    %% Monitoring Relationships
-    MON01 --> DC01
-    MON01 --> DC02
-    MON01 --> APPS01
-    MON01 --> DB01
-    MON01 --> PORT01
-    MON01 --> ANS01
-    MON01 --> DNS01
-    MON01 --> DNS02
-    MON01 --> FS01
-    
-    %% Style Classes - Black boxes with white text
-    classDef default fill:#000000,color:#ffffff,stroke:#333,stroke-width:1px
-    
-    class DC01,DC02,DNS01,DNS02,SOC01,MON01,ANS01,PORT01,APPS01,DB01,FS01 default
-```
+## **2.4 Research-Specific Infrastructure**
+
+Specialized components dedicated to scientific research and data acquisition.
+
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Observatory Hardware** | Radio astronomy equipment and signal processing chain | [Observatory Documentation](./observatory-hardware/README.md) |
+| **Project Services** | Research databases, VDI, and application services | [Projects Documentation](./projects/README.md) |
 
 ---
 
-## **How This Section is Organized**
+# 📊 **3. Architecture Overview**
 
-This section is divided into **specific infrastructure components**, each with its own documentation for clarity and depth.
+The infrastructure architecture follows a layered approach that enables both isolation and integration of various components.
 
-### **[Control Plane](control-plane/README.md)**
+![Infrastructure Diagram](/assets/diagrams/infrastructure-hardware-network-layer-2.png)
 
-Handles the **management of Kubernetes, orchestration layers, and core services** that enable research operations.
+The architecture implements several key design principles:
 
-### **[Kubernetes](kubernetes/README.md)**
-
-Documents the **RKE2 cluster, workloads, and supporting containerized services**.
-
-### **[Networking](networking/README.md)**
-
-Covers the **structured VLAN segmentation, firewall policies, and network topology** of the lab.
-
-### **[Observatory Hardware](observatory-hardware/README.md)**
-
-Details **radio astronomy instrumentation, SDR hardware, and data acquisition methods**.
-
-### **[Projects](projects/README.md)**
-
-Tracks **current and planned research efforts**, including **Hydrogen Line studies, AI-driven analysis, and collaborative projects**.
-
-### **[Proxmox](proxmox/README.md)**
-
-Explains the **hypervisor architecture, VM deployments, and high-performance computing environments**.
-
-### **[Storage](storage/README.md)**
-
-Documents **data handling strategies, structured database implementations, and long-term archival policies**.
+- **High modularity** with structured VLAN segmentation
+- **Defense-in-depth** security with layered controls
+- **Performance optimization** for research workloads
+- **Hybrid identity management** with on-premises and cloud integration
+- **Comprehensive monitoring** and observability
 
 ---
 
-## **Why This Matters**
+# 🔄 **4. Implementation Status**
 
-This infrastructure is **purpose-built to bridge the gap between high-performance computing, structured research, and modern IT automation**. Every component is designed with **long-term scalability, reproducibility, and automation** in mind, ensuring that the lab remains at the forefront of **scientific computing and DevOps-driven research**.
+The infrastructure deployment follows a phased approach aligned with the overall lab roadmap.
 
-📌 **This section is continuously evolving as new integrations, optimizations, and research initiatives are introduced.**
+| **Component** | **Status** | **Implementation Phase** |
+|--------------|------------|-------------------------|
+| **Proxmox Cluster** | ✅ Complete | Phase 1 |
+| **Control Plane Services** | ✅ Complete | Phase 1 |
+| **Networking & Security** | ✅ Complete | Phase 1 |
+| **Storage Infrastructure** | ✅ Complete | Phase 1 |
+| **Kubernetes Deployment** | ✅ Complete | Phase 2 |
+| **Observatory Hardware** | ✅ Complete | Phase 2 |
+| **Project Services** | 🚧 In Progress | Phase 3 |
+| **AI/ML Infrastructure** | 🚧 In Progress | Phase 3 |
+| **Public Data Services** | ⏳ Planned | Phase 4 |
+
+---
+
+# 🔗 **5. Directory Contents**
+
+This section provides direct navigation to all subdirectories in the infrastructure category:
+
+## **Subdirectories**
+
+| **Directory** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Control Plane** | Core infrastructure services documentation | [Control Plane](./control-plane/README.md) |
+| **Kubernetes** | Container orchestration documentation | [Kubernetes](./kubernetes/README.md) |
+| **Networking** | Network architecture and components | [Networking](./networking/README.md) |
+| **Observatory Hardware** | Radio astronomy equipment | [Observatory Hardware](./observatory-hardware/README.md) |
+| **Projects** | Research-specific virtual machines and services | [Projects](./projects/README.md) |
+| **Proxmox** | Virtualization platform documentation | [Proxmox](./proxmox/README.md) |
+| **Storage** | Storage architecture and services | [Storage](./storage/README.md) |
+
+## **Key Documents**
+
+| **Document** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Hardware Overview** | Physical infrastructure summary | [Hardware Overview](./proxmox-astronomy-lab-hardware-overview.md) |
+| **VM Infrastructure List** | Complete VM inventory | [VM Infrastructure List](/virtual-machine-infrastructure-list.md) |
+
+---
+
+# 🔄 **6. Related Categories**
+
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **Documentation Standards** | Documentation guidelines for infrastructure | [Documentation Standards](/docs/Documentation-Standards/README.md) |
+| **Applications** | Services running on infrastructure | [Applications Documentation](/docs/Applications/README.md) |
+| **Security & Compliance** | Security controls for infrastructure | [Security Documentation](/docs/Compliance-Security/README.md) |
+| **ITIL Processes** | Management processes for infrastructure | [ITIL Documentation](/docs/ITIL-Processes/README.md) |
+| **Research Projects** | Scientific work using infrastructure | [Research Documentation](/docs/Research-Projects/README.md) |
+
+---
+
+# ✅ **7. Approval & Review**
+
+| **Reviewer** | **Role** | **Approval Date** | **Status** |
+|-------------|---------|------------------|------------|
+| VintageDon | Lead Engineer | 2025-04-04 | ✅ Approved |
+
+---
+
+# 📜 **8. Change Log**
+
+| **Version** | **Date** | **Changes** | **Author** |
+|------------|---------|-------------|------------|
+| 1.0 | 2025-04-04 | Structured README for infrastructure overview | VintageDon |

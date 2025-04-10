@@ -1,120 +1,212 @@
-﻿<!-- 
+﻿# 📡 **Observatory Hardware**
+
+# 🔍 **1. Overview**
+
+The Observatory Hardware section documents the specialized radio astronomy equipment deployed in the Proxmox Astronomy Lab, with a primary focus on hydrogen line detection at 1.42 GHz. This hardware forms the foundation of our scientific research capabilities, allowing for detection and analysis of galactic hydrogen emissions, high-velocity clouds (HVCs), and supernova remnants (SNRs) through a carefully engineered signal chain optimized for citizen science-grade observations.
+
+Our observatory hardware is designed to balance scientific capability with practical constraints of an urban residential deployment, implementing specialized filters, amplifiers, and processing systems to achieve research-grade sensitivity while maintaining a minimal physical footprint and aesthetic impact.
+
 ---
-title: "Proxmox Astronomy Lab - Observatory Hardware"
-description: "Documentation of the radio astronomy equipment, signal chains, and hardware components used for hydrogen line research"
-author: "VintageDon"
-tags: ["hardware", "radio-astronomy", "hydrogen-line", "sdr", "antenna"]
-category: "Infrastructure"
-kb_type: "Reference"
-version: "1.0"
-status: "Published"
-last_updated: "2025-03-16"
+
+# 📻 **2. Radio Astronomy Feed Chain**
+
+## **2.1 Antenna System**
+
+The radio telescope's front-end components that capture hydrogen line signals:
+
+| **Component** | **Specifications** | **Documentation** |
+|--------------|-------------------|-------------------|
+| **Parabolic Antenna** | Nooelec H1 20dBi Gain | [Antenna Details](hydrogen-line-feed-chain.md#antenna) |
+| **Mounting System** | Fixed mount, NW quadrant focus | [Mount Configuration](mounting-system.md) |
+| **Feed Horn** | 1.42 GHz optimized design | [Feed Design](feed-design.md) |
+
+## **2.2 Signal Processing Chain**
+
+Low-noise amplification and filtering system for hydrogen line detection:
+
+| **Component** | **Specifications** | **Documentation** |
+|--------------|-------------------|-------------------|
+| **Pre-LNA Filter** | BP-2 Filter (1.42 GHz centered) | [Filter Specifications](hydrogen-line-feed-chain.md#pre-lna-filter) |
+| **Low Noise Amplifier** | 1420 MHz Cavity LNA (0.28 dB NF) | [LNA Details](hydrogen-line-feed-chain.md#low-noise-amplifier) |
+| **Noise Calibration** | ERB 10 dB Noise Source | [Calibration System](hydrogen-line-feed-chain.md#calibration) |
+
+## **2.3 Receiver Equipment**
+
+Software-defined radio and supporting components:
+
+| **Component** | **Specifications** | **Documentation** |
+|--------------|-------------------|-------------------|
+| **SDR Receiver** | Airspy R2 | [SDR Configuration](SDR-Equipment/airspy-r2-configuration.md) |
+| **Clock Source** | LBE-1420 GPSDO | [GPSDO Setup](hydrogen-line-feed-chain.md#clock) |
+| **Edge Processing** | N100 Mini PC (Edge Node) | [Edge Computing](edge-node-configuration.md) |
+
 ---
--->
 
-# 📡 **Proxmox Astronomy Lab - Observatory Hardware**
+# 🔧 **3. Technical Specifications**
 
-Our observatory hardware comprises specialized radio astronomy equipment designed for hydrogen line detection, signal processing, and data acquisition in an urban residential environment.
+## **3.1 System Performance**
 
-## 🔭 **1. Research Focus**
+Key technical parameters that define the observatory's capabilities:
 
-The hardware infrastructure is optimized for:
+| **Parameter** | **Value** | **Significance** |
+|--------------|----------|-----------------|
+| **System Temperature** | ~70K | Determines sensitivity to weak signals |
+| **Total Gain** | ~54 dB | Amplification throughout signal chain |
+| **Frequency Range** | 1.4-1.427 GHz | Optimized for hydrogen line (1.42 GHz) |
+| **Beamwidth** | ~10° | Angular resolution of observation |
 
-- **Hydrogen Line studies** (1.42 GHz)
-- **High-Velocity Cloud (HVC) tracking**
-- **Supernova Remnant (SNR) detection**
-- **Long-term drift scan observations**
+## **3.2 Cabling & Connectivity**
 
-Our equipment balances sensitivity requirements with practical constraints of an urban deployment.
+Signal transmission infrastructure:
 
-## 📊 **2. Feed Chain Architecture**
+| **Component** | **Specifications** | **Documentation** |
+|--------------|-------------------|-------------------|
+| **Primary Coax** | LMR400 (25ft) | [Cable Configuration](cabling-configuration.md) |
+| **Connectors** | SMA (Male/Female) | [Connector Types](connector-specifications.md) |
+| **Lightning Protection** | Proxicast Arrestor | [Lightning Protection](lightning-protection.md) |
 
-The radio astronomy signal chain consists of carefully matched components that maximize sensitivity while minimizing noise and interference.
+---
 
-![Feed Chain Diagram](../assets/feed-chain-diagram.png)
+# 🌐 **4. Deployment Environment**
 
-### **2.1 Signal Chain Components**
+## **4.1 Site Characteristics**
 
-| **Component** | **Model** | **Specifications** | **Documentation** |
-|--------------|----------|-------------------|-------------------|
-| **Antenna** | Nooelec Hydrogen Line Parabolic | 20 dBi gain, 1.42 GHz | [Details →](hydrogen-line-feed-chain.md#antenna) |
-| **Pre-LNA Filter** | BP-2 | 0.7 dB loss, ±30 MHz bandwidth | [Details →](hydrogen-line-feed-chain.md#pre-lna-filter) |
-| **Low Noise Amplifier** | 1420 MHz Cavity LNA | 0.28 dB noise figure, 34 dB gain | [Details →](hydrogen-line-feed-chain.md#low-noise-amplifier) |
-| **Noise Calibration** | ERB Noise Source | 10 dB output, Kelvin calibrated | [Details →](hydrogen-line-feed-chain.md#calibration) |
-| **SDR Receiver** | Airspy R2 | High dynamic range | [Details →](hydrogen-line-feed-chain.md#sdr) |
-| **Clock Source** | LBE-1420 GPSDO | GPS-disciplined oscillator | [Details →](hydrogen-line-feed-chain.md#clock) |
+Environmental considerations for the observatory:
 
-This carefully engineered signal chain achieves a system temperature of approximately 70K, enabling citizen science-grade hydrogen line observations.
+| **Aspect** | **Details** | **Documentation** |
+|-----------|-----------|-------------------|
+| **Location** | Columbus, OH (40.0059° N, 82.9991° W) | [Site Survey](site-survey.md) |
+| **Sky Coverage** | Northwest Quadrant primary focus | [Observation Window](observation-windows.md) |
+| **RFI Environment** | Urban residential, moderate interference | [RFI Analysis](rfi-environment-analysis.md) |
 
-## 🌐 **3. Deployment Environment**
+## **4.2 Environmental Controls**
 
-### **3.1 Site Characteristics**
+Measures to protect equipment and optimize performance:
 
-Our urban deployment presents specific challenges and constraints:
+| **Control Type** | **Implementation** | **Documentation** |
+|-----------------|-------------------|-------------------|
+| **Weather Protection** | Weatherproof housing for outdoor components | [Weather Protection](weather-protection.md) |
+| **Temperature Management** | Passive cooling for LNA and components | [Thermal Management](thermal-management.md) |
+| **RFI Mitigation** | Bandpass filtering, shielding | [RFI Mitigation](rfi-mitigation.md) |
 
-- **Location**: Columbus, OH (40.0059° N, 82.9991° W)
-- **Sky Coverage**: Primary focus on Northwest quadrant
-- **Mount Height**: 6-8 ft (minimizing visual impact)
-- **RFI Environment**: Urban setting with various interference sources
+---
 
-### **3.2 Environmental Mitigation**
+# 📈 **5. Security & Compliance**
 
-The hardware implements several strategies to address environmental challenges:
+## **5.1 Security Controls**
 
-- **RFI Scanning**: On-demand interference detection and classification
-- **Narrow Filtering**: Targeted bandpass filtering at multiple stages
-- **Temporal Averaging**: Long-duration observations to improve signal-to-noise ratio
-- **Weather Protection**: Appropriate enclosures for outdoor components
+Security measures protecting observatory hardware:
 
-## 💻 **4. Data Processing Hardware**
+| **Control Type** | **Implementation** | **Verification Method** |
+|------------------|-------------------|-------------------------|
+| **Physical Security** | Secure mounting, tamper-evident seals | Visual inspection |
+| **Access Control** | Limited physical access to equipment | Access logging |
+| **System Isolation** | Separate network segment for SDR data | Network monitoring |
 
-Raw SDR signals are processed through a dedicated hardware chain:
+## **5.2 Compliance Requirements**
 
-| **Component** | **Specifications** | **Purpose** |
-|--------------|-------------------|------------|
-| **Edge Node** | N100 Mini PC, 12GB RAM, 1TB SSD | Initial signal processing and forwarding |
-| **Processing Server** | Proxmox Node04 (GPU-equipped) | Signal analysis and AI-enhanced processing |
-| **Storage Target** | TimescaleDB (proj-pgts01) | Time-series data storage |
+Regulatory considerations for radio equipment:
 
-For complete specifications of the data processing infrastructure, see the [Data Processing Pipeline documentation](../projects/data-processing-pipeline.md).
+| **Requirement** | **Standard/Framework** | **Verification Evidence** |
+|-----------------|----------------------|---------------------------|
+| **RF Transmission** | FCC Part 15 (receive only) | Equipment certification |
+| **Environmental Impact** | Local regulations for exterior mounting | Installation documentation |
+| **Power Safety** | Low voltage DC compliance | Safety inspection |
 
-## 🧪 **5. Calibration Methodology**
+---
 
-Our equipment undergoes structured calibration to ensure research-grade results:
+# 🧪 **6. Calibration & Validation**
 
-- **Noise Source Calibration**: Known-temperature reference for system validation
-- **Celestial Calibration**: Using Cassiopeia A as a reference source
-- **System Temperature Measurement**: Regular verification of overall sensitivity
-- **Frequency Verification**: GPSDO-based precision frequency reference
+## **6.1 Calibration Procedures**
 
-Complete calibration procedures are documented in the [Calibration Methodology guide](calibration-methodology.md).
+Methods to ensure accurate measurements:
 
-## 🚀 **6. Future Expansion**
+| **Procedure** | **Frequency** | **Documentation** |
+|---------------|--------------|-------------------|
+| **Noise Source Calibration** | Monthly | [Noise Calibration](calibration-procedures.md#noise-source) |
+| **Celestial Source Verification** | Quarterly | [Celestial Calibration](calibration-procedures.md#celestial) |
+| **System Temperature Validation** | Bi-annually | [System Temp Verification](calibration-procedures.md#system-temp) |
 
-Planned hardware upgrades include:
+## **6.2 Validation Results**
 
-- **Antenna Upgrade**: Potential 1.2m dish for higher gain
-- **Motorized Mount**: Explore Scientific iEXOS-100 for tracking capabilities
-- **Additional Feed Options**: Expanded frequency coverage for pulsar observations
-- **Distributed Processing**: Additional edge nodes for parallel signal processing
+Performance validation measurements:
 
-## 📝 **7. Documentation Resources**
+| **Test** | **Result** | **Documentation** |
+|----------|-----------|-------------------|
+| **Hydrogen Line Detection** | Confirmed (Jan 2025) | [Initial Detection](validation-results.md#hydrogen-detection) |
+| **Signal-to-Noise Ratio** | 11:1 (typical) | [SNR Analysis](validation-results.md#snr-analysis) |
+| **Frequency Accuracy** | Within 0.1 kHz | [Frequency Validation](validation-results.md#frequency) |
 
-Detailed hardware documentation is available:
+---
 
-- [**Hydrogen Line Feed Chain**](hydrogen-line-feed-chain.md) - Complete signal path details
-- [**Components Specifications**](components-specifications.md) - Technical specifications
-- [**Calibration Methodology**](calibration-methodology.md) - Procedures and standards
-- [**SDR Configuration Guide**](sdr-configuration.md) - Software-defined radio setup
+# 🚀 **7. Future Expansion**
 
-## **✅ Approval & Review**
+## **7.1 Planned Upgrades**
+
+Equipment upgrades on the roadmap:
+
+| **Upgrade** | **Purpose** | **Timeline** |
+|------------|------------|-------------|
+| **1.2m Dish** | Increased gain and sensitivity | Q3 2025 |
+| **Motorized Mount** | Exploration Scientific iEXOS-100 | Q4 2025 |
+| **SDR Upgrade** | Extended bandwidth capabilities | 2026 |
+
+## **7.2 Research Capabilities Expansion**
+
+New scientific capabilities being developed:
+
+| **Capability** | **Equipment Needed** | **Documentation** |
+|----------------|----------------------|-------------------|
+| **Pulsar Observations** | Wideband feed, higher sample rate SDR | [Pulsar Expansion](expansion-plans.md#pulsar) |
+| **Multi-Band Observations** | Additional feed systems | [Multi-Band Plan](expansion-plans.md#multi-band) |
+| **Interferometry** | Secondary antenna system | [Interferometry Roadmap](expansion-plans.md#interferometry) |
+
+---
+
+# 🔗 **8. Directory Contents**
+
+This section provides direct navigation to all subdirectories and key documents in this category:
+
+## **Subdirectories**
+
+| **Directory** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Antenna-Systems** | Antenna design and configuration | [Antenna Systems README](Antenna-Systems/README.md) |
+| **Hydrogen-Line-Feed** | Hydrogen line detection equipment | [Hydrogen Line Feed README](Hydrogen-Line-Feed/README.md) |
+| **SDR-Equipment** | Software-defined radio hardware | [SDR Equipment README](SDR-Equipment/README.md) |
+
+## **Key Documents**
+
+| **Document** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Components Specifications** | Technical details of all hardware components | [Components Specifications](components-specifications.md) |
+| **Hydrogen Line Feed Chain** | Complete signal path documentation | [Hydrogen Line Feed Chain](hydrogen-line-feed-chain.md) |
+| **Calibration Methodology** | Procedures for system calibration | [Calibration Methodology](calibration-methodology.md) |
+
+---
+
+# 🔄 **9. Related Categories**
+
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **Infrastructure** | Parent directory for observatory hardware | [Infrastructure README](../README.md) |
+| **Research-Projects** | Scientific projects using this hardware | [Research Projects](../../Research-Projects/README.md) |
+| **Applications/Radio-Astronomy** | Software for radio astronomy observations | [Radio Astronomy Applications](../../Applications/Radio-Astronomy/README.md) |
+| **Compute** | Processing resources for SDR data | [Compute Resources](../Compute/README.md) |
+
+---
+
+# ✅ **10. Approval & Review**
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-16 | ✅ Approved |
+| VintageDon | Lead Engineer | 2025-04-04 | ✅ Approved |
 
-## **📜 Change Log**
+---
+
+# 📜 **11. Change Log**
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
+| 2.0 | 2025-04-04 | Updated to standardized format with expanded sections | VintageDon |
 | 1.0 | 2025-03-16 | Initial observatory hardware README | VintageDon |

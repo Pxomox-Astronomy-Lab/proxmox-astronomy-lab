@@ -14,30 +14,30 @@ last_updated: "2025-03-16"
 
 # 🔍 **Security Monitoring**
 
-## 🔍 **1. Overview**
+# 🔍 **1. Overview**
 
-This section documents the **security monitoring infrastructure, configuration, and operational procedures** implemented in the Proxmox Astronomy Lab. Our monitoring approach provides **comprehensive visibility into security events, compliance status, and potential threats** across the lab environment.
+This section documents the security monitoring infrastructure, configuration, and operational procedures implemented in the Proxmox Astronomy Lab. Our monitoring approach provides comprehensive visibility into security events, compliance status, and potential threats across the lab environment.
 
-The security monitoring solution combines **centralized log collection, automated compliance verification, and active threat detection** to ensure timely identification of security issues. This documentation covers the technical implementation, operational procedures, and integration with other security components.
+The security monitoring solution combines centralized log collection, automated compliance verification, and active threat detection to ensure timely identification of security issues. This documentation covers the technical implementation, operational procedures, and integration with other security components.
 
 ---
 
-## 🔭 **2. Monitoring Architecture**
+# 🔭 **2. Monitoring Architecture**
 
-### **2.1 Core Components**
+## **2.1 Core Components**
 
 Our security monitoring architecture consists of several integrated components:
 
 | **Component** | **Purpose** | **Implementation** | **Documentation** |
 |--------------|------------|-------------------|-------------------|
-| [**Wazuh SIEM**](Wazuh/README.md) | Security event monitoring and response | Centralized on lab-soc01 | [Wazuh Configuration](Wazuh/configuration.md) |
-| [**Log Management**](Log-Management/README.md) | Centralized logging and analysis | Loki + Grafana integration | [Log Collection](Log-Management/collection.md) |
-| [**Compliance Scanning**](Compliance-Scanning/README.md) | Automated compliance verification | CIS-CAT Lite, custom checks | [Scanning Configuration](Compliance-Scanning/configuration.md) |
-| [**Vulnerability Management**](Vulnerability-Management/README.md) | Vulnerability tracking and remediation | Integrated vulnerability workflow | [Vulnerability Process](Vulnerability-Management/process.md) |
+| **Wazuh SIEM** | Security event monitoring and response | Centralized on lab-soc01 | [Wazuh Documentation](Wazuh/README.md) |
+| **Log Management** | Centralized logging and analysis | Loki + Grafana integration | [Log Management Documentation](Log-Management/README.md) |
+| **Compliance Scanning** | Automated compliance verification | CIS-CAT Lite, custom checks | [Compliance Scanning Documentation](Compliance-Scanning/README.md) |
+| **Vulnerability Management** | Vulnerability tracking and remediation | Integrated vulnerability workflow | [Vulnerability Management Documentation](Vulnerability-Management/README.md) |
 
 These components work together to provide comprehensive security visibility across the lab environment.
 
-### **2.2 Architectural Diagram**
+## **2.2 Architectural Diagram**
 
 The security monitoring infrastructure follows a hub-and-spoke model:
 
@@ -50,9 +50,9 @@ For detailed architecture information, see the [Security Architecture](../Securi
 
 ---
 
-## 🔐 **3. Wazuh SIEM Implementation**
+# 🔐 **3. Wazuh SIEM Implementation**
 
-### **3.1 Wazuh Deployment**
+## **3.1 Wazuh Deployment**
 
 Wazuh provides our core security monitoring capabilities:
 
@@ -65,7 +65,7 @@ Wazuh provides our core security monitoring capabilities:
 
 This deployment provides comprehensive security monitoring across our infrastructure.
 
-### **3.2 Monitored Event Types**
+## **3.2 Monitored Event Types**
 
 Wazuh monitors multiple security-relevant event types:
 
@@ -81,9 +81,9 @@ These monitoring capabilities provide comprehensive security visibility and resp
 
 ---
 
-## 📊 **4. Compliance Monitoring**
+# 📊 **4. Compliance Monitoring**
 
-### **4.1 Automated Compliance Verification**
+## **4.1 Automated Compliance Verification**
 
 Compliance with security baselines is continuously monitored:
 
@@ -96,7 +96,7 @@ Compliance with security baselines is continuously monitored:
 
 This automated approach ensures continuous visibility into compliance status.
 
-### **4.2 Compliance Reporting**
+## **4.2 Compliance Reporting**
 
 Compliance status is reported through multiple channels:
 
@@ -111,22 +111,22 @@ These reports provide actionable information for maintaining security compliance
 
 ---
 
-## 📝 **5. Log Management**
+# 📝 **5. Log Management**
 
-### **5.1 Log Collection Architecture**
+## **5.1 Log Collection Architecture**
 
 The lab implements a comprehensive log collection infrastructure:
 
 | **Log Source Type** | **Collection Method** | **Retention Period** | **Analysis Tools** |
 |---------------------|----------------------|---------------------|-------------------|
 | **System Logs** | Wazuh agents, syslog forwarding | 180 days | Wazuh decoders, Grafana dashboards |
-| **Security Logs** | Wazuh agents, direct collection | one year | Wazuh rules, custom analytics |
+| **Security Logs** | Wazuh agents, direct collection | One year | Wazuh rules, custom analytics |
 | **Application Logs** | Application-specific forwarders | 90 days | Custom parsers, pattern matching |
-| **Authentication Logs** | Wazuh agents, direct collection | one year | Authentication analytics, anomaly detection |
+| **Authentication Logs** | Wazuh agents, direct collection | One year | Authentication analytics, anomaly detection |
 
 This multi-layered approach ensures comprehensive log visibility while maintaining compliance with retention requirements.
 
-### **5.2 Log Analysis Capabilities**
+## **5.2 Log Analysis Capabilities**
 
 Collected logs undergo detailed analysis:
 
@@ -141,9 +141,9 @@ These capabilities transform raw log data into actionable security intelligence.
 
 ---
 
-## 🛡️ **6. Vulnerability Management**
+# 🛡️ **6. Vulnerability Management**
 
-### **6.1 Vulnerability Detection**
+## **6.1 Vulnerability Detection**
 
 Vulnerabilities are detected through multiple mechanisms:
 
@@ -155,7 +155,7 @@ Vulnerabilities are detected through multiple mechanisms:
 
 This multi-layered approach ensures comprehensive vulnerability identification.
 
-### **6.2 Vulnerability Lifecycle Management**
+## **6.2 Vulnerability Lifecycle Management**
 
 Identified vulnerabilities follow a structured management process:
 
@@ -164,16 +164,16 @@ Identified vulnerabilities follow a structured management process:
 | **Identification** | Detection and validation | Wazuh, CIS-CAT Lite | [Vulnerability Identification](Vulnerability-Management/identification.md) |
 | **Risk Assessment** | Severity evaluation, prioritization | CVSS scoring, business impact analysis | [Risk Assessment](Vulnerability-Management/risk-assessment.md) |
 | **Remediation Planning** | Solution development, scheduling | Remediation database, task assignment | [Remediation Planning](Vulnerability-Management/remediation-planning.md) |
-| **Implementation** | Applying fixes, verification | Ansible playbooks, verification scripts | [Implementation](Vulnerability-Management/implementation.md) |
+| **Implementation** | Applying fixes | Ansible playbooks, verification scripts | [Implementation](Vulnerability-Management/implementation.md) |
 | **Closure Verification** | Confirmation of successful remediation | Rescanning, validation testing | [Verification](Vulnerability-Management/verification.md) |
 
 This lifecycle ensures effective management of identified vulnerabilities.
 
 ---
 
-## 🚨 **7. Alert Management**
+# 🚨 **7. Alert Management**
 
-### **7.1 Alert Prioritization**
+## **7.1 Alert Prioritization**
 
 Security alerts are prioritized based on severity:
 
@@ -186,7 +186,7 @@ Security alerts are prioritized based on severity:
 
 This prioritization ensures appropriate response to different alert types.
 
-### **7.2 Alert Response Procedures**
+## **7.2 Alert Response Procedures**
 
 Standard procedures guide response to security alerts:
 
@@ -201,33 +201,42 @@ These procedures ensure consistent, effective response to security events.
 
 ---
 
-## 📊 **8. Dashboards & Visualization**
+# 🗄️ **8. Directory Contents**
 
-The lab employs visual dashboards for security monitoring:
+This section provides direct navigation to all subdirectories and key documents in this category:
 
-| **Dashboard** | **Content** | **Audience** | **Location** |
-|--------------|------------|--------------|-------------|
-| **Security Overview** | High-level security status | Lab Owner, Security Admin | Wazuh Dashboard, Grafana |
-| **Compliance Status** | Current compliance by system | Security Admin, System Admins | Wazuh Dashboard, Grafana |
-| **Vulnerability Overview** | Current vulnerability status | Security Admin, System Admins | Wazuh Dashboard, Grafana |
-| **Active Threats** | Current security incidents | Security Admin | Wazuh Dashboard |
+## **Subdirectories**
 
-These dashboards provide at-a-glance visibility into security status.
+| **Directory** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Wazuh** | SIEM configuration and management | [Wazuh README](Wazuh/README.md) |
+| **Log-Management** | Log collection and analysis | [Log Management README](Log-Management/README.md) |
+| **Compliance-Scanning** | Compliance verification tools | [Compliance Scanning README](Compliance-Scanning/README.md) |
+| **Vulnerability-Management** | Vulnerability workflows | [Vulnerability Management README](Vulnerability-Management/README.md) |
 
----
+## **Key Documents**
 
-## 🔗 **9. Related Documentation**
-
-| **Section** | **Description** | **Link** |
-|------------|----------------|---------|
-| **Assessment Tools** | Security scanning and verification tools | [Assessment Tools](../Assessment-Tools/README.md) |
-| **CIS Controls** | Security control framework implementation | [CIS Controls](../CIS-Controls/README.md) |
-| **Remediation** | Security issue resolution procedures | [Remediation](../Remediation/README.md) |
-| **Security Policies** | Formal security requirements and procedures | [Security Policies](../Security-Policies/README.md) |
+| **Document** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Monitoring Architecture** | Overall security monitoring design | [Monitoring Architecture](monitoring-architecture.md) |
+| **Alert Workflow** | End-to-end alert handling process | [Alert Workflow](alert-workflow.md) |
+| **Response Playbooks** | Standardized incident response procedures | [Response Playbooks](response-playbooks.md) |
+| **Dashboard Guide** | Security visualization instructions | [Dashboard Guide](dashboard-guide.md) |
 
 ---
 
-## ✅ **10. Approval & Review**
+# 🔄 **9. Related Categories**
+
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **Assessment Tools** | Security scanning tools | [Assessment Tools README](../Assessment-Tools/README.md) |
+| **CIS Controls** | Security control framework | [CIS Controls README](../CIS-Controls/README.md) |
+| **Remediation** | Security issue resolution | [Remediation README](../Remediation/README.md) |
+| **Security Policies** | Security requirements and procedures | [Security Policies README](../Security-Policies/README.md) |
+
+---
+
+# ✅ **10. Approval & Review**
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
@@ -235,7 +244,7 @@ These dashboards provide at-a-glance visibility into security status.
 
 ---
 
-## 📜 **11. Change Log**
+# 📜 **11. Change Log**
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|

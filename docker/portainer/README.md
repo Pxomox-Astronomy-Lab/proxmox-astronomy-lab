@@ -1,308 +1,120 @@
-<!-- ---
-title: "Portainer Implementation - Proxmox Astronomy Lab"
-description: "Detailed documentation of the Portainer Business Edition implementation in the Proxmox Astronomy Lab, including architecture, node configuration, and operational aspects."
-author: "VintageDon"
-tags: ["portainer", "containers", "docker", "management", "business-edition"]
-category: "Infrastructure"
-kb_type: "Reference"
-version: "1.0"
-status: "Published"
-last_updated: "2025-03-08"
----
- -->
+I'll rewrite the README.md file following the repository's readme style, incorporating references to the related directories in the wiki tree.
 
-# **Portainer Implementation - Proxmox Astronomy Lab**
+# 🐳 **Portainer**
 
-## **1. Overview**
+# 🔍 **1. Overview**
 
-The Proxmox Astronomy Lab uses **Portainer Business Edition** as the primary container management platform for all dockerized infrastructure services. This implementation provides a **centralized management interface** with **role-based access control**, **GitOps integration**, and **comprehensive monitoring** while remaining cost-effective through the free tier for small environments.
+This section documents the Portainer Business Edition implementation in the Proxmox Astronomy Lab, providing centralized container management with role-based access control, GitOps workflows, and comprehensive monitoring capabilities. Portainer serves as the primary container orchestration platform for all dockerized infrastructure services across the lab environment.
 
-This document details the **Portainer architecture**, **node configuration**, **access control model**, and **operational procedures** used to manage containerized services across the lab.
-
-### **1.1 Portainer Architecture**
-
-The Portainer deployment follows a hub-and-spoke model:
-
-- **Portainer Server** (hub) - Centralized management interface on lab-port01
-- **Edge Agents** (spokes) - Remote agents on lab-apps01, lab-apps02, and lab-db01
-- **Edge Communication** - Secure, encrypted communication between server and agents
-
-This architecture provides **centralized control** while enabling **distributed container execution** across purpose-specific nodes.
+Portainer follows a hub-and-spoke architecture with a central server (hub) on lab-port01 and remote agents (spokes) on application and database nodes, enabling centralized control with distributed container execution across purpose-specific nodes.
 
 ---
 
-## **2. Portainer Business Edition**
+# 🏛️ **2. Portainer Architecture**
 
-### **2.1 Business Edition Benefits**
+## **2.1 Deployment Model**
 
-The lab leverages Portainer Business Edition's free tier for small environments:
+Portainer Business Edition (free tier) provides enterprise-grade container management for the lab environment.
 
-| **Feature** | **Implementation** | **Business Value** |
-|------------|-------------------|------------------|
-| **Role-Based Access Control** | Team-based access model | Granular security controls |
-| **GitOps Integration** | Stack deployment from Git | Version-controlled configurations |
-| **Activity Logging** | User actions and system events | Audit trail and compliance |
-| **Edge Computing Management** | Centralized remote node control | Simplified administration |
-| **Resource Controls** | Container-specific resource limits | Optimized resource allocation |
-| **Registry Management** | Integration with Docker Hub | Streamlined image deployment |
+| **Component** | **Implementation** | **Documentation** |
+|--------------|-------------------|-------------------|
+| **Portainer Server** | Centralized management interface on lab-port01 | [Portainer Control Node](lab-port01-portainer-master-control-node/README.md) |
+| **Edge Agents** | Remote agents on app and database nodes | [Edge Agent Configuration](../portainer-stacks/README.md) |
+| **Business Edition** | Free tier (≤5 nodes) with RBAC, GitOps, logging | [Licensing Details](lab-port01-portainer-master-control-node/README.md) |
 
-### **2.2 Business Edition Licensing**
+## **2.2 Node Architecture**
 
-| **Aspect** | **Details** |
-|-----------|------------|
-| **License Type** | Business Edition (Free Tier) |
-| **Node Limit** | Up to 5 nodes at no cost |
-| **Features** | Full functionality (no limitations) |
-| **Support** | Community support |
-| **Upgrade Path** | Available if node count increases |
+The Portainer deployment spans multiple nodes, each serving a specific purpose in the container ecosystem.
 
-### **2.3 Version Information**
-
-| **Component** | **Version** | **Release Date** |
-|--------------|-----------|-----------------|
-| **Portainer Server** | 2.19.4 CE | December 2024 |
-| **Portainer Agent** | 2.19.4 CE | December 2024 |
-| **Docker Engine** | 24.0.7 | October 2024 |
+| **Node** | **Purpose** | **Documentation** |
+|----------|------------|-------------------|
+| **lab-port01** | Primary control plane for container management | [Portainer Control Node](lab-port01-portainer-master-control-node/README.md) |
+| **lab-apps01** | Application node for web-facing services | [App Node](lab-apps01-portainer-docker-application-node/README.md) |
+| **lab-db01** | Database node for containerized data services | [DB Node](lab-db01-portainer-docker-database-node/README.md) |
+| **proj-apps01** | Project-specific containerized applications | [Project Node](proj-apps01-portainer-docker-application-node/README.md) |
 
 ---
 
-## **3. Portainer Nodes**
+# 📦 **3. Container Stack Management**
 
-### **3.1 Control Node (lab-port01)**
+## **3.1 Stack Deployment**
 
-The Portainer server runs on a dedicated VM to ensure management isolation:
+Portainer implements GitOps workflows for container deployment and management.
 
-| **Component** | **Specification** |
-|--------------|-------------------|
-| **Hostname** | lab-port01.beardinthe.cloud |
-| **VM Resources** | 2 vCPU, 4GB RAM, 32GB storage |
-| **Network** | VLAN10 (Control Plane) |
-| **Host Node** | node01 |
-| **Docker Version** | 24.0.7 |
-| **Deployment Method** | Docker Compose |
-| **Volume Configuration** | External volumes for data persistence |
-| **Backup Strategy** | Daily volume snapshots |
+| **Repository** | **Purpose** | **Documentation** |
+|---------------|-----------|-------------------|
+| **Infrastructure Stacks** | Core infrastructure services | [Infrastructure Stacks](../portainer-stacks/lab-apps01-portainer-docker-application-node/README.md) |
+| **Application Stacks** | Service-specific containers | [Application Stacks](../portainer-stacks/lab-apps01-portainer-docker-application-node/README.md) |
+| **Database Stacks** | Data persistence services | [Database Stacks](../portainer-stacks/lab-db01-portainer-docker-database-node/README.md) |
 
-For detailed configuration, see [**lab-port01 Documentation**](lab-port01/README.md).
+## **3.2 Stack Documentation**
 
-### **3.2 Application Node 1 (lab-apps01)**
+Comprehensive stack documentation is maintained for all containerized services.
 
-Primary application services node focusing on web-facing services:
-
-| **Component** | **Specification** |
-|--------------|-------------------|
-| **Hostname** | lab-apps01.beardinthe.cloud |
-| **VM Resources** | 4 vCPU, 16GB RAM, 32GB system + 250GB data |
-| **Network** | VLAN10 (Control Plane) |
-| **Host Node** | node02 |
-| **Docker Version** | 24.0.7 |
-| **Agent Type** | Edge Agent |
-| **Main Services** | Web applications, API gateways, proxy services |
-| **Container Count** | ~15 containers |
-
-For detailed configuration and services, see [**lab-apps01 Documentation**](lab-apps01/README.md).
-
-### **3.3 Application Node 2 (lab-apps02)**
-
-Secondary application services node focusing on internal processing:
-
-| **Component** | **Specification** |
-|--------------|-------------------|
-| **Hostname** | lab-apps02.beardinthe.cloud |
-| **VM Resources** | 4 vCPU, 12GB RAM, 32GB system + 500GB data |
-| **Network** | VLAN20 (Production) |
-| **Host Node** | node04 |
-| **Docker Version** | 24.0.7 |
-| **Agent Type** | Edge Agent |
-| **Main Services** | Backend processing, automation, scheduling |
-| **Container Count** | ~10 containers |
-
-For detailed configuration and services, see [**lab-apps02 Documentation**](lab-apps02/README.md).
-
-### **3.4 Database Node (lab-db01)**
-
-Dedicated database services node:
-
-| **Component** | **Specification** |
-|--------------|-------------------|
-| **Hostname** | lab-db01.beardinthe.cloud |
-| **VM Resources** | 2 vCPU, 4GB RAM, 32GB system + multiple data volumes |
-| **Network** | VLAN10 (Control Plane) |
-| **Host Node** | node03 |
-| **Docker Version** | 24.0.7 |
-| **Agent Type** | Edge Agent |
-| **Main Services** | Database containers, caching services |
-| **Container Count** | ~5 containers |
-
-For detailed configuration and services, see [**lab-db01 Documentation**](lab-db01/README.md).
+| **Stack Category** | **Documentation** | **Templates** |
+|-------------------|-----------------|---------------|
+| **Applications** | Individual application stacks | [Application Stacks](../portainer-stacks/lab-apps01-portainer-docker-application-node/README.md) |
+| **Databases** | Database container configurations | [Database Stacks](../portainer-stacks/lab-db01-portainer-docker-database-node/README.md) |
+| **Project Services** | Project-specific application stacks | [Project Stacks](../portainer-stacks/proj-apps01-portainer-docker-application-node/README.md) |
 
 ---
 
-## **4. Access Control Model**
+# 🔐 **4. Security & Compliance**
 
-### **4.1 User Roles and Teams**
+## **4.1 Security Controls**
 
-Portainer implements a role-based access control model:
+The Portainer implementation incorporates comprehensive security measures.
 
-| **Team** | **Access Level** | **Resource Scope** | **Members** |
-|----------|----------------|-------------------|------------|
-| **Administrators** | Full Control | All resources | Lab Owner |
-| **Infrastructure Team** | Operator | All resources | Infrastructure Engineers |
-| **Development Team** | Restricted Control | Development resources | Developers, Researchers |
-| **Operations Team** | Operator | Production resources | Operations Staff |
-| **Read-Only Users** | View Only | All resources | External Collaborators |
+| **Security Aspect** | **Implementation** | **Documentation** |
+|--------------------|-------------------|-------------------|
+| **Access Control** | RBAC with Entra ID integration | [Security Configuration](lab-port01-portainer-master-control-node/README.md) |
+| **Network Segmentation** | Isolated container networks | [Network Architecture](../portainer-stacks/portainer-stacks-lab-documentation-and-style-guide.md) |
+| **Container Hardening** | Non-root users, readonly filesystems | [Container Security](../portainer-stacks/portainer-stacks-lab-documentation-and-style-guide.md) |
 
-### **4.2 Role Definitions**
+## **4.2 Compliance Mapping**
 
-| **Role** | **Permissions** |
-|----------|----------------|
-| **Admin** | Full control of all resources |
-| **Operator** | Deploy and manage containers, no endpoint configuration |
-| **Restricted Control** | Limited to specific resources, cannot modify sensitive settings |
-| **View Only** | Read-only access to dashboards and logs |
+Portainer implementation aligns with relevant compliance frameworks.
 
-### **4.3 Access Control Integration**
-
-| **Integration** | **Method** | **Authentication Flow** |
-|----------------|----------|------------------------|
-| **Entra ID** | OAuth 2.0 | SSO with Entra ID credentials |
-| **RBAC Mapping** | Group-based | Entra ID groups mapped to Portainer teams |
-| **Session Management** | Token-based | 12-hour session timeout |
+| **Framework** | **Controls Satisfied** | **Documentation** |
+|--------------|----------------------|-------------------|
+| **CISv8** | 1.1, 1.2, 4.1, 4.2, 5.2, 6.8 | [Compliance Documentation](lab-port01-portainer-master-control-node/README.md) |
+| **ISO 27001** | A.8.1, A.12.1, A.12.6 | [Security Controls](lab-port01-portainer-master-control-node/README.md) |
 
 ---
 
-## **5. GitOps Workflow**
+# 📂 **5. Directory Contents**
 
-### **5.1 Stack Deployment Process**
+This section provides direct navigation to all subdirectories and key documents in this category:
 
-Portainer implements GitOps for container deployment:
+## **Subdirectories**
 
-```mermaid
-graph TD
-    A[Git Repository] --> B[Stack Definition]
-    B --> C[Portainer GitOps]
-    C --> D[Automatic Sync]
-    D --> E[Container Deployment]
-    E --> F[Deployment Validation]
-```
+| **Directory** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **lab-port01-portainer-master-control-node** | Documentation for the primary Portainer server | [README](lab-port01-portainer-master-control-node/README.md) |
+| **lab-apps01-portainer-docker-application-node** | Documentation for the application services node | [README](lab-apps01-portainer-docker-application-node/README.md) |
+| **lab-db01-portainer-docker-database-node** | Documentation for the database services node | [README](lab-db01-portainer-docker-database-node/README.md) |
+| **proj-apps01-portainer-docker-application-node** | Documentation for the project applications node | [README](proj-apps01-portainer-docker-application-node/README.md) |
 
-### **5.2 Repository Structure**
+## **Key Documents**
 
-| **Repository** | **Content** | **Branch Strategy** |
-|---------------|-----------|---------------------|
-| **infrastructure-stacks** | Core infrastructure stacks | main (production), dev (testing) |
-| **application-stacks** | Application service stacks | main (production), dev (testing) |
-| **database-stacks** | Database service stacks | main (production), dev (testing) |
-
-### **5.3 GitOps Configuration**
-
-| **Setting** | **Value** | **Purpose** |
-|------------|----------|------------|
-| **Automatic Updates** | Enabled | Continuous deployment from Git |
-| **Update Interval** | 5 minutes | Frequency of repository checks |
-| **Authentication** | Deploy key | Secure repository access |
-| **Webhook Support** | Enabled | Immediate updates on commits |
+| **Document** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Portainer Stacks Documentation** | Guidelines for stack creation and management | [Document](../portainer-stacks/portainer-stacks-lab-documentation-and-style-guide.md) |
 
 ---
 
-## **6. Operational Aspects**
+# 🔄 **6. Related Categories**
 
-### **6.1 Monitoring and Logging**
-
-| **Aspect** | **Implementation** | **Integration** |
-|-----------|-------------------|----------------|
-| **Container Logs** | Centralized in Portainer | Searchable through UI |
-| **Resource Monitoring** | Built-in metrics | Dashboard visualization |
-| **Event Logging** | Activity capture | Audit trail |
-| **Alert Integration** | Webhook notifications | Integrated with monitoring stack |
-
-### **6.2 Backup and Recovery**
-
-| **Component** | **Backup Method** | **Frequency** | **Retention** |
-|--------------|------------------|--------------|--------------|
-| **Portainer Database** | Volume backup | Daily | 14 days |
-| **Stack Definitions** | Git repository | Continuous | Unlimited |
-| **Container Data** | Volume backups | Daily | Varies by importance |
-| **Configuration** | Export to JSON | On change | Version controlled |
-
-### **6.3 Update Procedures**
-
-| **Component** | **Update Method** | **Frequency** | **Downtime** |
-|--------------|------------------|--------------|-------------|
-| **Portainer Server** | Scheduled maintenance | Quarterly | <15 minutes |
-| **Portainer Agents** | Rolling updates | Quarterly | None |
-| **Docker Engine** | Scheduled maintenance | Semi-annually | <30 minutes per node |
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **Docker** | Parent category for container technologies | [README](../README.md) |
+| **Portainer Stacks** | Stack definitions for Portainer deployments | [README](../portainer-stacks/README.md) |
+| **Infrastructure** | Physical and virtual hosting environment | [README](../../infrastructure/README.md) |
+| **Applications & Services** | Services deployed via Portainer | [README](../../docs/Applications/README.md) |
 
 ---
 
-## **7. Container Network Architecture**
-
-### **7.1 Network Types**
-
-| **Network Type** | **Purpose** | **Implementation** |
-|-----------------|------------|-------------------|
-| **Bridge Networks** | Container isolation | Per-stack bridge networks |
-| **Overlay Networks** | Cross-host communication | Swarm-mode overlay networks |
-| **Macvlan Networks** | Direct network attachment | Infrastructure services |
-| **Host Network** | High-performance services | Database containers |
-
-### **7.2 Network Segmentation**
-
-| **Segment** | **CIDR Range** | **Purpose** |
-|------------|--------------|------------|
-| **Infrastructure** | 172.18.0.0/16 | Core infrastructure services |
-| **Applications** | 172.19.0.0/16 | Application services |
-| **Databases** | 172.20.0.0/16 | Database services |
-| **Isolated** | 172.21.0.0/16 | Security-sensitive services |
-
----
-
-## **8. Security Configuration**
-
-### **8.1 Container Security**
-
-| **Security Measure** | **Implementation** | **Purpose** |
-|---------------------|-------------------|------------|
-| **Non-Root Users** | Custom user configurations | Principle of least privilege |
-| **Read-Only Filesystems** | When possible | Prevent unauthorized modifications |
-| **Capabilities Limiting** | Drop unnecessary capabilities | Reduce attack surface |
-| **Health Checks** | Defined for all containers | Automated monitoring |
-
-### **8.2 Portainer Security**
-
-| **Security Measure** | **Implementation** | **Purpose** |
-|---------------------|-------------------|------------|
-| **TLS Encryption** | HTTPS with valid certificates | Secure communication |
-| **Network Isolation** | Restricted access to Portainer UI | Limit exposure |
-| **Authentication Policies** | Strong password enforcement | Prevent unauthorized access |
-| **Session Timeouts** | 12-hour maximum | Limit session hijacking risk |
-
----
-
-## **9. Documentation Sections**
-
-Detailed documentation is available for each Portainer node:
-
-- [**lab-port01 - Portainer Server**](lab-port01/README.md)
-- [**lab-apps01 - Application Node 1**](lab-apps01/README.md)
-- [**lab-apps02 - Application Node 2**](lab-apps02/README.md)
-- [**lab-db01 - Database Node**](lab-db01/README.md)
-
----
-
-## **10. Future Enhancements**
-
-| **Enhancement** | **Description** | **Timeline** |
-|----------------|----------------|-------------|
-| **High Availability** | Redundant Portainer server setup | Q3 2025 |
-| **Advanced Monitoring** | Enhanced container metrics | Q2 2025 |
-| **Automated Testing** | Pre-deployment container validation | Q4 2025 |
-| **Secrets Rotation** | Automated credential rotation | Q1 2026 |
-| **Edge Computing Expansion** | Additional edge nodes | Ongoing |
-
----
-
-## **✅ Approval & Review**
+# ✅ **7. Approval & Review**
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
@@ -310,9 +122,8 @@ Detailed documentation is available for each Portainer node:
 
 ---
 
-## **📜 Change Log**
+# 📜 **8. Change Log**
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
 | 1.0 | 2025-03-08 | Initial documentation | VintageDon |
-

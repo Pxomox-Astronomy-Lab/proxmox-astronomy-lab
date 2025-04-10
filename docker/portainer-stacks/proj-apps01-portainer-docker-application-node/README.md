@@ -1,288 +1,340 @@
-<!-- ---
-title: "Proj-Apps01 Portainer Docker Application Node"
-description: "Documentation for the Proj-Apps01 Portainer worker node, detailing its role in hosting project-specific applications and services."
+<!-- 
+---
+title: "Portainer Stacks - Proj-Apps01 Application Node"
+description: "Documentation for the application stacks deployed on the proj-apps01 Portainer Docker worker node in the Proxmox Astronomy Lab"
 author: "VintageDon"
-tags: ["portainer", "docker", "infrastructure", "applications", "project-services"]
-category: "Infrastructure"
+tags: ["portainer", "docker", "stacks", "applications", "research"]
+category: "Docker"
 kb_type: "Reference"
 version: "1.0"
 status: "Published"
 last_updated: "2025-03-09"
 ---
- -->
+-->
 
-# **Proj-Apps01 Portainer Docker Application Node**
+# 📱 **Portainer Stacks - Proj-Apps01 Application Node**
 
-Proj-Apps01 is a dedicated **Portainer worker node** that hosts **project-specific applications and services** for the Proxmox Astronomy Lab's research initiatives. Managed by **Lab-Port01** (Portainer master node), it runs **Docker on Ubuntu 24.04** within the **project network segment (VLAN20)**, providing a platform for research tools, visualization interfaces, and collaborative applications.
+# 🔍 **1. Overview**
 
-Unlike the lab-apps01 node which focuses on lab-wide infrastructure services, Proj-Apps01 specializes in hosting applications directly related to research workflows and data processing, creating a clear separation between infrastructure and research workloads.
+This directory contains the **Portainer stack definitions** for the proj-apps01 node, which serves as the **research application host** for the Proxmox Astronomy Lab. Unlike the lab-apps01 node that focuses on infrastructure services, these stacks provide specialized applications that directly support research workflows, data visualization, and scientific collaboration.
 
-## **1. Technical Specifications**
+Each application stack is deployed with its own configuration, persistent storage, and networking settings, allowing for modular management while ensuring proper integration with research databases and data processing pipelines.
 
-This VM provides dedicated resources for project-specific applications with emphasis on performance, storage, and research workflow integration.
+---
 
-| **Component** | **Specification** |
-|--------------|-------------------|
-| **Hostname** | proj-apps01.beardinthe.cloud |
-| **VM ID** | 2004 |
-| **vCPU** | 4 vCPUs |
-| **RAM** | 12 GB |
-| **Storage** | 32 GB (OS) + 500 GB (Container Storage) |
-| **OS** | Ubuntu 24.04 LTS |
-| **Networking** | VLAN20 (Research) |
-| **IP Address** | 10.25.20.21/24 |
-| **Gateway** | 10.25.20.1 |
-| **DNS** | 10.25.10.3, 10.25.20.3 |
+# 🐳 **2. Stack Deployment Process**
 
-## **2. Docker Infrastructure**
+## **2.1 Deployment Infrastructure**
 
-The Docker environment is configured to support research applications with high data throughput, visualization capabilities, and integration with scientific workflows.
+These stacks are deployed through the lab's GitOps workflow using Portainer's Git integration capabilities.
 
-### **2.1 Docker Configuration**
+| **Component** | **Purpose** |
+|--------------|-------------|
+| **Portainer Master** | [lab-port01](/infrastructure/control-plane/lab-port01-portainer-control-node.md) manages all stack deployments |
+| **Worker Node** | [proj-apps01](/infrastructure/projects/proj-apps01-docker-application-node.md) hosts the deployed containers |
+| **Git Repository** | Stack definitions stored in Gitea with version control |
+| **Environment Files** | Secrets managed through `.env` files stored in HashiCorp Vault |
+| **Deployment Pipeline** | Changes trigger automatic validation and deployment |
 
-The Docker daemon is configured with optimizations for project workloads, including appropriate storage and network configurations.
+## **2.2 Common Stack Structure**
 
-```json
-{
-  "log-driver": "json-file",
-  "log-opts": {
-    "max-size": "50m",
-    "max-file": "3"
-  },
-  "default-address-pools": [
-    {
-      "base": "172.21.0.0/16",
-      "size": 24
-    }
-  ],
-  "metrics-addr": "0.0.0.0:9323",
-  "experimental": true,
-  "storage-driver": "overlay2",
-  "data-root": "/mnt/docker"
-}
-```
+Each application stack follows a standardized structure for consistency and maintainability.
 
-### **2.2 Storage Configuration**
+| **File** | **Purpose** |
+|----------|------------|
+| **README.md** | Documentation for the specific application stack |
+| **docker-compose.yml** | Stack definition with services, networks, and volumes |
+| **stack.env** | Environment variables for container configuration (vault-managed) |
+| **stack.env.example** | Example environment file with placeholder values |
+| **config/** | Application-specific configuration files |
+| **data/** | Optional mountable data directory for small datasets |
 
-The storage is designed to maintain CIS compliance while providing ample space for data-intensive research applications. The OS drive is partitioned according to CIS compliance requirements, with Docker data relocated to a separate volume.
+## **2.3 Deployment Workflow**
 
-| **Mount Point** | **Size** | **Purpose** |
-|----------------|---------|-------------|
-| **/mnt/docker** | 500 GB | Docker data directory (moved from default location) |
-| **/var/lib/portainer** | Part of OS volume | Portainer agent data |
-| **/data/research** | NFS mount | Shared research data repository |
+The standardized process for deploying and updating application stacks ensures consistency and reliability.
 
-## **3. Hosted Applications**
+1. Edit stack definition in Git repository
+2. Submit pull request with changes
+3. Automated validation checks run (syntax, security scanning)
+4. Code review and approval by research team
+5. Merge triggers deployment to proj-apps01 via Portainer webhook
+6. Post-deployment health checks verify successful deployment
 
-Proj-Apps01 hosts project-specific applications that support research workflows, data visualization, and collaboration among researchers.
+---
 
-### **3.1 Source Control and Collaboration**
+# 📂 **3. Research Application Stacks**
 
-Project-specific source control and collaboration tools enable coordinated research and development activities.
+## **3.1 Gitea Stack**
 
-| **Container** | **Purpose** | **Port** |
-|--------------|-------------|---------|
-| **gitea** | Project-specific Git repositories | 3000, 22 |
-| **nextcloud** | File collaboration and sharing | 8080 |
+The Gitea stack provides a lightweight, self-hosted Git service dedicated to research projects and scientific code.
 
-### **3.2 Visualization and Analysis**
+| **Component** | **Details** |
+|--------------|------------|
+| **Stack Directory** | [gitea/](/docker/portainer-stacks/proj-apps01-portainer-docker-application-node/gitea/) |
+| **Image** | gitea/gitea:1.21 |
+| **Exposed Ports** | 3000 (HTTP), 22 (SSH) |
+| **Persistent Storage** | Docker volumes for repositories, data |
+| **Database** | PostgreSQL (on proj-pg01) |
+| **Special Features** | Entra ID integration, CI/CD pipelines, issue tracking |
 
-Specialized visualization tools provide insights into research data and analytical results.
+## **3.2 Grafana Stack**
 
-| **Container** | **Purpose** | **Port** |
-|--------------|-------------|---------|
-| **grafana** | Project-specific data visualization | 3001 |
-| **jupyter** | Interactive data analysis notebooks | 8888 |
-| **rstudio** | R statistical analysis environment | 8787 |
+The Grafana stack provides data visualization specifically for research metrics and time-series observations.
 
-### **3.3 Project Infrastructure**
+| **Component** | **Details** |
+|--------------|------------|
+| **Stack Directory** | [grafana/](/docker/portainer-stacks/proj-apps01-portainer-docker-application-node/grafana/) |
+| **Image** | grafana/grafana:10.2.3 |
+| **Exposed Port** | 3001 (HTTP) |
+| **Persistent Storage** | Docker volume for dashboards, plugins |
+| **Database** | SQLite (local), TimescaleDB (on proj-pgts01) for data sources |
+| **Special Features** | Custom plugins for astronomy visualization, alerting |
 
-Core infrastructure services supporting project workflows and data access.
+## **3.3 Nextcloud Stack**
 
-| **Container** | **Purpose** | **Port** |
-|--------------|-------------|---------|
-| **nginx** | Web interfaces and API proxies | 80, 443 |
-| **kong** | API gateway for research services | 8000, 8001 |
-| **dashy** | Project-specific dashboard | 4000 |
-| **portainer-agent** | Portainer management | 9001 |
+The Nextcloud stack provides secure file sharing and collaboration capabilities for research teams.
 
-### **3.4 Network Configuration**
+| **Component** | **Details** |
+|--------------|------------|
+| **Stack Directory** | [nextcloud/](/docker/portainer-stacks/proj-apps01-portainer-docker-application-node/nextcloud/) |
+| **Image** | nextcloud:27-apache |
+| **Exposed Port** | 8080 (HTTP) |
+| **Persistent Storage** | Docker volumes for application data, user files |
+| **Database** | PostgreSQL (on proj-pg01) |
+| **Special Features** | Office document editing, collaborative annotation |
 
-Docker networks are segmented to organize project services while enabling appropriate interconnectivity.
+## **3.4 Jupyter Stack**
+
+The Jupyter stack provides interactive data analysis notebooks for researchers to process astronomical data.
+
+| **Component** | **Details** |
+|--------------|------------|
+| **Stack Directory** | [jupyter/](/docker/portainer-stacks/proj-apps01-portainer-docker-application-node/jupyter/) |
+| **Image** | jupyter/scipy-notebook:latest |
+| **Exposed Port** | 8888 (HTTP) |
+| **Persistent Storage** | Docker volume for notebooks, datasets |
+| **Database** | Connects to PostgreSQL (on proj-pggis01) |
+| **Special Features** | Specialized astronomy libraries, GPU acceleration |
+
+## **3.5 Dashy Stack**
+
+The Dashy stack provides a central dashboard for accessing research tools and visualizing project status.
+
+| **Component** | **Details** |
+|--------------|------------|
+| **Stack Directory** | [dashy/](/docker/portainer-stacks/proj-apps01-portainer-docker-application-node/dashy/) |
+| **Image** | lissy93/dashy:latest |
+| **Exposed Port** | 4000 (HTTP) |
+| **Persistent Storage** | Docker volume for configuration |
+| **Database** | N/A (Static configuration) |
+| **Special Features** | Custom widgets for research metrics, project tracking |
+
+## **3.6 Network Configuration**
+
+Docker networks are segmented to isolate different application components while enabling appropriate interconnectivity.
 
 | **Network Name** | **Subnet** | **Purpose** |
 |-----------------|-----------|------------|
-| **proj-frontend** | 172.21.0.0/24 | Web interfaces and dashboards |
-| **proj-backend** | 172.21.1.0/24 | APIs and data services |
-| **proj-storage** | 172.21.2.0/24 | Data access services |
+| **proj-frontend** | 172.21.0.0/24 | User-facing web interfaces |
+| **proj-backend** | 172.21.1.0/24 | Application-to-database connections |
+| **proj-storage** | 172.21.2.0/24 | File storage and sharing services |
 
-## **4. Security & Compliance**
+---
 
-Project services implement appropriate security measures to protect research data while enabling collaboration.
+# 🔐 **4. Security & Access Controls**
 
-### **4.1 Security Hardening**
+## **4.1 Authentication Integration**
 
-The VM implements comprehensive security measures at both the OS and container levels to protect research applications and data.
+All research applications implement standardized authentication methods to ensure secure, streamlined access.
 
-- **CIS Ubuntu 24.04 Level 2** compliance for base OS
-- **AppArmor profiles** for container isolation
-- **Authentication required** for all services
-- **HTTPS enforced** for all web interfaces
-- **Data encryption** for sensitive information
-- **Regular security scanning** via integrated tools
+| **Application** | **Authentication Method** | **User Provisioning** |
+|----------------|---------------------------|----------------------|
+| **Gitea** | OAuth 2.0 with Entra ID | AD group synchronization |
+| **Grafana** | OAuth 2.0 with Entra ID | JIT user provisioning |
+| **Nextcloud** | SAML with Entra ID | Group-based provisioning |
+| **Jupyter** | OAuth 2.0 with Entra ID | Manual user creation |
+| **Dashy** | Basic auth with shared credentials | Static configuration |
 
-### **4.2 Access Control**
+## **4.2 Authorization Model**
 
-Access to project services is managed through role-based permissions with integration to the lab's identity management system.
+Access to research applications follows a role-based model aligned with research team structures.
 
-| **Service** | **Authentication Method** | **Authorization** |
-|-------------|---------------------------|------------------|
-| **Gitea** | Entra ID + OAuth | Repository-level permissions |
-| **Nextcloud** | Entra ID + OAuth | Folder and file permissions |
-| **Grafana** | Entra ID + OAuth | Dashboard access control |
-| **Jupyter** | Entra ID + OAuth | User-specific workspaces |
-| **RStudio** | Entra ID + OAuth | User-specific environments |
-| **Kong API Gateway** | API keys | Service-specific permissions |
+| **Role** | **Description** | **Access Level** |
+|----------|----------------|-----------------|
+| **Research Lead** | Principal investigators | Full administrative access |
+| **Research Associate** | Active researchers | Read/write to assigned projects |
+| **Data Analyst** | Analytical support | Read-only to data, read/write to analysis |
+| **External Collaborator** | Partner institutions | Project-specific limited access |
+| **Observer** | Stakeholders | Read-only dashboard access |
 
-## **5. Integration with Research Infrastructure**
+## **4.3 Data Protection**
 
-The Proj-Apps01 node integrates with other research components to form a cohesive scientific computing environment.
+Research data receives appropriate protection based on classification and sensitivity.
 
-### **5.1 Database Integration**
+| **Data Category** | **Protection Measures** | **Access Restrictions** |
+|-------------------|----------------------|------------------------|
+| **Raw Observation Data** | Encryption at rest, versioning | Research team only |
+| **Processed Datasets** | Checksums, audit logging | Research team + analysts |
+| **Analysis Results** | Backup, versioning | All authorized users |
+| **Published Materials** | Public repository, DOI assignment | Public access |
 
-Project applications connect to specialized database services for data storage and retrieval.
+---
+
+# 💾 **5. Backup & Recovery**
+
+## **5.1 Backup Strategy**
+
+Each application stack implements its own backup mechanism appropriate to the data it manages.
+
+| **Application** | **Backup Method** | **Schedule** | **Retention** |
+|----------------|-------------------|-------------|--------------|
+| **Gitea** | Repository bundling to S3 | Hourly | 30 days |
+| **Grafana** | Dashboard JSON export | Daily | 90 days |
+| **Nextcloud** | File system snapshots + DB dump | Daily | 30 days |
+| **Jupyter** | Notebook export to Git | On save | Version controlled |
+| **Dashy** | Configuration backup | Weekly | 12 weeks |
+
+## **5.2 Recovery Procedures**
+
+Standardized recovery procedures ensure quick restoration when needed.
+
+| **Scenario** | **Recovery Method** | **RTO** | **Procedure Documentation** |
+|--------------|-------------------|--------|----------------------------|
+| **Container Failure** | Re-deploy container | 5 min | [Container Recovery](/docs/infrastructure/troubleshooting/container-recovery.md) |
+| **Data Corruption** | Restore from backup | 30 min | [Application Restore](/docs/infrastructure/troubleshooting/application-restore.md) |
+| **Volume Loss** | Restore from backup | 1 hour | [Volume Recovery](/docs/infrastructure/troubleshooting/volume-recovery.md) |
+| **Complete Failure** | Re-deploy stack and restore | 2 hours | [Stack Recovery](/docs/infrastructure/troubleshooting/stack-recovery.md) |
+
+---
+
+# 📊 **6. Monitoring & Metrics**
+
+## **6.1 Application Monitoring**
+
+Research applications are monitored through specialized exporters and health checks to ensure availability and performance.
+
+| **Application** | **Monitoring Method** | **Dashboard** |
+|----------------|----------------------|--------------|
+| **Gitea** | Built-in Prometheus metrics | [Gitea Dashboard](/monitoring/grafana/dashboards/gitea-repository-dashboard-screenshot.png) |
+| **Grafana** | Self-monitoring | [Grafana Internal Dashboard](/docs/applications/observability/grafana-self-monitoring.md) |
+| **Nextcloud** | Prometheus exporter | [Nextcloud Dashboard](/docs/applications/observability/nextcloud-monitoring.md) |
+| **Jupyter** | Custom metrics endpoint | [Jupyter Dashboard](/docs/applications/observability/jupyter-metrics.md) |
+| **Dashy** | HTTP endpoint checks | [Application Health Dashboard](/docs/applications/observability/application-health.md) |
+
+## **6.2 Alert Thresholds**
+
+Critical application metrics are monitored with appropriate alerting thresholds.
+
+| **Metric** | **Warning Threshold** | **Critical Threshold** | **Response Procedure** |
+|------------|----------------------|------------------------|------------------------|
+| **Response Time** | >2 seconds | >5 seconds | [Performance Troubleshooting](/docs/applications/performance-troubleshooting.md) |
+| **Error Rate** | >1% | >5% | [Error Investigation](/docs/applications/error-investigation.md) |
+| **Disk Usage** | 75% | 90% | [Storage Expansion](/docs/applications/storage-expansion.md) |
+| **Memory Usage** | 80% | 90% | [Memory Optimization](/docs/applications/memory-optimization.md) |
+| **Authentication Failures** | >5 in 15 minutes | >10 in 5 minutes | [Auth Troubleshooting](/docs/security/authentication-troubleshooting.md) |
+
+---
+
+# 🔄 **7. Application Integration**
+
+## **7.1 Research Workflow Integration**
+
+Applications are integrated to support end-to-end research workflows for astronomical data processing.
+
+| **Workflow Stage** | **Primary Application** | **Secondary Applications** |
+|-------------------|------------------------|---------------------------|
+| **Data Collection** | SDR applications (K8s) | Grafana (monitoring) |
+| **Data Storage** | TimescaleDB (proj-pgts01) | PostgreSQL (proj-pg01) |
+| **Data Processing** | Jupyter notebooks | Python scripts in Gitea |
+| **Visualization** | Grafana dashboards | Custom web apps |
+| **Collaboration** | Nextcloud file sharing | Gitea pull requests |
+| **Publication** | Gitea repositories | Nextcloud shared links |
+
+## **7.2 Database Integration**
+
+Applications connect to specialized database services tailored to their specific needs.
 
 | **Application** | **Database Service** | **Connection Type** |
 |----------------|----------------------|-------------------|
-| **Gitea** | proj-pg01 (PostgreSQL) | Direct connection |
-| **Nextcloud** | proj-pg01 (PostgreSQL) | Direct connection |
-| **Grafana** | proj-pgts01 (TimescaleDB) | Direct connection |
-| **Jupyter** | proj-pggis01 (PostGIS) | Python connectors |
-| **RStudio** | proj-pggis01 (PostGIS) | R database libraries |
+| **Gitea** | proj-pg01 (PostgreSQL) | Direct TCP connection |
+| **Grafana** | proj-pgts01 (TimescaleDB) | PostgreSQL protocol |
+| **Nextcloud** | proj-pg01 (PostgreSQL) | Direct TCP connection |
+| **Jupyter** | proj-pggis01 (PostGIS) | Python database connectors |
+| **Dashy** | N/A | Static configuration |
 
-### **5.2 Kubernetes Integration**
+---
 
-Project applications interact with the lab's Kubernetes cluster for specialized workloads and data processing tasks.
+# 🔄 **8. Maintenance Procedures**
 
-| **Application** | **K8s Integration** | **Purpose** |
-|----------------|---------------------|------------|
-| **Gitea** | Webhook triggers | CI/CD pipeline automation |
-| **Kong** | Service discovery | API routing to K8s services |
-| **Jupyter** | Compute kernels | Distributed computation |
-| **Grafana** | Data sources | K8s metrics visualization |
+## **8.1 Update Strategy**
 
-## **6. Backup & Disaster Recovery**
+Application updates follow a structured approach to minimize disruption to research activities.
 
-Comprehensive backup strategies ensure research data and application configurations are protected against loss.
+| **Update Type** | **Approach** | **Testing Requirements** | **Rollback Procedure** |
+|----------------|-------------|--------------------------|------------------------|
+| **Minor Updates** | Rolling update | Basic functionality check | Container replacement |
+| **Major Upgrades** | Blue-green deployment | Full workflow validation | DNS switch |
+| **Configuration Changes** | Live reload when possible | Change validation | Configuration rollback |
+| **Database Schema Changes** | Scheduled maintenance | Application compatibility test | Schema rollback script |
 
-### **6.1 Backup Strategy**
+## **8.2 Maintenance Schedule**
 
-Multiple backup approaches protect different aspects of the project environment.
+Research applications follow a maintenance schedule aligned with research activities.
 
-| **Component** | **Backup Method** | **Schedule** | **Retention** |
-|--------------|-------------------|-------------|--------------|
-| **Container Configurations** | Git repositories | Real-time | Unlimited |
-| **Docker Volumes** | Proxmox Backup Server | Daily | 7 days |
-| **Nextcloud Data** | Dedicated backup container | Hourly | 14 days |
-| **Project Databases** | Database-specific backups | Hourly | 7 days |
-| **Full VM Backup** | Proxmox Backup Server | Weekly | 4 backups |
+| **Maintenance Type** | **Schedule** | **Notification** | **Downtime Expected** |
+|----------------------|-------------|-----------------|----------------------|
+| **Security Updates** | As needed | 24 hours notice | 0-15 minutes |
+| **Minor Version Updates** | Monthly (3rd Saturday) | 1 week notice | 15-30 minutes |
+| **Major Version Upgrades** | Quarterly | 2 weeks notice | 30-60 minutes |
+| **Configuration Changes** | Bi-weekly (Friday evening) | 3 days notice | 0-15 minutes |
 
-### **6.2 Recovery Procedure**
+---
 
-A structured recovery process ensures minimal disruption to research activities during recovery operations.
+# 🔗 **9. Directory Contents**
 
-1. **Restore VM** from Proxmox Backup Server if needed
-2. **Verify Docker installation** and configuration
-3. **Reconnect Portainer Agent** to Lab-Port01
-4. **Restore application data** from appropriate backups
-5. **Verify integrations** with databases and K8s services
-6. **Test end-to-end functionality** for key research workflows
+This section provides direct navigation to all subdirectories and key documents in this category:
 
-## **7. Monitoring & Alerting**
+## **9.1 Stack Directories**
 
-Comprehensive monitoring ensures project applications remain available and performant for research activities.
+| **Directory** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Gitea** | Research code repositories | [Gitea Stack](/docker/portainer-stacks/proj-apps01-portainer-docker-application-node/gitea/README.md) |
+| **Grafana** | Research data visualization | [Grafana Stack](/docker/portainer-stacks/proj-apps01-portainer-docker-application-node/grafana/README.md) |
+| **Nextcloud** | File sharing and collaboration | [Nextcloud Stack](/docker/portainer-stacks/proj-apps01-portainer-docker-application-node/nextcloud/README.md) |
+| **Jupyter** | Interactive data analysis | [Jupyter Stack](/docker/portainer-stacks/proj-apps01-portainer-docker-application-node/jupyter/README.md) |
+| **Dashy** | Research dashboard | [Dashy Stack](/docker/portainer-stacks/proj-apps01-portainer-docker-application-node/dashy/README.md) |
 
-### **7.1 Health Checks**
+## **9.2 Key Documents**
 
-Multiple monitoring approaches ensure the health and performance of project applications.
+| **Document** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Stack Style Guide** | Documentation standards | [Stack Documentation Style Guide](/docker/portainer-stacks/portainer-stacks-lab-documentation-and-style-guide.md) |
+| **Research Application Standards** | Configuration guidance | [Research Application Standards](/docs/research-projects/application-standards.md) |
+| **Troubleshooting Guide** | Common issue resolution | [Research Stack Troubleshooting](/docs/research-projects/stack-troubleshooting.md) |
 
-- **Container status** monitoring via Prometheus exporters
-- **Application-specific health checks** via HTTP endpoints
-- **Integration status** with databases and external services
-- **User experience metrics** for web interfaces
-- **Storage utilization** tracking
-- **Backup success/failure** monitoring
+---
 
-### **7.2 Alert Thresholds**
+# 🔄 **10. Related Resources**
 
-Targeted alerts ensure proactive response to potential issues affecting research applications.
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **Host VM Documentation** | Host for these stacks | [proj-apps01](/infrastructure/projects/proj-apps01-docker-application-node.md) |
+| **Portainer Master** | Controls these stacks | [lab-port01](/infrastructure/control-plane/lab-port01-portainer-control-node.md) |
+| **Database Infrastructure** | Stores application data | [PostgreSQL Databases](/infrastructure/projects/proj-pg01-postgresql.md) |
+| **Research Workflows** | Uses these applications | [Research Workflows](/docs/research-projects/workflows/README.md) |
+| **Monitoring Configuration** | Monitors these applications | [Application Monitoring](/docs/applications/observability/application-monitoring.md) |
 
-| **Metric** | **Warning Threshold** | **Critical Threshold** |
-|------------|----------------------|------------------------|
-| **CPU Usage** | 75% for 5 minutes | 90% for 3 minutes |
-| **Memory Usage** | 80% for 5 minutes | 90% for 3 minutes |
-| **Disk Usage** | 75% | 90% |
-| **Response Time** | 2 seconds | 5 seconds |
-| **Error Rate** | 1% | 5% |
-| **Integration Failures** | 3 in 15 minutes | 5 in 5 minutes |
+---
 
-## **8. Management & Operations**
-
-Structured operational procedures ensure stable and predictable management of project applications.
-
-### **8.1 Maintenance Schedule**
-
-The Proj-Apps01 node follows the lab's rotating maintenance schedule with special consideration for research activities.
-
-- **OS Updates**: Weekly on predefined maintenance windows
-- **Security Patches**: Applied as needed with priority
-- **Docker Updates**: Evaluated monthly
-- **Application Updates**: Coordinated with research schedules
-- **Database Schema Changes**: Implemented via change management process
-
-VMs are updated and rebooted weekly on a rotating schedule to avoid service downtimes, with project components scheduled to minimize impact on active research.
-
-### **8.2 Update Procedure**
-
-Updates follow a standardized process with consideration for research continuity.
-
-1. **Review change documentation** in GLPI
-2. **Notify research teams** of planned maintenance
-3. **Create application backups** before updates
-4. **Implement updates** according to plan
-5. **Verify application functionality** post-update
-6. **Test research workflows** to ensure proper operation
-7. **Update documentation** with any changes
-
-### **8.3 Troubleshooting Quick Reference**
-
-Common issues are documented with standard resolution paths to speed recovery and reduce research disruption.
-
-| **Problem** | **First Response** | **Second Response** |
-|------------|-------------------|---------------------|
-| **Container Exit** | Check container logs | Inspect resource limits |
-| **Integration Failure** | Verify connectivity to dependency | Check authentication credentials |
-| **Storage Issue** | Check available space | Investigate volume mounts |
-| **Performance Degradation** | Identify resource bottlenecks | Review application configurations |
-| **Authentication Problems** | Check Zitadel connectivity | Verify OAuth configurations |
-
-## **9. Documentation References**
-
-Additional resources provide detailed information on project application configurations and research workflows.
-
-| **Document** | **Purpose** | **Location** |
-|-------------|------------|-------------|
-| **Service Documentation** | ITIL-aligned service document | [Proj-Apps01 Service Documentation](../../../applications-services/proj-apps01-docker-application-node.md) |
-| **Research Workflow Guide** | End-to-end workflow documentation | [Research Workflow Documentation](../../../observatory-projects/workflows/end-to-end-guide.md) |
-| **Application User Guides** | Usage instructions for researchers | [Application User Guides](../../../observatory-projects/applications/user-guides.md) |
-
-## **Approval & Review**
+# ✅ **11. Approval & Review**
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
 | VintageDon | Lead Engineer | 2025-03-09 | ✅ Approved |
 
-## **Change Log**
+---
+
+# 📜 **12. Change Log**
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|

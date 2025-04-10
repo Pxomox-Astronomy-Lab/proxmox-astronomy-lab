@@ -1,239 +1,189 @@
-﻿<!-- 
----
-title: "Simulation Approach - Proxmox Astronomy Lab"
-description: "Documentation of the role-based simulation methodology used to model enterprise IT practices within the Proxmox Astronomy Lab"
-author: "VintageDon"
-tags: ["simulation", "itil", "roles", "cab", "enterprise-practices"]
-category: "IT Service Management"
-kb_type: "Reference"
-version: "1.0"
-status: "Published"
-last_updated: "2025-03-16"
----
--->
+﻿# 🎭 **Simulation Approach**
 
-# 🎭 **Simulation Approach**
+# 🔍 **1. Overview**
 
-## 🔍 **1. Overview**
+The Simulation Approach in the Proxmox Astronomy Lab provides a structured methodology for implementing enterprise IT practices in a citizen science environment through role-based simulation. This approach enables a single operator or small team to experience and implement professional IT service management processes, creating a realistic learning environment while maintaining rigorous operational standards throughout the lab infrastructure.
 
-The Proxmox Astronomy Lab employs a **structured simulation approach** to replicate enterprise IT practices within a citizen science environment. This approach allows a **single operator to experience and implement enterprise-grade processes**, creating a realistic learning environment while maintaining rigorous operational standards.
-
-### **1.1 Key Benefits**
-
-| **Benefit** | **Description** |
-|-------------|----------------|
-| **Role Experience** | Experience multiple IT roles and responsibilities |
-| **Process Practice** | Implement ITIL processes in a controlled environment |
-| **Documentation Development** | Create realistic documentation from each role perspective |
-| **Skill Building** | Develop enterprise-grade skills applicable to professional environments |
-| **Governance Testing** | Test governance models without organizational complexity |
+The simulation creates a "skill nexus" where technical decisions can be viewed from multiple professional perspectives, providing a comprehensive understanding of enterprise IT operations and governance while building transferable skills applicable to larger environments.
 
 ---
 
-## 🧩 **2. Simulation Philosophy**
+# 👥 **2. Role-Based Simulation**
 
-Our simulation philosophy centers around the concept of a **"skill nexus"** - a multidisciplinary learning environment where technical decisions ripple across various IT domains.
+## **2.1 Simulated Roles**
 
-| **Traditional Enterprise** | **Proxmox Astronomy Lab Simulation** |
-|---------------------------|--------------------------------------|
-| Siloed teams with specialized focus | Single operator rotating through multiple roles |
-| Knowledge gaps between domains | Comprehensive cross-domain understanding |
-| Trade-offs negotiated between teams | Direct experience of all trade-off consequences |
-| Documentation for others | Documentation that serves both as reference and learning tool |
+The lab implements a structured role system that simulates different IT professional responsibilities:
 
-This approach creates a **unique educational environment** where every technical decision is viewed through multiple professional lenses simultaneously.
+| **Role** | **Responsibilities** | **Documentation** |
+|----------|---------------------|-------------------|
+| **Lab Owner** | Strategic direction, budgeting, approvals | [Lab Owner Role](Role-Simulation/Lab-Owner-Role/README.md) |
+| **Engineer** | Technical design, infrastructure implementation | [Engineer Role](Role-Simulation/Engineer-Role/README.md) |
+| **Administrator** | Security, compliance, access management | [Administrator Role](Role-Simulation/Administrator-Role/README.md) |
+| **Operations** | Day-to-day management, stability, monitoring | [Operations Role](Role-Simulation/Operations-Role/README.md) |
 
----
+## **2.2 Role Implementation Strategy**
 
-## 👥 **3. Simulated Roles & Responsibilities**
+Methods for effectively implementing the role-based approach:
 
-### **3.1 Primary Roles**
-
-The lab simulates a small enterprise team structure with defined roles, each with distinct responsibilities:
-
-| **Role** | **Primary Responsibilities** | **Documentation** |
-|----------|----------------------------|-------------------|
-| **Lab Owner** | Strategic direction, budgeting, final approval authority | [Lab Owner Role](role-simulation/lab-owner-role/README.md) |
-| **Engineer** | Infrastructure design, complex technical implementation | [Engineer Role](role-simulation/engineer-role/README.md) |
-| **Operations** | Day-to-day management, monitoring, stability | [Operations Role](role-simulation/operations-role/README.md) |
-| **Administrator** | Security, compliance, access control | [Administrator Role](role-simulation/administrator-role/README.md) |
-| **Helpdesk** | Documentation, tier 1 support, knowledge management | [Helpdesk Role](role-simulation/helpdesk-role/README.md) |
-
-### **3.2 Role Rotation Schedule**
-
-To maintain the simulation's effectiveness, roles are rotated according to:
-
-- **Project Phase Focus** - Different roles lead different project phases
-- **Calendar-Based Rotation** - Specific days dedicated to specific roles
-- **Issue-Based Assignment** - Certain issue types handled by appropriate roles
-
-This ensures balanced attention across all aspects of the environment.
+| **Strategy** | **Implementation Method** | **Documentation** |
+|--------------|--------------------------|-------------------|
+| **Role Rotation** | Calendar-based switching between roles | [Role Rotation](Role-Simulation/role-rotation-schedule.md) |
+| **Separate Documentation** | Role-specific perspectives in knowledge base | [Documentation Approach](Role-Simulation/role-documentation.md) |
+| **Decision Matrices** | Role-appropriate authority frameworks | [Decision Framework](Role-Simulation/decision-authority-matrix.md) |
+| **Tool Segmentation** | Role-based interfaces and permissions | [Tool Configuration](Role-Simulation/role-based-tools.md) |
 
 ---
 
-## 🔄 **4. ITIL Process Simulation**
+# 🔄 **3. ITIL Process Simulation**
 
-The lab implements lightweight ITIL processes to structure IT operations while maintaining practicality for a single operator.
+## **3.1 Change Management**
 
-### **4.1 Service Management**
+Simulated CAB and change control processes:
 
-| **ITIL Practice** | **Implementation Approach** | **Documentation** |
-|-------------------|----------------------------|-------------------|
-| **Service Catalog Management** | Structured service documentation using templates | [Service Documentation Template](../service-catalog/service-documentation-template.md) |
-| **Service Level Management** | Defined SLOs for key services with monitoring | [Service Level Objectives](../service-catalog/service-level-objectives.md) |
-| **Service Request Management** | Formalized request catalog in GLPI | [Service Request Catalog](../service-catalog/service-request-catalog.md) |
+| **Component** | **Simulation Approach** | **Documentation** |
+|--------------|------------------------|-------------------|
+| **Virtual CAB** | Multiple role perspectives for change evaluation | [Virtual CAB](ITIL-Processes/Change-Management/virtual-cab.md) |
+| **Change Workflow** | Structured RFC process with role-based approvals | [Change Workflow](ITIL-Processes/Change-Management/change-workflow.md) |
+| **Implementation Reviews** | Post-implementation analysis across roles | [Implementation Reviews](ITIL-Processes/Change-Management/implementation-reviews.md) |
 
-### **4.2 Change Management**
+## **3.2 Incident Management**
 
-The lab simulates formal Change Advisory Board (CAB) processes:
+Approach to simulating enterprise incident response:
 
-| **Component** | **Simulation Method** | **Documentation** |
-|---------------|----------------------|-------------------|
-| **Virtual CAB Members** | Separate GLPI accounts representing different stakeholders | [CAB Member Profiles](../change-management/cab-member-profiles.md) |
-| **Change Request Workflow** | Structured templates with risk assessment and rollback plans | [Change Request Process](../change-management/change-request-process.md) |
-| **Change Evaluation** | Formal review process with multiple "approvers" | [Change Evaluation Criteria](../change-management/change-evaluation-criteria.md) |
-| **Post-Implementation Review** | Structured assessment of implemented changes | [Post-Implementation Review Template](../change-management/pir-template.md) |
+| **Component** | **Simulation Approach** | **Documentation** |
+|--------------|------------------------|-------------------|
+| **Tiered Support** | Escalation between simulated support levels | [Support Tiers](ITIL-Processes/Incident-Management/support-tiers.md) |
+| **Severity Definition** | Standardized impact assessment | [Severity Framework](ITIL-Processes/Incident-Management/severity-definitions.md) |
+| **Incident Lifecycle** | Structured incident management workflow | [Incident Workflow](ITIL-Processes/Incident-Management/incident-workflow.md) |
 
-### **4.3 Incident Management**
+## **3.3 Problem Management**
 
-| **Component** | **Simulation Method** | **Documentation** |
-|---------------|----------------------|-------------------|
-| **Severity Levels** | Defined P1-P4 classification with response targets | [Incident Severity Definitions](../incident-management/incident-severity-definitions.md) |
-| **Incident Response** | Role-appropriate handling based on severity | [Incident Response Procedures](../incident-management/incident-response-procedures.md) |
-| **Major Incident Process** | Escalation procedures for critical issues | [Major Incident Process](../incident-management/major-incident-process.md) |
+Methods for simulating root cause analysis and knowledge management:
 
----
-
-## 🎫 **5. Ticketing System Implementation**
-
-GLPI serves as the central platform for simulating enterprise ticketing processes.
-
-### **5.1 Ticket Types & Workflows**
-
-| **Ticket Type** | **Purpose** | **Workflow** |
-|-----------------|------------|-------------|
-| **Incident** | Track service disruptions and issues | Detection → Classification → Resolution → Closure |
-| **Service Request** | Handle standard user requests | Submission → Approval → Fulfillment → Verification |
-| **Change Request** | Manage changes to services or infrastructure | Proposal → Assessment → Approval → Implementation → Review |
-| **Problem** | Address underlying causes of incidents | Identification → Investigation → Resolution → Prevention |
-
-### **5.2 Virtual User Accounts**
-
-The ticketing system is populated with virtual accounts representing:
-
-- **CAB Members** - For change approval simulation
-- **Department Stakeholders** - For service request approvals
-- **Technical Specialists** - For escalation scenarios
-- **Service Owners** - For accountability tracking
-
-All virtual accounts use email forwarding with filtering to maintain the simulation while preventing excessive complexity.
+| **Component** | **Simulation Approach** | **Documentation** |
+|--------------|------------------------|-------------------|
+| **Root Cause Analysis** | Structured analysis methodologies | [RCA Approach](ITIL-Processes/Problem-Management/rca-methodologies.md) |
+| **Knowledge Base** | Systematic documentation of solutions | [Knowledge Management](ITIL-Processes/Problem-Management/knowledge-management.md) |
+| **Trend Analysis** | Pattern identification in incidents | [Trend Analysis](ITIL-Processes/Problem-Management/trend-analysis.md) |
 
 ---
 
-## 🔐 **6. Compliance Integration**
+# 📋 **4. Simulation Tools**
 
-The simulation approach integrates compliance requirements throughout:
+## **4.1 Ticketing System**
 
-| **Compliance Area** | **Simulation Approach** | **Documentation** |
-|--------------------|-------------------------|-------------------|
-| **CISv8 Controls** | Role-specific responsibilities for implementing controls | [CISv8 RACI Matrix](../../compliance-security/cisv8-controls/cisv8-raci-matrix.md) |
-| **Audit Preparation** | Simulated audit scenarios with evidence collection | [Audit Preparation Process](../../compliance-security/lab-security-policies/audit-preparation-process.md) |
-| **Security Reviews** | Periodic reviews by "Security Administrator" role | [Security Review Checklist](../../compliance-security/security-monitoring/security-review-checklist.md) |
+GLPI implementation for simulating enterprise ticketing:
 
----
+| **Component** | **Configuration** | **Documentation** |
+|--------------|------------------|-------------------|
+| **Virtual Users** | Role-based accounts | [Virtual Users](Simulation-Tools/GLPI/virtual-users.md) |
+| **Workflow Automation** | Process-driven automation | [Automated Workflows](Simulation-Tools/GLPI/workflow-automation.md) |
+| **SLA Tracking** | Service level monitoring | [SLA Configuration](Simulation-Tools/GLPI/sla-configuration.md) |
 
-## 📋 **7. Practical Implementation Examples**
+## **4.2 Documentation Systems**
 
-### **7.1 Example: Database Change Implementation**
+Knowledge management tools for role-based documentation:
 
-This illustrates how a single change flows through the simulated roles:
-
-1. **Engineer** (Proposing Role):
-   - Identifies need for TimescaleDB optimization
-   - Creates change request in GLPI
-   - Completes technical implementation plan
-
-2. **Administrator** (Review Role):
-   - Reviews security implications
-   - Verifies compliance with standards
-   - Provides security approval
-
-3. **Operations** (Review Role):
-   - Assesses operational impact
-   - Reviews monitoring requirements
-   - Provides operational approval
-
-4. **CAB** (Virtual Approval):
-   - Final review of complete change package
-   - Formal approval with implementation window
-
-5. **Engineer** (Implementation):
-   - Executes the approved change
-   - Documents results in GLPI
-
-6. **Operations** (Verification):
-   - Confirms successful implementation
-   - Updates monitoring as needed
-
-### **7.2 Example: Simulated Incident Response**
-
-1. **Monitoring Alert** triggers incident ticket
-2. **Helpdesk** performs initial triage
-3. **Operations** investigates and resolves
-4. **Engineer** conducts root cause analysis
-5. **Administrator** verifies security impact
-6. **Lab Owner** reviews major incidents
+| **Component** | **Purpose** | **Documentation** |
+|--------------|------------|-------------------|
+| **Wiki Systems** | Structured knowledge base | [Wiki Structure](Simulation-Tools/Documentation/wiki-structure.md) |
+| **Version Control** | Documentation change tracking | [Version Control](Simulation-Tools/Documentation/version-control.md) |
+| **Role Templates** | Role-specific documentation formats | [Documentation Templates](Simulation-Tools/Documentation/role-templates.md) |
 
 ---
 
-## 🎓 **8. Educational Components**
+# 🎓 **5. Educational Components**
 
-The simulation approach provides several key educational benefits:
+## **5.1 Skill Development**
 
-| **Educational Area** | **Learning Objectives** | **Documentation** |
-|----------------------|------------------------|-------------------|
-| **Role Perspective** | Understanding different IT viewpoints | [Role Perspectives](educational-components/role-perspectives.md) |
-| **Process Value** | Appreciating formal process benefits | [Process Value](educational-components/process-value.md) |
-| **Documentation Practice** | Creating multi-audience documentation | [Documentation Standards](educational-components/documentation-standards.md) |
-| **Enterprise Skills** | Building transferable enterprise capabilities | [Enterprise Skills](educational-components/enterprise-skills.md) |
-| **Compliance Experience** | Practical implementation of frameworks | [Compliance Practice](educational-components/compliance-practice.md) |
+Learning objectives for the simulation approach:
 
----
+| **Skill Area** | **Development Approach** | **Documentation** |
+|----------------|------------------------|-------------------|
+| **Technical Skills** | Hands-on infrastructure implementation | [Technical Development](Educational-Components/Skill-Development/technical-skills.md) |
+| **Process Skills** | ITIL framework application | [Process Development](Educational-Components/Skill-Development/process-skills.md) |
+| **Documentation Skills** | Multi-audience documentation practice | [Documentation Development](Educational-Components/Skill-Development/documentation-skills.md) |
 
-## 🔗 **9. Related Documentation**
+## **5.2 Learning Objectives**
 
-| **Section** | **Description** | **Link** |
-|------------|----------------|---------|
-| **ITIL Processes** | Core ITIL process documentation | [ITIL Processes](../README.md) |
-| **Change Management** | Detailed change management procedures | [Change Management](../change-management/README.md) |
-| **Incident Management** | Incident handling processes | [Incident Management](../incident-management/README.md) |
-| **Problem Management** | Root cause analysis and prevention | [Problem Management](../problem-management/README.md) |
-| **Service Catalog** | Service definitions and management | [Service Catalog](../service-catalog/README.md) |
+Specific educational goals of the simulation:
+
+| **Objective** | **Measurement Method** | **Documentation** |
+|--------------|----------------------|-------------------|
+| **Enterprise Perspective** | Role understanding assessment | [Enterprise Perspective](Educational-Components/Learning-Objectives/enterprise-perspective.md) |
+| **Process Value** | Benefits analysis of formal processes | [Process Value](Educational-Components/Learning-Objectives/process-value.md) |
+| **Security Mindset** | Security consideration in all roles | [Security Mindset](Educational-Components/Learning-Objectives/security-mindset.md) |
 
 ---
 
-## 🔄 **10. Enterprise Practices**
+# 🔍 **6. Practical Implementation**
 
-The simulation incorporates key enterprise IT practices:
+## **6.1 Example Scenarios**
 
-| **Practice** | **Implementation** | **Documentation** |
-|--------------|-------------------|-------------------|
-| **Documentation Standards** | Standardized templates and formats | [Documentation Standards](enterprise-practices/documentation-standards/README.md) |
-| **Governance Models** | Decision frameworks and approval structures | [Governance Models](enterprise-practices/governance-models/README.md) |
-| **Process Simulation** | Structured workflows and procedures | [Process Simulation](enterprise-practices/process-simulation/README.md) |
+Real-world examples of the simulation in practice:
+
+| **Scenario** | **Simulated Process** | **Documentation** |
+|--------------|---------------------|-------------------|
+| **Infrastructure Change** | Multi-role change implementation | [Change Example](Practical-Implementation/infrastructure-change-example.md) |
+| **Service Outage** | Incident and problem management | [Incident Example](Practical-Implementation/service-outage-example.md) |
+| **Security Event** | Cross-role security response | [Security Example](Practical-Implementation/security-event-example.md) |
+
+## **6.2 Balancing Simulation and Practicality**
+
+Approaches to maintain effectiveness without excessive overhead:
+
+| **Challenge** | **Solution Approach** | **Documentation** |
+|--------------|---------------------|-------------------|
+| **Time Constraints** | Streamlined workflows | [Efficiency Techniques](Practical-Implementation/time-efficiency.md) |
+| **Tool Limitations** | Practical tool adaptations | [Tool Adaptations](Practical-Implementation/tool-adaptations.md) |
+| **Documentation Balance** | Essential vs. comprehensive documentation | [Documentation Strategy](Practical-Implementation/documentation-strategy.md) |
 
 ---
 
-## ✅ **11. Approval & Review**
+# 🔗 **7. Directory Contents**
+
+This section provides direct navigation to all subdirectories and key documents in this category:
+
+## **Subdirectories**
+
+| **Directory** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Role-Simulation** | Role definitions and implementation | [Role Simulation README](Role-Simulation/README.md) |
+| **Educational-Components** | Learning objectives and skill development | [Educational Components README](Educational-Components/README.md) |
+| **Enterprise-Practices** | Enterprise IT practice implementation | [Enterprise Practices README](Enterprise-Practices/README.md) |
+
+## **Key Documents**
+
+| **Document** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Simulation Philosophy** | Core principles of the simulation approach | [Simulation Philosophy](simulation-philosophy.md) |
+| **Role Matrix** | RACI matrix of role responsibilities | [Role Matrix](role-responsibility-matrix.md) |
+| **Decision Authority Framework** | Role-based decision guidelines | [Decision Framework](decision-authority-framework.md) |
+
+---
+
+# 🔄 **8. Related Categories**
+
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **ITIL-Processes** | Parent directory for simulation approach | [ITIL Processes README](../README.md) |
+| **Change-Management** | Change processes implemented in simulation | [Change Management README](../Change-Management/README.md) |
+| **Incident-Management** | Incident processes implemented in simulation | [Incident Management README](../Incident-Management/README.md) |
+| **Problem-Management** | Problem processes implemented in simulation | [Problem Management README](../Problem-Management/README.md) |
+
+---
+
+# ✅ **9. Approval & Review**
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-16 | ✅ Approved |
+| VintageDon | Lead Engineer | 2025-04-04 | ✅ Approved |
 
 ---
 
-## 📜 **12. Change Log**
+# 📜 **10. Change Log**
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|
-| 1.0 | 2025-03-16 | Initial Simulation Approach README | VintageDon |
+| 2.0 | 2025-04-04 | Updated to standardized format with expanded sections | VintageDon |
+| 1.0 | 2025-03-16 | Initial simulation approach README | VintageDon |

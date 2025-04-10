@@ -14,154 +14,163 @@ last_updated: "2025-03-16"
 
 # 🔍 **Security Assessment Tools**
 
-## 🔍 **1. Overview**
+# 🔍 **1. Overview**
 
-This section documents the **security assessment and compliance verification tools** used within the Proxmox Astronomy Lab. These tools enable **systematic security evaluation, automated compliance checking, and continuous security posture monitoring** across our infrastructure.
+This section documents the security assessment and compliance verification tools used within the Proxmox Astronomy Lab. These tools enable systematic security evaluation, automated compliance checking, and continuous security posture monitoring across our infrastructure.
 
-Our assessment approach combines **industry-standard tools, custom scripts, and automated workflows** to ensure comprehensive coverage of security requirements while maintaining operational efficiency. This documentation provides details on tool configuration, scanning procedures, and result interpretation.
-
----
-
-## 🧰 **2. Assessment Tool Suite**
-
-The lab employs multiple complementary tools to assess different aspects of security:
-
-| **Tool** | **Primary Purpose** | **Implementation** | **Documentation** |
-|----------|-------------------|-------------------|-------------------|
-| [**CIS-CAT Lite**](CIS-CAT/README.md) | CIS Benchmark compliance verification | Scheduled scans via Wazuh | [CIS-CAT Configuration](CIS-CAT/configuration.md) |
-| [**Lynis**](Lynis/README.md) | Linux security auditing and hardening | Daily automated scans | [Lynis Implementation](Lynis/implementation.md) |
-| [**Wazuh**](../Security-Monitoring/Wazuh/README.md) | Comprehensive security monitoring and SCA | Centralized on lab-soc01 | [Wazuh Security Checks](../Security-Monitoring/Wazuh/security-checks.md) |
-| [**Custom Scripts**](Custom-Scripts/README.md) | Specialized security verification | Targeted control validation | [Script Repository](Custom-Scripts/repository.md) |
-
-Each tool addresses specific assessment needs and together provides comprehensive security visibility across our environment.
+Our assessment approach combines industry-standard tools, custom scripts, and automated workflows to ensure comprehensive coverage of security requirements while maintaining operational efficiency. This documentation provides details on tool configuration, scanning procedures, and result interpretation.
 
 ---
 
-## 🔄 **3. Assessment Workflow**
+# 🧰 **2. Assessment Tool Suite**
 
-### **3.1 Scheduled Assessment Process**
+## **2.1 CIS-CAT Lite**
 
-Our security assessment follows a structured, automated workflow:
+CIS-CAT Lite provides automated verification of CIS Benchmark compliance across our environment.
 
-| **Phase** | **Activities** | **Frequency** | **Automation** |
-|-----------|---------------|--------------|----------------|
-| **Discovery** | Asset inventory update, scope definition | Weekly | Ansible automation |
-| **Scanning** | Tool-based security evaluation | Daily | Scheduled via cron/systemd |
-| **Analysis** | Finding review, false positive evaluation | Daily | Wazuh integration |
-| **Reporting** | Results consolidation, dashboard updates | Daily | Automated reporting |
-| **Remediation** | Control implementation, issue resolution | Based on severity | Tracked in GLPI |
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Assessment Engine** | Benchmark evaluation | [CIS-CAT Configuration](CIS-CAT/CIS-CAT-Configuration.md) |
+| **Benchmark Profiles** | Compliance definitions | [Benchmark Profiles](CIS-CAT/Benchmark-Profiles.md) |
+| **Wazuh Integration** | Automated scanning | [Wazuh Integration](CIS-CAT/Wazuh-Integration.md) |
+| **Reporting** | Assessment results | [Report Configuration](CIS-CAT/Report-Configuration.md) |
 
-This systematic approach ensures consistent assessment coverage and timely identification of security issues.
+## **2.2 Lynis**
 
-### **3.2 Integration with Security Monitoring**
+Lynis provides in-depth security auditing for Linux systems with customizable tests.
 
-Assessment tools are integrated with our broader security monitoring infrastructure:
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Auditor Mode** | Enhanced security scanning | [Auditor Mode](Lynis/Auditor-Mode.md) |
+| **Custom Profiles** | Lab-specific tests | [Custom Profiles](Lynis/Custom-Profiles.md) |
+| **Automation** | Scheduled scanning | [Automation Configuration](Lynis/Automation-Configuration.md) |
+| **Reporting** | Result aggregation | [Reporting](Lynis/Reporting.md) |
 
-- **Wazuh SIEM** receives assessment results for correlation and alerting
-- **Prometheus** collects assessment metrics for trending and visualization
-- **Grafana** dashboards provide real-time visibility into security posture
-- **GLPI** tracks remediation activities for identified issues
+## **2.3 Custom Scripts**
 
-This integration provides a unified view of security status across the lab environment.
+Purpose-built scripts for specialized security verification needs.
 
----
-
-## 📊 **4. Assessment Standards**
-
-### **4.1 Benchmark Profiles**
-
-The assessment tools utilize standardized security benchmarks:
-
-| **System Type** | **Benchmark** | **Profile** | **Tool** |
-|----------------|--------------|------------|----------|
-| **Ubuntu 24.04 Server** | CIS Ubuntu 24.04 Benchmark v1.0.0 | Level 2 Server | CIS-CAT Lite, Lynis |
-| **Windows Server 2025** | CIS Windows Server 2025 Benchmark v1.0.0 | Level 1 Server | CIS-CAT Lite |
-| **Network Devices** | CIS Network Device Benchmarks | Level 1 | Custom verification scripts |
-| **Containers** | CIS Docker Benchmark v1.5.0 | Level 1 | Wazuh SCA checks |
-
-These profiles provide a standardized baseline for security assessment across different system types.
-
-### **4.2 Verification Methods**
-
-Assessment tools employ various verification methods:
-
-| **Method** | **Description** | **Primary Tools** |
-|------------|----------------|-------------------|
-| **Configuration Analysis** | Evaluates system settings against baseline requirements | CIS-CAT Lite, Wazuh SCA |
-| **File Integrity Checking** | Verifies integrity of critical system files | Wazuh FIM, AIDE |
-| **Performance Testing** | Evaluates security impact on system performance | Custom scripts |
-| **Compliance Mapping** | Maps findings to regulatory frameworks | CIS-CAT Lite, Wazuh |
-
-These complementary methods ensure comprehensive coverage of security requirements.
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **CIS Verification** | Custom control validation | [CIS Scripts](Custom-Scripts/CIS-Verification.md) |
+| **Configuration Testing** | Security setting validation | [Config Testing](Custom-Scripts/Configuration-Testing.md) |
+| **Automation Framework** | Execution environment | [Automation Framework](Custom-Scripts/Automation-Framework.md) |
 
 ---
 
-## 📝 **5. Documentation & Reporting**
+# 🔄 **3. Assessment Workflow**
 
-### **5.1 Assessment Reports**
+## **3.1 Scheduled Assessment Process**
 
-The assessment process generates various reports:
+Our security assessment follows a structured, automated workflow.
 
-| **Report Type** | **Content** | **Audience** | **Frequency** |
-|----------------|------------|--------------|--------------|
-| **Compliance Summary** | Overall CIS compliance status | Lab Owner, Security Admin | Weekly |
-| **Vulnerability Report** | Detailed findings with remediation guidance | System Administrators | Daily |
-| **Trend Analysis** | Security posture changes over time | Security Admin | Monthly |
-| **Exception Report** | Documented deviations from baselines | Lab Owner, Auditors | Monthly |
+| **Phase** | **Activities** | **Frequency** | **Responsibility** |
+|-----------|---------------|--------------|-------------------|
+| **Discovery** | Asset inventory update, scope definition | Weekly | Security Administration |
+| **Scanning** | Tool-based security evaluation | Daily | Automated via Wazuh |
+| **Analysis** | Finding review, false positive evaluation | Daily | Security Administration |
+| **Reporting** | Results consolidation, dashboard updates | Daily | Automated |
+| **Remediation** | Control implementation, issue resolution | Based on severity | System Administration |
 
-These reports provide actionable information for security management and improvement.
+## **3.2 Integration with Security Monitoring**
 
-### **5.2 Report Integration**
+Assessment tools are integrated with our broader security monitoring infrastructure for unified visibility.
 
-Assessment reports are integrated with our documentation system:
-
-- **GLPI ticket generation** for required remediation activities
-- **Wiki knowledge base** updates with latest security guidance
-- **Compliance evidence** repository for audit purposes
-- **Dashboard visualization** for real-time security status
-
-This integration ensures assessment results drive concrete security improvements.
-
----
-
-## 🛠️ **6. Tool-Specific Configuration**
-
-### **6.1 CIS-CAT Lite Configuration**
-
-| **Aspect** | **Configuration** | **Documentation** |
-|------------|-------------------|-------------------|
-| **Execution Environment** | Wazuh integration for automated scanning | [CIS-CAT Setup](CIS-CAT/setup-guide.md) |
-| **Reporting Format** | XML, HTML, and CSV outputs | [Report Configuration](CIS-CAT/reporting.md) |
-| **Scanning Schedule** | Weekly full scans, daily incremental | [Scheduling](CIS-CAT/scheduling.md) |
-| **Profile Selection** | Level 2 Server profiles where available | [Profile Selection](CIS-CAT/profiles.md) |
-
-For detailed CIS-CAT Lite configuration, see the [CIS-CAT Lite documentation](CIS-CAT/README.md).
-
-### **6.2 Lynis Configuration**
-
-| **Aspect** | **Configuration** | **Documentation** |
-|------------|-------------------|-------------------|
-| **Custom Profiles** | Lab-specific profile with enhanced controls | [Custom Profile](Lynis/custom-profile.md) |
-| **Integration** | Output processing for Wazuh | [Wazuh Integration](Lynis/wazuh-integration.md) |
-| **Automation** | Daily automated scanning | [Scanning Automation](Lynis/automation.md) |
-| **Auditor Mode** | Enhanced tests with root privileges | [Auditor Configuration](Lynis/auditor-mode.md) |
-
-For detailed Lynis configuration, see the [Lynis documentation](Lynis/README.md).
+| **Integration** | **Purpose** | **Documentation** |
+|----------------|------------|-------------------|
+| **Wazuh SIEM** | Alert correlation | [Wazuh Integration](../Security-Monitoring/Wazuh/Assessment-Integration.md) |
+| **Prometheus** | Assessment metrics | [Metrics Collection](../Security-Monitoring/Prometheus/Assessment-Metrics.md) |
+| **Grafana** | Security dashboards | [Security Dashboards](../Security-Monitoring/Grafana/Security-Dashboards.md) |
+| **GLPI** | Remediation tracking | [GLPI Integration](../Security-Monitoring/GLPI/Remediation-Tracking.md) |
 
 ---
 
-## 🔗 **7. Related Documentation**
+# 📊 **4. Compliance Frameworks**
 
-| **Section** | **Description** | **Link** |
-|------------|----------------|---------|
-| **Security Monitoring** | Configuration of security monitoring tools | [Security Monitoring](../Security-Monitoring/README.md) |
-| **CIS Controls** | Implementation of CIS Controls framework | [CIS Controls](../CIS-Controls/README.md) |
-| **Remediation** | Procedures for addressing security findings | [Remediation](../Remediation/README.md) |
-| **Security Policies** | Security policy documentation | [Security Policies](../Security-Policies/README.md) |
+## **4.1 CIS Controls Implementation**
+
+Our assessment tools verify implementation of the CIS Controls framework.
+
+| **CIS Control Group** | **Assessment Coverage** | **Documentation** |
+|----------------------|------------------------|-------------------|
+| **Identity & Access Management** | Authentication, authorization | [IAM Assessment](CIS-CAT/IAM-Assessment.md) |
+| **Device Security** | Configuration, patching | [Device Assessment](CIS-CAT/Device-Assessment.md) |
+| **Network Security** | Segmentation, monitoring | [Network Assessment](CIS-CAT/Network-Assessment.md) |
+| **Application Security** | Secure configuration | [Application Assessment](CIS-CAT/Application-Assessment.md) |
+
+## **4.2 Framework Mapping**
+
+Assessment results are mapped to multiple security frameworks for comprehensive compliance visibility.
+
+| **Framework** | **Mapping Approach** | **Documentation** |
+|--------------|---------------------|-------------------|
+| **ISO 27001** | Control mapping | [ISO Mapping](Framework-Mapping/ISO-Mapping.md) |
+| **NIST 800-53** | Control mapping | [NIST Mapping](Framework-Mapping/NIST-Mapping.md) |
+| **CIS Controls v8** | Direct assessment | [CIS Mapping](Framework-Mapping/CIS-Mapping.md) |
 
 ---
 
-## ✅ **8. Approval & Review**
+# 🔒 **5. Security & Compliance**
+
+## **5.1 Assessment Tool Security**
+
+Security controls protecting our assessment infrastructure.
+
+| **Control Type** | **Implementation** | **Verification Method** |
+|------------------|-------------------|------------------------|
+| **Access Control** | Role-based access to tools | Weekly access review |
+| **Secure Storage** | Encrypted assessment results | Daily integrity verification |
+| **Authentication** | MFA for assessment platforms | Login monitoring |
+| **Monitoring** | Tool activity logging | Log review |
+
+## **5.2 Assurance Activities**
+
+Activities ensuring the accuracy and reliability of assessment results.
+
+| **Activity** | **Frequency** | **Responsibility** | **Documentation** |
+|--------------|--------------|-------------------|-------------------|
+| **Tool Validation** | Quarterly | Security Administration | [Validation Procedures](Assurance/Validation-Procedures.md) |
+| **False Positive Review** | Weekly | Security Administration | [FP Analysis](Assurance/False-Positive-Analysis.md) |
+| **Benchmark Review** | Bi-annually | Security Administration | [Benchmark Review](Assurance/Benchmark-Review.md) |
+
+---
+
+# 🗄️ **6. Directory Contents**
+
+This section provides direct navigation to all subdirectories and key documents in this category:
+
+## **Subdirectories**
+
+| **Directory** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **CIS-CAT** | CIS compliance assessment tool | [CIS-CAT README](CIS-CAT/README.md) |
+| **Lynis** | Linux security auditing tool | [Lynis README](Lynis/README.md) |
+| **Custom-Scripts** | Specialized security verification scripts | [Custom Scripts README](Custom-Scripts/README.md) |
+| **Framework-Mapping** | Security framework mapping documentation | [Framework Mapping README](Framework-Mapping/README.md) |
+| **Assurance** | Assessment quality assurance | [Assurance README](Assurance/README.md) |
+
+## **Key Documents**
+
+| **Document** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Assessment Workflow** | End-to-end assessment process | [Assessment Workflow](Assessment-Workflow.md) |
+| **Tool Integration** | Integration between assessment tools | [Tool Integration](Tool-Integration.md) |
+| **Remediation Process** | Handling assessment findings | [Remediation Process](Remediation-Process.md) |
+
+---
+
+# 🔄 **7. Related Categories**
+
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **Security Monitoring** | Consumes assessment results | [Security Monitoring README](../Security-Monitoring/README.md) |
+| **Remediation** | Implements assessment findings | [Remediation README](../Remediation/README.md) |
+| **Security Policies** | Defines security requirements | [Security Policies README](../Security-Policies/README.md) |
+| **CIS Controls** | Framework being assessed | [CIS Controls README](../CIS-Controls/README.md) |
+
+---
+
+# ✅ **8. Approval & Review**
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
@@ -169,7 +178,7 @@ For detailed Lynis configuration, see the [Lynis documentation](Lynis/README.md)
 
 ---
 
-## 📜 **9. Change Log**
+# 📜 **9. Change Log**
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|

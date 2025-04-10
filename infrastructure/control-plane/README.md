@@ -1,104 +1,126 @@
-# **Control Plane - Proxmox Astronomy Lab**
+<!-- 
+---
+title: "Control Plane - Proxmox Astronomy Lab"
+description: "Documentation of core infrastructure services for identity management, security, automation, and observability"
+author: "VintageDon"
+tags: ["infrastructure", "control-plane", "identity", "monitoring", "automation", "security"]
+kb_type: "Reference"
+version: "1.0"
+status: "Published"
+last_updated: "2025-04-04"
+related_services: ["Active Directory", "Wazuh", "Ansible", "Portainer", "Prometheus"]
+implements_policies: ["Identity Management Policy", "Security Monitoring Policy"]
+phase: "phase-1"
+---
+-->
 
-## **1. Purpose**
+# 🛂 **Control Plane - Proxmox Astronomy Lab**
 
-The **Control Plane** is the foundational layer that enables **secure, automated, and structured IT operations** in the **Proxmox Astronomy Lab**. It provides the **identity, automation, monitoring, and security infrastructure** required to support both **research workloads and IT services**.
+# 🔍 **1. Overview**
 
-This document defines the **core services, architecture, and compliance considerations** that govern control plane operations.
+The Control Plane serves as the foundational layer for all operations within the Proxmox Astronomy Lab, providing critical infrastructure services for identity management, security, automation, and observability. This section documents the core services that enable secure, automated, and structured IT operations supporting both research workloads and IT management.
+
+The Control Plane implements enterprise-grade practices through a carefully designed architecture that balances security, performance, and operational efficiency while maintaining compliance with security frameworks and best practices.
 
 ---
 
-## **2. Scope**
+# 🔐 **2. Identity & Security Services**
 
-The Control Plane includes **all core infrastructure services** related to **identity management, automation, observability, and security**. It ensures that **all compute, storage, and network functions** are centrally managed and enforced.
+## **2.1 Domain Controllers & Identity Management**
 
-**Key Functions Covered:**
+This component group provides authentication, authorization, and identity services for the entire lab environment.
 
-- **Authentication & Identity Management** → Hybrid AD, Entra ID, Conditional Access
-- **Automation & Configuration Management** → Ansible-based automation
-- **Monitoring & Security Operations** → Prometheus, Loki, Wazuh SIEM
-- **Service Orchestration** → Portainer, AD-integrated file shares
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Primary Domain Controller (lab-dc01)** | Windows Server 2025 PDC with Entra ID hybrid join, FSMO roles, and group policy management | [Primary DC Documentation](./lab-dc01-primary-domain-controller.md) |
+| **Read-Only Domain Controller (lab-dc02)** | Windows Server 2025 RODC providing authentication redundancy in VLAN20 | [Secondary DC Documentation](./lab-dc02-ro-domain-controller.md) |
+| **DNS Filtering (lab-dns01, lab-dns02)** | Technitium-based DNS filtering for security enforcement and name resolution | [DNS01 Documentation](./lab-dns01-dns-filtering.md), [DNS02 Documentation](./lab-dns02-dns-filtering.md) |
 
-This section **does not cover** Kubernetes workloads or research-specific applications—those are addressed in their respective sections.
+## **2.2 Security Operations**
 
----
+This component group handles security monitoring, event management, and compliance enforcement.
 
-## **3. Service Overview**
-
-The control plane consists of **mission-critical services** that ensure the lab remains operational, secure, and automated.
-
-| **Service** | **Function** |
-|-------------|-------------|
-| **Ansible Master (lab-ansible01)** | Configuration management and automation via Ansible playbooks. |
-| **Docker Application Node (lab-apps01)** | Hosts containerized microservices for lab operations. |
-| **Database Node (lab-db01)** | PostgreSQL and TimescaleDB instance for structured data. |
-| **Primary Domain Controller (lab-dc01)** | Manages Active Directory authentication and Entra ID synchronization. |
-| **Read-Only Domain Controller (lab-dc02)** | Provides redundancy and high availability for domain services. |
-| **DNS Filtering (lab-dns01, lab-dns02)** | Technitium-based DNS filtering and security enforcement. |
-| **Active Directory File Shares (lab-fs01)** | Centralized SMB shares for controlled data access. |
-| **Monitoring & Logging Stack (lab-mon01)** | Prometheus, Loki, and Grafana for system observability. |
-| **Portainer Control Node (lab-port01)** | Manages Docker-based microservices and containerized workloads. |
-| **Wazuh SIEM & XDR (lab-soc01)** | Security event correlation, log monitoring, and intrusion detection. |
-
-Each service is designed to **ensure high availability, enforce security policies, and streamline operations**.
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Wazuh SIEM/XDR (lab-soc01)** | Security event correlation, log monitoring, and intrusion detection | [Wazuh SIEM Documentation](./lab-soc01-wazuh-seim-xdr.md) |
+| **Active Directory File Shares (lab-fs01)** | Centralized SMB shares with security-based access controls | [File Shares Documentation](./lab-fs01-active-directory-file-shares.md) |
 
 ---
 
-## **4. IT Service Management (ITIL Alignment)**
+# 📊 **3. Automation & Operational Services**
 
-The Control Plane follows a structured **ITIL-lite** approach for **incident, change, and service management**.
+## **3.1 Configuration Management**
 
-| **ITIL Process** | **Implementation in the Lab** |
-|----------------|---------------------------|
-| **Change Management** | Changes tracked via **GPLI**, automated playbooks where possible. |
-| **Incident Management** | Alerts via **Prometheus & Wazuh**, centralized logging with Loki. |
-| **Configuration Management** | Automated configuration drift enforcement via **Ansible playbooks**. |
-| **Access & Identity Management** | Managed via **Entra ID, Conditional Access, and AD Group Policies**. |
+This component group provides infrastructure automation, security compliance, and configuration management.
 
-This ensures that **infrastructure changes, security policies, and service reliability** are continuously maintained.
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Ansible Master (lab-ansible01)** | Centralized configuration management and automation via Ansible playbooks | [Ansible Documentation](./lab-ansible01-automation-master.md) |
 
----
+## **3.2 Containerized Services Management**
 
-## **5. Compliance & Security**
+This component group manages Docker-based workloads throughout the environment.
 
-The control plane aligns with **CIS Benchmarks and security best practices**.
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Portainer Control Node (lab-port01)** | Management of Docker-based microservices and containerized workloads | [Portainer Documentation](./lab-port01-portainer-control-node.md) |
+| **Docker Application Node (lab-apps01)** | Portainer agent node hosting containerized microservices for lab operations | [Docker Apps Documentation](./lab-apps01-docker-application-node.md) |
+| **Database Node (lab-db01)** | Portainer agent node for databases (PostgreSQL, TimescaleDB, etc.) | [Database Node Documentation](./lab-db01-docker-database-node.md) |
 
-| **Compliance Standard** | **Implementation** |
-|-----------------|-----------------|
-| **CIS v8 Level 2 (Linux)** | All Linux-based nodes hardened via Ansible playbooks. |
-| **CIS v9 Level 1 (Windows)** | Windows Server 2025 domain controllers hardened to CIS L1. |
-| **Entra ID Conditional Access** | MFA, risk-based sign-in enforcement, and strict access control. |
-| **Security Logging** | Full log aggregation in **Loki and Wazuh**, retained per policy. |
-| **Automated Security Scanning** | Daily scans via **RKHunter, Lynis, and OSQuery**. |
+## **3.3 Monitoring & Observability**
 
-Security and compliance policies are **continuously reviewed and updated** to maintain alignment with evolving threats and best practices.
+This component group provides comprehensive monitoring, logging, and alerting services.
 
----
-
-## **6. Automation & Infrastructure Management**
-
-### **6.1 Ansible Configuration Management**
-
-Ansible manages **infrastructure automation, security compliance, and configuration drift prevention**.
-
-- **Baseline Configuration** → All nodes provisioned with predefined security and service settings.
-- **Patch & Compliance Enforcement** → Security updates applied per compliance schedule.
-- **Role-Based Playbooks** → Ensures modular, scalable automation of services.
-
-### **6.2 Portainer for Docker Management**
-
-Portainer provides **centralized control of Docker-based workloads**, ensuring **efficient service orchestration and monitoring**.
+| **Component** | **Function** | **Documentation** |
+|--------------|-------------|-------------------|
+| **Monitoring Stack (lab-mon01)** | Prometheus, Loki, AlertManager, and Grafana for system observability | [Monitoring Documentation](./lab-mon01-prometheus-monitoring-logging-stack.md) |
 
 ---
 
-## **7. Summary & Next Steps**
+# 🔗 **4. Directory Contents**
 
-The Control Plane is the **foundational framework** for the lab, ensuring **secure, automated, and well-managed IT operations**.
+This section provides direct navigation to all key documents in this category:
 
-Future enhancements will include:
+## **Key Documents**
 
-- **Expanded self-healing automation for service recovery.**
-- **Improved AI-driven security analytics.**
-- **Refinement of ITIL-based change and incident management.**
+| **Document** | **Purpose** | **Link** |
+|--------------|------------|----------|
+| **Primary Domain Controller** | Documentation for lab-dc01 | [lab-dc01-primary-domain-controller.md](./lab-dc01-primary-domain-controller.md) |
+| **Read-Only Domain Controller** | Documentation for lab-dc02 | [lab-dc02-ro-domain-controller.md](./lab-dc02-ro-domain-controller.md) |
+| **DNS Filtering Primary** | Documentation for lab-dns01 | [lab-dns01-dns-filtering.md](./lab-dns01-dns-filtering.md) |
+| **DNS Filtering Secondary** | Documentation for lab-dns02 | [lab-dns02-dns-filtering.md](./lab-dns02-dns-filtering.md) |
+| **Ansible Automation** | Documentation for lab-ansible01 | [lab-ansible01-automation-master.md](./lab-ansible01-automation-master.md) |
+| **Docker Applications** | Documentation for lab-apps01 | [lab-apps01-docker-application-node.md](./lab-apps01-docker-application-node.md) |
+| **Database Node** | Documentation for lab-db01 | [lab-db01-docker-database-node.md](./lab-db01-docker-database-node.md) |
+| **File Shares** | Documentation for lab-fs01 | [lab-fs01-active-directory-file-shares.md](./lab-fs01-active-directory-file-shares.md) |
+| **Monitoring Stack** | Documentation for lab-mon01 | [lab-mon01-prometheus-monitoring-logging-stack.md](./lab-mon01-prometheus-monitoring-logging-stack.md) |
+| **Portainer Control** | Documentation for lab-port01 | [lab-port01-portainer-control-node.md](./lab-port01-portainer-control-node.md) |
+| **Security Operations** | Documentation for lab-soc01 | [lab-soc01-wazuh-seim-xdr.md](./lab-soc01-wazuh-seim-xdr.md) |
 
-📌 **Refer to each service’s documentation for in-depth details.**
+---
+
+# 🔄 **5. Related Categories**
+
+| **Category** | **Relationship** | **Link** |
+|--------------|----------------|----------|
+| **Infrastructure** | Physical host nodes running these VMs | [Infrastructure Documentation](/infrastructure/README.md) |
+| **Kubernetes** | Research applications supported by control plane | [Kubernetes Documentation](/infrastructure/kubernetes/README.md) |
+| **Entra Hybrid Cloud** | Cloud identity integration with on-premises AD | [Entra Documentation](/entra-hybrid-cloud/README.md) |
+| **Monitoring** | Extended monitoring configuration | [Monitoring Documentation](/monitoring/README.md) |
+| **Security & Compliance** | Security policies implemented by control plane | [Security Documentation](/docs/Compliance-Security/README.md) |
+
+---
+
+# ✅ **6. Approval & Review**
+
+| **Reviewer** | **Role** | **Approval Date** | **Status** |
+|-------------|---------|------------------|------------|
+| VintageDon | Lead Engineer | 2025-04-04 | ✅ Approved |
+
+---
+
+# 📜 **7. Change Log**
+
+| **Version** | **Date** | **Changes** | **Author** |
+|------------|---------|-------------|------------|
+| 1.0 | 2025-04-04 | Structured README for control plane directory | VintageDon |

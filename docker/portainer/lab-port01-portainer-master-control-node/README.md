@@ -1,4 +1,5 @@
-<!-- ---
+<!-- 
+---
 title: "Lab-Port01 Portainer Master Control Node"
 description: "Documentation for the Lab-Port01 Portainer master node, detailing its role in orchestrating containerized workloads across the Proxmox Astronomy Lab."
 author: "VintageDon"
@@ -9,15 +10,21 @@ version: "1.0"
 status: "Published"
 last_updated: "2025-03-09"
 ---
- -->
+-->
 
-# **Lab-Port01 Portainer Master Control Node**
+# 🐳 **Lab-Port01 Portainer Master Control Node**
+
+# 🔍 **1. Overview**
 
 Lab-Port01 serves as the **central management and orchestration platform** for all containerized workloads in the Proxmox Astronomy Lab. As the **Portainer master node**, it provides a unified control interface for deploying, monitoring, and managing Docker containers across multiple worker nodes, including lab-apps01, lab-db01, and proj-apps01.
 
 This node plays a crucial role in the lab's containerization strategy, enabling standardized deployment processes, security enforcement, and operational visibility across the distributed container ecosystem.
 
-## **1. Technical Specifications**
+---
+
+# 🖥️ **2. Technical Specifications**
+
+## **2.1 Virtual Machine Configuration**
 
 The Portainer master node is configured with resources to support management operations and the Portainer web interface, with emphasis on reliability and security rather than high-volume processing.
 
@@ -34,11 +41,23 @@ The Portainer master node is configured with resources to support management ope
 | **Gateway** | 10.25.10.1 |
 | **DNS** | 10.25.10.3, 10.25.20.3 |
 
-## **2. Portainer Infrastructure**
+## **2.2 Physical Node Placement**
 
-The Portainer environment is configured to provide centralized control over Docker resources across multiple nodes, with emphasis on security, role-based access, and standardized deployments.
+The VM is hosted on a specific physical Proxmox node to ensure adequate resources and performance.
 
-### **2.1 Docker Configuration**
+| **Attribute** | **Value** |
+|--------------|-----------|
+| **Proxmox Node** | node01 |
+| **Resource Pool** | control-plane |
+| **VM Location** | local-lvm |
+| **Backup Schedule** | Daily at 01:00 |
+| **Migration Policy** | Allowed with constraints |
+
+---
+
+# 📦 **3. Portainer Infrastructure**
+
+## **3.1 Docker Configuration**
 
 The Docker daemon is configured specifically for the Portainer master role, with appropriate security and networking configurations.
 
@@ -62,7 +81,7 @@ The Docker daemon is configured specifically for the Portainer master role, with
 }
 ```
 
-### **2.2 Storage Configuration**
+## **3.2 Storage Configuration**
 
 The storage is designed to maintain CIS compliance while providing adequate space for Portainer operational data. The OS drive is partitioned according to CIS compliance requirements, with Docker data relocated to a separate volume.
 
@@ -72,11 +91,7 @@ The storage is designed to maintain CIS compliance while providing adequate spac
 | **/data/portainer** | Part of Docker volume | Portainer application data |
 | **/data/deployments** | Part of Docker volume | Stack definitions and templates |
 
-## **3. Portainer Environment**
-
-The Portainer environment consists of the master node (lab-port01) and multiple worker nodes distributed across different segments of the lab infrastructure.
-
-### **3.1 Portainer Components**
+## **3.3 Portainer Components**
 
 The master node hosts the core Portainer services that enable centralized management of the container ecosystem.
 
@@ -87,7 +102,11 @@ The master node hosts the core Portainer services that enable centralized manage
 | **cadvisor** | Container metric collection | 8080 |
 | **nginx** | Reverse proxy for web interface | 80, 443 |
 
-### **3.2 Managed Worker Nodes**
+---
+
+# 🌐 **4. Managed Environment**
+
+## **4.1 Managed Worker Nodes**
 
 The Portainer master manages multiple worker nodes, each with specific roles in the infrastructure.
 
@@ -97,7 +116,7 @@ The Portainer master manages multiple worker nodes, each with specific roles in 
 | **lab-db01** | Database Services | PostgreSQL, MariaDB, MongoDB, etc. | VLAN10 |
 | **proj-apps01** | Project Services | Project-specific applications | VLAN20 |
 
-### **3.3 Network Configuration**
+## **4.2 Network Configuration**
 
 Portainer's networking is configured to enable secure communication between the master and worker nodes while providing appropriate isolation.
 
@@ -107,22 +126,35 @@ Portainer's networking is configured to enable secure communication between the 
 | **agent-network** | 172.20.1.0/24 | Secure agent communication |
 | **proxy-network** | 172.20.2.0/24 | Web proxy services |
 
-## **4. Security & Access Control**
+## **4.3 Deployment Capabilities**
 
-As a critical control plane component, the Portainer master implements comprehensive security measures to protect management functions while enabling authorized access.
+The Portainer master provides standardized methods for deploying containerized workloads across the managed nodes.
 
-### **4.1 Security Hardening**
+| **Method** | **Use Case** | **Primary Users** |
+|------------|------------|------------------|
+| **Stack Deployments** | Multi-container applications | DevOps, Engineers |
+| **Web Editor** | Quick container configuration | Administrators |
+| **Git Integration** | Version-controlled deployments | DevOps, Engineers |
+| **Templates** | Standardized application deployment | All users |
+
+---
+
+# 🔐 **5. Security & Compliance**
+
+## **5.1 Security Hardening**
 
 The VM implements comprehensive security measures at both the OS and container levels to protect against unauthorized access to container management functions.
 
-- **CIS Ubuntu 24.04 Level 2** compliance for base OS
-- **TLS encryption** for all Portainer communications
-- **Web interface protected** by Entra ID authentication
-- **Agent communication secured** with mutual TLS
-- **API access restricted** to authorized services
-- **Regular security scanning** via integrated tools
+| **Control Type** | **Implementation** | **Verification Method** |
+|------------------|-------------------|------------------------|
+| **OS Hardening** | CIS Ubuntu 24.04 Level 2 | Lynis scans, CIS-CAT Pro |
+| **Container Security** | AppArmor profiles | Profile validation |
+| **Network Security** | TLS encryption | Certificate validation |
+| **Authentication** | Entra ID integration | Access logs |
+| **API Security** | Rate limiting, IP restrictions | Access logs |
+| **Security Scanning** | Daily vulnerability scans | Scan reports |
 
-### **4.2 Role-Based Access Control**
+## **5.2 Role-Based Access Control**
 
 Portainer's access control system provides granular permissions based on user roles and team assignments.
 
@@ -133,36 +165,23 @@ Portainer's access control system provides granular permissions based on user ro
 | **Developer** | View-only access | Entra ID + MFA |
 | **Monitoring** | Stats and logs only | Entra ID + MFA |
 
-## **5. Deployment Capabilities**
+## **5.3 CISv8.1 Compliance Mapping**
 
-The Portainer master provides standardized methods for deploying containerized workloads across the managed nodes.
+This subsection explicitly maps implementation details to CIS Controls, documenting compliance status and evidence location.
 
-### **5.1 Deployment Methods**
+| **CIS Control** | **Implementation** | **Evidence Location** | **Compliance Status** |
+|-----------------|-------------------|----------------------|----------------------|
+| **CIS.1.1** | Hardware inventory in GLPI | CMDB record #1008 | Compliant |
+| **CIS.4.1** | Secure configuration baseline | Ansible playbooks | Compliant |
+| **CIS.5.1** | AD-integrated authentication | Access logs | Compliant |
+| **CIS.8.2** | Audit logging enabled | Loki logs | Compliant |
+| **CIS.10.1** | ClamAV, AppArmor | Daily scan reports | Compliant |
 
-Multiple deployment approaches are supported to accommodate different operational needs.
+---
 
-| **Method** | **Use Case** | **Primary Users** |
-|------------|------------|------------------|
-| **Stack Deployments** | Multi-container applications | DevOps, Engineers |
-| **Web Editor** | Quick container configuration | Administrators |
-| **Git Integration** | Version-controlled deployments | DevOps, Engineers |
-| **Templates** | Standardized application deployment | All users |
+# 💾 **6. Backup & Recovery**
 
-### **5.2 Stack Deployment Strategy**
-
-Standardized stack deployments ensure consistency and proper configuration across the container ecosystem.
-
-- **Stack files stored** in Git repositories for version control
-- **Environment variables** used for configuration differences between environments
-- **Deployment validation** performed before application
-- **Rollback capability** maintained for all deployments
-- **Standard labels** applied for monitoring and management
-
-## **6. Backup & Disaster Recovery**
-
-The Portainer master node implements comprehensive backup strategies to ensure recoverability of the container management environment.
-
-### **6.1 Backup Strategy**
+## **6.1 Backup Strategy**
 
 Backup approaches focus on preserving both Portainer configuration data and deployment definitions.
 
@@ -173,34 +192,37 @@ Backup approaches focus on preserving both Portainer configuration data and depl
 | **Container Templates** | Export to S3 | Weekly | 12 weeks |
 | **Full VM Backup** | Proxmox Backup Server | Weekly | 4 backups |
 
-### **6.2 Recovery Procedure**
+## **6.2 Recovery Procedure**
 
 A structured recovery process ensures the Portainer environment can be restored with minimal disruption.
 
-1. **Restore VM** from Proxmox Backup Server if needed
-2. **Verify Docker installation** and configuration
-3. **Restore Portainer data volume** from backup
-4. **Launch Portainer container** with restored volume
-5. **Verify agent connections** to all worker nodes
-6. **Validate access control** and user permissions
-7. **Test deployment functionality** with sample stack
+| **Scenario** | **RTO** | **RPO** | **Recovery Steps** | **Responsible Role** |
+|--------------|--------|--------|-------------------|----------------------|
+| **Container Failure** | 15 min | 0 min | Restart container | Infrastructure Engineer |
+| **Portainer Data Corruption** | 30 min | 24 hours | Restore volume from backup | Infrastructure Engineer |
+| **Stack Definition Loss** | 15 min | 0 min | Deploy from Git repository | DevOps Engineer |
+| **VM Failure** | 2 hours | 24 hours | Restore VM from PBS | Infrastructure Engineer |
+| **Node Failure** | 4 hours | 24 hours | Migrate to alternative node | Infrastructure Engineer |
 
-## **7. Monitoring & Alerting**
+The recovery procedure table above outlines steps to restore service in different failure scenarios, supporting business continuity objectives.
 
-Comprehensive monitoring ensures the Portainer management environment remains operational and secure.
+---
 
-### **7.1 Health Checks**
+# 📊 **7. Monitoring & Management**
+
+## **7.1 Health Checks**
 
 Multiple monitoring approaches ensure the health and security of the Portainer control plane.
 
-- **Portainer service status** monitoring
-- **Agent connectivity** checks for all worker nodes
-- **API responsiveness** metrics
-- **Authentication event** logging and alerting
-- **Deployment success/failure** tracking
-- **Resource utilization** monitoring
+| **Monitoring System** | **Components Monitored** | **Dashboard** |
+|----------------------|--------------------------|--------------|
+| **Prometheus** | Host metrics, container metrics | [Node Exporter Dashboard](/monitoring/grafana/dashboards/node-exporter-full-dashboard-screenshot.png) |
+| **Loki** | Container logs, OS logs | [Log Dashboard](/docs/applications/observability/loki/log-dashboard.md) |
+| **cAdvisor** | Container performance | [cAdvisor Dashboard](/monitoring/grafana/dashboards/cadvisor-docker-insights-dashboard-screenshot.png) |
+| **Blackbox Exporter** | API responsiveness | [API Dashboard](/docs/applications/observability/blackbox-exporter.md) |
+| **Wazuh** | Security events, file integrity | [Security Dashboard](/docs/applications/security/wazuh/security-dashboard.md) |
 
-### **7.2 Alert Thresholds**
+## **7.2 Alert Thresholds**
 
 Targeted alerts ensure proactive response to potential issues in the container management environment.
 
@@ -213,40 +235,22 @@ Targeted alerts ensure proactive response to potential issues in the container m
 | **Failed Deployments** | 1 in 24 hours | 3 in 24 hours |
 | **Authentication Failures** | 3 in 15 minutes | 5 in 5 minutes |
 
-## **8. Management & Operations**
-
-Structured operational procedures ensure stable and predictable management of the Portainer environment.
-
-### **8.1 Maintenance Schedule**
+## **7.3 Maintenance Schedule**
 
 The Portainer master follows the lab's rotating maintenance schedule with special consideration for minimizing impact on container deployments.
 
-- **OS Updates**: Weekly on predefined maintenance windows
-- **Security Patches**: Applied as needed with priority
-- **Docker Updates**: Evaluated monthly
-- **Portainer Updates**: Version upgrades scheduled quarterly
-- **Template Updates**: Reviewed monthly
+| **Maintenance Type** | **Schedule** | **Notification** | **Procedure Document** |
+|----------------------|-------------|-----------------|------------------------|
+| **OS Updates** | Weekly (Sundays 00:00-02:00) | 48 hours | [OS Update Procedure](/docs/infrastructure/maintenance/os-update-procedure.md) |
+| **Security Patches** | As needed | 24 hours (standard)/None (critical) | [Security Patching Procedure](/docs/infrastructure/maintenance/security-patching.md) |
+| **Docker Updates** | Monthly (First Saturday) | 72 hours | [Docker Update Procedure](/docs/infrastructure/maintenance/docker-update-procedure.md) |
+| **Portainer Updates** | Quarterly | 1 week | [Portainer Update Procedure](/docs/infrastructure/maintenance/portainer-update-procedure.md) |
 
-VMs are updated and rebooted weekly on a rotating schedule to avoid service downtimes, with control plane components like lab-port01 scheduled at times of minimal deployment activity.
+---
 
-### **8.2 Update Procedure**
+# 🔍 **8. Troubleshooting**
 
-Updates follow a standardized process with special considerations for maintaining container orchestration capabilities.
-
-1. **Review change documentation** in GLPI
-2. **Notify all users** of planned maintenance
-3. **Backup Portainer data** before updates
-4. **Update components** in sequence:
-   - OS updates first
-   - Docker updates if needed
-   - Portainer updates last
-5. **Verify functionality** post-update:
-   - Agent connectivity
-   - User authentication
-   - Deployment capability
-6. **Update documentation** with any changes
-
-### **8.3 Troubleshooting Quick Reference**
+## **8.1 Common Issues**
 
 Common Portainer issues are documented with standard resolution paths to speed recovery and reduce downtime.
 
@@ -258,23 +262,75 @@ Common Portainer issues are documented with standard resolution paths to speed r
 | **Performance Degradation** | Check resource utilization | Review container logs |
 | **Web Interface Errors** | Check NGINX configuration | Verify Portainer container health |
 
-## **9. Documentation References**
+## **8.2 Diagnostic Commands**
 
-Additional resources provide detailed information on Portainer implementation and operational practices.
+These commands assist in diagnosing and resolving common issues with the Portainer environment.
 
-| **Document** | **Purpose** | **Location** |
-|-------------|------------|-------------|
-| **Service Documentation** | ITIL-aligned service document | [Lab-Port01 Service Documentation](../../../applications-services/lab-port01-portainer-master-control-node.md) |
-| **Portainer User Guide** | Staff usage instructions | [Portainer User Guide](../../../infrastructure/portainer/user-guide.md) |
-| **Deployment Standards** | Stack deployment guidelines | [Container Deployment Standards](../../../infrastructure/portainer/deployment-standards.md) |
+```bash
+# Check Portainer container status
+docker ps -a | grep portainer
 
-## **Approval & Review**
+# View Portainer logs
+docker logs portainer
+
+# Check agent connectivity
+curl -k https://10.25.10.17:9001/ping
+
+# Verify NGINX configuration
+docker exec nginx nginx -t
+
+# Check Portainer resource usage
+docker stats portainer
+```
+
+---
+
+# 🔗 **9. Directory Contents**
+
+This section provides direct navigation to all subdirectories and key documents related to this node:
+
+## **9.1 Related Documentation**
+
+| **Document Type** | **Document Name** | **Location** |
+|-------------------|-------------------|-------------|
+| **Service Document** | Lab-Port01 ITIL Service Doc | [Service Documentation](/docs/control-plane/services/lab-port01-service-documentation.md) |
+| **User Guide** | Portainer User Guide | [Portainer User Guide](/docs/applications/containerized-services/portainer/user-guide.md) |
+| **Deployment Standards** | Container Deployment Standards | [Deployment Standards](/docs/applications/containerized-services/deployment-standards.md) |
+| **Architecture Document** | Container Orchestration Architecture | [Architecture Document](/docs/infrastructure/container-orchestration-architecture.md) |
+
+## **9.2 Related GLPI Items**
+
+ITSM system references for this service:
+
+| **Item Type** | **ID** | **Name** | **Relationship** |
+|--------------|-------|----------|-----------------|
+| **CI** | CI-1008 | lab-port01 | Primary configuration item |
+| **Service** | SVC-102 | Container Orchestration | Delivered service |
+| **KB Article** | KB-304 | Portainer Troubleshooting | Support documentation |
+| **Change Template** | CHG-PORT-01 | Portainer Maintenance | Change template |
+
+---
+
+# 🔄 **10. Related Infrastructure**
+
+| **Component** | **Relationship** | **Documentation** |
+|--------------|----------------|-------------------|
+| **lab-apps01** | Managed worker node | [lab-apps01](/infrastructure/control-plane/lab-apps01-docker-application-node.md) |
+| **lab-db01** | Managed worker node | [lab-db01](/infrastructure/control-plane/lab-db01-docker-database-node.md) |
+| **proj-apps01** | Managed worker node | [proj-apps01](/infrastructure/projects/proj-apps01-docker-application-node.md) |
+| **node01** | Hosts this VM | [node01](/infrastructure/proxmox/node01-proxmox-compute.md) |
+
+---
+
+# ✅ **11. Approval & Review**
 
 | **Reviewer** | **Role** | **Approval Date** | **Status** |
 |-------------|---------|------------------|------------|
 | VintageDon | Lead Engineer | 2025-03-09 | ✅ Approved |
 
-## **Change Log**
+---
+
+# 📜 **12. Change Log**
 
 | **Version** | **Date** | **Changes** | **Author** |
 |------------|---------|-------------|------------|

@@ -1,3 +1,4 @@
+<!-- 
 ---
 title: "AI & Automation Architecture"
 description: "High-level overview of the AI/ML architecture, GPU strategy, RAG stack, and automation workflows deployed in the Proxmox Astronomy Lab."
@@ -9,6 +10,7 @@ version: "1.0"
 status: "Published"
 last_updated: "2025-04-18"
 ---
+-->
 
 # **AI & Automation Architecture for Proxmox Astronomy Lab**
 

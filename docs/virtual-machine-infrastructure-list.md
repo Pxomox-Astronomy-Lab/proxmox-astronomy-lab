@@ -41,10 +41,14 @@
 | 10.25.20.13 | proj-pgts01  | Ubuntu 24.04 | TimescaleDB              | 4    | 16GB | 32GB    | 500GB  | VLAN20 | node04 |
 | 10.25.20.14 | proj-pg01    | Ubuntu 24.04 | PostgreSQL Database      | 4    | 16GB | 32GB    | 500GB  | VLAN20 | node04 |
 | 10.25.20.15 | proj-pggis01 | Ubuntu 24.04 | PostgreSQL w/ GIS        | 4    | 16GB | 32GB    | 500GB  | VLAN20 | node04 |
-| 10.25.20.20 | proj-rds01   | Server 2025  | RDS Server               | 4    | 16GB | 125GB   | 100GB  | VLAN20 | node04 |
 | 10.25.20.23 | proj-sql01   | Server 2025  | RDS Server               | 4    | 16GB | 125GB   | 500GB  | VLAN20 | node04 |
 
 ---
+| IP Address  | Hostname     | OS           | Role                     | vCPU | RAM  | Disk 1  | Disk 2 | VLAN   | Node   |
+| 10.25.20.20 | proj-rds01   | Server 2025  | RDS Server               | 4    | 16GB | 125GB   | 100GB  | VLAN20 | node04 |
+| 10.25.20.25 | proj-lvdi01  | Ubuntu 2404  | VDI Desktop Server       | 2    |  6GB |  32GB   |        | VLAN20 | node04 |
+| 10.25.20.26 | proj-lwork01 | Ubuntu 2404  | General Work Server      | 2    |  6GB |  32GB   |        | VLAN20 | node04 |
+| 10.25.20.26 | m4-sandbox01 | Ubuntu 2404  | General Work Server      | 2    |  6GB |  32GB   |        | VLAN20 | node04 |
 
 ### **Portainer & Shared Containers**
 | IP Address  | Hostname     | OS           | Role                     | vCPU | RAM  | Disk 1  | VLAN   | Node   |

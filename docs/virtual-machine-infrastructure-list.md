@@ -9,11 +9,8 @@
 ### **Worker Nodes**
 | IP Address  | Hostname     | OS           | Role                     | vCPU | RAM  | Disk 1  | Disk 2 |  VLAN  | Node    |
 |-------------|--------------|--------------|--------------------------|------|------|---------|--------|--------|---------|
-| 10.25.20.7  | proj-k8sw01  | Ubuntu 24.04 | K8s Worker Node          | 8    | 32GB | 150GB   | 1000GB | VLAN20 | node01  |
-| 10.25.20.8  | proj-k8sw02  | Ubuntu 24.04 | K8s Worker Node          | 8    | 32GB | 150GB   | 1000GB | VLAN20 | node02  |
-| 10.25.20.9  | proj-k8sw03  | Ubuntu 24.04 | K8s Worker Node          | 8    | 32GB | 150GB   | 1000GB | VLAN20 | node03  |
-| 10.25.20.10 | proj-k8sw04  | Ubuntu 24.04 | K8s Worker Node          | 8    | 32GB | 150GB   | 2000GB | VLAN20 | node04  |
-| 10.25.20.11 | proj-k8sw05  | Ubuntu 24.04 | K8s Worker Node          | 8    | 32GB | 150GB   | 1000GB | VLAN20 | nas01   |
+| 10.25.20.7  | proj-code01  | Ubuntu 24.04 | K8s Worker Node          | 4    | 12GB |  32GB   |  100GB | VLAN20 | node04  |
+| 10.25.20.10 | proj-gpu01   | Ubuntu 24.04 | K8s Worker Node          | 8    | 32GB | 150GB   | 2000GB | VLAN20 | node04  |
 | 10.25.20.12 | proj-kasm01  | Ubuntu 24.04 | K8s Worker Node          | 6    | 24GB | 150GB   |  250GB | VLAN20 | nas01   |
 
 ---
@@ -46,14 +43,13 @@
 ---
 | IP Address  | Hostname     | OS           | Role                     | vCPU | RAM  | Disk 1  | Disk 2 | VLAN   | Node   |
 | 10.25.20.20 | proj-rds01   | Server 2025  | RDS Server               | 4    | 16GB | 125GB   | 100GB  | VLAN20 | node04 |
-| 10.25.20.25 | proj-lvdi01  | Ubuntu 2404  | VDI Desktop Server       | 2    |  6GB |  32GB   |        | VLAN20 | node04 |
-| 10.25.20.26 | proj-lwork01 | Ubuntu 2404  | General Work Server      | 2    |  6GB |  32GB   |        | VLAN20 | node04 |
-| 10.25.20.26 | m4-sandbox01 | Ubuntu 2404  | General Work Server      | 2    |  6GB |  32GB   |        | VLAN20 | node04 |
+| 10.25.20.26 | proj-mssql01 | Server 2025  | MSSQL 2022 Standard      | 6    | 16GB | 125GB   | 100GB  | VLAN20 | node04 |
+
 
 ### **Portainer & Shared Containers**
 | IP Address  | Hostname     | OS           | Role                     | vCPU | RAM  | Disk 1  | VLAN   | Node   |
 |-------------|--------------|--------------|--------------------------|------|------|---------|--------|--------|
-| 10.25.10.17 | lab-db01     | Ubuntu 24.04 | Portainer Docker Node    | 2    | 4GB  | 32GB    | VLAN10 | node03 |
+| 10.25.20.25 | proj-poc01   | Ubuntu 24.04 | Portainer Docker Node    | 6    | 32GB | 32GB    | VLAN20 | node04 |
 | 10.25.10.18 | lab-apps01   | Ubuntu 24.04 | Portainer Docker Node    | 4    | 16GB | 32GB    | VLAN10 | node02 |
 | 10.25.20.21 | proj-apps01  | Ubuntu 24.04 | Portainer Docker Node    | 4    | 12GB | 32GB    | 500GB  | VLAN20 | node04 |
 

@@ -4,6 +4,13 @@ Enterprise-grade astronomical computing platform enabling cutting-edge research 
 
 ![Platform Status](https://img.shields.io/badge/Status-Production-success) ![Cluster Nodes](https://img.shields.io/badge/Nodes-7-blue) ![CPU Cores](https://img.shields.io/badge/Cores-~147-orange) ![Memory](https://img.shields.io/badge/RAM-~693GB-purple) ![Storage](https://img.shields.io/badge/Storage-13.27TB+-red)
 
+
+[![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/Pxomox-Astronomy-Lab/proxmox-astronomy-lab?style=social)](https://github.com/Pxomox-Astronomy-Lab/proxmox-astronomy-lab/stargazers)
+[![Issues](https://img.shields.io/github/issues/Pxomox-Astronomy-Lab/proxmox-astronomy-lab)](https://github.com/Pxomox-Astronomy-Lab/proxmox-astronomy-lab/issues)
+
+
+
 ---
 
 ## 🚀 **Platform Overview**
@@ -11,6 +18,8 @@ Enterprise-grade astronomical computing platform enabling cutting-edge research 
 The **Proxmox Astronomy Lab** is a production-scale research computing platform built on a **7-node Proxmox VE cluster** with hybrid **RKE2 Kubernetes** and **strategic VM architecture**. We're demonstrating that sophisticated astronomical computing doesn't require massive institutional resources—just smart engineering, open science principles, and enterprise-grade implementation.
 
 What started as a proof-of-concept for SDR-based radio astronomy has evolved into a **legitimate research infrastructure** running real **DESI DR1 analysis workloads** and supporting peer-reviewed scientific publications.
+
+![proxmox-astronomy-lab-compute-nodes](assets/images/lab-hardware/proxmox-astronomy-lab-compute-nodes.jpg)
 
 ## 🎯 **Our Mission**
 
@@ -37,6 +46,9 @@ What started as a proof-of-concept for SDR-based radio astronomy has evolved int
 - **Expansion Ready**: 2 additional nodes (12900H + 13900H) bringing total to ~147 cores, ~693GB RAM
 - **Network**: Dual-link architecture (management 10.16.207.x + service VLANs 10.25.x.x)
 - **Storage**: Distributed NVMe pools (nvmethin01-04) with enterprise backup infrastructure
+
+![proxmox-astronomy-lab-network-stack](assets/images/lab-hardware/proxmox-astronomy-lab-network-stack.jpg)
+![proxmox-astronomy-lab-gpu-node](assets/images/lab-hardware/proxmox-astronomy-lab-gpu-node.jpg)
 
 ## ✨ **What Makes This Special**
 

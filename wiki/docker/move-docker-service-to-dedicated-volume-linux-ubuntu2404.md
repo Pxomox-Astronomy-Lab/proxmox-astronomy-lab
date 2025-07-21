@@ -1,148 +1,147 @@
-<!--  
----  
-title: "Move Docker Data Directory to a Dedicated Volume on Ubuntu 24.04"  
-description: "Procedure for relocating Docker's data directory to an alternate mount point (e.g., /mnt/docker) without using /var/lib/docker directly."  
-author: "VintageDon"  
-tags: ["docker", "ubuntu", "volume", "proxmox", "infrastructure"]  
-category: "Infrastructure"  
-kb_type: "Procedure"  
-version: "1.0"  
-status: "Published"  
-last_updated: "2025-03-27"  
----  
--->
+# Moving Docker Data Directory to Custom Location
 
-# 📄 **Move Docker Data Directory to a Dedicated Volume on Ubuntu 24.04**
+Learn how to install Docker and configure it to use a custom data directory instead of the default `/var/lib/docker` location. This allows you to place Docker's data on a dedicated volume or drive.
 
-This KB explains how to safely **move Docker’s data directory** to an **already mounted volume** (e.g., `/mnt/docker`) on Ubuntu 24.04. The standard location `/var/lib/docker` is not used directly — instead, Docker is reconfigured to use the mounted path via the `daemon.json`.
+## Why We Do This
 
----
+In the Proxmox Astronomy Lab, we always move Docker's data directory to dedicated volumes. While Docker can run perfectly well in its default location, we implement this pattern because:
 
-## 🔍 **1. Overview**
+- **Volume Isolation**: Keeps all container data, images, and volumes on our dedicated `/mnt/data` volume, separate from the system drive
+- **Workload Portability**: With Docker data on a dedicated volume, entire container environments can be moved between systems by simply attaching the data volume
+- **Backup Simplicity**: Our volume-based backup strategy captures all Docker data in one location, including containers, images, volumes, and networks
+- **System Protection**: Prevents Docker's potentially large data footprint from filling up the system drive and affecting OS operations
 
-### **1.1 Purpose**
+This approach is used consistently across all lab systems that run containerized workloads.
 
-This procedure relocates the Docker data directory from its default location (`/var/lib/docker`) to a custom mount point (e.g., `/mnt/docker`) on a **dedicated disk** already mounted and formatted. This improves modularity, supports dedicated storage management, and ensures clean separation from system volumes.
+## Prerequisites
 
-### **1.2 Scope**
+- Ubuntu 24.04 server with root/sudo access
+- A dedicated data volume already mounted (e.g., `/mnt/data` from our previous article)
+- Internet connectivity for downloading Docker installation script
+- System should be updated before proceeding
 
-| In Scope | Out of Scope |
-|----------|--------------|
-| Moving existing Docker data | Creating or formatting new disks |
-| Reconfiguring Docker's daemon | Changing Docker socket defaults |
-| Verifying container functionality | Docker Compose or Kubernetes integration |
+## Step-by-Step Instructions
 
-### **1.3 Target Audience**
-
-Lab engineers and system admins managing container workloads on Proxmox-based Ubuntu 24.04 VMs.
-
----
-
-## ⚙️ **2. Procedure**
-
-### **2.1 Stop Docker Services**
+### Step 1: Download and Install Docker
 
 ```bash
-sudo systemctl stop docker
-sudo systemctl stop docker.socket
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
 ```
 
-> 🛑 Important: Ensure no containers are running prior to stopping Docker.
+Downloads and runs Docker's official installation script. This script automatically detects your OS version and installs the appropriate Docker packages. The installation will take a few minutes and will display progress information.
 
----
-
-### **2.2 Move Existing Docker Data (if present)**
+### Step 2: Stop Docker Services
 
 ```bash
-sudo rsync -aP /var/lib/docker/ /mnt/docker/
+systemctl stop docker.socket
+systemctl stop docker
 ```
 
-> This preserves permissions and ensures all layers, volumes, and metadata are transferred.
+Stops both the Docker daemon and socket before making configuration changes. The socket must be stopped first, then the main Docker service. This ensures no Docker operations are running while we modify the configuration.
 
----
-
-### **2.3 Update Docker Daemon Configuration**
-
-Create or modify `/etc/docker/daemon.json`:
+### Step 3: Create Docker Configuration Directory
 
 ```bash
-sudo nano /etc/docker/daemon.json
+mkdir -p /etc/docker
 ```
 
-Add the following (or update if it exists):
+Creates the Docker configuration directory if it doesn't already exist. The `-p` flag ensures parent directories are created as needed and won't error if the directory already exists.
 
-```json
+### Step 4: Create Docker Configuration File
+
+```bash
+cat <<EOF > /etc/docker/daemon.json
 {
-  "data-root": "/mnt/docker"
+  "data-root": "/mnt/data"
 }
+EOF
 ```
 
----
+Creates the Docker daemon configuration file that tells Docker to use `/mnt/data` instead of the default `/var/lib/docker` location. This JSON configuration file controls various Docker daemon settings.
 
-### **2.4 Reload and Restart Docker**
+### Step 5: Start Docker Services
 
 ```bash
-sudo systemctl daemon-reexec
-sudo systemctl daemon-reload
-sudo systemctl start docker
-sudo systemctl start docker.socket
+systemctl start docker.socket
+systemctl start docker
 ```
 
----
+Restarts Docker services with the new configuration. The socket service should be started first, followed by the main Docker daemon. Docker will automatically create its directory structure in the new location.
 
-### **2.5 Verify Operation**
+### Step 6: Verify New Data Location
 
 ```bash
 docker info | grep "Docker Root Dir"
 ```
 
-Expected output:
+Confirms that Docker is now using the new data directory. This command should show `/mnt/data` as the Docker Root Directory instead of the default `/var/lib/docker`.
+
+## Verification
+
+Check that Docker is running properly and using the correct location:
 
 ```bash
-Docker Root Dir: /mnt/docker
+# Verify Docker is active
+systemctl status docker
+
+# Confirm data directory location
+docker info | grep "Docker Root Dir"
+
+# Check available space on data volume
+df -h /mnt/data
+
+# Test Docker functionality
+docker run hello-world
 ```
 
-Check container and volume health:
+You should see Docker Root Dir pointing to `/mnt/data`, and the hello-world container should run successfully.
+
+## Troubleshooting
+
+**Docker fails to start:** Check that the `/mnt/data` directory exists and is writable. Verify the JSON syntax in `/etc/docker/daemon.json` is correct (commas, brackets, quotes).
+
+**Permission denied errors:** Ensure the data directory has appropriate permissions:
 
 ```bash
-docker ps -a
-docker volume ls
+chown root:root /mnt/data
+chmod 755 /mnt/data
 ```
 
----
+**Old Docker data still consuming space:** The original `/var/lib/docker` directory may still contain old data. After confirming everything works, you can remove it:
 
-## 🔄 **3. Process Integration**
+```bash
+rm -rf /var/lib/docker
+```
 
-### **3.1 ITIL Process Relationship**
+**Configuration not taking effect:** Restart the Docker daemon after configuration changes:
 
-| Process | Role |
-|--------|------|
-| Change Management | Documented and repeatable infrastructure procedure |
-| Configuration Management | Daemon settings reflect correct Docker root path |
-| Incident Management | Required for recovery scenarios involving disk space or corruption on the system volume |
+```bash
+systemctl restart docker
+```
 
----
+**JSON syntax errors:** Validate your daemon.json file:
 
-## 📎 **4. References & Related Resources**
+```bash
+cat /etc/docker/daemon.json | python3 -m json.tool
+```
 
-### **4.1 Related KB Articles**
+## Related Articles
 
-| Article Title | KB ID | Relationship |
-|---------------|-------|--------------|
-| Add a Docker Volume to Ubuntu 24.04 | KB-INFRA-DOCKER-VOL-001 | Prerequisite: Preparing the mount point |
-
----
-
-## ✅ **5. Approval & Review**
-
-| Reviewer | Role | Approval Date | Status |
-|----------|------|----------------|--------|
-| VintageDon | Lead Engineer | 2025-03-27 | ✅ Approved |
+- Adding a Second Drive for Data Storage on Ubuntu 24.04
+- Docker Container Backup and Restore Strategies
+- Managing Docker Volumes and Networks
 
 ---
 
-## 📜 **6. Change Log**
+## Document Information
 
-| Version | Date | Changes | Author |
-|---------|------|---------|--------|
-| 1.0 | 2025-03-27 | Initial KB | VintageDon |
+| **Field** | **Value** |
+|-----------|-----------|
+| **Author** | VintageDon - <https://github.com/vintagedon> |
+| **Created** | [2025-07-19] |
+| **Last Updated** | [2025-07-19] |
+| **Version** | 1.0 |
+
+---
+Tags: docker, ubuntu, configuration, storage, containers, data-directory

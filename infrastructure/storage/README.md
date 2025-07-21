@@ -1,156 +1,301 @@
-<!-- 
+<!--
 ---
-title: "Storage Infrastructure - Proxmox Astronomy Lab"
-description: "Documentation of multi-tiered storage architecture, technologies, and services supporting the lab's research and computing needs"
-author: "VintageDon"
-tags: ["storage", "infrastructure", "zfs", "nfs", "s3", "proxmox", "backup"]
-kb_type: "Reference"
+title: "Storage Infrastructure"
+description: "Enterprise-grade storage systems providing high-performance persistent storage, backup solutions, and data management for the Proxmox Astronomy Lab hybrid infrastructure"
+author: "VintageDon - https://github.com/vintagedon"
+ai_contributor: "Claude Sonnet 4"
+date: "2025-07-20"
 version: "1.0"
 status: "Published"
-last_updated: "2025-04-04"
-related_services: ["Proxmox", "Kubernetes", "Databases", "Backup Services"]
-implements_policies: ["Data Protection Policy", "Backup and Recovery Policy"]
-phase: "phase-1"
+tags:
+- type: [directory-overview/storage-infrastructure/data-management]
+- domain: [storage/nvme/backup/data-persistence]
+- tech: [proxmox-storage/nvme/backup-systems/csi]
+- phase: [phase-2]
+related_documents:
+- "[Infrastructure Overview](../README.md)"
+- "[Database Infrastructure](../databases/README.md)"
+- "[RKE2 Kubernetes](../k8s-rke2/README.md)"
 ---
 -->
 
-# 💾 **Storage Infrastructure - Proxmox Astronomy Lab**
+# 💾 **Storage Infrastructure**
 
-# 🔍 **1. Overview**
+Enterprise-grade storage systems providing high-performance persistent storage, comprehensive backup solutions, and advanced data management capabilities for the Proxmox Astronomy Lab's hybrid infrastructure. This directory encompasses NVMe storage clusters, backup infrastructure, and data lifecycle management supporting astronomical research computing across our 7-node cluster.
 
-The storage infrastructure of the Proxmox Astronomy Lab implements a comprehensive, multi-tiered approach to data management that balances performance, capacity, and reliability requirements for both infrastructure services and research workloads. This architecture encompasses local high-performance storage, network-attached storage systems, object storage, and dedicated backup resources.
+## **Overview**
 
-This section documents the complete storage architecture, technologies, implementation details, and operational practices that govern the lab's data storage capabilities, serving as the authoritative reference for all storage-related configurations and design decisions.
+Storage infrastructure forms the foundational data persistence layer enabling all astronomical research activities within our hybrid architecture. Our enterprise-grade storage solution combines high-performance NVMe storage pools with comprehensive backup and disaster recovery capabilities, specifically optimized for the demanding I/O requirements of astronomical data processing and large-scale scientific computing.
 
----
-
-# 🖥️ **2. Physical Storage Resources**
-
-## **2.1 Node-Level Storage**
-
-Each physical node in the cluster is equipped with specialized storage resources based on its role and workload profile.
-
-| **Node** | **Boot Drive** | **Primary Storage** | **Additional Storage** | **Network** |
-|---------|---------------|---------------------|----------------------|-------------|
-| **Node01** | 256GB SATA SSD | 2TB Samsung PM893 NVMe | - | 2× 2.5GbE |
-| **Node02** | 256GB SATA SSD | 2TB Samsung PM893 NVMe | - | 2× 2.5GbE |
-| **Node03** | 256GB SATA SSD | 2TB Samsung PM893 NVMe | - | 2× 2.5GbE |
-| **Node04** | 256GB SATA SSD | 4TB Samsung PM893 NVMe | - | 2× 10GbE |
-| **Node05** | 256GB SATA SSD | 2× 4TB Samsung PM893 NVMe | 2× 4TB Intel DC4510 SSD<br>8× 8TB HDD (ZFS RAID10) | 2× 10GbE |
-
-## **2.2 Storage Technologies**
-
-The storage architecture utilizes multiple technologies to provide appropriate performance and reliability for different workload types.
-
-| **Technology** | **Implementation** | **Primary Use Case** |
-|---------------|-------------------|----------------------|
-| **LVM-Thin** | Local NVMe with thin provisioning | VM disks, high-performance workloads |
-| **ZFS** | RAID10 with SSD caching | Reliable data storage, snapshots, backup targets |
-| **NFS** | Shared network storage | VM migration support, research data |
-| **S3 Object Storage** | MinIO on ZFS backend | Research datasets, unstructured data |
-| **SMB/CIFS** | Windows file shares | User data, documentation, shared resources |
+The storage architecture integrates seamlessly across VM-based services and Kubernetes persistent volumes, providing consistent high-performance data access while maintaining enterprise-grade data protection and compliance standards. This approach ensures optimal performance for diverse astronomical workloads while supporting long-term data preservation requirements.
 
 ---
 
-# 🔄 **3. Storage Services**
+## **📂 Directory Contents**
 
-## **3.1 Network Storage Services**
+This section provides systematic navigation to all storage infrastructure documentation and operational procedures.
 
-These services provide network-accessible storage for various workload types.
+### **Storage Categories**
 
-| **Service** | **Host** | **Protocol** | **Primary Use** | **Documentation** |
-|------------|---------|--------------|----------------|-------------------|
-| **Windows File Shares** | lab-fs01, lab-fs02 | SMB | AD-integrated file storage | [Windows Storage](/docs/Infrastructure/Storage/NFS/README.md) |
-| **NFS Storage** | lab-fs03 | NFSv4 | Kubernetes persistent volumes | [NFS Storage](/docs/Infrastructure/Storage/NFS/README.md) |
-| **Object Storage** | lab-fs03 | S3 | Research datasets, backups | [Object Storage](/docs/Infrastructure/Storage/Object-Storage/README.md) |
+| **Category** | **Purpose** | **Documentation Status** |
+|--------------|-------------|-------------------------|
+| **NVMe Storage Pools** | High-performance primary storage for active workloads | In Production |
+| **Backup Infrastructure** | Comprehensive backup systems and disaster recovery | In Production |
+| **Persistent Volume Management** | Kubernetes CSI integration and volume lifecycle | In Development |
+| **Data Lifecycle Management** | Archival, retention, and data movement policies | In Development |
+| **Performance Optimization** | Storage tuning and I/O optimization strategies | In Development |
+| **Monitoring & Alerting** | Storage monitoring, capacity planning, and alerting | Planned |
+| **Disaster Recovery** | Cross-site backup and recovery procedures | Planned |
 
-## **3.2 Backup Infrastructure**
+### **Key Procedures**
 
-The backup architecture ensures comprehensive data protection through multiple approaches.
-
-| **Component** | **Function** | **Documentation** |
-|--------------|-------------|-------------------|
-| **Proxmox Backup Server** | VM backup repository on Node05 | [PBS Documentation](/docs/Infrastructure/Storage/Backup-Strategy/README.md) |
-| **ZFS Snapshots** | Point-in-time recovery | [ZFS Snapshot Strategy](/docs/Infrastructure/Storage/Backup-Strategy/README.md) |
-| **Azure Blob Storage** | Offsite backup repository | [Cloud Backup](/entra-hybrid-cloud/storage-services/azure-blob-keyvault01-backups.md) |
-
----
-
-# 📊 **4. Performance Characteristics**
-
-Storage performance is optimized for different workload types with the following typical metrics:
-
-| **Storage Tier** | **Sequential Read** | **Sequential Write** | **Random Read IOPS** | **Random Write IOPS** |
-|-----------------|---------------------|----------------------|----------------------|------------------------|
-| **Local NVMe** | 6.5 GB/s | 5.0 GB/s | 900K | 600K |
-| **ZFS SSD Mirror** | 4.8 GB/s | 2.2 GB/s | 320K | 100K |
-| **ZFS HDD Pool** | 1.8 GB/s | 1.2 GB/s | 5K | 2K |
-| **NFS Storage** | 1.1 GB/s | 950 MB/s | 45K | 28K |
-| **SMB Storage** | 1.0 GB/s | 900 MB/s | 40K | 25K |
+| **Procedure** | **Purpose** | **Status** |
+|---------------|-------------|------------|
+| **Storage Pool Management** | NVMe pool creation, expansion, and maintenance | Pending |
+| **Backup Configuration Guide** | Comprehensive backup setup and scheduling | Pending |
+| **Persistent Volume Provisioning** | Kubernetes storage class and PV management | Pending |
+| **Data Migration Procedures** | Storage migration and data movement workflows | Pending |
 
 ---
 
-# 🛡️ **5. Data Protection & Resiliency**
+## **📁 Repository Structure**
 
-## **5.1 Backup Strategy**
+``` markdown
+storage/
+├── 📚 nvme-storage/           # High-performance NVMe storage systems
+│   ├── storage-pools/        # Proxmox storage pool configuration
+│   ├── performance-tuning/   # I/O optimization and tuning procedures
+│   ├── capacity-planning/    # Storage capacity management and expansion
+│   └── maintenance/          # Storage maintenance and health monitoring
+├── 🏗️ backup-systems/        # Backup infrastructure and procedures
+│   ├── proxmox-backup/       # Proxmox Backup Server configuration
+│   ├── iperius-enterprise/   # Iperius backup software integration
+│   ├── retention-policies/   # Backup retention and lifecycle management
+│   └── recovery-procedures/  # Disaster recovery and restoration workflows
+├── ☸️ kubernetes-storage/    # Kubernetes persistent volume management
+│   ├── csi-drivers/          # Container Storage Interface configuration
+│   ├── storage-classes/      # Kubernetes storage class definitions
+│   ├── pv-management/        # Persistent volume lifecycle management
+│   └── volume-snapshots/     # Kubernetes volume snapshot management
+├── 📋 data-management/       # Data lifecycle and governance
+│   ├── archival-strategies/  # Long-term data archival and preservation
+│   ├── migration-tools/      # Data movement and migration utilities
+│   ├── retention-policies/   # Data retention and cleanup procedures
+│   └── compliance/           # Data governance and compliance frameworks
+├── 🔍 monitoring/            # Storage monitoring and alerting
+│   ├── performance-metrics/  # I/O performance and utilization monitoring
+│   ├── capacity-monitoring/  # Storage capacity tracking and alerting
+│   ├── health-checks/        # Storage system health and diagnostics
+│   └── alerting-rules/       # Storage-specific alert definitions
+├── 📝 README.md              # This file
+└── 📄 troubleshooting.md     # Common storage issues and resolution procedures
+```
 
-The backup implementation provides comprehensive protection with structured retention policies.
+### **Navigation Guide:**
+
+- **[📚 NVMe Storage](nvme-storage/)** - High-performance primary storage systems and optimization
+- **[🏗️ Backup Systems](backup-systems/)** - Comprehensive backup infrastructure and procedures
+- **[☸️ Kubernetes Storage](kubernetes-storage/)** - Container persistent volume management and CSI integration
+- **[📋 Data Management](data-management/)** - Data lifecycle, governance, and compliance procedures
+
+---
+
+## **🔗 Related Categories**
+
+This section establishes horizontal relationships within the infrastructure knowledge graph.
+
+| **Category** | **Relationship** | **Documentation** |
+|--------------|------------------|-------------------|
+| **[Database Infrastructure](../databases/README.md)** | Primary consumer of high-performance storage for astronomical datasets | [../databases/README.md](../databases/README.md) |
+| **[RKE2 Kubernetes](../k8s-rke2/README.md)** | Kubernetes persistent volume provisioning and container storage | [../k8s-rke2/README.md](../k8s-rke2/README.md) |
+| **[AI & Machine Learning](../../ai-and-machine-learning/README.md)** | High-throughput storage for ML datasets and model training | [../../ai-and-machine-learning/README.md](../../ai-and-machine-learning/README.md) |
+| **[Backup Management Policies](../../policies-and-procedures/backup-management/README.md)** | Enterprise backup policies and data protection procedures | [../../policies-and-procedures/backup-management/README.md](../../policies-and-procedures/backup-management/README.md) |
+| **[Monitoring & Observability](../../docs/monitoring-observability/README.md)** | Storage monitoring integration with centralized observability stack | [../../docs/monitoring-observability/README.md](../../docs/monitoring-observability/README.md) |
+
+---
+
+## **Getting Started**
+
+For new administrators approaching storage infrastructure:
+
+1. **Start Here:** [NVMe Storage Pools](nvme-storage/storage-pools/) - Understanding primary storage architecture
+2. **Backup Setup:** [Backup Systems](backup-systems/) - Configuring comprehensive data protection
+3. **Kubernetes Integration:** [CSI Drivers](kubernetes-storage/csi-drivers/) - Container storage provisioning
+4. **Advanced Management:** [Data Lifecycle](data-management/) - Data governance and archival strategies
+
+---
+
+## **🏗️ Storage Architecture**
+
+### **High-Performance NVMe Storage**
+
+Our enterprise storage infrastructure is built on high-performance NVMe storage distributed across the 7-node cluster:
+
+**Primary Storage Pools:**
+
+- **nvmethin01** - Primary NVMe pool for active workloads and databases
+- **nvmethin02** - Secondary NVMe pool for distributed storage and redundancy
+- **nvmethin03** - Tertiary NVMe pool for specialized workloads and expansion
+- **nvmethin04** - Quaternary NVMe pool for backup and archival systems
+
+**Total Cluster Storage:** ~13.27 TiB of high-performance NVMe storage
+
+### **Storage Distribution**
+
+| **Node** | **Storage Role** | **Capacity** | **Workload Type** |
+|----------|------------------|--------------|-------------------|
+| **node01-node07** | Distributed Storage | ~1.9 TiB each | VM disks, databases, container volumes |
+| **Backup Nodes** | Backup Storage | 4TB+ dedicated | Backup repositories and archival |
+
+### **Performance Characteristics**
+
+- **High IOPS** - Optimized for database and analytical workload I/O patterns
+- **Low Latency** - Sub-millisecond latency for real-time astronomical data processing
+- **High Throughput** - Multi-GB/s sequential performance for large dataset operations
+- **Concurrent Access** - Optimized for multiple simultaneous research applications
+
+---
+
+## **💾 Backup Infrastructure**
+
+### **Multi-Tier Backup Strategy**
+
+Comprehensive backup infrastructure ensuring enterprise-grade data protection:
+
+**Proxmox Backup Server (pbs01):**
+
+- **Dedicated backup appliance** with 4TB+ storage capacity
+- **Automated VM snapshots** with configurable retention policies
+- **Incremental backups** for efficient storage utilization
+- **Cross-node replication** for disaster recovery capabilities
+
+**Iperius Enterprise Integration:**
+
+- **Advanced backup software** for comprehensive data protection
+- **Database-aware backups** for PostgreSQL and application data
+- **Cloud integration** for off-site backup and archival
+- **Automated scheduling** with enterprise reporting and alerting
+
+### **Backup Architecture**
 
 | **Backup Type** | **Frequency** | **Retention** | **Storage Location** |
-|----------------|--------------|--------------|----------------------|
-| **VM Backups** | Daily | 7 daily, 4 weekly, 3 monthly | Proxmox Backup Server |
-| **ZFS Snapshots** | Hourly | 24 hourly, 7 daily | Local ZFS storage |
-| **Critical Data Backups** | Weekly | 12 weekly | Azure Blob Storage |
+|-----------------|---------------|---------------|----------------------|
+| **VM Snapshots** | Daily | 30 days | Proxmox Backup Server |
+| **Database Backups** | Daily + Point-in-time | 90 days | Iperius + Cloud |
+| **Application Data** | Daily | 60 days | Multi-tier storage |
+| **Configuration Backup** | Weekly | 1 year | Version control + cloud |
 
-## **5.2 Redundancy & Resilience**
+### **Disaster Recovery**
 
-Data resilience is ensured through multiple redundancy approaches.
-
-| **Technique** | **Implementation** | **Documentation** |
-|--------------|-------------------|-------------------|
-| **RAID10** | ZFS mirrored vdevs | [ZFS Configuration](/docs/Infrastructure/Storage/zfs-configuration.md) |
-| **Multi-Path I/O** | NFS/SMB with multipath networking | [Multipath Configuration](/docs/Infrastructure/Storage/multipath-configuration.md) |
-| **Replication** | ZFS send/receive between nodes | [Replication Strategy](/docs/Infrastructure/Storage/replication-strategy.md) |
+- **RTO:** Recovery Time Objective < 4 hours for critical systems
+- **RPO:** Recovery Point Objective < 1 hour for database systems
+- **Cross-Site Backup** - Off-site replication for disaster scenarios
+- **Automated Testing** - Regular recovery testing and validation
 
 ---
 
-# 🔗 **6. Directory Contents**
+## **☸️ Kubernetes Storage Integration**
 
-This section provides direct navigation to documentation resources:
+### **Container Storage Interface (CSI)**
 
-## **Key Documents**
+Kubernetes storage integration through Proxmox CSI driver:
 
-| **Document** | **Purpose** | **Link** |
-|--------------|------------|----------|
-| **ZFS Configuration** | ZFS pool setup and management | [ZFS Configuration](/docs/Infrastructure/Storage/zfs-configuration.md) |
-| **Backup Strategy** | Comprehensive backup procedures | [Backup Strategy](/docs/Infrastructure/Storage/Backup-Strategy/README.md) |
-| **NFS Configuration** | NFS server and client setup | [NFS Configuration](/docs/Infrastructure/Storage/NFS/README.md) |
-| **Object Storage** | S3-compatible storage implementation | [Object Storage](/docs/Infrastructure/Storage/Object-Storage/README.md) |
+- **Dynamic Provisioning** - Automatic persistent volume creation for containers
+- **Storage Classes** - Multiple performance tiers for different workload requirements
+- **Volume Snapshots** - Kubernetes-native snapshot capabilities
+- **Resize Support** - Dynamic volume expansion for growing workloads
 
----
+### **Persistent Volume Management**
 
-# 🔄 **7. Related Categories**
+| **Storage Class** | **Performance** | **Use Case** | **Backup Policy** |
+|-------------------|-----------------|--------------|-------------------|
+| **nvme-high-perf** | High IOPS | Databases, ML training | Daily snapshots |
+| **nvme-standard** | Balanced | Applications, services | Weekly snapshots |
+| **nvme-bulk** | High throughput | Data processing, ETL | Monthly snapshots |
 
-| **Category** | **Relationship** | **Link** |
-|--------------|----------------|----------|
-| **Infrastructure** | Physical hosts utilizing storage | [Infrastructure Documentation](/infrastructure/README.md) |
-| **Proxmox** | Virtualization platform integrated with storage | [Proxmox Documentation](/infrastructure/proxmox/README.md) |
-| **Kubernetes** | Container platform using persistent storage | [Kubernetes Documentation](/infrastructure/kubernetes/README.md) |
-| **Entra Hybrid Cloud** | Cloud storage integration | [Cloud Storage Documentation](/entra-hybrid-cloud/storage-services/README.md) |
-| **Security & Compliance** | Storage security policies | [Security Documentation](/docs/Compliance-Security/README.md) |
+### **Volume Lifecycle**
 
----
-
-# ✅ **8. Approval & Review**
-
-| **Reviewer** | **Role** | **Approval Date** | **Status** |
-|-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-04-04 | ✅ Approved |
+- **Provisioning** - Automated PV creation through storage classes
+- **Binding** - Dynamic binding to pod storage requirements
+- **Expansion** - Online volume expansion for growing datasets
+- **Cleanup** - Automated volume cleanup and reclamation
 
 ---
 
-# 📜 **9. Change Log**
+## **📊 Astronomical Data Optimization**
 
-| **Version** | **Date** | **Changes** | **Author** |
-|------------|---------|-------------|------------|
-| 1.0 | 2025-04-04 | Structured README for storage infrastructure | VintageDon |
+### **Workload-Specific Optimization**
+
+Storage infrastructure optimized for astronomical computing patterns:
+
+**Database Workloads:**
+
+- **High random IOPS** for complex astronomical queries and spatial indexing
+- **Optimized for PostgreSQL** with appropriate block sizes and allocation
+- **Database-aware snapshots** preserving transaction consistency
+
+**ML/AI Workloads:**
+
+- **High sequential throughput** for large dataset loading and model training
+- **GPU-accessible storage** for direct data access from compute accelerators
+- **Distributed storage** supporting multi-node training and inference
+
+**Data Processing:**
+
+- **Bulk storage pools** for ETL operations and data transformation
+- **Temporary storage** for intermediate processing results
+- **High-bandwidth access** for streaming data processing pipelines
+
+### **Astronomical Dataset Support**
+
+Specialized storage configurations for astronomical data types:
+
+- **FITS File Optimization** - Block size and allocation optimized for FITS data
+- **Time-Series Storage** - Optimized for high-frequency observational data
+- **Catalog Storage** - Efficient storage for large astronomical catalogs
+- **Image Data** - Optimized for large astronomical image datasets and surveys
+
+---
+
+## **🔒 Enterprise Data Protection**
+
+### **Security Framework**
+
+Storage security implementation following enterprise standards:
+
+- **Encryption at Rest** - Full disk encryption for all storage pools
+- **Access Control** - Role-based storage access aligned with research projects
+- **Network Security** - Secure storage network isolation and encryption
+- **Audit Logging** - Comprehensive access and modification logging
+
+### **Compliance and Governance**
+
+Data storage aligned with research computing standards:
+
+- **Data Classification** - Tiered storage based on data sensitivity and importance
+- **Retention Policies** - Automated data lifecycle management and archival
+- **Geographic Distribution** - Multi-site storage for disaster recovery
+- **Regulatory Compliance** - Storage practices aligned with research data requirements
+
+### **Monitoring and Alerting**
+
+Comprehensive storage monitoring integrated with enterprise observability:
+
+- **Performance Monitoring** - I/O metrics, latency, and throughput tracking
+- **Capacity Alerting** - Proactive alerts for storage capacity and growth
+- **Health Monitoring** - Storage system health and predictive failure detection
+- **Backup Validation** - Automated backup success and integrity verification
+
+---
+
+## **Document Information**
+
+| **Field** | **Value** |
+|-----------|-----------|
+| **Author** | VintageDon - <https://github.com/vintagedon> |
+| **Created** | 2025-07-20 |
+| **Last Updated** | 2025-07-20 |
+| **Version** | 1.0 |
+
+---
+Tags: storage, nvme, backup, persistent-volumes, data-management, enterprise-infrastructure

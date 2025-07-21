@@ -1,230 +1,177 @@
 <!--
 ---
-title: "Virtual Machines Directory"
-description: "Enterprise virtual machine asset documentation directory for the Proxmox Astronomy Lab infrastructure, organizing comprehensive VM specifications and operational guidance for scientific computing workloads"
-author: "[Human Author Name]"
+title: "Hardware Infrastructure"
+description: "Complete hardware inventory, specifications, and infrastructure documentation for the 7-node Proxmox Astronomy Lab cluster"
+author: "VintageDon - https://github.com/vintagedon"
 ai_contributor: "Anthropic Claude 4 Sonnet (claude-4-sonnet-20250514)"
-date: "2025-07-07"
+date: "2025-07-20"
 version: "1.0"
 status: "Published"
 tags:
-- type: directory-readme
-- domain: hardware-virtualization
+- type: directory-overview
+- domain: hardware-infrastructure
+- domain: cluster-architecture
 - tech: proxmox-ve
-- tech: enterprise-vms
-- scale: 7-node-cluster
+- tech: intel-12th-13th-gen
+- tech: nvme-storage
+- phase: production-deployment
 related_documents:
-- "[Hardware Overview](../README.md)"
-- "[Infrastructure Overview](../../infrastructure/README.md)"
-- "[Kubernetes Infrastructure](../../infrastructure/k8s/README.md)"
+- "[Main Platform Overview](../README.md)"
+- "[Infrastructure Services](../infrastructure/README.md)"
+- "[Network Architecture](networking/README.md)"
+- "[AI/ML Infrastructure](../ai/README.md)"
 ---
 -->
 
-# 🖥️ **Virtual Machines Directory**
+# 🔧 **Hardware Infrastructure**
 
-This directory organizes enterprise virtual machine asset documentation for the Proxmox Astronomy Lab infrastructure, providing comprehensive VM specifications, operational guidance, and cluster integration details for scientific computing workloads.
+The hardware infrastructure directory contains comprehensive documentation of the physical computing platform that powers the Proxmox Astronomy Lab. This category covers the complete 7-node cluster specifications, network architecture, performance benchmarks, and physical infrastructure supporting enterprise-grade astronomical research workloads.
 
-# 🎯 **1. Introduction**
+## **Overview**
 
-## **1.1 Purpose**
+The hardware infrastructure represents the foundation of our production-scale astronomical computing platform, built on a carefully architected 7-node cluster delivering approximately 140 CPU cores and 1TB of system memory. The platform combines modern Intel 12th and 13th generation processors with high-performance NVMe storage systems, enterprise networking, and specialized GPU acceleration to create a research computing environment capable of handling large-scale astronomical datasets and computationally intensive ML workloads.
 
-This directory centralizes virtual machine asset sheets documenting the enterprise virtualization infrastructure supporting astronomical research, enabling infrastructure teams to understand VM specifications, operational characteristics, and scientific computing integration requirements.
+Our hardware architecture emphasizes redundancy, performance, and scalability while maintaining cost-effectiveness for research applications. The cluster design supports hybrid workloads through strategic resource allocation, enabling both containerized Kubernetes applications and traditional virtual machine deployments. Each node is equipped with dual-link networking providing both management and high-bandwidth service connectivity, ensuring optimal data movement and cluster interconnect performance.
 
-## **1.2 Scope**
-
-| **In Scope** | **Out of Scope** |
-|--------------|------------------|
-| VM asset sheets with specifications and operational documentation | Physical hardware specifications and Proxmox host configuration |
-| Enterprise virtual machine architecture and cluster integration | Individual container applications and scientific algorithm implementation |
-| Scientific computing workload coordination and resource allocation | Detailed hypervisor administration and storage backend management |
-
-## **1.3 Target Audience**
-
-**Primary Audience:** Infrastructure administrators and virtualization specialists requiring VM oversight
-**Secondary Audience:** Scientific computing teams and enterprise platform architects requiring cluster visibility
-**Required Background:** Understanding of virtualization platforms, enterprise infrastructure management, and scientific computing workflows
-
-## **1.4 Overview**
-
-The virtual machines directory contains asset sheets for 18 enterprise VMs across the 7-node cluster, documenting specifications for database servers, Kubernetes nodes, monitoring infrastructure, and scientific computing platforms supporting DESI astronomical research.
-
-# 🔗 **2. Dependencies & Relationships**
-
-## **2.1 Related Services**
-
-| **Service** | **Relationship Type** | **Integration Points** | **Documentation** |
-|-------------|----------------------|------------------------|-------------------|
-| **Hardware Infrastructure** | **Runs-on** | Physical node allocation and resource management across 7-node cluster | [Hardware Overview](../README.md) |
-| **Kubernetes Infrastructure** | **Provides-platform** | Container orchestration through RKE2 cluster nodes | [K8s Infrastructure](../../infrastructure/k8s/README.md) |
-| **Monitoring Systems** | **Integrates-with** | VM performance monitoring and enterprise observability | [Monitoring](../../monitoring/README.md) |
-| **Enterprise Security** | **Implements** | VM hardening and compliance frameworks across virtualization layer | [Security](../../security/README.md) |
-
-## **2.2 Policy Implementation**
-
-VM asset documentation implements enterprise infrastructure governance through systematic asset tracking, security compliance validation, and operational excellence frameworks supporting scientific computing infrastructure management and enterprise virtualization standards.
-
-## **2.3 Responsibility Matrix**
-
-| **Activity** | **Infrastructure Admins** | **Virtualization Specialists** | **Scientific Computing** | **Platform Architects** |
-|--------------|----------------------------|--------------------------------|--------------------------|-------------------------|
-| **VM Lifecycle Management** | **A** | **R** | **C** | **C** |
-| **Asset Documentation** | **R** | **A** | **C** | **R** |
-| **Performance Optimization** | **R** | **R** | **A** | **C** |
-| **Security Compliance** | **R** | **R** | **C** | **A** |
-
-*R: Responsible, A: Accountable, C: Consulted, I: Informed*
-
-# ⚙️ **3. Directory Structure & Organization**
-
-## **3.1 Asset Sheet Categories**
-
-### **Database Infrastructure**
-
-- **[proj-pg01-asset-sheet.md](proj-pg01-asset-sheet.md)** - Primary PostgreSQL database server (VM 2002, 8 CPU, 48GB RAM, 250GB storage)
-
-### **Kubernetes Cluster Nodes**
-
-- **[proj-k8s01-asset-sheet.md](proj-k8s01-asset-sheet.md)** - RKE2 control plane master node (VM 3001, 14 CPU, 72GB RAM, 1TB storage)
-- **[proj-k8s02-asset-sheet.md](proj-k8s02-asset-sheet.md)** - CPU-intensive worker node (VM 3002, 10 CPU, 32GB RAM, 1TB storage)
-- **[proj-gpu01-asset-sheet.md](proj-gpu01-asset-sheet.md)** - GPU-accelerated worker node (VM 2005, 16 CPU, 72GB RAM, 4TB storage, RTX A4000)
-
-### **Data Processing & Analytics**
-
-- **[proj-dp01-asset-sheet.md](proj-dp01-asset-sheet.md)** - Data processing server (VM 2001, 4 CPU, 16GB RAM, 100GB storage)
-- **[proj-code01-asset-sheet.md](proj-code01-asset-sheet.md)** - Development environment (VM 2004, 6 CPU, 32GB RAM, 100GB storage)
-
-### **Infrastructure Services**
-
-- **[proj-mon01-asset-sheet.md](proj-mon01-asset-sheet.md)** - Monitoring infrastructure (VM 2008, 4 CPU, 12GB RAM, 500GB storage)
-- **[proj-fs01-asset-sheet.md](proj-fs01-asset-sheet.md)** - File services primary (VM 2007, 2 CPU, 6GB RAM, 1.5TB storage)
-- **[proj-fs02-asset-sheet.md](proj-fs02-asset-sheet.md)** - File services secondary (VM 2011, 4 CPU, 6GB RAM, 150GB storage)
-- **[proj-fs03-asset-sheet.md](proj-fs03-asset-sheet.md)** - File services tertiary (VM 2010, 2 CPU, 6GB RAM, 1.5TB storage)
-
-### **Enterprise Services**
-
-- **[proj-repo01-asset-sheet.md](proj-repo01-asset-sheet.md)** - Git repository server (VM 2009, 2 CPU, 8GB RAM, 32GB storage)
-- **[proj-secret01-asset-sheet.md](proj-secret01-asset-sheet.md)** - Secrets management (VM 2013, specifications pending)
-- **[proj-pgsql02-asset-sheet.md](proj-pgsql02-asset-sheet.md)** - Secondary database (VM 2012, 4 CPU, 16GB RAM, 100GB storage)
-
-### **Virtual Desktop Infrastructure**
-
-- **[proj-rds01-asset-sheet.md](proj-rds01-asset-sheet.md)** - Remote desktop services (VM 2006, 6 CPU, 16GB RAM, 125GB storage)
-
-### **Management Infrastructure**
-
-- **[mgmt-ansible01-asset-sheet.md](mgmt-ansible01-asset-sheet.md)** - Ansible automation controller (VM 1002, 2 CPU, 4GB RAM, 32GB storage)
-- **[radio-dc01-asset-sheet.md](radio-dc01-asset-sheet.md)** - Domain controller (VM 1003, 2 CPU, 6GB RAM, 125GB storage)
-- **[radio-dc02-asset-sheet.md](radio-dc02-asset-sheet.md)** - Secondary domain controller (VM 2003, specifications pending)
-
-## **3.2 Asset Sheet Standards**
-
-All VM asset sheets follow the enterprise golden template structure providing consistent documentation including VM specifications, dependency relationships, security compliance, backup strategies, and operational procedures supporting systematic infrastructure management.
-
-## **3.3 Cross-Reference Integration**
-
-Asset sheets maintain comprehensive cross-references enabling navigation between related VMs, infrastructure components, and enterprise services supporting holistic infrastructure understanding and operational coordination.
-
-# 🛠️ **4. Management & Operations**
-
-## **4.1 Asset Lifecycle Management**
-
-VM asset documentation follows systematic lifecycle management ensuring current specifications, operational status tracking, and capacity planning coordination supporting enterprise infrastructure evolution and scientific computing growth requirements.
-
-## **4.2 Documentation Standards**
-
-Asset sheets implement standardized documentation patterns including specification tables, architectural diagrams, dependency mapping, and operational procedures enabling consistent infrastructure knowledge management and operational excellence.
-
-## **4.3 Update Coordination**
-
-Regular asset sheet updates coordinate with infrastructure changes, capacity planning, and security compliance ensuring documentation accuracy and operational relevance for enterprise virtualization management.
-
-# 🔒 **5. Security & Compliance**
-
-## **5.1 Security Controls**
-
-**DISCLAIMER: We are not security professionals** - this is our baseline and we are working towards compliance with CIS Controls v8, NIST frameworks, and industry standards. VM asset documentation implements security tracking through systematic compliance mapping, security configuration documentation, and enterprise hardening verification supporting comprehensive virtualization security management.
-
-## **5.2 CIS Controls Mapping**
-
-| **CIS Control** | **Implementation Status** | **Evidence Location** | **Assessment Date** |
-|-----------------|--------------------------|----------------------|-------------------|
-| **CIS.1.1** | **Compliant** | Comprehensive VM asset inventory and systematic documentation across all enterprise VMs | 2025-07-07 |
-| **CIS.2.1** | **Compliant** | VM security configuration tracking and hardening verification through asset sheets | 2025-07-07 |
-| **CIS.4.1** | **Compliant** | Network segmentation documentation and VLAN isolation verification across VM assets | 2025-07-07 |
-| **CIS.6.1** | **Compliant** | Centralized logging integration and audit trail documentation for VM infrastructure | 2025-07-07 |
-
-## **5.3 Framework Compliance**
-
-VM asset documentation supports multi-framework compliance including CIS Controls v8, NIST cybersecurity framework alignment, and enterprise security standards through systematic documentation patterns and security configuration tracking.
-
-# 💾 **6. Backup & Recovery**
-
-## **6.1 Protection Strategy**
-
-VM asset documentation integrates with enterprise backup strategy through Proxmox Backup Server coordination, systematic protection scheduling, and recovery procedure documentation supporting comprehensive infrastructure protection.
-
-## **6.2 Recovery Coordination**
-
-Asset sheets document recovery procedures, dependencies, and coordination requirements enabling systematic disaster recovery and business continuity for scientific computing infrastructure and enterprise services.
-
-# 📚 **7. References & Related Resources**
-
-## **7.1 Internal References**
-
-| **Document Type** | **Document Title** | **Relationship** | **Link** |
-|-------------------|-------------------|------------------|----------|
-| **Hardware** | Hardware Infrastructure Overview | Physical platform specifications and node allocation | [Hardware Overview](../README.md) |
-| **Infrastructure** | Infrastructure Architecture | Enterprise platform integration and service coordination | [Infrastructure](../../infrastructure/README.md) |
-| **Kubernetes** | Kubernetes Cluster Documentation | Container orchestration platform and RKE2 cluster management | [K8s Infrastructure](../../infrastructure/k8s/README.md) |
-| **Monitoring** | Monitoring Infrastructure | VM performance tracking and enterprise observability integration | [Monitoring](../../monitoring/README.md) |
-
-## **7.2 External Standards**
-
-- **[Proxmox VE Documentation](https://pve.proxmox.com/wiki/Main_Page)** - Official virtualization platform documentation and best practices
-- **[CIS Virtualization Benchmark](https://www.cisecurity.org/benchmark/virtualization)** - Security hardening standards for virtualization platforms
-- **[NIST SP 800-125](https://csrc.nist.gov/publications/detail/sp/800-125/final)** - Guide to security for full virtualization technologies
-
-# ✅ **8. Approval & Review**
-
-## **8.1 Review Process**
-
-VM asset documentation undergoes systematic review by infrastructure administrators, virtualization specialists, and enterprise architecture teams ensuring accuracy and operational relevance for comprehensive infrastructure management.
-
-## **8.2 Approval Matrix**
-
-| **Reviewer** | **Role/Expertise** | **Review Date** | **Approval Status** | **Comments** |
-|-------------|-------------------|----------------|-------------------|--------------|
-| [Infrastructure Administrator] | VM Lifecycle & Enterprise Infrastructure | [YYYY-MM-DD] | **Approved** | Comprehensive VM asset inventory and documentation standards validated |
-| [Virtualization Specialist] | Proxmox Platform & Virtualization Architecture | [YYYY-MM-DD] | **Approved** | Enterprise virtualization architecture and asset tracking confirmed |
-| [Enterprise Architect] | Infrastructure Integration & Compliance | [YYYY-MM-DD] | **Approved** | Enterprise integration and security compliance documentation verified |
-
-# 📜 **9. Documentation Metadata**
-
-## **9.1 Change Log**
-
-| **Version** | **Date** | **Changes** | **Author** | **Review Status** |
-|------------|---------|-------------|------------|------------------|
-| 1.0 | 2025-07-07 | Initial virtual machines directory with comprehensive asset sheet organization and enterprise documentation standards | [Human Author] | **Approved** |
-
-## **9.2 Authorization & Review**
-
-VM directory documentation reflects current enterprise virtualization infrastructure and asset management standards validated through systematic infrastructure analysis ensuring accuracy for operational excellence and infrastructure administration.
-
-## **9.3 Authorship Details**
-
-**Human Author:** [Full name and role - Infrastructure Administrator/Virtualization Specialist]
-**AI Contributor:** Anthropic Claude 4 Sonnet (claude-4-sonnet-20250514)
-**Collaboration Method:** Request-Analyze-Verify-Generate-Validate (RAVGV)
-**Human Oversight:** Complete infrastructure review and validation of virtual machines directory organization accuracy
-
-## **9.4 AI Collaboration Disclosure**
-
-This document was collaboratively developed to establish comprehensive enterprise virtual machine asset documentation organization enabling systematic infrastructure management and advanced operational excellence.
+The infrastructure has been validated through extensive benchmarking and is currently supporting production workloads including 30GB+ PostgreSQL astronomical databases, distributed Ray ML clusters, and GPU-accelerated inference pipelines. All hardware specifications and performance characteristics are documented to enable reproducible infrastructure deployment and optimization.
 
 ---
 
-**🤖 AI Collaboration Disclosure**
+## **📂 Directory Contents**
 
-This document was collaboratively developed using the Request-Analyze-Verify-Generate-Validate (RAVGV) methodology. The virtual machines directory documentation reflects current enterprise virtualization infrastructure organization derived from systematic asset management analysis. All content has been thoroughly reviewed, validated, and approved by qualified human subject matter experts. The human author retains complete responsibility for accuracy, compliance, and infrastructure documentation effectiveness.
+This section provides systematic navigation to all files and subdirectories within the hardware infrastructure category.
 
-*Generated: 2025-07-07 | Human Author: [Name] | AI Assistant: Claude 4 Sonnet | Review Status: Approved | Document Version: 1.0*
+### **Subdirectories**
+
+| **Directory** | **Purpose** | **Documentation** |
+|--------------|-------------|-------------------|
+| **[benchmarks/](benchmarks/)** | Performance testing results and optimization analysis | [benchmarks/README.md](benchmarks/README.md) |
+| **[networking/](networking/)** | Network infrastructure architecture and configuration | [networking/README.md](networking/README.md) |
+| **[nodes/](nodes/)** | Individual node specifications and configuration details | [nodes/README.md](nodes/README.md) |
+| **[virtual-machines/](virtual-machines/)** | VM allocation, specifications, and deployment patterns | [virtual-machines/README.md](virtual-machines/README.md) |
+
+### **Key Documents**
+
+| **Document** | **Purpose** | **Link** |
+|--------------|-------------|----------|
+| **[proxmox-astronomy-lab-cluster-config-v2-2025-07-20.md](proxmox-astronomy-lab-cluster-config-v2-2025-07-20.md)** | Complete cluster configuration report with all node specifications | [proxmox-astronomy-lab-cluster-config-v2-2025-07-20.md](proxmox-astronomy-lab-cluster-config-v2-2025-07-20.md) |
+
+---
+
+## **📁 Repository Structure**
+
+``` markdown
+hardware/
+├── 📊 benchmarks/              # Performance testing and optimization
+│   ├── README.md              # Benchmarking overview and methodology
+│   ├── cpu-performance.md     # Processor benchmarking results
+│   ├── storage-io.md          # NVMe storage performance analysis
+│   ├── network-throughput.md  # Network performance testing
+│   └── gpu-acceleration.md    # RTX A4000 performance metrics
+├── 🌐 networking/              # Network infrastructure
+│   ├── README.md              # Network architecture overview
+│   ├── cluster-topology.md    # Physical and logical network design
+│   ├── vlan-configuration.md  # VLAN strategy and implementation
+│   ├── switch-management.md   # Managed switch configuration
+│   └── bonding-lacp.md        # LACP bonding and redundancy
+├── 🖥️ nodes/                   # Individual node specifications
+│   ├── README.md              # Node inventory overview
+│   ├── node01-specifications.md # Primary cluster node details
+│   ├── node02-specifications.md # Secondary cluster node details
+│   ├── node03-specifications.md # Tertiary cluster node details
+│   ├── node04-specifications.md # Quaternary cluster node details
+│   ├── node05-specifications.md # Quinary cluster node details
+│   ├── node06-specifications.md # Senary cluster node details
+│   └── node07-specifications.md # Septenary cluster node details
+├── 💻 virtual-machines/        # VM infrastructure and allocation
+│   ├── README.md              # VM deployment overview
+│   ├── vm-allocation-matrix.md # Resource allocation across nodes
+│   ├── service-vm-specs.md    # Service VM specifications
+│   ├── database-vm-config.md  # Database VM optimization
+│   └── kubernetes-vm-setup.md # K8s node VM configuration
+├── 📋 proxmox-astronomy-lab-cluster-config-v2-2025-07-20.md # Complete cluster report
+├── 📝 README.md               # This file
+└── 📄 cluster-architecture.md # High-level architecture documentation
+```
+
+### **Navigation Guide:**
+
+- **📊 [Performance Benchmarks](benchmarks/README.md)** - CPU, storage, network, and GPU performance analysis
+- **🌐 [Network Architecture](networking/README.md)** - VLAN design, bonding, and network infrastructure
+- **🖥️ [Node Specifications](nodes/README.md)** - Individual node hardware details and configurations
+- **💻 [Virtual Machine Infrastructure](virtual-machines/README.md)** - VM deployment patterns and resource allocation
+- **📋 [Cluster Configuration Report](proxmox-astronomy-lab-cluster-config-v2-2025-07-20.md)** - Complete system specifications and status
+
+---
+
+## **🔗 Related Categories**
+
+This section establishes horizontal relationships within the knowledge graph, connecting hardware infrastructure to related platform domains.
+
+| **Category** | **Relationship** | **Documentation** |
+|--------------|------------------|-------------------|
+| **[Infrastructure Services](../infrastructure/README.md)** | **Provides foundation for** - All platform services depend on hardware infrastructure | [../infrastructure/README.md](../infrastructure/README.md) |
+| **[AI/ML Infrastructure](../ai/README.md)** | **Enables** - GPU acceleration and distributed computing capabilities | [../ai/README.md](../ai/README.md) |
+| **[Monitoring Systems](../monitoring/README.md)** | **Monitored by** - Hardware metrics, temperature, and performance tracking | [../monitoring/README.md](../monitoring/README.md) |
+| **[Security Framework](../security/README.md)** | **Secured by** - Hardware security controls and compliance implementation | [../security/README.md](../security/README.md) |
+| **[Research Projects](../projects/README.md)** | **Supports** - Computational resources for astronomical research workloads | [../projects/README.md](../projects/README.md) |
+
+---
+
+## **Hardware Overview**
+
+### **Cluster Architecture Summary**
+
+| **Component** | **Specification** | **Total Capacity** |
+|---------------|------------------|-------------------|
+| **Compute Nodes** | 7 nodes (Intel 12th/13th gen) | ~140 CPU cores |
+| **System Memory** | DDR4/DDR5 configurations | ~1TB total RAM |
+| **Storage System** | NVMe SSD primary storage | 13+ TB cluster storage |
+| **GPU Acceleration** | RTX A4000 (node allocation TBD) | Enterprise ML/AI acceleration |
+| **Network Backbone** | 10G LACP bonding | Dual-link redundancy |
+| **Management** | Proxmox VE 8.4.5 cluster | Enterprise virtualization |
+
+### **Node Distribution**
+
+| **Node** | **CPU** | **Memory** | **Storage** | **Role** |
+|----------|---------|------------|-------------|----------|
+| **node01** | i9-12900H (20 cores) | High-capacity | 1.92TB NVMe | Primary cluster node |
+| **node02** | i5-12600H (16 cores) | Standard | 1.92TB + 2TB NVMe | Database workloads |
+| **node03** | i9-12900H (20 cores) | High-capacity | 1.92TB NVMe | Kubernetes workloads |
+| **node04** | i9-12900H (20 cores) | High-capacity | 1.92TB NVMe | Compute intensive |
+| **node05** | Intel platform | Standard | NVMe configuration | Distributed services |
+| **node06** | i9-13900H (20 cores) | High-capacity | 1.92TB NVMe | Latest generation node |
+| **node07** | Intel platform | High-capacity | 4TB NVMe | Storage and compute |
+
+### **Network Infrastructure**
+
+- **Management Network**: 10.16.207.x/24 (vmbr0 - primary management)
+- **Service Network**: 10.25.x.x/24 (vmbr1 + VLANs 10-60)
+- **Bonding**: LACP 802.3ad on SFP+ ports for high-bandwidth interconnect
+- **Redundancy**: Dual-link architecture ensuring network fault tolerance
+
+---
+
+## **Getting Started**
+
+For new users approaching hardware infrastructure:
+
+1. **Start Here:** [Cluster Configuration Report](proxmox-astronomy-lab-cluster-config-v2-2025-07-20.md) - Complete system overview
+2. **Network Understanding:** [Network Architecture](networking/README.md) - VLAN design and connectivity
+3. **Performance Baseline:** [Benchmarks Overview](benchmarks/README.md) - Performance characteristics and optimization
+4. **Node Details:** [Node Specifications](nodes/README.md) - Individual hardware configurations
+5. **VM Planning:** [Virtual Machine Infrastructure](virtual-machines/README.md) - Resource allocation and deployment
+
+---
+
+## **Document Information**
+
+| **Field** | **Value** |
+|-----------|-----------|
+| **Author** | VintageDon - <https://github.com/vintagedon> |
+| **Created** | 2025-07-20 |
+| **Last Updated** | 2025-07-20 |
+| **Version** | 1.0 |
+
+---
+Tags: hardware-infrastructure, cluster-architecture, proxmox-ve, networking, performance-benchmarking

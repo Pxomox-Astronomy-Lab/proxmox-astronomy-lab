@@ -1,7 +1,7 @@
 <!--
 ---
-title: "vm-2014-proj-docker01 - Docker Microservices Platform Primary Node"
-description: "Comprehensive documentation for proj-docker01 primary Docker microservices platform supporting enterprise-grade containerized workloads with Portainer orchestration, distributed microservices, and high-availability container infrastructure"
+title: "vm-2019-proj-docker02 - Docker Microservices Platform Secondary Node"
+description: "Comprehensive documentation for proj-docker02 secondary Docker microservices platform providing distributed containerized workload hosting with Portainer orchestration, standalone container infrastructure, and microservices load distribution alongside proj-docker01"
 author: "VintageDon - https://github.com/vintagedon"
 ai_contributor: "Claude Sonnet 4 (claude-sonnet-4-20250514)"
 date: "2025-07-21"
@@ -9,7 +9,7 @@ version: "1.0"
 status: "Published"
 tags:
 - type: infrastructure-container-platform
-- domain: docker-microservices-orchestration
+- domain: docker-microservices-distributed
 - tech: [docker-engine, ubuntu-24-04, container-networking]
 - phase: production-microservices-deployment
 - dataset: enterprise-containerized-workloads
@@ -17,32 +17,32 @@ related_documents:
 - "[VM Asset Documentation](../README.md)"
 - "[Container Platform Architecture](../../infrastructure/docker/README.md)"
 - "[Portainer Orchestration](../vm-2009-port01.md)"
-- "[Docker Load Balancing Twin](./vm-2019-proj-docker02.md)"
+- "[Docker Primary Node](./vm-2014-proj-docker01.md)"
 - "[Security Framework](../../security/README.md)"
 scientific_context:
-  objective: "Enterprise Docker microservices platform"
-  dataset: "Containerized astronomical computing workloads"
-  methods: ["microservices-deployment", "container-orchestration", "distributed-computing"]
+  objective: "Secondary Docker microservices platform"
+  dataset: "Distributed containerized astronomical workloads"
+  methods: ["microservices-deployment", "distributed-hosting", "container-orchestration"]
 ---
 -->
 
-# 🐳 **vm-2014-proj-docker01 - Docker Microservices Platform Primary Node**
+# 🐳 **vm-2019-proj-docker02 - Docker Microservices Platform Secondary Node**
 
-Enterprise-grade Docker microservices platform serving as the primary containerized workload host within the distributed container architecture. This platform provides high-performance Docker runtime environment optimized for astronomical computing microservices, development containers, and production containerized applications with enterprise security, Portainer orchestration integration, and load-balanced operations alongside proj-docker02 twin node.
+Enterprise-grade Docker microservices platform serving as the secondary containerized workload host within the distributed container architecture. This platform provides high-performance Docker runtime environment optimized for astronomical computing microservices, standalone containerized applications, and production workloads with enterprise security, Portainer orchestration integration, and distributed operations alongside proj-docker01 primary node.
 
 ## **🎯 1. Purpose & Scope**
 
 ### **1.1 Primary Function**
 
-proj-docker01 serves as the primary enterprise Docker microservices platform providing scalable containerized workload hosting for astronomical computing applications, development environments, microservices infrastructure, and distributed container orchestration with high-availability operations, enterprise-grade security, and seamless integration with Portainer management plane and twin node load balancing architecture.
+proj-docker02 serves as the secondary enterprise Docker microservices platform providing distributed containerized workload hosting for astronomical computing applications, standalone container environments, microservices infrastructure, and container orchestration with enterprise-grade security, seamless Portainer management integration, and workload distribution capabilities alongside proj-docker01 primary node.
 
 ### **1.2 Service Classification**
 
-**Production Tier:** Mission-critical Docker microservices platform optimized for containerized astronomical workloads, development container environments, microservices deployment, and enterprise application hosting with comprehensive security baseline, monitoring integration, and high-availability operations supporting distributed container architecture and research computing requirements.
+**Production Tier:** Mission-critical Docker microservices platform optimized for distributed containerized astronomical workloads, standalone container environments, microservices deployment, and enterprise application hosting with comprehensive security baseline, monitoring integration, and distributed operations supporting twin node container architecture and research computing requirements.
 
 ### **1.3 Platform Integration**
 
-Containerized infrastructure foundation enabling astronomical computing microservices, development container environments, CI/CD pipeline support, and distributed application deployment while maintaining enterprise-grade security standards and providing scalable container hosting for research computing workloads and scientific application development with seamless Portainer orchestration integration.
+Containerized infrastructure foundation enabling distributed astronomical computing microservices, standalone container environments, parallel container operations, and distributed application deployment while maintaining enterprise-grade security standards and providing scalable container hosting for research computing workloads and scientific application development with seamless Portainer orchestration integration.
 
 ---
 
@@ -52,8 +52,8 @@ Containerized infrastructure foundation enabling astronomical computing microser
 
 | **Dependency** | **Requirement** | **Purpose** |
 |---------------|-----------------|-------------|
-| **VM Platform** | proj-docker01 (6 vCPU, 32GB RAM, 132GB NVMe) | Primary Docker host foundation |
-| **Network Infrastructure** | VLAN 20 (Project workloads), 10.25.20.14 | Container connectivity and orchestration |
+| **VM Platform** | proj-docker02 (6 vCPU, 32GB RAM, 132GB NVMe) | Secondary Docker host foundation |
+| **Network Infrastructure** | VLAN 20 (Project workloads), 10.25.20.24 | Container connectivity and orchestration |
 | **Storage Backend** | High-performance NVMe storage | Container image and volume performance |
 | **Security Framework** | CIS Controls v8 Level 2 | Enterprise security baseline |
 
@@ -62,7 +62,7 @@ Containerized infrastructure foundation enabling astronomical computing microser
 | **Service** | **Provider** | **Integration** |
 |-------------|--------------|-----------------|
 | **Container Orchestration** | port01 (Portainer management plane) | Centralized container lifecycle management |
-| **Load Balancing Twin** | proj-docker02 (Docker node twin) | Distributed microservices load balancing |
+| **Primary Node Coordination** | proj-docker01 (Docker primary node) | Distributed microservices hosting |
 | **Container Registry** | Enterprise container registry | Image distribution and security scanning |
 | **Network Services** | Docker network infrastructure | Service discovery and inter-container communication |
 
@@ -71,7 +71,7 @@ Containerized infrastructure foundation enabling astronomical computing microser
 | **Requirement** | **Implementation** | **Validation** |
 |----------------|-------------------|----------------|
 | **Docker Engine** | Latest enterprise Docker version | Container runtime optimization |
-| **Container Networking** | Docker bridge and overlay networks | Microservices communication |
+| **Container Networking** | Docker bridge and custom networks | Microservices communication |
 | **Security Baseline** | CIS L2 Docker security hardening | Enterprise container security |
 | **Storage Configuration** | /var/lib/docker (NVMe storage) | High-performance container operations |
 | **Portainer Agent** | Container management agent | Centralized orchestration integration |
@@ -116,8 +116,8 @@ Containerized infrastructure foundation enabling astronomical computing microser
 
 | **Network Type** | **Configuration** | **Purpose** |
 |-----------------|-------------------|-------------|
-| **Bridge Network** | docker0 (172.17.0.0/16) | Default container networking |
-| **Overlay Networks** | Custom overlay networks | Multi-host container communication |
+| **Bridge Network** | docker0 (172.18.0.0/16) | Secondary node container networking |
+| **Custom Networks** | Application-specific networks | Microservices isolation |
 | **Host Network** | Direct host network access | High-performance applications |
 | **Macvlan Networks** | VLAN-aware container networking | Enterprise network integration |
 
@@ -140,14 +140,14 @@ Containerized infrastructure foundation enabling astronomical computing microser
 | **Edge Agent** | Optional remote management | Secure cloud orchestration |
 | **API Endpoint** | Portainer API integration | Programmatic container management |
 
-#### **3.3.2 Load Balancing Architecture**
+#### **3.3.2 Distributed Architecture**
 
-| **Load Balancing Component** | **Implementation** | **Purpose** |
-|-----------------------------|-------------------|-------------|
-| **Primary Node** | proj-docker01 (this platform) | Primary microservices hosting |
-| **Twin Node** | proj-docker02 (load balancing) | Distributed workload sharing |
+| **Distribution Component** | **Implementation** | **Purpose** |
+|---------------------------|-------------------|-------------|
+| **Secondary Node** | proj-docker02 (this platform) | Secondary microservices hosting |
+| **Primary Node Coordination** | proj-docker01 communication | Distributed workload coordination |
 | **Service Discovery** | Docker DNS and networking | Container-to-container communication |
-| **Health Checking** | Container health endpoints | High availability validation |
+| **Health Checking** | Container health endpoints | Service availability validation |
 
 ---
 
@@ -157,10 +157,10 @@ Containerized infrastructure foundation enabling astronomical computing microser
 
 | **Service Category** | **Function** | **Coverage** |
 |---------------------|--------------|--------------|
-| **Microservices Hosting** | Astronomical computing microservices | Research application containers |
-| **Development Environments** | Development container platforms | Code-server and IDE containers |
-| **Database Containers** | Containerized database services | Development and testing databases |
-| **Web Services** | Web application containers | Research portal and dashboard hosting |
+| **Distributed Microservices** | Secondary astronomical computing containers | Research application distribution |
+| **Development Environments** | Secondary development container platforms | Additional development capacity |
+| **Database Containers** | Secondary containerized database services | Database distribution and redundancy |
+| **Web Services** | Secondary web application containers | Distributed web hosting |
 
 ### **4.2 Operational Procedures**
 
@@ -169,7 +169,7 @@ Containerized infrastructure foundation enabling astronomical computing microser
 | **Container Health Monitoring** | Continuous | Portainer health checks and metrics |
 | **Image Security Scanning** | On deployment | Vulnerability scanning and compliance |
 | **Resource Monitoring** | Real-time | Docker metrics and resource utilization |
-| **Load Balancing Management** | Continuous | Twin node coordination and traffic distribution |
+| **Node Coordination** | Continuous | Primary node communication and coordination |
 
 ### **4.3 Monitoring & Alerting**
 
@@ -223,10 +223,10 @@ This Docker microservices platform is protected through comprehensive backup str
 
 | **Backup Component** | **Schedule** | **Retention** | **Method** |
 |---------------------|--------------|---------------|------------|
-| **Container Volumes** | Daily at 02:00 | 30 days | Volume snapshot backup |
-| **Docker Configuration** | Daily at 02:15 | 90 days | System configuration backup |
+| **Container Volumes** | Daily at 02:30 | 30 days | Volume snapshot backup |
+| **Docker Configuration** | Daily at 02:45 | 90 days | System configuration backup |
 | **Container Images** | Weekly | 4 weeks | Registry mirror backup |
-| **VM System Backup** | Daily at 03:00 | 30 days | pbs01 comprehensive backup |
+| **VM System Backup** | Daily at 03:30 | 30 days | pbs01 comprehensive backup |
 
 ### **6.3 Recovery Procedures**
 
@@ -254,7 +254,7 @@ This Docker microservices platform is protected through comprehensive backup str
 | **Component** | **Relationship** | **Documentation** |
 |--------------|------------------|-------------------|
 | **[Portainer Management](../vm-2009-port01.md)** | Container orchestration control plane | Management platform documentation |
-| **[Load Balancing Twin](./vm-2019-proj-docker02.md)** | Distributed container platform | Twin node specifications |
+| **[Docker Primary Node](./vm-2014-proj-docker01.md)** | Primary node for distributed hosting | Primary node specifications |
 | **[Infrastructure Overview](../README.md)** | Part of virtualization ecosystem | VM infrastructure documentation |
 
 ---
@@ -270,13 +270,13 @@ This Docker microservices platform is protected through comprehensive backup str
 | **Storage Performance** | Volume I/O benchmarks | >1000 IOPS sustained operations |
 | **Security Validation** | Container security scanning | Zero high-severity vulnerabilities |
 
-### **8.2 Load Balancing Validation**
+### **8.2 Distributed Operations Validation**
 
 | **Function** | **Validation Method** | **Success Criteria** |
 |--------------|----------------------|---------------------|
-| **Twin Node Communication** | Cross-node container communication | Successful service discovery |
-| **Load Distribution** | Workload balancing tests | Even distribution across nodes |
-| **Failover Testing** | Node failure simulation | <30s service restoration |
+| **Node Communication** | Cross-node container communication | Successful service discovery |
+| **Workload Distribution** | Container deployment across nodes | Successful distributed deployment |
+| **Resource Utilization** | Node resource monitoring | Optimal resource distribution |
 | **Portainer Integration** | Management plane connectivity | Complete container visibility |
 
 ### **8.3 Implementation Guide**
@@ -285,7 +285,7 @@ This Docker microservices platform is protected through comprehensive backup str
 
 ```bash
 #!/bin/bash
-# Docker Engine & Portainer Agent Installation
+# Docker Engine & Portainer Agent Installation (Secondary Node)
 # Run as root or with sudo
 
 # Phase 1: Docker Installation
@@ -294,7 +294,7 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.
 apt-get update
 apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-# Phase 2: Docker Configuration
+# Phase 2: Docker Configuration (Secondary Node)
 mkdir -p /etc/docker
 tee /etc/docker/daemon.json > /dev/null <<EOF
 {
@@ -313,7 +313,13 @@ tee /etc/docker/daemon.json > /dev/null <<EOF
       "hard": 65536,
       "soft": 65536
     }
-  }
+  },
+  "default-address-pools": [
+    {
+      "base": "172.18.0.0/16",
+      "size": 24
+    }
+  ]
 }
 EOF
 
@@ -322,7 +328,7 @@ usermod -aG docker ubuntu
 systemctl enable docker
 systemctl start docker
 
-# Phase 4: Portainer Agent Deployment
+# Phase 4: Portainer Agent Deployment (Secondary Node)
 docker run -d \
   --name portainer_agent \
   --restart=always \
@@ -332,15 +338,15 @@ docker run -d \
   portainer/agent:latest
 
 # Phase 5: Network Configuration
-docker network create --driver overlay astronomy-compute
-docker network create --driver bridge development
+docker network create --driver bridge development-secondary
+docker network create --driver bridge astronomy-compute-secondary
 ```
 
 #### **8.3.2 Container Platform Validation**
 
 ```bash
 #!/bin/bash
-# Docker Platform Validation Script
+# Docker Platform Validation Script (Secondary Node)
 
 # Docker System Validation
 docker system info
@@ -349,7 +355,7 @@ docker network ls
 docker volume ls
 
 # Performance Testing
-docker run --rm alpine:latest sh -c "echo 'Container runtime test: PASS'"
+docker run --rm alpine:latest sh -c "echo 'Secondary node container runtime test: PASS'"
 
 # Security Validation
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
@@ -357,7 +363,10 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
   docker/docker-bench-security
 
 # Portainer Agent Connectivity
-curl -f http://localhost:9001/ && echo "Portainer agent: HEALTHY"
+curl -f http://localhost:9001/ && echo "Secondary node Portainer agent: HEALTHY"
+
+# Primary Node Communication Test
+ping -c 4 proj-docker01 && echo "Primary node connectivity: HEALTHY"
 ```
 
 ---
@@ -366,24 +375,24 @@ curl -f http://localhost:9001/ && echo "Portainer agent: HEALTHY"
 
 ### **9.1 Platform Summary**
 
-proj-docker01 represents a comprehensive enterprise Docker microservices platform implementing containerized workload hosting with CIS Controls v8 Level 2 security standards, providing scalable container infrastructure for astronomical computing applications with Portainer orchestration integration and load-balanced operations alongside proj-docker02 twin node.
+proj-docker02 represents a comprehensive enterprise Docker microservices platform implementing distributed containerized workload hosting with CIS Controls v8 Level 2 security standards, providing secondary container infrastructure for astronomical computing applications with Portainer orchestration integration and distributed operations alongside proj-docker01 primary node.
 
 ### **9.2 Key Capabilities**
 
 | **Capability** | **Implementation** | **Value** |
 |---------------|-------------------|-----------|
-| **Microservices Hosting** | High-performance Docker runtime | Scalable containerized applications |
-| **Development Environment** | Container-based development platforms | Streamlined development workflows |
-| **Load Balancing Architecture** | Twin node distributed processing | High availability and performance |
-| **Enterprise Security** | CIS L2 container security baseline | Secure containerized operations |
+| **Distributed Microservices** | Secondary Docker runtime environment | Scalable distributed applications |
+| **Development Environment** | Additional container-based development capacity | Enhanced development workflows |
+| **Distributed Architecture** | Secondary node coordination | Improved availability and capacity |
+| **Enterprise Security** | CIS L2 container security baseline | Secure distributed operations |
 
 ### **9.3 Operational Impact**
 
-This Docker microservices platform serves as the critical containerized infrastructure foundation enabling astronomical computing applications, development environments, and distributed microservices across the enterprise astronomy research platform while maintaining enterprise security standards and providing essential container hosting services for research computing and scientific application development.
+This Docker microservices platform serves as the critical secondary containerized infrastructure foundation enabling distributed astronomical computing applications, additional development environments, and expanded microservices capacity across the enterprise astronomy research platform while maintaining enterprise security standards and providing essential distributed container hosting services.
 
 ### **9.4 Future Considerations**
 
-Planned enhancements include container orchestration expansion, enhanced microservices deployment automation, advanced monitoring and observability features, and integrated security scanning capabilities supporting the evolution toward comprehensive containerized research computing platform meeting the growing container infrastructure requirements of the astronomy platform.
+Planned enhancements include expanded container orchestration capabilities, enhanced distributed deployment automation, advanced monitoring and observability features, and integrated security scanning capabilities supporting the evolution toward comprehensive distributed containerized research computing platform meeting the growing container infrastructure requirements of the astronomy platform.
 
 ---
 
@@ -392,7 +401,7 @@ Planned enhancements include container orchestration expansion, enhanced microse
 **Human Author:** VintageDon - <https://github.com/vintagedon>  
 **AI Contributor:** Claude (Anthropic)  
 **Collaboration Method:** Request-Analyze-Verify-Generate-Validate (RAVGV)  
-**Human Oversight:** Complete review and validation of all Docker configurations, container security procedures, and microservices integration  
+**Human Oversight:** Complete review and validation of all Docker configurations, container security procedures, and distributed operations integration  
 
 This document was collaboratively developed using systematic human-AI partnership. All content has been thoroughly reviewed, validated, and approved by qualified human subject matter experts. The human author retains complete responsibility for accuracy, compliance, and technical correctness.
 

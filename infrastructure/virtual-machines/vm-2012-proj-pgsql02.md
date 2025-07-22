@@ -74,8 +74,8 @@ Application database foundation enabling comprehensive infrastructure applicatio
 | **Component** | **Specification** | **Configuration** |
 |---------------|------------------|------------------|
 | **VM ID** | 2012 | General-purpose database identifier |
-| **Memory** | 4.00 GiB allocated / 16.00 GiB maximum | Optimized for application database workloads |
-| **Processors** | 4 vCPU (2 sockets, 2 cores each) | [host] CPU type with NUMA optimization |
+| **Memory** | 12.00 GiB allocated / 24.00 GiB maximum | Optimized for application database workloads |
+| **Processors** | 6 vCPU (2 sockets, 3 cores each) | [host] CPU type with NUMA optimization |
 | **Machine Type** | q35 with Intel IOMMU | Enterprise virtualization platform |
 
 ### **3.2 Storage Implementation**

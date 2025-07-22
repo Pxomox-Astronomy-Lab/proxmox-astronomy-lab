@@ -1,0 +1,33 @@
+services:
+  neo4j:
+    image: neo4j:5.26.9
+    container_name: neo4j01
+    environment:
+      # Basic auth
+      - NEO4J_AUTH=neo4j/Defeat-Shell-Loyalty-Pardon-Commercial-0
+
+      # Memory for 24GB system - use environment variables, not config file
+      - NEO4J_server_memory_heap_initial__size=4G
+      - NEO4J_server_memory_heap_max__size=8G
+      - NEO4J_server_memory_pagecache_size=12G
+
+      # Network
+      - NEO4J_server_default__listen__address=0.0.0.0
+
+      # Plugins - let Neo4j handle the config
+      - NEO4J_PLUGINS=["apoc"]
+
+      # Disable strict validation
+      - NEO4J_server_config_strict__validation_enabled=false
+
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+
+    volumes:
+      - ./data:/data
+      - ./logs:/logs
+      - ./plugins:/plugins
+      - ./import:/var/lib/neo4j/import
+
+    restart: unless-stopped

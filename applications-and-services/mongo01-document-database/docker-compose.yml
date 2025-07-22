@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:8.0
+    container_name: mongo01
+    restart: unless-stopped
+    
+    environment:
+      # Authentication
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: your_secure_password
+      MONGO_INITDB_DATABASE: admin
+    
+    ports:
+      - "27017:27017"
+    
+    volumes:
+      - ./data:/data/db
+      - ./config:/data/configdb
+      # Remove problematic log volume and init scripts for now
+    
+    # Resource limits for 2c/8g
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 7G
+        reservations:
+          cpus: '1.0'
+          memory: 4G
+    
+    # Simplified MongoDB configuration
+    command: >
+      mongod 
+      --auth
+      --bind_ip_all
+      --wiredTigerCacheSizeGB 4
+    
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
+  # MongoDB Express - Web UI
+  mongo-express:
+    image: mongo-express:1.0.2
+    container_name: mongo-express
+    restart: unless-stopped
+    
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: your_secure_password
+      ME_CONFIG_MONGODB_URL: mongodb://admin:your_secure_password@mongo:27017/
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: your_secure_password
+      ME_CONFIG_MONGODB_SERVER: mongo
+    
+    ports:
+      - "8081:8081"
+    
+    depends_on:
+      - mongo
+
+networks:
+  default:
+    name: mongodb-network

@@ -74,7 +74,7 @@ Primary database foundation enabling comprehensive astronomical data storage, re
 | **Component** | **Specification** | **Configuration** |
 |---------------|------------------|------------------|
 | **VM ID** | 2002 | Enterprise database platform identifier |
-| **Memory** | 8.00 GiB allocated / 48.00 GiB maximum | Optimized for high-performance database workloads |
+| **Memory** | 16.00 GiB allocated / 32.00 GiB maximum | Optimized for high-performance database workloads |
 | **Processors** | 8 vCPU (2 sockets, 4 cores each) | [host] CPU type with NUMA optimization |
 | **Machine Type** | q35 with Intel IOMMU | Enterprise virtualization platform |
 

@@ -1,0 +1,27 @@
+{
+  "blockedCommands": [
+    "sudo", "su", "passwd", "shutdown", "reboot", "halt",
+    "rm -rf /", "mkfs", "fdisk", "mount", "umount",
+    "iptables", "ufw", "systemctl", "service",
+    "apt", "yum", "pacman", "pip install", "npm install -g",
+    "docker", "kubectl", "helm", "terraform"
+  ],
+  "allowedDirectories": ["/app/mcp-testing-jail"],
+  "defaultShell": "/bin/bash",
+  "fileReadLineLimit": 1000,
+  "fileWriteLineLimit": 1000,
+  "telemetryEnabled": false,
+  "commandTimeout": 30000,
+  "auditLog": {
+    "enabled": true,
+    "logFile": "/app/logs/audit/mcp-audit.log",
+    "logLevel": "info",
+    "includeOutput": true
+  },
+  "security": {
+    "restrictToJail": true,
+    "jailDirectory": "/app/mcp-testing-jail",
+    "allowSystemCommands": false,
+    "maxConcurrentCommands": 5
+  }
+}

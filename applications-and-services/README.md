@@ -1,190 +1,137 @@
 <!--
 ---
 title: "Applications and Services"
-description: "Comprehensive enterprise application platform ecosystem supporting astronomical research computing with containerized deployments, database services, automation platforms, and security infrastructure"
+description: "Containerized application stack and service deployments supporting astronomical research and infrastructure operations in the Proxmox Astronomy Lab"
 author: "VintageDon - https://github.com/vintagedon"
-ai_contributor: "Claude Sonnet 4 (claude-sonnet-4-20250514)"
-date: "2025-07-21"
+ai_contributor: "Claude 4 Sonnet (claude-4-sonnet-20250514)"
+date: "2025-07-23"
 version: "1.0"
 status: "Published"
 tags:
 - type: directory-overview
-- domain: enterprise-application-services
-- tech: [docker, postgresql, nginx, automation]
-- phase: production-service-deployment
+- domain: containerized-applications
+- tech: docker-compose
+- tech: portainer
+- tech: microservices
+- phase: phase-1
 related_documents:
-- "[Infrastructure Overview](../infrastructure/README.md)"
-- "[Virtual Machines](../virtual-machines/README.md)"
-- "[Security Framework](../security/README.md)"
-- "[AI Infrastructure](../ai/README.md)"
+- "[Main Repository](../README.md)"
+- "[Infrastructure](../infrastructure/README.md)"
+- "[Monitoring](../monitoring/README.md)"
+- "[AI and Machine Learning](../ai-and-machine-learning/README.md)"
 ---
 -->
 
 # 🚀 **Applications and Services**
 
-Comprehensive enterprise application platform ecosystem supporting astronomical research computing through distributed services, database platforms, automation systems, and security infrastructure. This directory contains production-ready application services deployed across containerized and VM-based platforms with enterprise-grade security, SSL-secured access, and integrated monitoring.
+Containerized application stack and service deployments supporting astronomical research workflows, data management, and infrastructure operations across the Proxmox Astronomy Lab.
 
 ## **Overview**
 
-The applications-and-services directory represents the core operational services layer of the Proxmox Astronomy Lab enterprise platform. This ecosystem includes AI chat interfaces, PostgreSQL database platforms, cache services, version control systems, automation platforms, password management, and network proxy services. Services are deployed using optimal strategies—containerized applications via Docker on distributed nodes, and high-performance databases as native VM services—ensuring maximum performance and reliability for research computing workloads.
+This directory contains the complete containerized application ecosystem that powers our astronomical research infrastructure. Each service is deployed using Docker Compose with standardized configurations, enabling scalable, maintainable, and portable deployments across our hybrid Kubernetes and VM architecture.
 
-Each service follows enterprise architecture principles with comprehensive documentation, security baselines, backup strategies, and monitoring integration. The platform supports both research-specific workloads like DESI cosmic void analysis and general-purpose application requirements through a hybrid deployment architecture optimized for performance, security, and operational excellence.
+**Architecture**: Microservices-based application stack deployed via Portainer and Docker Compose, providing specialized services for astronomical data processing, research collaboration, database management, and infrastructure operations.
+
+## **📂 Service Catalog**
+
+This section provides systematic navigation to all containerized services, organized by functional category.
+
+### **Research and Collaboration Services**
+
+| **Service** | **Purpose** | **Documentation** |
+|-------------|-------------|-------------------|
+| **[chat01-openwebui](chat01-openwebui/)** | AI-powered research assistant and conversational interface | [chat01-openwebui/README.md](chat01-openwebui/README.md) |
+| **[gitea01-project-repository](gitea01-project-repository/)** | Git repository management and collaborative development platform | [gitea01-project-repository/README.md](gitea01-project-repository/README.md) |
+| **[sema01-project-semaphore-instance](sema01-project-semaphore-instance/)** | Ansible automation and infrastructure orchestration platform | [sema01-project-semaphore-instance/README.md](sema01-project-semaphore-instance/README.md) |
+
+### **Database and Data Management Services**
+
+| **Service** | **Purpose** | **Documentation** |
+|-------------|-------------|-------------------|
+| **[pgsql01-project-workloads](pgsql01-project-workloads/)** | Primary PostgreSQL database for DESI research workloads | [pgsql01-project-workloads/README.md](pgsql01-project-workloads/README.md) |
+| **[pgsql02-project-general-workloads](pgsql02-project-general-workloads/)** | Secondary PostgreSQL database for general research and testing | [pgsql02-project-general-workloads/README.md](pgsql02-project-general-workloads/README.md) |
+| **[pgadmin01-web-database-interface](pgadmin01-web-database-interface/)** | Web-based PostgreSQL administration and query interface | [pgadmin01-web-database-interface/README.md](pgadmin01-web-database-interface/README.md) |
+| **[mongo01-document-database](mongo01-document-database/)** | MongoDB document database for flexible data storage | [mongo01-document-database/README.md](mongo01-document-database/README.md) |
+
+### **AI/ML and Vector Database Services**
+
+| **Service** | **Purpose** | **Documentation** |
+|-------------|-------------|-------------------|
+| **[milvus01-attu-milvus-backup](milvus01-attu-milvus-backup/)** | Milvus vector database with Attu management interface | [milvus01-attu-milvus-backup/README.md](milvus01-attu-milvus-backup/README.md) |
+| **[neo4j01-graph-database](neo4j01-graph-database/)** | Neo4j graph database for knowledge graphs and relationship modeling | [neo4j01-graph-database/README.md](neo4j01-graph-database/README.md) |
+| **[dragonflydb01-dragonflydb](dragonflydb01-dragonflydb/)** | High-performance Redis-compatible in-memory database | [dragonflydb01-dragonflydb/README.md](dragonflydb01-dragonflydb/README.md) |
+| **[rcom01-redis-commander-for-dragonflydb](rcom01-redis-commander-for-dragonflydb/)** | Web interface for DragonflyDB management and monitoring | [rcom01-redis-commander-for-dragonflydb/README.md](rcom01-redis-commander-for-dragonflydb/README.md) |
+
+### **Infrastructure and Security Services**
+
+| **Service** | **Purpose** | **Documentation** |
+|-------------|-------------|-------------------|
+| **[npm01-nginx-proxy-manager](npm01-nginx-proxy-manager/)** | Reverse proxy and SSL certificate management | [npm01-nginx-proxy-manager/README.md](npm01-nginx-proxy-manager/README.md) |
+| **[vw01-vaultwarden-password-repository](vw01-vaultwarden-password-repository/)** | Self-hosted password management and secure credential storage | [vw01-vaultwarden-password-repository/README.md](vw01-vaultwarden-password-repository/README.md) |
+
+## **🏗️ Deployment Architecture**
+
+### **Container Orchestration**
+
+- **Portainer Management**: Centralized container lifecycle management and monitoring
+- **Docker Compose**: Standardized service definitions with environment-specific configurations
+- **Network Isolation**: Secure inter-service communication with dedicated Docker networks
+- **Volume Management**: Persistent storage with backup integration and data protection
+
+### **Service Integration Patterns**
+
+- **Database Connectivity**: Optimized connection pooling and performance tuning for astronomical workloads
+- **Authentication**: Centralized identity management and single sign-on capabilities
+- **Monitoring Integration**: Comprehensive observability with Prometheus metrics and log aggregation
+- **Security Controls**: Network policies, secret management, and access control enforcement
+
+## **🔧 Service Categories**
+
+### **Research Platform Services**
+
+Core services enabling astronomical research workflows:
+
+- **Data Processing**: PostgreSQL databases optimized for DESI survey data
+- **Collaboration**: Git repositories and AI-assisted research interfaces
+- **Analysis**: Vector and graph databases supporting advanced analytics
+
+### **Infrastructure Services**
+
+Platform services supporting reliable operations:
+
+- **Automation**: Ansible orchestration and infrastructure as code
+- **Security**: Password management and reverse proxy with SSL termination
+- **Administration**: Database management interfaces and monitoring dashboards
+
+### **AI/ML Services**
+
+Specialized services for machine learning and knowledge discovery:
+
+- **Vector Search**: Milvus for similarity search and embedding operations
+- **Graph Analytics**: Neo4j for relationship modeling and complex queries
+- **Caching**: High-performance in-memory storage for ML pipelines
+
+## **🔗 Integration Points**
+
+This section establishes relationships with broader lab infrastructure.
+
+| **System** | **Relationship** | **Documentation** |
+|------------|------------------|-------------------|
+| **[Infrastructure](../infrastructure/README.md)** | Underlying VM and network infrastructure hosting containerized services | [../infrastructure/README.md](../infrastructure/README.md) |
+| **[AI/ML Platform](../ai-and-machine-learning/README.md)** | Vector and graph database integration with AI workflows | [../ai-and-machine-learning/README.md](../ai-and-machine-learning/README.md) |
+| **[Monitoring](../monitoring/README.md)** | Service health monitoring and performance metrics collection | [../monitoring/README.md](../monitoring/README.md) |
+| **[Security](../security/README.md)** | Service security controls and compliance validation | [../security/README.md](../security/README.md) |
+
+## **🎯 Getting Started**
+
+For new users approaching the application stack:
+
+1. **[Research Services](gitea01-project-repository/README.md)** - Git repositories and collaborative development
+2. **[Database Services](pgsql01-project-workloads/README.md)** - Primary PostgreSQL for astronomical data
+3. **[AI/ML Services](milvus01-attu-milvus-backup/README.md)** - Vector databases for similarity search
+4. **[Infrastructure Services](npm01-nginx-proxy-manager/README.md)** - Reverse proxy and SSL management
 
 ---
 
-## **📂 Directory Contents**
-
-This section provides systematic navigation to all application services within the enterprise platform, ensuring complete coverage for knowledge graph connectivity.
-
-### **AI and Chat Services**
-
-| **Service** | **Purpose** | **Documentation** |
-|-------------|-------------|-------------------|
-| **[chat01-openwebui/](chat01-openwebui/)** | Enterprise AI chat interface with multi-model integration, RAG capabilities | [chat01-openwebui/README.md](chat01-openwebui/README.md) |
-
-### **Database Services**
-
-| **Service** | **Purpose** | **Documentation** |
-|-------------|-------------|-------------------|
-| **[pgsql01-project-workloads/](pgsql01-project-workloads/)** | Primary PostgreSQL research database (DESI 27.6GB dataset) | [pgsql01-project-workloads/README.md](pgsql01-project-workloads/README.md) |
-| **[pgsql02-general-workloads/](pgsql02-general-workloads/)** | General-purpose PostgreSQL database platform with monitoring | [pgsql02-general-workloads/README.md](pgsql02-general-workloads/README.md) |
-| **[pgadmin01-web-database-interface/](pgadmin01-web-database-interface/)** | PostgreSQL web administration interface (SSL-secured) | [pgadmin01-web-database-interface/README.md](pgadmin01-web-database-interface/README.md) |
-
-### **Cache and Memory Services**
-
-| **Service** | **Purpose** | **Documentation** |
-|-------------|-------------|-------------------|
-| **[dragonflydb01-dragonflydb/](dragonflydb01-dragonflydb/)** | High-performance in-memory database with Redis compatibility | [dragonflydb01-dragonflydb/README.md](dragonflydb01-dragonflydb/README.md) |
-| **[rcom01-redis-commander-for-dragonflydb/](rcom01-redis-commander-for-dragonflydb/)** | DragonflyDB web management interface (SSL-secured) | [rcom01-redis-commander-for-dragonflydb/README.md](rcom01-redis-commander-for-dragonflydb/README.md) |
-
-### **Development and Version Control**
-
-| **Service** | **Purpose** | **Documentation** |
-|-------------|-------------|-------------------|
-| **[gitea01-project-repository/](gitea01-project-repository/)** | Enterprise Git repository platform with collaboration tools | [gitea01-project-repository/README.md](gitea01-project-repository/README.md) |
-
-### **Automation and Infrastructure**
-
-| **Service** | **Purpose** | **Documentation** |
-|-------------|-------------|-------------------|
-| **[sema01-project-semaphore-instance/](sema01-project-semaphore-instance/)** | Ansible automation platform with Active Directory integration (SSL-secured) | [sema01-project-semaphore-instance/README.md](sema01-project-semaphore-instance/README.md) |
-
-### **Security Services**
-
-| **Service** | **Purpose** | **Documentation** |
-|-------------|-------------|-------------------|
-| **[vw01-vaultwarden-password-repository/](vw01-vaultwarden-password-repository/)** | Enterprise password management platform (SSL-secured) | [vw01-vaultwarden-password-repository/README.md](vw01-vaultwarden-password-repository/README.md) |
-
-### **Network and Proxy Services**
-
-| **Service** | **Purpose** | **Documentation** |
-|-------------|-------------|-------------------|
-| **[npm01-nginx-proxy-manager/](npm01-nginx-proxy-manager/)** | Reverse proxy and SSL certificate automation platform | [npm01-nginx-proxy-manager/README.md](npm01-nginx-proxy-manager/README.md) |
-
----
-
-## **📁 Repository Structure**
-
-```markdown
-applications-and-services/
-├── 🤖 chat01-openwebui/                           # AI chat interface
-│   ├── README.md                                  # Service documentation
-│   ├── docker-compose.yml                        # Container configuration
-│   └── openwebui-configuration-example.json      # Configuration template
-├── 🐲 dragonflydb01-dragonflydb/                  # In-memory database
-│   ├── README.md                                  # Service documentation
-│   ├── docker-compose.yml                        # Container configuration
-│   └── .env.example                              # Environment template
-├── 🔧 gitea01-project-repository/                 # Git repository
-│   ├── README.md                                  # Service documentation
-│   ├── docker-compose.yml                        # Container configuration
-│   └── .env.example                              # Environment template
-├── 🌐 npm01-nginx-proxy-manager/                  # Reverse proxy
-│   ├── README.md                                  # Service documentation
-│   ├── docker-compose.yml                        # Container configuration
-│   └── .env.example                              # Environment template
-├── 🗄️ pgadmin01-web-database-interface/          # Database admin (SSL)
-│   ├── README.md                                  # Service documentation
-│   ├── docker-compose.yml                        # Container configuration
-│   └── .env.example                              # Environment template
-├── 🗄️ pgsql01-project-workloads/                 # DESI research database
-│   └── README.md                                  # Service documentation
-├── 🗄️ pgsql02-general-workloads/                 # General database
-│   └── README.md                                  # Service documentation
-├── 🔧 rcom01-redis-commander-for-dragonflydb/     # Cache management (SSL)
-│   ├── README.md                                  # Service documentation
-│   ├── docker-compose.yml                        # Container configuration
-│   └── .env.example                              # Environment template
-├── 🎭 sema01-project-semaphore-instance/          # Automation platform (SSL)
-│   ├── README.md                                  # Service documentation
-│   ├── docker-compose.yml                        # Container configuration
-│   └── .env.example                              # Environment template
-├── 🔒 vw01-vaultwarden-password-repository/       # Password management (SSL)
-│   ├── README.md                                  # Service documentation
-│   ├── docker-compose.yml                        # Container configuration
-│   └── .env.example                              # Environment template
-├── 📝 README.md                                   # This file
-└── 📋 README-pending.md                           # Future services
-```
-
-### **Navigation Guide:**
-
-- **🤖 [AI Services](chat01-openwebui/README.md)** - Conversational AI interfaces and model management
-- **🗄️ [Database Services](pgsql01-project-workloads/README.md)** - PostgreSQL research and application databases  
-- **🐲 [Cache Services](dragonflydb01-dragonflydb/README.md)** - High-performance in-memory data platforms
-- **🔧 [Development Tools](gitea01-project-repository/README.md)** - Version control and collaboration platforms
-- **🎭 [Automation](sema01-project-semaphore-instance/README.md)** - Infrastructure automation and orchestration
-- **🔒 [Security](vw01-vaultwarden-password-repository/README.md)** - Password management and credential security
-- **🌐 [Network Services](npm01-nginx-proxy-manager/README.md)** - Reverse proxy and SSL automation
-
----
-
-## **🔗 Related Categories**
-
-This section establishes horizontal relationships within the knowledge graph, connecting applications and services to related platform domains.
-
-| **Category** | **Relationship** | **Documentation** |
-|--------------|------------------|-------------------|
-| **[Infrastructure](../infrastructure/README.md)** | Provides underlying platform services including Docker, databases, networking | [../infrastructure/README.md](../infrastructure/README.md) |
-| **[Virtual Machines](../virtual-machines/README.md)** | Hosts application services on distributed VM infrastructure | [../virtual-machines/README.md](../virtual-machines/README.md) |
-| **[Security](../security/README.md)** | Implements security frameworks and compliance baselines for all services | [../security/README.md](../security/README.md) |
-| **[AI Infrastructure](../ai/README.md)** | Supports AI services with GPU computing and model hosting capabilities | [../ai/README.md](../ai/README.md) |
-| **[Projects](../projects/README.md)** | Consumes application services for DESI research and astronomical computing | [../projects/README.md](../projects/README.md) |
-
----
-
-## **Getting Started**
-
-For new users approaching the applications and services platform:
-
-1. **Start Here:** [Infrastructure Overview](../infrastructure/README.md) - Understand the underlying platform architecture
-2. **Database Services:** [PostgreSQL Platforms](pgsql01-project-workloads/README.md) - Core data management services
-3. **SSL Services:** [Reverse Proxy](npm01-nginx-proxy-manager/README.md) - Network and certificate management
-4. **Security:** [Password Management](vw01-vaultwarden-password-repository/README.md) - Credential security platform
-
-### **Service Access Patterns:**
-
-- **SSL-Secured Services:** pgAdmin, Redis Commander, Semaphore, Vaultwarden (via *.radioastronomy.io)
-- **Internal Services:** Chat, Database, Git, Proxy (via container networking or VM access)
-- **Database Connections:** Direct PostgreSQL access for applications and research tools
-
-### **Common Tasks:**
-
-- **Database Administration:** Access pgAdmin via <https://pgadmin01.radioastronomy.io>
-- **Password Management:** Access Vaultwarden via <https://vw.radioastronomy.io>  
-- **Infrastructure Automation:** Access Semaphore via <https://dema01.radioastronomy.io>
-- **Cache Management:** Access Redis Commander via <https://rcom01.radioastronomy.io>
-
----
-
-## **Document Information**
-
-| **Field** | **Value** |
-|-----------|-----------|
-| **Author** | VintageDon - <https://github.com/vintagedon> |
-| **Created** | 2025-07-21 |
-| **Last Updated** | 2025-07-21 |
-| **Version** | 1.0 |
-
----
-Tags: applications, services, docker, postgresql, automation, security, enterprise-platform
+**Status**: Phase 1 - Core containerized service stack with research and infrastructure applications  
+**Architecture**: Docker Compose deployments managed via Portainer with integrated monitoring and security

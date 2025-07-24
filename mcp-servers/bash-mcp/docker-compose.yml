@@ -1,0 +1,48 @@
+services:
+  desktop-commander-mcp:
+    build: .
+    container_name: desktop-commander-mcp
+    restart: unless-stopped
+    
+    volumes:
+      - ./mcp-testing-jail:/app/mcp-testing-jail
+      - ./logs:/app/logs
+      - ./config:/app/config:ro
+    
+    environment:
+      - NODE_ENV=production
+      - MCP_LOG_LEVEL=info
+      - MCP_CONFIG_FILE=/app/config/mcp-server-config.json
+    
+    # Stdin/stdout for MCP transport
+    stdin_open: true
+    tty: false
+    
+    # Security constraints
+    security_opt:
+      - no-new-privileges:true
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "node", "-e", "console.log('Health check passed')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    
+    # Log configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

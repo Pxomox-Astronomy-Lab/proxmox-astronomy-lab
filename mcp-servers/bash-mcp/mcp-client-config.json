@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "desktop-commander": {
+      "command": "docker",
+      "args": ["exec", "-i", "desktop-commander-mcp", "node", "/usr/local/lib/node_modules/@wonderwhy-er/desktop-commander/dist/index.js"],
+      "env": {
+        "MCP_LOG_LEVEL": "info"
+      }
+    }
+  }
+}

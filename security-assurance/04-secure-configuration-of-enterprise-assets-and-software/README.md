@@ -1,192 +1,112 @@
-<!-- 
+<!--
 ---
-title: "CIS Control 4: Secure Configuration Management - Proxmox Astronomy Lab"
-description: "Implementation of CIS Control 4 for establishing and maintaining secure configurations of all systems within the Proxmox Astronomy Lab"
-author: "VintageDon"
-tags: ["security", "compliance", "cisv8", "configuration-management", "hardening", "baselines"]
-category: "Security"
-kb_type: "Reference"
+title: "04-Secure-Configuration-of-Enterprise-Assets-and-Software Directory"
+description: "Comprehensive security assurance directory for CIS Control 4 (Secure Configuration of Enterprise Assets and Software) implementation, containing policy framework, Group Policy Object configurations, and evidence collection for systematic enterprise security baseline establishment"
+author: "VintageDon - https://github.com/vintagedon"
+ai_contributor: "Anthropic Claude 4 Sonnet (claude-4-sonnet-20250514)"
+date: "2025-07-28"
 version: "1.0"
 status: "Published"
-last_updated: "2025-03-16"
+tags:
+- type: directory-overview
+- domain: security
+- domain: compliance
+- tech: windows-server-2025
+- compliance: cis-control-4
+- phase: phase-2
+related_documents:
+- "[Security Assurance Directory](../README.md)"
+- "[CIS Security Policy Templates](../policies-and-procedures/cis-security-policy-templates/README.md)"
+- "[Domain Infrastructure](../../infrastructure/README.md)"
 ---
 -->
 
-# 🛠️ **CIS Control 4: Secure Configuration Management**
+# 🔧 **04-Secure-Configuration-of-Enterprise-Assets-and-Software Directory**
 
-## 🔍 **1. Overview**
+Comprehensive security assurance directory for CIS Control 4 (Secure Configuration of Enterprise Assets and Software) implementation within the Proxmox Astronomy Lab enterprise environment. This directory contains systematic policy framework, Group Policy Object configurations, and evidence collection mechanisms that establish enterprise-grade security baseline through standardized configuration management, automated hardening enforcement, and continuous compliance validation across all enterprise assets and software systems.
 
-CIS Control 4 establishes requirements for **secure configuration of all systems and software** within the Proxmox Astronomy Lab. This control ensures that systems are deployed with hardened configurations, regularly validated, and protected from security drift that could introduce vulnerabilities.
+## **Overview**
 
-This documentation covers our implementation of CIS Control 4, including **secure baseline creation, configuration management, validation processes**, and the tools used to enforce secure settings across our infrastructure.
+The CIS Control 4 directory provides complete implementation framework for establishing secure configuration management across enterprise infrastructure. This encompasses policy governance through enterprise security framework documentation, technical implementation through comprehensive Group Policy Object configurations for Windows Server 2025 infrastructure, and systematic evidence collection for compliance validation and security assurance reporting. The implementation follows defense-in-depth principles that provide systematic security hardening covering system configuration, application security, network infrastructure protection, and comprehensive compliance validation.
 
-This implementation is based on the official CIS Control 4 policy templates published by the Center for Internet Security (CISSecurity.org), ensuring structural alignment with industry-standard compliance requirements.
-
----
-
-## 🎯 **2. Control Objectives**
-
-### **2.1 Primary Goals**
-
-The implementation of CIS Control 4 achieves several key security objectives:
-
-| **Objective** | **Description** | **Implementation Approach** |
-|--------------|----------------|----------------------------|
-| **Secure Baseline Configurations** | Establish and document hardened baselines | CIS Benchmarks, golden image templates |
-| **Configuration Drift Prevention** | Maintain secure configurations over time | Automated enforcement, continuous validation |
-| **Network Security Hardening** | Ensure network devices follow security best practices | Firewall policies, VLAN segmentation, secure protocols |
-| **Host-Based Security** | Implement system-level security controls | Host firewalls, secure authentication, application control |
-| **Automated Verification** | Continuously validate configuration compliance | Scheduled scanning, real-time monitoring, alerting |
-
-### **2.2 Compliance Mapping**
-
-This control satisfies requirements across multiple security frameworks:
-
-| **Framework** | **Control Reference** | **Description** |
-|--------------|----------------------|----------------|
-| **CIS Controls v8.1** | Control 4 | Secure Configuration of Enterprise Assets and Software |
-| **NIST 800-53 Rev 5** | CM-6, CM-7, SI-2 | Configuration Settings, Least Functionality, Flaw Remediation |
-| **ISO 27001:2022** | A.8.9, A.8.29 | Configuration Management, Secure Coding |
-| **MITRE ATT&CK** | Defense Evasion (TA0005) | Mitigates weaknesses that allow defense evasion |
+This secure configuration framework serves as a foundational security control that integrates with domain infrastructure, identity management systems, and security monitoring to provide comprehensive attack surface reduction and systematic security baseline enforcement. The implementation establishes enterprise-grade configuration security that supports both regulatory compliance requirements and operational security management while maintaining system functionality and administrative efficiency across the astronomical computing infrastructure.
 
 ---
 
-## 🛠️ **3. Implementation Details**
+## **📂 Directory Contents**
 
-### **3.1 Secure Configuration Baselines**
+This section provides systematic navigation to all components within the CIS Control 4 secure configuration category.
 
-The lab implements hardened baselines for all systems based on CIS Benchmarks:
+### **Subdirectories**
 
-| **System Type** | **Baseline Standard** | **Validation Tool** | **Base Score** |
-|----------------|----------------------|---------------------|----------------|
-| **Ubuntu 24.04 Server** | CIS Ubuntu Linux L2 Benchmark | Lynis | 87/100 |
-| **Windows Server 2025** | CIS Windows Server L1 Benchmark | CIS-CAT | 95/100 |
-| **Proxmox VE 8.1** | Internal hardening standard | Wazuh | 93/100 |
-| **Network Devices** | CIS Network Device Benchmarks | Configuration audit | 90/100 |
+| **Directory** | **Purpose** | **Documentation** |
+|--------------|-------------|-------------------|
+| **[evidence/](evidence/)** | Compliance evidence collection and security assurance documentation | [evidence/README.md](evidence/README.md) |
+| **[gpo-configurations/](gpo-configurations/)** | Group Policy Object implementation and technical configuration documentation | [gpo-configurations/README.md](gpo-configurations/README.md) |
 
-### **3.2 Configuration Management Process**
+### **Key Documents**
 
-Secure configurations are maintained through a documented management process:
-
-| **Process Step** | **Implementation** | **Responsible Role** |
-|-----------------|-------------------|----------------------|
-| **Baseline Definition** | CIS Benchmark-based templates | Security Administrator |
-| **Template Creation** | Golden images for each system type | Systems Administrator |
-| **Automated Deployment** | Terraform, Ansible, and GPO-based provisioning | Systems Administrator |
-| **Continuous Validation** | Wazuh, Lynis, and custom scripts | Security Administrator |
-| **Deviation Management** | Automated remediation where possible | Systems Administrator |
-
-### **3.3 Network Security Configuration**
-
-Network infrastructure is secured through multiple layers of controls:
-
-| **Component** | **Security Controls** | **Validation Method** |
-|--------------|----------------------|----------------------|
-| **Edge Firewall (FortiGate 40F)** | Default deny policy, restrictive rules | Configuration backups, quarterly reviews |
-| **VLAN Segmentation** | Strict separation by function | Netbox validation, traffic analysis |
-| **Network Protocols** | TLS 1.2+, SSH v2, secure RDP | Protocol scanning, compliance checks |
-| **DNS Security** | Filtered DNS (Technitium), DNSSEC | Log analysis, security testing |
-
-### **3.4 Host-Based Security Configuration**
-
-System-level security is enforced through multiple mechanisms:
-
-| **Security Function** | **Windows Implementation** | **Linux Implementation** | **Validation Method** |
-|----------------------|---------------------------|------------------------|----------------------|
-| **Host Firewall** | Windows Firewall (GPO-managed) | UFW (Ansible-managed) | Rule validation, port scanning |
-| **User Authentication** | Entra ID integration, MFA | Linux PAM, SSH keys | Authentication logs, compliance checks |
-| **Application Control** | AppLocker policies | AppArmor profiles | Execution monitoring |
-| **Secure Boot** | UEFI Secure Boot | UEFI Secure Boot | Boot configuration validation |
+| **Document** | **Purpose** | **Link** |
+|--------------|-------------|----------|
+| **[cisv81-04-secure-configuration-management-policy.md](cisv81-04-secure-configuration-management-policy.md)** | Enterprise policy framework for secure configuration management and compliance requirements | [cisv81-04-secure-configuration-management-policy.md](cisv81-04-secure-configuration-management-policy.md) |
 
 ---
 
-## 📊 **4. Verification & Validation**
+## **📁 Repository Structure**
 
-### **4.1 Compliance Metrics**
+```markdown
+04-secure-configuration-of-enterprise-assets-and-software/
+├── 📊 evidence/                                           # Compliance evidence and assurance
+│   ├── README.md                                         # Evidence collection overview
+│   └── [compliance documentation and evidence files]     # Security assessment reports
+├── 🔧 gpo-configurations/                                 # Technical implementation
+│   ├── README.md                                         # GPO configuration overview
+│   └── [17 GPO implementation documents]                 # Complete CIS04 GPO suite
+├── 📜 cisv81-04-secure-configuration-management-policy.md # Policy framework
+└── 📄 README.md                                          # This file
+```
 
-The following metrics are tracked to measure configuration security:
+### **Navigation Guide:**
 
-| **Metric** | **Target** | **Measurement Method** | **Current Status** |
-|------------|-----------|------------------------|-------------------|
-| **CIS Benchmark Compliance** | >90% | Lynis, CIS-CAT scans | 92% average |
-| **Configuration Drift Incidents** | <5 per quarter | Wazuh alerts | 3 last quarter |
-| **Secure Protocol Adoption** | 100% | Network scanning | 100% |
-| **Firewall Policy Compliance** | 100% | Configuration audits | 100% |
-
-### **4.2 Validation Procedures**
-
-Regular validation ensures the continued effectiveness of secure configurations:
-
-| **Validation Activity** | **Frequency** | **Responsible Role** | **Documentation** |
-|------------------------|--------------|----------------------|-------------------|
-| **CIS Benchmark Scanning** | Quarterly | Security Administrator | [Benchmark Validation](../../security-monitoring/benchmark-validation.md) |
-| **Configuration Drift Monitoring** | Continuous | Automated via Wazuh | [Drift Monitoring](../../security-monitoring/drift-monitoring.md) |
-| **Network Security Validation** | Quarterly | Security Administrator | [Network Validation](../../security-monitoring/network-security-validation.md) |
-| **Firewall Rule Review** | Quarterly | Security Administrator | [Firewall Review](../../security-monitoring/firewall-review.md) |
+- **[📜 Policy Framework](cisv81-04-secure-configuration-management-policy.md)** - Start here for enterprise policy requirements and governance framework
+- **[🔧 GPO Configurations](gpo-configurations/README.md)** - Technical implementation through Group Policy Objects and system hardening
+- **[📊 Evidence Collection](evidence/README.md)** - Compliance validation, security assessments, and assurance documentation
 
 ---
 
-## 🔄 **5. Operational Procedures**
+## **🔗 Related Categories**
 
-### **5.1 Configuration Change Management**
+This section establishes horizontal relationships within the knowledge graph, connecting CIS Control 4 to related security domains.
 
-The following procedures govern configuration changes:
-
-| **Change Type** | **Approval Process** | **Implementation Method** | **Documentation** |
-|----------------|---------------------|--------------------------|-------------------|
-| **Standard Changes** | Pre-approved | Automated via Ansible/GPO | [Standard Changes](../../itil-processes/change-management/standard-changes.md) |
-| **Normal Changes** | Change approval required | Scheduled deployment | [Normal Changes](../../itil-processes/change-management/normal-changes.md) |
-| **Emergency Changes** | Post-implementation review | Manual with documentation | [Emergency Changes](../../itil-processes/change-management/emergency-changes.md) |
-
-### **5.2 Role Responsibilities**
-
-Clear role assignments ensure accountability for secure configurations:
-
-| **Role** | **Primary Responsibilities** | **Secondary Responsibilities** |
-|----------|----------------------------|-------------------------------|
-| **Lab Owner** | Configuration policy approval | Exception approval |
-| **Security Administrator** | Baseline definition, validation | Security monitoring, incident response |
-| **Systems Administrator** | Template implementation, deployment | Automated remediation, system hardening |
-| **Network Administrator** | Network security implementation | Firewall management, VLAN configuration |
+| **Category** | **Relationship** | **Documentation** |
+|--------------|------------------|-------------------|
+| **[Security Assurance](../README.md)** | Parent category containing comprehensive CIS Controls v8 implementation framework | [../README.md](../README.md) |
+| **[CIS Security Policy Templates](../policies-and-procedures/cis-security-policy-templates/README.md)** | Provides policy template framework for all CIS Controls implementation | [../policies-and-procedures/cis-security-policy-templates/README.md](../policies-and-procedures/cis-security-policy-templates/README.md) |
+| **[Domain Infrastructure](../../infrastructure/README.md)** | Provides Windows Server 2025 Active Directory environment for secure configuration deployment | [../../infrastructure/README.md](../../infrastructure/README.md) |
+| **[CIS05 Account Management](../05-account-management/README.md)** | Integrates with credential security and authentication configuration policies | [../05-account-management/README.md](../05-account-management/README.md) |
+| **[CIS06 Access Control](../06-access-control-management/README.md)** | Coordinates with access control and privilege management security controls | [../06-access-control-management/README.md](../06-access-control-management/README.md) |
 
 ---
 
-## 🚀 **6. Tools & Resources**
+## **Getting Started**
 
-The following tools support the implementation of CIS Control 4:
+For new users approaching CIS Control 4 secure configuration implementation:
 
-| **Tool** | **Purpose** | **Documentation** |
-|----------|------------|-------------------|
-| **Ansible** | Automated configuration management | [Ansible Configuration](../../automation/ansible/secure-configuration.md) |
-| **Group Policy** | Windows configuration enforcement | [GPO Configuration](../../windows/group-policy/security-baselines.md) |
-| **Wazuh** | Security monitoring and compliance | [Wazuh Configuration](../../security-monitoring/wazuh/configuration.md) |
-| **Lynis** | Linux security scanning | [Lynis Implementation](../../security-monitoring/lynis/implementation.md) |
-| **CIS-CAT** | CIS Benchmark validation | [CIS-CAT Configuration](../../security-monitoring/cis-cat/configuration.md) |
+1. **Start Here:** [Policy Framework](cisv81-04-secure-configuration-management-policy.md) - Understanding enterprise secure configuration management requirements and governance
+2. **Background Reading:** [CIS Security Policy Templates](../policies-and-procedures/cis-security-policy-templates/README.md) - Comprehensive policy framework and implementation guidance
+3. **Implementation:** [GPO Configurations](gpo-configurations/README.md) - Technical implementation through Group Policy Objects and system hardening
+4. **Advanced Topics:** [Evidence Collection](evidence/README.md) - Compliance validation, security assessments, and continuous monitoring
 
 ---
 
-## 🔗 **7. Related Documentation**
+## **Document Information**
 
-| **Document** | **Description** | **Location** |
-|--------------|----------------|-------------|
-| **Secure Configuration Management Policy** | Comprehensive policy document | [Configuration Policy](cisv81-04-secure-configuration-management-policy.md) |
-| **CIS Controls Implementation Guide** | Overall compliance framework | [CIS Implementation](../README.md) |
-| **System Hardening Guides** | System-specific hardening instructions | [Hardening Documentation](../../hardening-guides/README.md) |
-| **Network Security Architecture** | Network security implementation | [Network Security](../../networking/security-architecture.md) |
-| **CIS Security Policy Templates** | Official CIS policy templates | [CIS Policy Templates](https://www.cisecurity.org/insights/white-papers/cis-controls-v8-implementation-guide-for-small-medium-enterprises) |
-
----
-
-## ✅ **8. Approval & Review**
-
-| **Reviewer** | **Role** | **Approval Date** | **Status** |
-|-------------|---------|------------------|------------|
-| VintageDon | Lead Engineer | 2025-03-16 | ✅ Approved |
+| **Field** | **Value** |
+|-----------|-----------|
+| **Author** | VintageDon - <https://github.com/vintagedon> |
+| **Created** | 2025-07-28 |
+| **Last Updated** | 2025-07-28 |
+| **Version** | 1.0 |
 
 ---
-
-## 📜 **9. Change Log**
-
-| **Version** | **Date** | **Changes** | **Author** |
-|------------|---------|-------------|------------|
-| 1.0 | 2025-03-16 | Initial documentation of CIS Control 4 implementation | VintageDon |
+Tags: security, compliance, cis-control-4, secure-configuration, enterprise-assets, policy-framework, group-policy

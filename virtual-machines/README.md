@@ -1,197 +1,174 @@
+<!--
+---
+title: "Virtual Machines"
+description: "Comprehensive virtual machine asset documentation and management for enterprise infrastructure supporting research computing, database platforms, security services, and virtual desktop infrastructure across the Proxmox Astronomy Lab"
+author: "VintageDon - https://github.com/vintagedon"
+ai_contributor: "Claude Sonnet 4 (claude-4-sonnet-20250514)"
+date: "2025-08-15"
+version: "1.0"
+status: "Published"
+tags:
+- type: directory-overview
+- domain: infrastructure
+- domain: virtual-machines
+- tech: proxmox-ve
+- tech: ubuntu-2404
+- tech: windows-11
+- compliance: cis-benchmark
+- phase: phase-0
+related_documents:
+- "[Infrastructure Overview](../infrastructure/README.md)"
+- "[Hardware Platform](../hardware/README.md)"
+- "[Security Framework](../security-assurance/README.md)"
+---
+-->
+
 # 🖥️ **Virtual Machines**
 
-Comprehensive documentation and asset management for all virtual machine deployments across the Proxmox Astronomy Lab enterprise infrastructure. This directory serves as the central knowledge repository for VM specifications, configurations, operational procedures, and lifecycle management supporting both VLAN 10 control plane and VLAN 20 project workloads.
+Comprehensive virtual machine asset documentation and management repository supporting enterprise infrastructure across the Proxmox Astronomy Lab ecosystem. This directory provides systematic documentation for VM specifications, configurations, operational procedures, and lifecycle management across VLAN 10 control plane, VLAN 20 project workloads, and VLAN 30 VDI services, establishing the foundation for research computing, database platforms, security services, and virtual desktop infrastructure.
 
 ## **Overview**
 
-The virtual machines directory provides systematic documentation of our hybrid infrastructure approach, featuring strategic VM deployments for persistent services alongside our RKE2 Kubernetes cluster. Our VM portfolio includes enterprise databases, container orchestration platforms, specialized AI/ML services, and infrastructure coordination systems that form the foundation of our research computing environment.
+The virtual machines directory represents the comprehensive documentation framework for our enterprise VM portfolio, encompassing 33 virtual machines across management infrastructure, research computing platforms, container orchestration, and virtual desktop services. This implementation supports our hybrid infrastructure approach combining strategic VM deployments for persistent services with RKE2 Kubernetes orchestration for dynamic workloads, establishing enterprise-grade computing capabilities with CIS Controls v8 Level 2 security baselines and professional operational procedures across all virtual machine assets.
 
-This directory reflects our enterprise-grade approach to virtual machine management, implementing CIS Controls v8 Level 2 security baselines, comprehensive monitoring, and professional operational procedures across all VM assets. Each virtual machine is documented with complete specifications, security configurations, operational procedures, and integration requirements to ensure consistent management and operational excellence.
+This directory documentation enables systematic VM asset management through complete specifications, security configurations, operational procedures, and integration requirements ensuring consistent enterprise-grade virtual machine operations and comprehensive knowledge management across the astronomy research computing platform.
 
 ---
 
 ## **📂 Directory Contents**
 
-This section provides systematic navigation to all VM asset documentation and operational guidance within this directory.
+This section provides systematic navigation to all VM asset documentation and operational guidance within this directory, ensuring complete coverage for knowledge graph connectivity.
 
-### **Management VMs (VLAN 10 - Control Plane)**
+### **Subdirectories**
 
-| **VM Asset** | **Purpose** | **Documentation** |
+| **Directory** | **Purpose** | **Documentation** |
 |--------------|-------------|-------------------|
-| **[vm-1002-mgmt-ansible01.md](vm-1002-mgmt-ansible01.md)** | Ansible automation and configuration management platform | Enterprise automation orchestration |
-| **[vm-1003-radio-dc01.md](vm-1003-radio-dc01.md)** | Primary domain controller for enterprise authentication | Active Directory services coordination |
-| **[vm-1004-mgmt-veeam01.md](vm-1004-mgmt-veeam01.md)** | Veeam backup and disaster recovery platform | Enterprise backup management |
-| **[vm-1005-mgmt-docker01.md](vm-1005-mgmt-docker01.md)** | Docker container platform for management services | Container orchestration platform |
-| **[vm-1006-mgmt-sec01.md](vm-1006-mgmt-sec01.md)** | Security monitoring and compliance platform | Enterprise security coordination |
-| **[vm-1007-mgmt-agents01.md](vm-1007-mgmt-agents01.md)** | Agent orchestration and distributed services platform | Management agent coordination |
+| **Management VMs (1002-1007)** | Control plane infrastructure and enterprise services | Individual VM documentation files |
+| **Project VMs (2001-2023)** | Research computing and application workloads | Individual VM documentation files |
+| **Kubernetes Cluster (3001-3003)** | Container orchestration platform with GPU acceleration | Individual VM documentation files |
+| **Virtual Desktop Infrastructure (4001-4006)** | VDI services and workspace delivery platforms | Individual VM documentation files |
 
-### **Project VMs (VLAN 20 - Project Workloads)**
+### **Key Documents**
 
-| **VM Asset** | **Purpose** | **Documentation** |
-|--------------|-------------|-------------------|
-| **[vm-2001-proj-dp01.md](vm-2001-proj-dp01.md)** | Data processing and analysis platform | Research computing environment |
-| **[vm-2002-proj-pg01.md](vm-2002-proj-pg01.md)** | Primary PostgreSQL database for DESI research | Astronomical database platform |
-| **[vm-2003-radio-dc02.md](vm-2003-radio-dc02.md)** | Secondary domain controller for project networks | Distributed authentication services |
-| **[vm-2004-proj-dev01.md](vm-2004-proj-dev01.md)** | Development and testing environment | Research development platform |
-| **[vm-2005-proj-kasm01.md](vm-2005-proj-kasm01.md)** | Kasm VDI workspace platform | Virtual desktop infrastructure |
-| **[vm-2006-proj-rds01.md](vm-2006-proj-rds01.md)** | Remote desktop services platform | Enterprise RDP gateway |
-| **[vm-2007-proj-fs01.md](vm-2007-proj-fs01.md)** | File services and distributed storage (1.5TB) | Project data storage platform |
-| **[vm-2008-proj-mon01.md](vm-2008-proj-mon01.md)** | Monitoring and observability platform | Enterprise monitoring services |
-| **[vm-2009-port01.md](vm-2009-port01.md)** | Portainer container management platform | Docker orchestration interface |
-| **[vm-2010-proj-fs03.md](vm-2010-proj-fs03.md)** | File services and distributed storage (1.5TB) | Extended project storage |
-| **[vm-2011-proj-fs02.md](vm-2011-proj-fs02.md)** | File services and distributed storage | Project file management |
-| **[vm-2012-proj-pgsql02.md](vm-2012-proj-pgsql02.md)** | General-purpose PostgreSQL database platform | Application database services |
-| **[vm-2014-proj-docker01.md](vm-2014-proj-docker01.md)** | Docker container platform for project workloads | Project container orchestration |
-| **[vm-2015-proj-fs04.md](vm-2015-proj-fs04.md)** | Distributed file services platform | Project file storage coordination |
-| **[vm-2016-proj-mongo01.md](vm-2016-proj-mongo01.md)** | MongoDB document database platform | NoSQL document storage services |
-| **[vm-2017-proj-milvus01.md](vm-2017-proj-milvus01.md)** | Milvus vector database for RAG operations | Semantic search and AI/ML platform |
-| **[vm-2018-proj-node4j01.md](vm-2018-proj-node4j01.md)** | Neo4j graph database platform | Relationship modeling and analytics |
-
-### **Kubernetes Cluster VMs (VLAN 20 - Container Orchestration)**
-
-| **VM Asset** | **Purpose** | **Documentation** |
-|--------------|-------------|-------------------|
-| **[vm-3001-proj-k8s01.md](vm-3001-proj-k8s01.md)** | RKE2 Kubernetes cluster node 1 (Primary) | Container orchestration foundation |
-| **[vm-3002-proj-k8s02.md](vm-3002-proj-k8s02.md)** | RKE2 Kubernetes cluster node 2 (Secondary) | High-availability cluster coordination |
-| **[vm-3003-proj-k8s03.md](vm-3003-proj-k8s03.md)** | RKE2 Kubernetes cluster node 3 with GPU | GPU-accelerated container platform |
+| **Document** | **Purpose** | **Link** |
+|--------------|-------------|----------|
+| **vm-1002-mgmt-ansible01.md** | Ansible automation and configuration management platform | [vm-1002-mgmt-ansible01.md](vm-1002-mgmt-ansible01.md) |
+| **vm-1003-radio-dc01.md** | Primary domain controller for enterprise authentication | [vm-1003-radio-dc01.md](vm-1003-radio-dc01.md) |
+| **vm-1004-mgmt-veeam01.md** | Veeam backup and disaster recovery platform | [vm-1004-mgmt-veeam01.md](vm-1004-mgmt-veeam01.md) |
+| **vm-1005-mgmt-docker01.md** | Docker container platform for management services | [vm-1005-mgmt-docker01.md](vm-1005-mgmt-docker01.md) |
+| **vm-1006-mgmt-sec01.md** | Security monitoring and compliance platform | [vm-1006-mgmt-sec01.md](vm-1006-mgmt-sec01.md) |
+| **vm-1007-mgmt-agents01.md** | Agent orchestration and distributed services platform | [vm-1007-mgmt-agents01.md](vm-1007-mgmt-agents01.md) |
+| **vm-2001-proj-dp01.md** | Data processing and analysis platform | [vm-2001-proj-dp01.md](vm-2001-proj-dp01.md) |
+| **vm-2002-proj-pg01.md** | Primary PostgreSQL database for DESI research | [vm-2002-proj-pg01.md](vm-2002-proj-pg01.md) |
+| **vm-2003-radio-dc02.md** | Secondary domain controller for project networks | [vm-2003-radio-dc02.md](vm-2003-radio-dc02.md) |
+| **vm-2004-proj-dev01.md** | Primary development and testing environment | [vm-2004-proj-dev01.md](vm-2004-proj-dev01.md) |
+| **vm-2005-proj-gpu01.md** | GPU-accelerated computing platform | [vm-2005-proj-gpu01.md](vm-2005-proj-gpu01.md) |
+| **vm-2007-proj-fs01.md** | File services and distributed storage platform | [vm-2007-proj-fs01.md](vm-2007-proj-fs01.md) |
+| **vm-2008-proj-mon01.md** | Monitoring and observability platform | [vm-2008-proj-mon01.md](vm-2008-proj-mon01.md) |
+| **vm-2009-port01.md** | Portainer container management platform | [vm-2009-port01.md](vm-2009-port01.md) |
+| **vm-2010-proj-fs03.md** | File services and distributed storage platform | [vm-2010-proj-fs03.md](vm-2010-proj-fs03.md) |
+| **vm-2011-proj-fs02.md** | File services and distributed storage platform | [vm-2011-proj-fs02.md](vm-2011-proj-fs02.md) |
+| **vm-2012-proj-pgsql02.md** | General-purpose PostgreSQL database platform | [vm-2012-proj-pgsql02.md](vm-2012-proj-pgsql02.md) |
+| **vm-2014-proj-docker01.md** | Docker container platform for project workloads | [vm-2014-proj-docker01.md](vm-2014-proj-docker01.md) |
+| **vm-2015-proj-fs04.md** | Distributed file services platform | [vm-2015-proj-fs04.md](vm-2015-proj-fs04.md) |
+| **vm-2016-proj-mongo01.md** | MongoDB document database platform | [vm-2016-proj-mongo01.md](vm-2016-proj-mongo01.md) |
+| **vm-2017-proj-milvus01.md** | Milvus vector database for RAG operations | [vm-2017-proj-milvus01.md](vm-2017-proj-milvus01.md) |
+| **vm-2018-proj-node4j01.md** | Neo4j graph database platform | [vm-2018-proj-node4j01.md](vm-2018-proj-node4j01.md) |
+| **vm-2019-proj-docker02.md** | Secondary Docker container platform | [vm-2019-proj-docker02.md](vm-2019-proj-docker02.md) |
+| **vm-2020-proj-ztna01.md** | Zero Trust Network Access gateway | [vm-2020-proj-ztna01.md](vm-2020-proj-ztna01.md) |
+| **vm-2021-proj-dev02.md** | Secondary development environment | [vm-2021-proj-dev02.md](vm-2021-proj-dev02.md) |
+| **vm-2022-proj-cisbench.md** | CIS benchmarking and compliance validation | [vm-2022-proj-cisbench.md](vm-2022-proj-cisbench.md) |
+| **vm-2023-proj-oscal01.md** | OSCAL compliance automation platform | [vm-2023-proj-oscal01.md](vm-2023-proj-oscal01.md) |
+| **vm-3001-proj-k8s01.md** | RKE2 Kubernetes cluster node 1 (Primary) | [vm-3001-proj-k8s01.md](vm-3001-proj-k8s01.md) |
+| **vm-3002-proj-k8s02.md** | RKE2 Kubernetes cluster node 2 (Secondary) | [vm-3002-proj-k8s02.md](vm-3002-proj-k8s02.md) |
+| **vm-3003-proj-k8s03.md** | RKE2 Kubernetes cluster node 3 with GPU | [vm-3003-proj-k8s03.md](vm-3003-proj-k8s03.md) |
+| **vm-4001-radio-vdi01.md** | Windows 11 Enterprise virtual desktop 1 | [vm-4001-radio-vdi01.md](vm-4001-radio-vdi01.md) |
+| **vm-4002-radio-vdi02.md** | Windows 11 Enterprise virtual desktop 2 | [vm-4002-radio-vdi02.md](vm-4002-radio-vdi02.md) |
+| **vm-4003-radio-vdi03.md** | Windows 11 Enterprise virtual desktop 3 | [vm-4003-radio-vdi03.md](vm-4003-radio-vdi03.md) |
+| **vm-4004-radio-vdi04.md** | Windows 11 Enterprise virtual desktop 4 | [vm-4004-radio-vdi04.md](vm-4004-radio-vdi04.md) |
+| **vm-4005-radio-vdi05.md** | Windows 11 Intune policy testing platform | [vm-4005-radio-vdi05.md](vm-4005-radio-vdi05.md) |
+| **vm-4006-proj-kasm01.md** | KASM Workspaces virtual desktop platform | [vm-4006-proj-kasm01.md](vm-4006-proj-kasm01.md) |
 
 ---
 
 ## **📁 Repository Structure**
 
-```
+``` markdown
 virtual-machines/
-├── 📚 Management VMs (VLAN 10)/    # Control plane infrastructure
-│   ├── 🤖 vm-1002-mgmt-ansible01.md    # Automation platform
-│   ├── 🏢 vm-1003-radio-dc01.md        # Primary domain controller
-│   ├── 💾 vm-1004-mgmt-veeam01.md      # Backup platform
-│   ├── 🐳 vm-1005-mgmt-docker01.md     # Management containers
-│   ├── 🔒 vm-1006-mgmt-sec01.md        # Security platform
-│   └── 🔧 vm-1007-mgmt-agents01.md     # Agent orchestration
-├── 🔬 Project VMs (VLAN 20)/       # Research and application workloads
-│   ├── 📊 vm-2001-proj-dp01.md         # Data processing platform
-│   ├── 🗄️ vm-2002-proj-pg01.md         # Primary PostgreSQL
-│   ├── 🏢 vm-2003-radio-dc02.md        # Secondary domain controller
-│   ├── 💻 vm-2004-proj-dev01.md        # Development environment
-│   ├── 🖥️ vm-2005-proj-kasm01.md       # VDI workspace platform
-│   ├── 🚪 vm-2006-proj-rds01.md        # RDP gateway
-│   ├── 📁 vm-2007-proj-fs01.md         # File services (1.5TB)
-│   ├── 📈 vm-2008-proj-mon01.md        # Monitoring platform
-│   ├── 🌊 vm-2009-port01.md            # Portainer management
-│   ├── 📁 vm-2010-proj-fs03.md         # File services (1.5TB)
-│   ├── 📁 vm-2011-proj-fs02.md         # File services
-│   ├── 🗄️ vm-2012-proj-pgsql02.md      # General PostgreSQL
-│   ├── 🐳 vm-2014-proj-docker01.md     # Project containers
-│   ├── 📁 vm-2015-proj-fs04.md         # Distributed file services
-│   ├── 📄 vm-2016-proj-mongo01.md      # MongoDB document database
-│   ├── 🧠 vm-2017-proj-milvus01.md     # Vector database for RAG
-│   └── 🕸️ vm-2018-proj-node4j01.md     # Neo4j graph database
-├── ☸️ Kubernetes Cluster/          # Container orchestration platform
-│   ├── 🏗️ vm-3001-proj-k8s01.md       # RKE2 cluster node 1
-│   ├── 🏗️ vm-3002-proj-k8s02.md       # RKE2 cluster node 2
-│   └── 🚀 vm-3003-proj-k8s03.md       # RKE2 cluster node 3 + GPU
-└── 📋 README.md                    # This file
+├── 📚 Management VMs (VLAN 10)/         # Control plane infrastructure
+│   ├── vm-1002-mgmt-ansible01.md       # Automation platform
+│   ├── vm-1003-radio-dc01.md           # Primary domain controller
+│   ├── vm-1004-mgmt-veeam01.md         # Backup platform
+│   ├── vm-1005-mgmt-docker01.md        # Management containers
+│   ├── vm-1006-mgmt-sec01.md           # Security platform
+│   └── vm-1007-mgmt-agents01.md        # Agent orchestration
+├── 🔬 Project VMs (VLAN 20)/            # Research and application workloads
+│   ├── vm-2001-proj-dp01.md            # Data processing platform
+│   ├── vm-2002-proj-pg01.md            # Primary PostgreSQL
+│   ├── vm-2003-radio-dc02.md           # Secondary domain controller
+│   ├── vm-2004-proj-dev01.md           # Primary development environment
+│   ├── vm-2005-proj-gpu01.md           # GPU-accelerated computing
+│   ├── vm-2007-proj-fs01.md            # File services (1.5TB)
+│   ├── vm-2008-proj-mon01.md           # Monitoring platform
+│   ├── vm-2009-port01.md               # Portainer management
+│   ├── vm-2010-proj-fs03.md            # File services (1.5TB)
+│   ├── vm-2011-proj-fs02.md            # File services
+│   ├── vm-2012-proj-pgsql02.md         # General PostgreSQL
+│   ├── vm-2014-proj-docker01.md        # Project containers
+│   ├── vm-2015-proj-fs04.md            # Distributed file services
+│   ├── vm-2016-proj-mongo01.md         # MongoDB document database
+│   ├── vm-2017-proj-milvus01.md        # Vector database for RAG
+│   ├── vm-2018-proj-node4j01.md        # Neo4j graph database
+│   ├── vm-2019-proj-docker02.md        # Secondary Docker platform
+│   ├── vm-2020-proj-ztna01.md          # Zero Trust Network Access
+│   ├── vm-2021-proj-dev02.md           # Secondary development environment
+│   ├── vm-2022-proj-cisbench.md        # CIS benchmarking platform
+│   └── vm-2023-proj-oscal01.md         # OSCAL compliance automation
+├── ☸️ Kubernetes Cluster (VLAN 20)/     # Container orchestration platform
+│   ├── vm-3001-proj-k8s01.md           # RKE2 cluster node 1
+│   ├── vm-3002-proj-k8s02.md           # RKE2 cluster node 2
+│   └── vm-3003-proj-k8s03.md           # RKE2 cluster node 3 + GPU
+├── 🖥️ VDI Infrastructure (VLAN 30)/     # Virtual desktop services
+│   ├── vm-4001-radio-vdi01.md          # Windows 11 VDI 1
+│   ├── vm-4002-radio-vdi02.md          # Windows 11 VDI 2
+│   ├── vm-4003-radio-vdi03.md          # Windows 11 VDI 3
+│   ├── vm-4004-radio-vdi04.md          # Windows 11 VDI 4
+│   ├── vm-4005-radio-vdi05.md          # Intune policy testing
+│   └── vm-4006-proj-kasm01.md          # KASM Workspaces platform
+└── 📝 README.md                        # This file
 ```
 
 ### **Navigation Guide:**
 
-- **📚 Management VMs** - Control plane infrastructure and enterprise services
-- **🔬 Project VMs** - Research computing and application workloads  
-- **☸️ Kubernetes Cluster** - Container orchestration platform with GPU acceleration
-- **🗄️ Database Platforms** - Comprehensive multi-modal database ecosystem
-- **📁 File Services** - Distributed storage and data management
-
----
-
-## **🏗️ Infrastructure Architecture**
-
-### **VM Portfolio Overview**
-
-| **Category** | **Count** | **Total Resources** | **Purpose** |
-|--------------|-----------|-------------------|-------------|
-| **Management VMs** | 6 VMs | ~60GB RAM, ~24 vCPU | Control plane and enterprise services |
-| **Project VMs** | 12 VMs | ~200GB RAM, ~80 vCPU | Research computing and applications |
-| **Kubernetes Cluster** | 3 VMs | 96GB RAM, 48 vCPU, 3TB storage | Container orchestration platform |
-| **Total Platform** | **21 VMs** | **~356GB RAM, ~152 vCPU** | **Enterprise research computing** |
-
-### **Database Ecosystem**
-
-Our comprehensive database platform supports diverse data models and research requirements:
-
-| **Database Platform** | **Type** | **Purpose** | **VM Asset** |
-|----------------------|----------|-------------|--------------|
-| **PostgreSQL** | Relational | DESI research data, applications | proj-pg01, proj-pgsql02 |
-| **MongoDB** | Document | Flexible schema, JSON storage | proj-mongo01 |
-| **Milvus** | Vector | Semantic search, RAG operations | proj-milvus01 |
-| **Neo4j** | Graph | Relationship modeling, analytics | proj-node4j01 |
-
-### **Hybrid Architecture Benefits**
-
-- **Strategic VMs** for persistent services (databases, file storage, RDP gateways)
-- **RKE2 Kubernetes** for dynamic workloads (AI/ML, microservices, distributed computing)
-- **GPU acceleration** available to Kubernetes cluster for AI/ML workloads
-- **Enterprise security** with CIS Controls v8 Level 2 across all platforms
+- **[📚 Management VMs](vm-1002-mgmt-ansible01.md)** - Control plane infrastructure including automation, domain services, backup, and security platforms
+- **[🔬 Project VMs](vm-2001-proj-dp01.md)** - Research computing including databases, development environments, security services, and compliance automation
+- **[☸️ Kubernetes Cluster](vm-3001-proj-k8s01.md)** - Container orchestration platform with GPU acceleration for AI/ML workloads
+- **[🖥️ VDI Infrastructure](vm-4001-radio-vdi01.md)** - Virtual desktop services including Windows 11 persistent desktops and KASM containerized workspaces
 
 ---
 
 ## **🔗 Related Categories**
 
-This section establishes horizontal relationships within the knowledge graph, connecting virtual machines to related infrastructure domains.
+This section establishes horizontal relationships within the knowledge graph, connecting this directory to related domains.
 
 | **Category** | **Relationship** | **Documentation** |
 |--------------|------------------|-------------------|
-| **[Hardware](../hardware/README.md)** | VMs deployed on 7-node Proxmox cluster | [../hardware/README.md](../hardware/README.md) |
-| **[Infrastructure](../infrastructure/README.md)** | VMs provide core infrastructure services | [../infrastructure/README.md](../infrastructure/README.md) |
-| **[Security](../security/README.md)** | CIS Controls v8 L2 baseline across all VMs | [../security/README.md](../security/README.md) |
-| **[Monitoring](../monitoring/README.md)** | VM performance and health monitoring | [../monitoring/README.md](../monitoring/README.md) |
-| **[Projects](../projects/README.md)** | VMs support active research projects | [../projects/README.md](../projects/README.md) |
+| **[Infrastructure](../infrastructure/README.md)** | VMs provide core infrastructure services and platform foundation | [../infrastructure/README.md](../infrastructure/README.md) |
+| **[Hardware](../hardware/README.md)** | VMs deployed on 7-node Proxmox VE cluster infrastructure | [../hardware/README.md](../hardware/README.md) |
+| **[Security Assurance](../security-assurance/README.md)** | CIS Controls v8 Level 2 baseline implementation across all VMs | [../security-assurance/README.md](../security-assurance/README.md) |
+| **[Applications and Services](../applications-and-services/README.md)** | VMs host containerized applications and enterprise services | [../applications-and-services/README.md](../applications-and-services/README.md) |
+| **[AI and Machine Learning](../ai-and-machine-learning/README.md)** | VMs provide GPU acceleration and specialized AI/ML database platforms | [../ai-and-machine-learning/README.md](../ai-and-machine-learning/README.md) |
 
 ---
 
-## **🚀 Getting Started**
+## **Getting Started**
 
 For new users approaching virtual machine management:
 
-1. **Start Here:** [Enterprise Infrastructure Overview](../infrastructure/README.md)
-2. **Database Platforms:** [Database Infrastructure](../infrastructure/databases/README.md)  
-3. **Kubernetes Cluster:** [RKE2 Orchestration](../infrastructure/k8s-rke2/README.md)
-4. **Security Framework:** [CIS Controls Implementation](../security/README.md)
-5. **Operational Procedures:** [VM Lifecycle Management](lifecycle-management/README.md)
-
-### **Quick Reference:**
-
-- **🔬 DESI Research VMs:** proj-pg01 (database), proj-dp01 (analysis)
-- **☸️ Kubernetes Cluster:** proj-k8s01/02/03 (3-node RKE2 with GPU)
-- **🗄️ Database Ecosystem:** PostgreSQL, MongoDB, Milvus, Neo4j
-- **🐳 Container Platforms:** Docker (mgmt-docker01, proj-docker01) + Kubernetes
-- **📁 File Services:** proj-fs01/02/03/04 (distributed storage)
-
----
-
-## **📊 Platform Statistics**
-
-### **Resource Allocation**
-
-| **Resource Type** | **Management VMs** | **Project VMs** | **Kubernetes Cluster** | **Total** |
-|------------------|-------------------|-----------------|------------------------|-----------|
-| **Memory (RAM)** | ~60GB | ~200GB | 96GB | **~356GB** |
-| **vCPU Cores** | ~24 | ~80 | 48 | **~152 vCPU** |
-| **Storage** | ~500GB | ~8TB | 3TB | **~11.5TB** |
-
-### **Security Compliance**
-
-- **✅ CIS Controls v8 Level 2** baseline across all VMs
-- **✅ Enterprise authentication** integration
-- **✅ Comprehensive monitoring** and audit logging
-- **✅ Professional backup** and disaster recovery
-
-### **Operational Capabilities**
-
-- **🔬 Production research workloads** (DESI DR1 analysis)
-- **🧠 AI/ML acceleration** with GPU passthrough
-- **🗄️ Multi-modal databases** supporting diverse data types
-- **☸️ Container orchestration** with enterprise reliability
-- **📊 Enterprise monitoring** and observability
+1. **Start Here:** [Infrastructure Overview](../infrastructure/README.md) - Understand the broader platform architecture and VM integration
+2. **Background Reading:** [Hardware Platform](../hardware/README.md) - Learn about the underlying Proxmox VE cluster infrastructure
+3. **Implementation:** [Security Framework](../security-assurance/README.md) - Review CIS Controls v8 implementation across VM assets
+4. **Advanced Topics:** [Applications and Services](../applications-and-services/README.md) - Explore containerized services and application deployment
 
 ---
 
@@ -200,8 +177,8 @@ For new users approaching virtual machine management:
 | **Field** | **Value** |
 |-----------|-----------|
 | **Author** | VintageDon - <https://github.com/vintagedon> |
-| **Created** | 2025-07-20 |
-| **Last Updated** | 2025-07-20 |
+| **Created** | 2025-08-15 |
+| **Last Updated** | 2025-08-15 |
 | **Version** | 1.0 |
 
 ---

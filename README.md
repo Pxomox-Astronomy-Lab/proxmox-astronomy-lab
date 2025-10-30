@@ -2,11 +2,9 @@
 
 Enterprise-grade astronomical computing platform enabling cutting-edge DESI research through hybrid infrastructure
 
-![Platform Status](https://img.shields.io/badge/Status-Production-success) ![Cluster Nodes](https://img.shields.io/badge/Nodes-7-blue) ![CPU Cores](https://img.shields.io/badge/vCPUs-174-orange) ![Memory](https://img.shields.io/badge/RAM-692GB-purple) ![Virtual Machines](https://img.shields.io/badge/VMs-35+-red) ![Kubernetes](https://img.shields.io/badge/RKE2-3--nodes-green)
+![Proxmox VE](https://img.shields.io/badge/Proxmox_VE-8.x-E57000?logo=proxmox&logoColor=white) ![RKE2](https://img.shields.io/badge/RKE2-Kubernetes_v1.34-326CE5?logo=kubernetes&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL_16-+pgvector-4169E1?logo=postgresql&logoColor=white)
 
-[![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
-[![Stars](https://img.shields.io/github/stars/Proxmox-Astronomy-Lab/proxmox-astronomy-lab?style=social)](https://github.com/Proxmox-Astronomy-Lab/proxmox-astronomy-lab/stargazers)
-[![Issues](https://img.shields.io/github/issues/Proxmox-Astronomy-Lab/proxmox-astronomy-lab)](https://github.com/Proxmox-Astronomy-Lab/proxmox-astronomy-lab/issues)
+![Google Workspace](https://img.shields.io/badge/Google_Workspace-Enterprise-4285F4?logo=google&logoColor=white) ![FAIR](https://img.shields.io/badge/FAIR-Datasets-9C27B0) ![CIS Controls](https://img.shields.io/badge/CIS_Controls-v8-2E7D32) ![NIST AI RMF](https://img.shields.io/badge/NIST_AI_RMF-Governance-1565C0) ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ---
 

@@ -1,4 +1,4 @@
-# 🌌 **Proxmox Astronomy Lab**
+# 🌌 Proxmox Astronomy Lab
 
 Enterprise-grade astronomical computing platform enabling cutting-edge DESI research through hybrid infrastructure
 
@@ -10,72 +10,87 @@ Enterprise-grade astronomical computing platform enabling cutting-edge DESI rese
 
 ---
 
-## 🎯 **Platform Overview**
+## 🎯 Platform Overview
 
-The **Proxmox Astronomy Lab** is a production-scale enterprise astronomical computing platform built on a **7-node Proxmox VE cluster** with hybrid **RKE2 Kubernetes** and **strategic VM architecture**. We're demonstrating that sophisticated astronomical computing doesn't require massive institutional resources—just smart engineering, open science principles, and enterprise-grade implementation.
-
-What started as a proof-of-concept for SDR-based radio astronomy has evolved into a **legitimate research infrastructure** running real **DESI DR1 analysis workloads** producing peer-reviewed scientific publications. This platform proves that world-class astronomical research can be conducted anywhere with the right approach to infrastructure design and scientific methodology.
+The Proxmox Astronomy Lab is a production astronomical computing platform built on a 7-node Proxmox VE cluster with hybrid RKE2 Kubernetes and strategic VM architecture. We produce enhanced datasets and original research from public astronomical surveys, operating at organizational scale with enterprise infrastructure standards.
 
 ![proxmox-astronomy-lab-compute-nodes](assets/images/lab-hardware/proxmox-astronomy-lab-compute-nodes.jpg)
 
-## 🚀 **Platform Mission**
+## 🚀 Our Mission
 
-- **🔬 Open Science**: Everything documented, reproducible, and shareable
-- **📊 Real Science**: Production workloads on real data producing real papers  
-- **🌍 Accessible Science**: Demonstrating that enterprise-grade research infrastructure can be built anywhere
-- **🤝 Community Science**: Offering compute resources to astronomy students and researchers
-- **🏛️ Enterprise Standards**: CIS Controls v8 compliance with systematic documentation
+### Scientific Output
 
-## 📊 **Current Platform Specifications**
+We produce enhanced datasets and original data science research as citizen scientists, transforming astronomical data into analysis-ready datasets (ARD) that enable downstream research. Our work includes anomaly detection, spectral analysis, and systematic data enhancement projects on public astronomical surveys.
 
-| **Component** | **Specification** | **Purpose** |
+### Data Quality Standards
+
+Following FAIR principles (Findable, Accessible, Interoperable, Reusable), we implement scientific rigor throughout our data pipelines. Quality data prevents downstream problems—proper methodology at the source eliminates garbage propagation through the research ecosystem.
+
+### AI-Native Operations
+
+AI is embedded in 100% of our workflows, from automated data processing to governance documentation. We implement multi-framework governance (CIS-RAM, ISO42001, Colorado SB-24-205, NIST AI RMF) appropriate to our responsibility as data providers to downstream researchers. Our governance journey and reusable templates are documented at [github.com/vintagedon/nist-ai-rmf-cookbook](https://github.com/vintagedon/nist-ai-rmf-cookbook).
+
+### Transparency & Methodology
+
+We publish complete methodological transparency through detailed worklogs documenting technical decisions, failures, lessons learned, and reproducible procedures. All analysis scripts and infrastructure patterns are openly shared—not just the results, but the entire decision-making process that produced them.
+
+## 📊 Current Platform Specifications
+
+| Component | Specification | Purpose |
 |---------------|------------------|-------------|
-| **🖥️ Compute Cluster** | 7-node Proxmox VE 8.4.1 (174 vCPUs, 692GB RAM allocated) | Enterprise-scale parallel processing and virtualization |
-| **📦 Virtual Machines** | 35+ production VMs across management, project, and development networks | Comprehensive service architecture with strategic workload placement |
-| **☸️ Kubernetes Platform** | 3-node RKE2 cluster (246GB RAM, 48 vCPU) | Container orchestration for dynamic ML/AI workloads |
-| **🗄️ Database Infrastructure** | PostgreSQL 16 clusters with 30GB+ DESI data | Production astronomical database workloads |
-| **🧠 AI/ML Acceleration** | RTX A4000 GPU with enterprise ML infrastructure | Distributed ML inference and training workflows |
-| **🔡 Network Architecture** | Dual-link bonding with enterprise managed switches | High-bandwidth data movement and cluster interconnect |
-| **🔒 Security Framework** | CIS Controls v8 + Azure AD + Zero Trust Network Access | Enterprise-grade security and identity management |
+| 🖥️ Compute Cluster | 7-node Proxmox VE 8.4.1 (174 vCPUs, 692GB RAM allocated) | Enterprise-scale parallel processing and virtualization |
+| 📦 Virtual Machines | 35+ production VMs across management, project, and development networks | Comprehensive service architecture with strategic workload placement |
+| ☸️ Kubernetes Platform | 3-node RKE2 cluster (246GB RAM, 48 vCPU) | Container orchestration for dynamic ML/AI workloads |
+| 🗄️ Database Infrastructure | PostgreSQL 16 clusters with 30GB+ DESI data | Production astronomical database workloads |
+| 🧠 AI/ML Acceleration | RTX A4000 GPU with enterprise ML infrastructure | Distributed ML inference and training workflows |
+| 🔡 Network Architecture | Dual-link bonding with enterprise managed switches | High-bandwidth data movement and cluster interconnect |
+| 🔒 Security Framework | CIS Controls v8 + Google Workspace Enterprise + Zero Trust Network Access | Enterprise-grade security and identity management |
 
-### **Infrastructure Architecture**
+### Infrastructure Architecture
 
-- **Proxmox Nodes**: Intel 12th/13th gen (i5-12600H to i9-13900H) with dedicated NVMe storage
-- **Network Topology**: Management (10.16.207.x) + Multi-VLAN service networks (10.25.x.x)
-- **Storage Systems**: Distributed NVMe pools (nvmethin01-04) with enterprise backup infrastructure
-- **Identity Management**: Azure AD hybrid identity with Cloudflare Zero Trust Network Access
+- Proxmox Nodes: Intel 12th/13th gen (i5-12600H to i9-13900H) with dedicated NVMe storage
+- Network Topology: Management (10.16.207.x) + Multi-VLAN service networks (10.25.x.x)
+- Storage Systems: Distributed NVMe pools (nvmethin01-04) with enterprise backup infrastructure
+- Identity Management: Google Workspace Enterprise with Cloudflare Zero Trust Network Access
 
 ![proxmox-astronomy-lab-network-stack](assets/images/lab-hardware/proxmox-astronomy-lab-network-stack.jpg)
 ![proxmox-astronomy-lab-gpu-node](assets/images/lab-hardware/proxmox-astronomy-lab-gpu-node.jpg)
 
-## ✨ **What Makes This Platform Unique**
+## ✨ Platform Capabilities
 
-### 🏢 **Enterprise-Grade, Research-Scale**
+### 🔄 Hybrid Architecture
 
-We've built **legitimate research computing infrastructure** that rivals institutional resources, documented every step with enterprise standards, and made it all reproducible. This isn't a homelab—we're running **production scientific workloads** and **publishing peer-reviewed research** with full **CIS Controls v8 compliance**.
+- RKE2 Kubernetes: 3-node cluster (246GB RAM, 48 vCPU) for dynamic ML/AI workloads and distributed computing
+- Strategic VMs: PostgreSQL databases, persistent services, GPU acceleration, and enterprise applications
+- Enterprise Integration: Google Workspace Enterprise identity, Zero Trust Network Access, comprehensive monitoring
 
-### 🔄 **Hybrid Architecture Excellence**
+### 🔬 Production Research Workloads
 
-- **RKE2 Kubernetes**: 3-node cluster (246GB RAM, 48 vCPU) for dynamic ML/AI workloads and distributed computing
-- **Strategic VMs**: PostgreSQL databases, persistent services, GPU acceleration, and enterprise applications
-- **Enterprise Integration**: Azure AD hybrid identity, Zero Trust Network Access, comprehensive monitoring
+- 🌌 DESI Cosmic Void Analysis: 30GB+ PostgreSQL implementation studying galaxy evolution in extreme environments
+- 💨 AGN Outflow Surveys: Semi-automated spectral analysis with Cloudy modeling integration
+- 🔍 Anomalous Quasar Detection: Large-scale ML anomaly detection using distributed Ray clusters on RKE2
+- 📊 ML Infrastructure: 1D Conv VAE on 1.6M spectra with enterprise GPU acceleration
 
-### 🔬 **Production DESI Research Workloads**
+### 🔒 Governance & Quality
 
-- **🌌 DESI Cosmic Void Analysis**: 30GB+ PostgreSQL implementation studying galaxy evolution in extreme environments
-- **💨 AGN Outflow Surveys**: Semi-automated spectral analysis with Cloudy modeling integration
-- **🔍 Anomalous Quasar Detection**: Large-scale ML anomaly detection using distributed Ray clusters on RKE2
-- **📊 ML Infrastructure**: 1D Conv VAE on 1.6M spectra with enterprise GPU acceleration
+We follow Responsible and Ethical AI principles and are beginning integration of explainable AI (xAI) into our workflows. AI is a tool to enhance scientific discovery, not to replace rigorous analysis or responsible decision-making.
 
-### 📚 **Documentation Excellence**
+Key Principles:
 
-Every component follows **enterprise documentation standards** with golden templates, CIS Controls compliance mapping, and systematic knowledge management. Our philosophy: **if you can't reproduce it, we didn't build it right**.
+- Transparency: AI/ML models are documented, explainable, and auditable
+- Data Integrity: Scientific data is processed with AI for enhancement, not manipulation
+- Privacy & Security: No user data or access logs are shared or monetized
+- Reproducibility: AI-powered analysis pipelines are open-source for verification
+
+### 📚 Documentation Standards
+
+Every component follows enterprise documentation standards with golden templates, CIS Controls compliance mapping, and systematic knowledge management. If you can't reproduce it, we didn't build it right.
 
 ---
 
-## 🏗️ **Architecture Overview**
+## 🏗️ Architecture Overview
 
-### **Hybrid Infrastructure Strategy**
+### Hybrid Infrastructure Strategy
 
 ```mermaid
 graph TB
@@ -108,27 +123,27 @@ graph TB
     end
     
     subgraph "Identity & Security"
-        AZUREAD[Azure AD Hybrid]
+        GWORKSPACE[Google Workspace Enterprise]
         ZTNA[Cloudflare ZTNA]
         MFA[Multi-Factor Auth]
     end
 ```
 
-### **Service Architecture**
+### Service Architecture
 
-| **Service Tier** | **Implementation** | **Components** |
+| Service Tier | Implementation | Components |
 |------------------|-------------------|----------------|
-| **Identity** | Azure AD + Zero Trust | Hybrid identity sync, conditional access, MFA enforcement |
-| **Orchestration** | RKE2 + Portainer | 3-node Kubernetes control plane, container orchestration |
-| **Compute** | Hybrid K8s/VM | Dynamic scaling + persistent services across 35+ VMs |
-| **Data** | PostgreSQL + File Services | 30GB+ DESI databases + distributed file systems |
-| **AI/ML** | Ray + GPU acceleration | Distributed computing + RTX A4000 inference |
-| **Monitoring** | Prometheus + Grafana + Loki | Centralized observability with proj-mon01 |
-| **Security** | CIS Controls v8 + NIST | Infrastructure hardening + compliance monitoring |
+| Identity | Google Workspace Enterprise + Zero Trust | Enterprise identity, conditional access, MFA enforcement |
+| Orchestration | RKE2 + Portainer | 3-node Kubernetes control plane, container orchestration |
+| Compute | Hybrid K8s/VM | Dynamic scaling + persistent services across 35+ VMs |
+| Data | PostgreSQL + File Services | 30GB+ DESI databases + distributed file systems |
+| AI/ML | Ray + GPU acceleration | Distributed computing + RTX A4000 inference |
+| Monitoring | Prometheus + Grafana + Loki | Centralized observability with proj-mon01 |
+| Security | CIS Controls v8 + NIST | Infrastructure hardening + compliance monitoring |
 
 ---
 
-## 📁 **Repository Structure**
+## 📁 Repository Structure
 
 ```markdown
 PROXMOX-ASTRONOMY-LAB/
@@ -146,54 +161,54 @@ PROXMOX-ASTRONOMY-LAB/
 └── 📖 wiki/                        # Operational procedures and technical guides
 ```
 
-### **Key Documentation Entry Points**
+### Key Documentation Entry Points
 
-- **🏗️ [Infrastructure Overview](infrastructure/README.md)** - Core platform services and hybrid architecture
-- **🌌 [Astronomy Projects](astronomy-projects/README.md)** - Active DESI analysis and research portfolio
-- **🔧 [Hardware Specifications](hardware/README.md)** - Complete cluster hardware inventory and networking
-- **📚 [Documentation Standards](docs/README.md)** - Enterprise documentation framework and templates
-- **🔒 [Security Assurance](security-assurance/README.md)** - CIS Controls v8 and compliance implementation
-- **🛠️ [Applications & Services](applications-and-services/README.md)** - Production service deployments
-
----
-
-## 🔬 **Active Research Projects**
-
-### **DESI Data Release 1 Analysis Portfolio**
-
-#### **🌌 [Cosmic Void Galaxy Analysis](astronomy-projects/desi-cosmic-void-galaxies.md)**
-
-- **Objective**: Environmental quenching studies in extreme low-density environments
-- **Infrastructure**: 30GB+ PostgreSQL database (proj-pgsql01) with spatial indexing
-- **Dataset**: DESI DR1 BGS galaxies cross-matched with cosmic void catalogs
-- **Status**: Production analysis phase, systematic comparison methodology
-
-#### **💨 [AGN Outflow Energetics](astronomy-projects/desi-quasar-outflows.md)**
-
-- **Objective**: Systematic survey of quasar outflow properties and feedback mechanisms
-- **Infrastructure**: Hybrid Docker/Kubernetes deployment with Cloudy modeling integration
-- **Dataset**: DESI DR1 QSO spectra with semi-automated spectral fitting
-- **Status**: Active development, methodology validation complete
-
-#### **🔍 [Anomalous Quasar Detection](astronomy-projects/desi-qso-anomaly-detection.md)**
-
-- **Objective**: ML-driven discovery of unusual quasar properties and phenomena
-- **Infrastructure**: RKE2 Ray clusters with GPU acceleration for distributed ML
-- **Dataset**: 1.6M DESI QSO spectra with 1D Conv VAE architecture
-- **Status**: Production ML pipeline, anomaly catalog in development
-
-### **Platform Research**
-
-- **📊 [Spec-Driven AI](astronomy-projects/spec-driven-ai.md)**: AI methodology development for spectroscopic analysis
-- **🏗️ Infrastructure Optimization**: Performance validation and enterprise operational procedures
+- 🏗️ [Infrastructure Overview](infrastructure/README.md) - Core platform services and hybrid architecture
+- 🌌 [Astronomy Projects](astronomy-projects/README.md) - Active DESI analysis and research portfolio
+- 🔧 [Hardware Specifications](hardware/README.md) - Complete cluster hardware inventory and networking
+- 📚 [Documentation Standards](docs/README.md) - Enterprise documentation framework and templates
+- 🔒 [Security Assurance](security-assurance/README.md) - CIS Controls v8 and compliance implementation
+- 🛠️ [Applications & Services](applications-and-services/README.md) - Production service deployments
 
 ---
 
-## 💻 **Production Infrastructure Status**
+## 🔬 Active Research Projects
 
-### **Current Virtual Machine Deployment (35+ Active VMs)**
+### DESI Data Release 1 Analysis Portfolio
 
-**Management Network (10.25.10.x):**
+#### 🌌 [Cosmic Void Galaxy Analysis](astronomy-projects/desi-cosmic-void-galaxies.md)
+
+- Objective: Environmental quenching studies in extreme low-density environments
+- Infrastructure: 30GB+ PostgreSQL database (proj-pgsql01) with spatial indexing
+- Dataset: DESI DR1 BGS galaxies cross-matched with cosmic void catalogs
+- Status: Production analysis phase, systematic comparison methodology
+
+#### 💨 [AGN Outflow Energetics](astronomy-projects/desi-quasar-outflows.md)
+
+- Objective: Systematic survey of quasar outflow properties and feedback mechanisms
+- Infrastructure: Hybrid Docker/Kubernetes deployment with Cloudy modeling integration
+- Dataset: DESI DR1 QSO spectra with semi-automated spectral fitting
+- Status: Active development, methodology validation complete
+
+#### 🔍 [Anomalous Quasar Detection](astronomy-projects/desi-qso-anomaly-detection.md)
+
+- Objective: ML-driven discovery of unusual quasar properties and phenomena
+- Infrastructure: RKE2 Ray clusters with GPU acceleration for distributed ML
+- Dataset: 1.6M DESI QSO spectra with 1D Conv VAE architecture
+- Status: Production ML pipeline, anomaly catalog in development
+
+### Platform Research
+
+- 📊 [Spec-Driven AI](astronomy-projects/spec-driven-ai.md): AI methodology development for spectroscopic analysis
+- 🏗️ Infrastructure Optimization: Performance validation and enterprise operational procedures
+
+---
+
+## 💻 Production Infrastructure Status
+
+### Current Virtual Machine Deployment (35+ Active VMs)
+
+Management Network (10.25.10.x):
 
 - mgmt-docker01 (16GB RAM, 4 vCPU) - Primary Docker and monitoring infrastructure
 - mgmt-sec01 (12GB RAM, 4 vCPU) - Security services and compliance monitoring
@@ -201,7 +216,7 @@ PROXMOX-ASTRONOMY-LAB/
 - mgmt-ansible01 (4GB RAM, 2 vCPU) - Configuration management
 - radio-dc01 (6GB RAM, 2 vCPU) - Active Directory domain controller
 
-**Project Network (10.25.20.x):**
+Project Network (10.25.20.x):
 
 - proj-k8s01/02/03 (246GB RAM, 48 vCPU total) - RKE2 Kubernetes cluster
 - proj-pgsql01/02 (48GB RAM, 12 vCPU total) - PostgreSQL databases with 30GB+ DESI data
@@ -210,140 +225,112 @@ PROXMOX-ASTRONOMY-LAB/
 - proj-kasm01 (32GB RAM, 8 vCPU) - VDI and secure remote desktop access
 - proj-docker01/02 (48GB RAM, 12 vCPU total) - Additional container workloads
 
-**Storage & File Services:**
+Storage & File Services:
 
 - proj-fs01/02/03/04 - Distributed file services with 3TB+ capacity
 - Proxmox Backup Server - Enterprise backup with automated retention
 
-**VDI Network (10.25.30.x):**
+VDI Network (10.25.30.x):
 
 - radio-vdi01-05 (80GB RAM, 20 vCPU total) - Windows 11 virtual desktop infrastructure
 
-### **Resource Allocation Summary**
+### Resource Allocation Summary
 
-| **Network Segment** | **VMs** | **vCPUs** | **RAM (GB)** | **Primary Function** |
+| Network Segment | VMs | vCPUs | RAM (GB) | Primary Function |
 |---------------------|---------|-----------|--------------|---------------------|
-| **Management** | 5 | 12 | 42 | Infrastructure services, identity, monitoring |
-| **Project** | 20+ | 130+ | 450+ | Research workloads, databases, AI/ML, containers |
-| **VDI** | 6 | 28 | 128 | Virtual desktop infrastructure |
-| **Storage** | 4+ | 8+ | 20+ | File services and backup infrastructure |
+| Management | 5 | 12 | 42 | Infrastructure services, identity, monitoring |
+| Project | 20+ | 130+ | 450+ | Research workloads, databases, AI/ML, containers |
+| VDI | 6 | 28 | 128 | Virtual desktop infrastructure |
+| Storage | 4+ | 8+ | 20+ | File services and backup infrastructure |
 
-**Total Allocation**: **174+ vCPUs, 692+ GB RAM** across **7-node Proxmox cluster**
+Total Allocation: 174+ vCPUs, 692+ GB RAM across 7-node Proxmox cluster
 
 ---
 
-## 🌟 **Organization Repositories**
+## 🌟 Organization Repositories
 
 The Proxmox Astronomy Lab maintains several specialized repositories within our GitHub organization:
 
-### **Core Platform Repository**
+### Core Platform Repository
 
-- **[proxmox-astronomy-lab](https://github.com/Proxmox-Astronomy-Lab/proxmox-astronomy-lab)** - Main infrastructure and documentation (this repository)
+- [proxmox-astronomy-lab](https://github.com/Proxmox-Astronomy-Lab/proxmox-astronomy-lab) - Main infrastructure and documentation (this repository)
 
-### **Research Project Repositories**
+### Research Project Repositories
 
-- **[desi-cosmic-void-galaxies](https://github.com/Proxmox-Astronomy-Lab/desi-cosmic-void-galaxies)** - Cosmic void galaxy analysis with DESI DR1
-- **[desi-qso-anomaly-detection](https://github.com/Proxmox-Astronomy-Lab/desi-qso-anomaly-detection)** - ML anomaly detection on 1.6M+ quasar spectra
-- **[desi-quasar-outflows](https://github.com/Proxmox-Astronomy-Lab/desi-quasar-outflows)** - AGN outflow energetics analysis
-- **[spec-driven-ai](https://github.com/Proxmox-Astronomy-Lab/spec-driven-ai)** - AI methodology for spectroscopic analysis
+- [desi-cosmic-void-galaxies](https://github.com/Proxmox-Astronomy-Lab/desi-cosmic-void-galaxies) - Cosmic void galaxy analysis with DESI DR1
+- [desi-qso-anomaly-detection](https://github.com/Proxmox-Astronomy-Lab/desi-qso-anomaly-detection) - ML anomaly detection on 1.6M+ quasar spectra
+- [desi-quasar-outflows](https://github.com/Proxmox-Astronomy-Lab/desi-quasar-outflows) - AGN outflow energetics analysis
+- [spec-driven-ai](https://github.com/Proxmox-Astronomy-Lab/spec-driven-ai) - AI methodology for spectroscopic analysis
 
-### **Platform Development**
+### Platform Development
 
-- **[proxmox-astronomy-lab.github](https://github.com/Proxmox-Astronomy-Lab/.github)** - Organization profile and community templates
+- [proxmox-astronomy-lab.github](https://github.com/Proxmox-Astronomy-Lab/.github) - Organization profile and community templates
 
 Each repository follows our enterprise documentation standards and includes comprehensive setup instructions, methodology documentation, and reproducibility guidelines.
 
 ---
 
-## 🚀 **Getting Started**
+## 🚀 Getting Started
 
-### **For Researchers**
+### For Researchers
 
-1. **🌌 Review** [Astronomy Projects](astronomy-projects/README.md) for active collaboration opportunities
-2. **🏗️ Understand** [Infrastructure Overview](infrastructure/README.md) for compute resource capabilities
-3. **📄 Explore** [Publishing Workflows](publishing/README.md) for data release and publication procedures
-4. **📖 Learn** [Operational Procedures](wiki/README.md) for hands-on technical implementation
+1. 🌌 Review [Astronomy Projects](astronomy-projects/README.md) for active research projects and datasets
+2. 🏗️ Understand [Infrastructure Overview](infrastructure/README.md) for compute resource capabilities
+3. 📄 Explore [Publishing Workflows](publishing/README.md) for data release and citation procedures
+4. 📖 Learn [Operational Procedures](wiki/README.md) for hands-on technical implementation
 
-### **For Infrastructure Engineers**
+### For Infrastructure Engineers
 
-1. **🔧 Study** [Hardware Architecture](hardware/README.md) for cluster specifications and networking
-2. **🔒 Examine** [Security Framework](security-assurance/README.md) for CIS Controls v8 implementation
-3. **📚 Follow** [Documentation Standards](docs/README.md) for enterprise documentation framework
-4. **🏗️ Deploy** using [Infrastructure as Code](automation-and-orchestration/README.md) principles
+1. 🔧 Study [Hardware Architecture](hardware/README.md) for cluster specifications and networking
+2. 🔒 Examine [Security Framework](security-assurance/README.md) for CIS Controls v8 implementation
+3. 📚 Follow [Documentation Standards](docs/README.md) for enterprise documentation framework
+4. 🏗️ Deploy using [Infrastructure as Code](automation-and-orchestration/README.md) principles
 
-### **For Data Scientists & ML Engineers**
+### For Data Scientists & ML Engineers
 
-1. **🤖 Explore** [AI/ML Infrastructure](ai-and-machine-learning/README.md) for GPU acceleration and distributed computing
-2. **🛠️ Review** [Application Services](applications-and-services/README.md) for ML platforms and databases
-3. **📊 Analyze** [Research Projects](astronomy-projects/README.md) for active ML workloads and methodologies
-4. **☸️ Learn** [Kubernetes Platform](infrastructure/README.md) for container orchestration and Ray clusters
-
-### **For Contributors**
-
-1. **📚 Read** [Documentation Standards](docs/documentation-standards/README.md) for template frameworks
-2. **📋 Follow** [Contribution Guidelines](CONTRIBUTING.md) for systematic collaboration procedures
-3. **🤝 Review** [Code of Conduct](CODE_OF_CONDUCT.md) for community interaction standards
-4. **📖 Contribute** to [Knowledge Base](wiki/README.md) with operational procedures and guides
+1. 🤖 Explore [AI/ML Infrastructure](ai-and-machine-learning/README.md) for GPU acceleration and distributed computing
+2. 🛠️ Review [Application Services](applications-and-services/README.md) for ML platforms and databases
+3. 📊 Analyze [Research Projects](astronomy-projects/README.md) for active ML workloads and methodologies
+4. ☸️ Learn [Kubernetes Platform](infrastructure/README.md) for container orchestration and Ray clusters
 
 ---
 
-## 🔬 **Research Impact & Publications**
+## 🔬 Research Impact & Contributions
 
-### **Scientific Contributions**
+### Scientific Output
 
-- **Open Data Commitment**: All analysis code and enriched catalogs released publicly through GitHub
-- **Reproducible Research**: Complete workflow documentation enabling independent verification
-- **Community Resources**: Compute platform methodologies available for astronomical education and research
-- **Enterprise Standards**: Proving sophisticated astronomical computing accessibility with professional practices
+- Open Data: All analysis code and enriched catalogs released publicly through GitHub
+- Reproducible Research: Complete workflow documentation enabling independent verification
+- FAIR Principles: Datasets follow Findable, Accessible, Interoperable, Reusable standards
+- Downstream Responsibility: Quality data prevents garbage propagation through research ecosystem
 
-### **Technical Innovation**
+### Technical Innovation
 
-- **Hybrid Architecture Validation**: Demonstrating optimal RKE2 Kubernetes + VM allocation for scientific computing
-- **Cost-Effective Infrastructure**: 7-node cluster achieving institutional-grade research capabilities
-- **Documentation Excellence**: Enterprise standards with comprehensive technical documentation framework
-- **Security Implementation**: CIS Controls v8 compliance for research computing environments
+- Hybrid Architecture: Demonstrating optimal RKE2 Kubernetes + VM allocation for scientific computing
+- AI Governance: Multi-framework implementation (CIS-RAM, ISO42001, SB-24-205, NIST AI RMF) at small-org scale
+- Documentation Excellence: Enterprise standards with comprehensive technical documentation framework
+- Methodological Transparency: Detailed worklogs documenting decisions, failures, and lessons learned
 
-### **Platform Metrics**
+### Platform Metrics
 
-- **🔥 Active Workloads**: 3 major DESI analysis projects in production with dedicated infrastructure
-- **💾 Data Processing**: 30GB+ astronomical databases with optimized query performance
-- **🧮 ML Throughput**: 1.6M spectra processed through VAE architecture on distributed Ray clusters
-- **⚡ Infrastructure Reliability**: >99.5% availability across 35+ VM production environment
-
----
-
-## 🤝 **Community & Collaboration**
-
-### **Open Science Principles**
-
-- **🌍 Public Code**: All analysis workflows and infrastructure automation available on GitHub
-- **📊 Open Data**: DESI-derived catalogs released with full documentation and metadata
-- **📖 Transparent Methods**: Complete methodology documentation with enterprise validation
-- **🔄 Reproducible Infrastructure**: Full platform deployment documentation with systematic procedures
-
-### **Collaboration Opportunities**
-
-- **Student Projects**: Research collaboration for undergraduate/graduate astronomical computing
-- **Compute Resources**: Platform methodologies for approved astronomical research projects
-- **Technical Partnerships**: Infrastructure development, optimization, and methodology validation
-- **Data Sharing**: Cross-institutional astronomical data analysis and collaborative computing
-
-### **Community Standards**
-
-- **Professional Conduct**: Respectful, inclusive, and constructive collaboration aligned with enterprise standards
-- **Scientific Rigor**: Peer review, statistical validation, and systematic error analysis
-- **Open Communication**: Transparent project status, methodology sharing, and collaborative development
-- **Knowledge Transfer**: Active documentation, educational resource development, and community training
+- 🔥 Active Workloads: 3 major DESI analysis projects in production with dedicated infrastructure
+- 💾 Data Processing: 30GB+ astronomical databases with optimized query performance
+- 🧮 ML Throughput: 1.6M spectra processed through VAE architecture on distributed Ray clusters
+- ⚡ Infrastructure Reliability: >99.5% availability across 35+ VM production environment
 
 ---
 
-## 📄 **License & Usage**
+## 🤝 Get Involved
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+### AI Governance Journey
 
-### **Citation Guidelines**
+We document our multi-framework governance implementation and provide reusable templates at [github.com/vintagedon/nist-ai-rmf-cookbook](https://github.com/vintagedon/nist-ai-rmf-cookbook). This resource captures our journey implementing CIS-RAM, ISO42001, Colorado SB-24-205, and NIST AI RMF at small-organization scale.
 
-If you use this infrastructure, methodologies, or research in your work, please cite:
+### Citation & Data Use
+
+If you use our datasets or build on our research, please cite:
+
+ORCID: [0009-0008-7695-4093](https://orcid.org/0009-0008-7695-4093)
 
 ```bibtex
 @misc{proxmox_astronomy_lab_2025,
@@ -355,29 +342,37 @@ If you use this infrastructure, methodologies, or research in your work, please 
 }
 ```
 
----
+### Current Capacity
 
-## 🙏 **Acknowledgments**
+We do not have volunteer capacity at this time. For collaboration inquiries related to published datasets or governance frameworks, please reference the appropriate repository.
 
-**Proxmox Astronomy Lab** demonstrates that world-class astronomical research infrastructure can be built through systematic engineering, enterprise standards, and open science principles. Built on open-source foundations and committed to reproducible research, this platform contributes to the astronomical community through precision measurements, innovative methodologies, and accessible computing resources.
+### Community Standards
 
-### **Technology Foundation**
-
-- **🏗️ Proxmox VE**: Virtualization platform enabling hybrid architecture with enterprise management
-- **☸️ RKE2 Kubernetes**: Container orchestration for dynamic workloads and distributed computing
-- **🐘 PostgreSQL**: High-performance astronomical database platform optimized for DESI workloads
-- **🔥 Ray**: Distributed computing framework for ML workloads and large-scale data processing
-- **🌌 DESI**: Dark Energy Spectroscopic Instrument data enabling cutting-edge astronomical research
-
-### **Community Support**
-
-- **🌍 Open Source Community**: Tools, libraries, and collaborative development enabling platform capabilities
-- **🎓 Astronomical Community**: Methodology guidance, research validation, and scientific collaboration
-- **👥 Contributors**: Documentation, testing, infrastructure development, and knowledge sharing
-- **🔬 DESI Collaboration**: Data access, scientific context, and research methodology validation
+- Professional Conduct: Respectful, inclusive, and constructive collaboration
+- Scientific Rigor: Peer review, statistical validation, and systematic error analysis
+- Open Communication: Transparent project status, methodology sharing, and collaborative development
+- Knowledge Transfer: Active documentation, educational resource development, and community support
 
 ---
 
-🌌 **Enterprise-grade astronomical research computing** | **Proving sophisticated science is accessible**
+## 📄 License
 
-**Last Updated**: August 15, 2025 | **Platform Status**: Production | **Next Major Update**: Q4 2025
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+This platform builds on open-source foundations and demonstrates that sophisticated astronomical research infrastructure can be built through systematic engineering and enterprise standards.
+
+Technology Foundation: Proxmox VE, RKE2 Kubernetes, PostgreSQL, Ray distributed computing, DESI collaboration data access
+
+Community Support: Open source tools and libraries, astronomical research community, contributors and collaborators
+
+Data Sources: DESI Dark Energy Spectroscopic Instrument, Amazon Web Services public datasets, AstroPy project, SciPy ecosystem
+
+---
+
+🌌 Production astronomical research computing platform | Citizen scientists at organizational scale
+
+Last Updated: October 30, 2025 | Platform Status: Production

@@ -41,10 +41,10 @@ This section provides systematic navigation to all network infrastructure docume
 
 | **Device** | **Purpose** | **Documentation Status** |
 |------------|-------------|-------------------------|
-| **[fw01-fortigate-40f-pending.md](fw01-fortigate-40f-pending.md)** | Enterprise firewall providing security controls and traffic management | Configuration Pending |
-| **[labswitch01-sodola-sl-swtg3c12f-pending.md](labswitch01-sodola-sl-swtg3c12f-pending.md)** | Core managed switch with SFP+ uplinks and VLAN capabilities | Configuration Pending |
-| **[labswitch02-mokerlink-2g16210gsm-pending.md](labswitch02-mokerlink-2g16210gsm-pending.md)** | Secondary managed switch for network expansion and redundancy | Configuration Pending |
-| **[labswitch03-sodola-sl-swtgw2c48ns-pending.md](labswitch03-sodola-sl-swtgw2c48ns-pending.md)** | Access layer switch providing additional port density | Configuration Pending |
+| **[fw01-fortigate-40f.md](fw01-fortigate-40f.md)** | Enterprise firewall providing security controls and traffic management | Configuration Pending |
+| **[labswitch01-sodola-sl-swtg3c12f.md](labswitch01-sodola-sl-swtg3c12f)** | Core managed switch with SFP+ uplinks and VLAN capabilities | Configuration Pending |
+| **[labswitch02-mokerlink-2g16210gsm.md](labswitch02-mokerlink-2g16210gsm.md)** | Secondary managed switch for network expansion and redundancy | Configuration Pending |
+| **[labswitch03-sodola-sl-swtgw2c48ns.md](labswitch03-sodola-sl-swtgw2c48ns.md)** | Access layer switch providing additional port density | Configuration Pending |
 
 ### **Configuration Repository**
 
@@ -64,23 +64,23 @@ This section provides systematic navigation to all network infrastructure docume
 
 ```markdown
 hardware/networking/
-├── 🔥 fw01-fortigate-40f-pending.md           # Enterprise firewall documentation
-├── 🔗 labswitch01-sodola-sl-swtg3c12f-pending.md  # Core managed switch
-├── 📡 labswitch02-mokerlink-2g16210gsm-pending.md # Secondary switch
-├── 🌐 labswitch03-sodola-sl-swtgw2c48ns-pending.md # Access layer switch
+├── 🔥 fw01-fortigate-40f.md           # Enterprise firewall documentation
+├── 🔗 labswitch01-sodola-sl-swtg3c12f.md  # Core managed switch
+├── 📡 labswitch02-mokerlink-2g16210gsm.md # Secondary switch
+├── 🌐 labswitch03-sodola-sl-swtgw2c48ns.md # Access layer switch
 ├── ⚙️ configs/                                # Configuration repository
-│   ├── fw01-fortigate-40f-pending.md         # Firewall configuration
-│   ├── labswitch01-sodola-sl-swtg3c12f-pending.md # Core switch config
-│   ├── labswitch02-mokerlink-2g16210gsm-pending.md # Secondary switch config
-│   └── labswitch03-sodola-sl-swtgw2c48ns-pending.md # Access switch config
+│   ├── fw01-fortigate-40f.md         # Firewall configuration
+│   ├── labswitch01-sodola-sl-swtg3c12f.md # Core switch config
+│   ├── labswitch02-mokerlink-2g16210gsm.md # Secondary switch config
+│   └── labswitch03-sodola-sl-swtgw2c48ns.md # Access switch config
 └── 📝 README.md                              # This file
 ```
 
 ### **Navigation Guide:**
 
-- **[🔥 Enterprise Firewall](fw01-fortigate-40f-pending.md)** - Security controls and traffic management configuration
-- **[🔗 Core Switch](labswitch01-sodola-sl-swtg3c12f-pending.md)** - Primary switching infrastructure with SFP+ capabilities
-- **[📡 Network Expansion](labswitch02-mokerlink-2g16210gsm-pending.md)** - Secondary switching for redundancy and capacity
+- **[🔥 Enterprise Firewall](fw01-fortigate-40f.md)** - Security controls and traffic management configuration
+- **[🔗 Core Switch](labswitch01-sodola-sl-swtg3c12f.md)** - Primary switching infrastructure with SFP+ capabilities
+- **[📡 Network Expansion](labswitch02-mokerlink-2g16210gsm.md)** - Secondary switching for redundancy and capacity
 - **[⚙️ Configuration Management](configs/)** - Device configuration backup and management procedures
 
 ---

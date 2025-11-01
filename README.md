@@ -20,13 +20,19 @@ The Proxmox Astronomy Lab is a production astronomical computing platform built 
 
 We produce enhanced datasets and original data science research as citizen scientists, transforming astronomical data into analysis-ready datasets (ARD) that enable downstream research. Our work includes anomaly detection, spectral analysis, and systematic data enhancement projects on public astronomical surveys.
 
+Our Latest Released Dataset: https://github.com/vintagedon/steam-dataset-2025
+
+Our Current Research: https://github.com/Pxomox-Astronomy-Lab/desi-cosmic-void-galaxies
+
 ### Data Quality Standards
 
 Following FAIR principles (Findable, Accessible, Interoperable, Reusable), we implement scientific rigor throughout our data pipelines. Quality data prevents downstream problems—proper methodology at the source eliminates garbage propagation through the research ecosystem.
 
 ### AI-Native Operations
 
-AI is embedded in 100% of our workflows, from automated data processing to governance documentation. We implement multi-framework governance (CIS-RAM, ISO42001, Colorado SB-24-205, NIST AI RMF) appropriate to our responsibility as data providers to downstream researchers. Our governance journey and reusable templates are documented at [github.com/vintagedon/nist-ai-rmf-cookbook](https://github.com/vintagedon/nist-ai-rmf-cookbook).
+AI is embedded in 100% of our workflows, from automated data processing to governance documentation. We implement multi-framework governance (CIS-RAM, ISO42001, Colorado SB-24-205, NIST AI RMF) appropriate to our responsibility as data providers to downstream researchers.
+
+Our governance journey and reusable templates are documented at [github.com/vintagedon/nist-ai-rmf-cookbook](https://github.com/vintagedon/nist-ai-rmf-cookbook).
 
 ### Transparency & Methodology
 
@@ -36,20 +42,14 @@ We publish complete methodological transparency through detailed worklogs docume
 
 | Component | Specification | Purpose |
 |---------------|------------------|-------------|
-| 🖥️ Compute Cluster | 7-node Proxmox VE 8.4.1 (174 vCPUs, 692GB RAM allocated) | Enterprise-scale parallel processing and virtualization |
-| 📦 Virtual Machines | 35+ production VMs across management, project, and development networks | Comprehensive service architecture with strategic workload placement |
-| ☸️ Kubernetes Platform | 3-node RKE2 cluster (246GB RAM, 48 vCPU) | Container orchestration for dynamic ML/AI workloads |
-| 🗄️ Database Infrastructure | PostgreSQL 16 clusters with 30GB+ DESI data | Production astronomical database workloads |
-| 🧠 AI/ML Acceleration | RTX A4000 GPU with enterprise ML infrastructure | Distributed ML inference and training workflows |
-| 🔡 Network Architecture | Dual-link bonding with enterprise managed switches | High-bandwidth data movement and cluster interconnect |
-| 🔒 Security Framework | CIS Controls v8 + Google Workspace Enterprise + Zero Trust Network Access | Enterprise-grade security and identity management |
+| 🖥️ Compute Cluster | 7-node Proxmox VE 9.x (144 cores, 768G RAM, 24TB nvme) | Compute and Storage |
+| 📦 Virtual Machines | 35+ production VMs + Docker Microservices | Static VMs supporting k8s Dynamic Workloads |
+| ☸️ Kubernetes Platform | 4-node RKE2 cluster (246GB RAM, 48 vCPU) | Container orchestration for dynamic ML/AI workloads |
+| 🗄️ Database Infrastructure | PostgreSQL 16 w/pgvector and PostGIS| Astronomy/data science workloads |
+| 🧠 AI/ML Acceleration | 2 x RTX A4000 16G GPUs | Local LLMs + ML Workflow Pipelines |
+| 🔡 Network Architecture | LACP 2.5G/10G Network + Fortigate 40F Firewall | VM and Storage network |
+Security Framework | CIS Controls v8 + Google Workspace Enterprise + Netbird ZTNA | Security, Identity Management and Remote Access |
 
-### Infrastructure Architecture
-
-- Proxmox Nodes: Intel 12th/13th gen (i5-12600H to i9-13900H) with dedicated NVMe storage
-- Network Topology: Management (10.16.207.x) + Multi-VLAN service networks (10.25.x.x)
-- Storage Systems: Distributed NVMe pools (nvmethin01-04) with enterprise backup infrastructure
-- Identity Management: Google Workspace Enterprise with Cloudflare Zero Trust Network Access
 
 ![proxmox-astronomy-lab-network-stack](assets/images/lab-hardware/proxmox-astronomy-lab-network-stack.jpg)
 ![proxmox-astronomy-lab-gpu-node](assets/images/lab-hardware/proxmox-astronomy-lab-gpu-node.jpg)
@@ -126,7 +126,6 @@ graph TB
         MFA[Multi-Factor Auth]
     end
 ```
-
 ### Service Architecture
 
 | Service Tier | Implementation | Components |
@@ -199,49 +198,6 @@ PROXMOX-ASTRONOMY-LAB/
 
 - 📊 [Spec-Driven AI](astronomy-projects/spec-driven-ai.md): AI methodology development for spectroscopic analysis
 - 🏗️ Infrastructure Optimization: Performance validation and enterprise operational procedures
-
----
-
-## 💻 Production Infrastructure Status
-
-### Current Virtual Machine Deployment (35+ Active VMs)
-
-Management Network (10.25.10.x):
-
-- mgmt-docker01 (16GB RAM, 4 vCPU) - Primary Docker and monitoring infrastructure
-- mgmt-sec01 (12GB RAM, 4 vCPU) - Security services and compliance monitoring
-- mgmt-agents01 (16GB RAM, 4 vCPU) - Infrastructure automation and agents
-- mgmt-ansible01 (4GB RAM, 2 vCPU) - Configuration management
-- radio-dc01 (6GB RAM, 2 vCPU) - Active Directory domain controller
-
-Project Network (10.25.20.x):
-
-- proj-k8s01/02/03 (246GB RAM, 48 vCPU total) - RKE2 Kubernetes cluster
-- proj-pgsql01/02 (48GB RAM, 12 vCPU total) - PostgreSQL databases with 30GB+ DESI data
-- proj-gpu01 (32GB RAM, 8 vCPU) - RTX A4000 GPU acceleration for ML workloads
-- proj-mon01 (12GB RAM, 4 vCPU) - Centralized monitoring with Prometheus/Grafana
-- proj-kasm01 (32GB RAM, 8 vCPU) - VDI and secure remote desktop access
-- proj-docker01/02 (48GB RAM, 12 vCPU total) - Additional container workloads
-
-Storage & File Services:
-
-- proj-fs01/02/03/04 - Distributed file services with 3TB+ capacity
-- Proxmox Backup Server - Enterprise backup with automated retention
-
-VDI Network (10.25.30.x):
-
-- radio-vdi01-05 (80GB RAM, 20 vCPU total) - Windows 11 virtual desktop infrastructure
-
-### Resource Allocation Summary
-
-| Network Segment | VMs | vCPUs | RAM (GB) | Primary Function |
-|---------------------|---------|-----------|--------------|---------------------|
-| Management | 5 | 12 | 42 | Infrastructure services, identity, monitoring |
-| Project | 20+ | 130+ | 450+ | Research workloads, databases, AI/ML, containers |
-| VDI | 6 | 28 | 128 | Virtual desktop infrastructure |
-| Storage | 4+ | 8+ | 20+ | File services and backup infrastructure |
-
-Total Allocation: 174+ vCPUs, 692+ GB RAM across 7-node Proxmox cluster
 
 ---
 
